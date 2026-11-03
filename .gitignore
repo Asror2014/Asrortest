@@ -1,0 +1,15 @@
+# Operatsion tizim va vaqtinchalik fayllar
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Vaqtinchalik sinov fayllari
+test_*.html
+test_*.png
+temp_*
+*.tmp
+
+# IDE va muhit sozlamalari
+.vscode/
+.idea/

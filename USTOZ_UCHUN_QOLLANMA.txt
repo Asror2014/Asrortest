@@ -1,0 +1,37 @@
+# 🎓 30-maktabtest - Zamonaviy Ta'lim Platformasi
+
+Ushbu platforma O'zbekiston umumta'lim maktablarining 1-11 sinf o'quvchilari va o'qituvchilari uchun maxsus ishlab chiqilgan.
+
+---
+
+### 🚀 Loyihani Ishga Tushirish:
+1. Ushbu ZIP arxivni ixtiyoriy papkaga oching (Extract / Разархивировать).
+2. Papka ichidagi **`START_SAYT.bat`** faylini yoki to'g'ridan-to'g'ri **`index.html`** faylini sichqoncha bilan ikki marta bosing.
+3. Loyiha avtomatik ravishda barcha zamonaviy brauzerlarda (Google Chrome, Microsoft Edge, Mozilla Firefox, Opera) hech qanday qo'shimcha o'rnatishlarsiz to'liq ishlaydi!
+
+---
+
+### 🌟 Asosiy Imkoniyatlar:
+1. **Bosh ekranning o'zida yagona Test Markazi:**
+   - 1-11 sinflarni bitta bosish bilan tanlash.
+   - 60 dan ortiq barcha o'quv fanlari.
+   - Savollar sonini tanlash: 10 ta, 20 ta, 30 ta, 50 ta, 100 ta.
+   - Qiyinlik darajasi: Oson, O'rtacha, Qiyin.
+   - Har bir javob belgilanganda darhol **To'g'ri (Yashil)** yoki **Noto'g'ri (Qizil)** natija, to'g'ri javob ko'rsatkichi hamda darslikdagi **ilmiy izoh** chiqadi.
+   - "Tugatish" tugmasi orqali istalgan vaqtda testni tasdiqlab yakunlash va batafsil tahlilni ko'rish.
+
+2. **3D Virtual Fan Laboratoriyalari:**
+   - **Kimyo laboratoriyasi:** 3D modellar, probirkalar, reaksiyalar va vizual effektlar.
+   - **Fizika laboratoriyasi:** Elektr zanjirlari, kuchlar, harakat va qonuniyatlar.
+
+3. **Elektron Darsliklar Portali:**
+   - Barcha sinflar bo'yicha elektron darsliklar va o'quv qo'llanmalari.
+
+4. **O'qituvchilar Kabineti:**
+   - Yangi test savollari qo'shish va bazani boyitish.
+   - O'quvchilar natijalari va statistikasi tahlili.
+   - Qog'ozda test o'tkazish uchun varaqalarni chop etish (Print test sheet).
+
+5. **Ko'p tilli tizim va Tungi rejim:**
+   - O'zbek tili, Rus tili, Ingliz tili.
+   - Tungi (Dark) va Kunduzgi (Light) zamonaviy rejimlar.
