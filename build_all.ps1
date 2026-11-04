@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop"
 $baseDir = "c:\Users\Hp\Downloads\new"
 $artifactDir = "C:\Users\Hp\.gemini\antigravity\brain\eceaab90-a22e-43b4-a834-94dc8938ecbd"
 
@@ -19,6 +19,10 @@ $labGeomJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-geometry.
 $labTechJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-technology.js"), [System.Text.Encoding]::UTF8)
 $labExplJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-explanations.js"), [System.Text.Encoding]::UTF8)
 $accountsRatingJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\accounts-rating.js"), [System.Text.Encoding]::UTF8)
+$soundBadgesJs = ""
+if (Test-Path (Join-Path $baseDir "js\sound-and-badges.js")) {
+  $soundBadgesJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\sound-and-badges.js"), [System.Text.Encoding]::UTF8)
+}
 
 Write-Output "2. CSS va JS ni inline qilish..."
 $html = $html.Replace('<link rel="stylesheet" href="css/style.css">', "<style>`n$styleCss`n</style>")
@@ -36,6 +40,9 @@ $html = $html.Replace('<script src="js/lab-biology.js"></script>', "<script>`n$l
 $html = $html.Replace('<script src="js/lab-geometry.js"></script>', "<script>`n$labGeomJs`n</script>")
 $html = $html.Replace('<script src="js/lab-technology.js"></script>', "<script>`n$labTechJs`n</script>")
 $html = $html.Replace('<script src="js/lab-explanations.js"></script>', "<script>`n$labExplJs`n</script>")
+if ($soundBadgesJs) {
+  $html = $html.Replace('<script src="js/sound-and-badges.js"></script>', "<script>`n$soundBadgesJs`n</script>")
+}
 
 # Yagona HTML fayllarini saqlash
 $htmlPaths = @(
@@ -51,12 +58,17 @@ foreach ($p in $htmlPaths) {
   Write-Output "Yaratildi: $p ($([math]::Round($sz/1MB, 2)) MB)"
 }
 
-Write-Output "3. C:\Users\Hp\Downloads\30-maktabtest jildiga barcha fayllarni sinxronlash..."
+Write-Output "3. C:\Users\Hp\Downloads\30-maktabtest va C:\Users\Hp\Desktop\new jildlariga sinxronlash..."
 $destFolder = "C:\Users\Hp\Downloads\30-maktabtest"
 if (-not (Test-Path $destFolder)) {
   New-Item -ItemType Directory -Path $destFolder | Out-Null
 }
 Copy-Item -Path "$baseDir\*" -Destination $destFolder -Recurse -Force -Exclude "30-maktabtest-loyiha.zip"
+
+$desktopNew = "C:\Users\Hp\Desktop\new"
+if (Test-Path $desktopNew) {
+  Copy-Item -Path "$baseDir\*" -Destination $desktopNew -Recurse -Force
+}
 
 # Desktop ga ham START_LOCALHOST.bat qo'yish
 Copy-Item -Path (Join-Path $baseDir "START_LOCALHOST.bat") -Destination "C:\Users\Hp\Desktop\START_LOCALHOST.bat" -Force

@@ -1,4 +1,4 @@
-﻿
+
 /* ============================================================
    MULTI-LANGUAGE SUPPORT (O'ZBEK, RUSSIAN, ENGLISH)
    ============================================================ */
@@ -1467,6 +1467,13 @@ window.checkStudentProfileOnLoad = function() {
       overlay.style.setProperty('display', 'none', 'important');
     }
   } else {
+    // Agar URL da ?bypass=1 bo'lsa, overlay ko'rsatilmaydi
+    if (window.location.search.indexOf('bypass=1') !== -1 || window.location.hash.indexOf('bypass') !== -1) {
+      var overlay = document.getElementById('welcome-onboarding-overlay');
+      if (overlay) overlay.style.display = 'none';
+      return;
+    }
+
     // Profil yo'q: Birinchi kirish ekranini ko'rsatish
     var overlay = document.getElementById('welcome-onboarding-overlay');
     if (overlay) {

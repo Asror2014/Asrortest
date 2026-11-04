@@ -326,6 +326,12 @@ class TechnologyLab {
     armPivot2.add(gripperGroup);
     this.objects.gripperGroup = gripperGroup;
 
+    // Gripper markaziy ushlash nuqtasi (anchor)
+    const gripperTip = new THREE.Object3D();
+    gripperTip.position.set(0, 0.6, 0);
+    gripperGroup.add(gripperTip);
+    this.objects.gripperTip = gripperTip;
+
     // 2 barmoqli qisqich
     const fingerGeo = new THREE.BoxGeometry(0.2, 1.2, 0.35);
     const fingerLeft = new THREE.Mesh(fingerGeo, gripperMat);
@@ -338,25 +344,53 @@ class TechnologyLab {
     gripperGroup.add(fingerRight);
     this.objects.fingerRight = fingerRight;
 
-    // Platformalar (Pad A va Pad B)
-    const padGeo = new THREE.CylinderGeometry(1.5, 1.6, 0.2, 32);
-    const padMatA = new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.5 });
+    // Platformalar (Pad A va Pad B - neon indikatorli metall disklar)
+    const padGeo = new THREE.CylinderGeometry(1.6, 1.8, 0.25, 32);
+    const padMatA = new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.4, metalness: 0.3 });
     const padA = new THREE.Mesh(padGeo, padMatA);
-    padA.position.set(-5, 0.1, 0);
+    padA.position.set(-6.4, 0.12, 0);
     this.scene.add(padA);
 
-    const padMatB = new THREE.MeshStandardMaterial({ color: 0x3b82f6, roughness: 0.5 });
+    // Yashil Pad A neon halqasi
+    const ringGeo = new THREE.RingGeometry(1.65, 1.85, 32);
+    ringGeo.rotateX(-Math.PI / 2);
+    const ringMatA = new THREE.MeshBasicMaterial({ color: 0x34d399, side: THREE.DoubleSide });
+    const ringA = new THREE.Mesh(ringGeo, ringMatA);
+    ringA.position.set(-6.4, 0.26, 0);
+    this.scene.add(ringA);
+
+    // Pad B (ko'k platforma)
+    const padMatB = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.4, metalness: 0.3 });
     const padB = new THREE.Mesh(padGeo, padMatB);
-    padB.position.set(5, 0.1, 0);
+    padB.position.set(6.4, 0.12, 0);
     this.scene.add(padB);
 
-    // Yuk (Konteyner kubik)
+    // Ko'k Pad B neon halqasi
+    const ringMatB = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide });
+    const ringB = new THREE.Mesh(ringGeo, ringMatB);
+    ringB.position.set(6.4, 0.26, 0);
+    this.scene.add(ringB);
+
+    // Yuk (Konteyner kubik - oltin-sariq sanoat detali)
     const cargoGeo = new THREE.BoxGeometry(0.9, 0.9, 0.9);
-    const cargoMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.3, metalness: 0.2 });
+    const cargoMat = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.25, metalness: 0.4 });
     const cargo = new THREE.Mesh(cargoGeo, cargoMat);
-    cargo.position.set(-5, 0.65, 0);
+    cargo.position.set(-6.4, 0.55, 0);
     this.scene.add(cargo);
     this.objects.cargo = cargo;
+
+    // Robot holati (Pick & Place avtomatik sikl)
+    this.robotState = {
+      phase: 0,
+      timer: 0,
+      cargoHeld: false
+    };
+
+    // Boshlang'ich parametrlar
+    this.params.robotBaseAngle = 180;
+    this.params.robotArmAngle = 22;
+    this.params.robotForearmAngle = 28;
+    this.params.gripperOpen = true;
 
     this.updateRobotPositions();
   }
@@ -373,10 +407,288 @@ class TechnologyLab {
 
     // Gripper ochilish/yopilish
     if (this.objects.fingerLeft && this.objects.fingerRight) {
-      const offset = this.params.gripperOpen ? 0.45 : 0.2;
+      const offset = this.params.gripperOpen ? 0.45 : 0.18;
       this.objects.fingerLeft.position.x = -offset;
       this.objects.fingerRight.position.x = offset;
     }
+
+    // Agar yuk (cargo) qisqich tomonidan ushlangan bo'lsa, qisqich bilan birga 3D fazoda ko'chiriladi!
+    if (this.robotState && this.robotState.cargoHeld && this.objects.cargo && this.objects.gripperTip) {
+      this.scene.updateMatrixWorld(true);
+      const tipWorldPos = new THREE.Vector3();
+      this.objects.gripperTip.getWorldPosition(tipWorldPos);
+      this.objects.cargo.position.copy(tipWorldPos);
+      this.objects.cargo.rotation.y = baseRad;
+    }
+  }
+
+  // Mukammal 16 bosqichli haqiqiy sanoat Pick & Place sikli (Pad A -> Pad B -> Pad A)
+  updateRobotPickAndPlace(dt) {
+    if (!this.robotState) {
+      this.robotState = { phase: 0, timer: 0, cargoHeld: false };
+    }
+    const st = this.robotState;
+    st.timer += dt;
+
+    const ease = (t) => t < 0 ? 0 : t > 1 ? 1 : t * t * (3 - 2 * t);
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    switch (st.phase) {
+      case 0: { // 1.5s: Pad A (yashil) tomon tushish
+        const dur = 1.5;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = lerp(22, 55, p);
+        this.params.robotForearmAngle = lerp(28, 89, p);
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(-6.4, 0.55, 0);
+        if (st.timer >= dur) {
+          st.phase = 1;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 1: { // 0.8s: Qisqichni mahkam yopish (Pad A da yukni ushlash)
+        const dur = 0.8;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = 55;
+        this.params.robotForearmAngle = 89;
+        this.params.gripperOpen = false;
+        if (this.objects.fingerLeft && this.objects.fingerRight) {
+          const off = lerp(0.45, 0.18, p);
+          this.objects.fingerLeft.position.x = -off;
+          this.objects.fingerRight.position.x = off;
+        }
+        if (st.timer >= dur) {
+          st.cargoHeld = true; // Yuk ushlandi!
+          st.phase = 2;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 2: { // 1.2s: Yukni havoga ko'tarish
+        const dur = 1.3;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = lerp(55, 22, p);
+        this.params.robotForearmAngle = lerp(89, 28, p);
+        this.params.gripperOpen = false;
+        st.cargoHeld = true;
+        if (st.timer >= dur) {
+          st.phase = 3;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 3: { // 2.2s: Bazani 180° dan 0° ga burish - yuk Pad B ga eltilyapti!
+        const dur = 2.4;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = lerp(180, 0, p);
+        this.params.robotArmAngle = 22 + Math.sin(p * Math.PI) * 4;
+        this.params.robotForearmAngle = 28;
+        this.params.gripperOpen = false;
+        st.cargoHeld = true;
+        if (st.timer >= dur) {
+          this.params.robotBaseAngle = 0;
+          st.phase = 4;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 4: { // 1.5s: Yukni Pad B (ko'k) platformasiga tushirish
+        const dur = 1.5;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = lerp(22, 55, p);
+        this.params.robotForearmAngle = lerp(28, 89, p);
+        this.params.gripperOpen = false;
+        st.cargoHeld = true;
+        if (st.timer >= dur) {
+          st.phase = 5;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 5: { // 0.8s: Qisqichni ochish - yuk Pad B da qoladi!
+        const dur = 0.8;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = 55;
+        this.params.robotForearmAngle = 89;
+        this.params.gripperOpen = true;
+        st.cargoHeld = false; // Detal Pad B ga joylashtirildi!
+        if (this.objects.cargo) this.objects.cargo.position.set(6.4, 0.55, 0);
+        if (this.objects.fingerLeft && this.objects.fingerRight) {
+          const off = lerp(0.18, 0.45, p);
+          this.objects.fingerLeft.position.x = -off;
+          this.objects.fingerRight.position.x = off;
+        }
+        if (st.timer >= dur) {
+          st.phase = 6;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 6: { // 1.2s: Bo'sh qo'lni yuqoriga ko'tarish
+        const dur = 1.3;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = lerp(55, 22, p);
+        this.params.robotForearmAngle = lerp(89, 28, p);
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(6.4, 0.55, 0);
+        if (st.timer >= dur) {
+          st.phase = 7;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 7: { // 1.0s: To'xtab turish (o'quvchi ko'chirilgan yukni ko'rishi uchun)
+        const dur = 1.0;
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = 22;
+        this.params.robotForearmAngle = 28;
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(6.4, 0.55, 0);
+        if (st.timer >= dur) {
+          st.phase = 8;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 8: { // 1.5s: Yukni qaytarib olish uchun Pad B ga tushish
+        const dur = 1.5;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = lerp(22, 55, p);
+        this.params.robotForearmAngle = lerp(28, 89, p);
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(6.4, 0.55, 0);
+        if (st.timer >= dur) {
+          st.phase = 9;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 9: { // 0.8s: Qisqichni Pad B da yuk atrofida yopish
+        const dur = 0.8;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = 55;
+        this.params.robotForearmAngle = 89;
+        this.params.gripperOpen = false;
+        if (this.objects.fingerLeft && this.objects.fingerRight) {
+          const off = lerp(0.45, 0.18, p);
+          this.objects.fingerLeft.position.x = -off;
+          this.objects.fingerRight.position.x = off;
+        }
+        if (st.timer >= dur) {
+          st.cargoHeld = true; // Yuk yana ushlandi!
+          st.phase = 10;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 10: { // 1.2s: Yukni yuqoriga ko'tarish
+        const dur = 1.3;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 0;
+        this.params.robotArmAngle = lerp(55, 22, p);
+        this.params.robotForearmAngle = lerp(89, 28, p);
+        this.params.gripperOpen = false;
+        st.cargoHeld = true;
+        if (st.timer >= dur) {
+          st.phase = 11;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 11: { // 2.2s: Bazani 0° dan 180° ga burish - yukni Pad A ga qaytarish!
+        const dur = 2.4;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = lerp(0, 180, p);
+        this.params.robotArmAngle = 22 + Math.sin(p * Math.PI) * 4;
+        this.params.robotForearmAngle = 28;
+        this.params.gripperOpen = false;
+        st.cargoHeld = true;
+        if (st.timer >= dur) {
+          this.params.robotBaseAngle = 180;
+          st.phase = 12;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 12: { // 1.5s: Yukni Pad A ga ehtiyotkorlik bilan tushirish
+        const dur = 1.5;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = lerp(22, 55, p);
+        this.params.robotForearmAngle = lerp(28, 89, p);
+        this.params.gripperOpen = false;
+        st.cargoHeld = true;
+        if (st.timer >= dur) {
+          st.phase = 13;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 13: { // 0.8s: Qisqichni ochish - yuk Pad A da qoladi!
+        const dur = 0.8;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = 55;
+        this.params.robotForearmAngle = 89;
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(-6.4, 0.55, 0);
+        if (this.objects.fingerLeft && this.objects.fingerRight) {
+          const off = lerp(0.18, 0.45, p);
+          this.objects.fingerLeft.position.x = -off;
+          this.objects.fingerRight.position.x = off;
+        }
+        if (st.timer >= dur) {
+          st.phase = 14;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 14: { // 1.2s: Bo'sh qo'lni yuqoriga ko'tarish
+        const dur = 1.3;
+        const p = ease(st.timer / dur);
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = lerp(55, 22, p);
+        this.params.robotForearmAngle = lerp(89, 28, p);
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(-6.4, 0.55, 0);
+        if (st.timer >= dur) {
+          st.phase = 15;
+          st.timer = 0;
+        }
+        break;
+      }
+      case 15: { // 1.0s: To'xtab turish va siklni cheksiz takrorlash!
+        const dur = 1.0;
+        this.params.robotBaseAngle = 180;
+        this.params.robotArmAngle = 22;
+        this.params.robotForearmAngle = 28;
+        this.params.gripperOpen = true;
+        st.cargoHeld = false;
+        if (this.objects.cargo) this.objects.cargo.position.set(-6.4, 0.55, 0);
+        if (st.timer >= dur) {
+          st.phase = 0;
+          st.timer = 0;
+        }
+        break;
+      }
+    }
+
+    this.updateRobotPositions();
   }
 
   // ============================================================
@@ -885,13 +1197,8 @@ class TechnologyLab {
     if (this.isRunning) {
       if (this.currentExp === 'robot-arm') {
         if (this.params.robotAutoCycle) {
-          this.params.robotCycleTime += dt;
-          const t = this.params.robotCycleTime;
-          // Avtomatik ko'chirish sikli
-          this.params.robotBaseAngle = Math.sin(t * 0.8) * 60;
-          this.params.robotArmAngle = 20 + Math.sin(t * 1.2) * 20;
-          this.params.robotForearmAngle = 40 + Math.cos(t * 1.2) * 25;
-          this.params.gripperOpen = (Math.sin(t * 0.8) > 0);
+          this.updateRobotPickAndPlace(dt);
+        } else {
           this.updateRobotPositions();
         }
       } else if (this.currentExp === 'gears') {
