@@ -762,21 +762,26 @@
 }
 
 #technology-bottom-panel {
-  overflow-x: hidden !important;
+  overflow-x: auto !important;
   padding: 0.4rem 0.5rem !important;
+  justify-content: center !important;
 }
 
 #technology-bottom-panel .lab-controls {
-  gap: 0.45rem !important;
+  gap: 0.35rem !important;
   width: auto !important;
+  max-width: 100% !important;
   justify-content: center !important;
   margin: 0 auto !important;
+  flex-wrap: nowrap !important;
 }
 
 #technology-bottom-panel .lab-controls .btn {
-  padding: 0.45rem 0.75rem !important;
-  font-size: 0.82rem !important;
-  gap: 0.35rem !important;
+  padding: 0.4rem 0.55rem !important;
+  font-size: 0.76rem !important;
+  gap: 0.25rem !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
 }
 
 #technology-bottom-panel #tech-start-btn {
@@ -784,7 +789,7 @@
   color: #fff !important;
   border: none !important;
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.45) !important;
-  min-width: 95px !important;
+  min-width: 80px !important;
 }
 
 /* Slayderlar faqat o'ng paneldagi (.lab-info-panel) ko'rinishda ishlaydi */

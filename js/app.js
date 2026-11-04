@@ -261,6 +261,14 @@ function navigateTo(pageId) {
       if (typeof window.initTechnologyLab === 'function') window.initTechnologyLab();
       var ov = document.getElementById('technology-canvas-overlay');
       if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('tech_exp');
+      if (exp && typeof window.selectTechnologyExperiment === 'function') {
+        window.selectTechnologyExperiment(exp);
+      }
+      if (params.get('finish_print') === '1' && typeof window.instantFinish3DPrinter === 'function') {
+        window.instantFinish3DPrinter();
+      }
     }, 150);
   }
 

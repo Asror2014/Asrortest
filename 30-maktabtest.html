@@ -3261,21 +3261,26 @@ ul, ol {
 }
 
 #technology-bottom-panel {
-  overflow-x: hidden !important;
+  overflow-x: auto !important;
   padding: 0.4rem 0.5rem !important;
+  justify-content: center !important;
 }
 
 #technology-bottom-panel .lab-controls {
-  gap: 0.45rem !important;
+  gap: 0.35rem !important;
   width: auto !important;
+  max-width: 100% !important;
   justify-content: center !important;
   margin: 0 auto !important;
+  flex-wrap: nowrap !important;
 }
 
 #technology-bottom-panel .lab-controls .btn {
-  padding: 0.45rem 0.75rem !important;
-  font-size: 0.82rem !important;
-  gap: 0.35rem !important;
+  padding: 0.4rem 0.55rem !important;
+  font-size: 0.76rem !important;
+  gap: 0.25rem !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
 }
 
 #technology-bottom-panel #tech-start-btn {
@@ -3283,7 +3288,7 @@ ul, ol {
   color: #fff !important;
   border: none !important;
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.45) !important;
-  min-width: 95px !important;
+  min-width: 80px !important;
 }
 
 /* Slayderlar faqat o'ng paneldagi (.lab-info-panel) ko'rinishda ishlaydi */
@@ -9446,9 +9451,7 @@ div.leaderboard-drawer.active {
                     <button class="lang-btn" data-lang="ru" onclick="setLanguage('ru')">RU</button>
                     <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
                 </div>
-                <button class="theme-toggle-btn sound-toggle-btn" id="sound-toggle" onclick="if(window.SoundFX) SoundFX.toggleMute()" title="Tovushlarni yoqish/o'chirish">
-                    <i class="fas fa-volume-up" id="sound-icon"></i>
-                </button>
+
                 <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Tungi rejim">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -16550,6 +16553,14 @@ function navigateTo(pageId) {
       if (typeof window.initTechnologyLab === 'function') window.initTechnologyLab();
       var ov = document.getElementById('technology-canvas-overlay');
       if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('tech_exp');
+      if (exp && typeof window.selectTechnologyExperiment === 'function') {
+        window.selectTechnologyExperiment(exp);
+      }
+      if (params.get('finish_print') === '1' && typeof window.instantFinish3DPrinter === 'function') {
+        window.instantFinish3DPrinter();
+      }
     }, 150);
   }
 
@@ -26084,24 +26095,42 @@ class TechnologyLab {
   }
 
   // ============================================================
-  // 4. 3D PRINTER (FDM ADDITIVE MANUFACTURING)
+  // 4. 3D PRINTER (FDM ADDITIVE MANUFACTURING - 3D CHOP ETISH)
+  // Haqiqiy 28 qatlamli 30-Maktab G'alaba Kubogi bosilishi
   // ============================================================
   build3DPrinter() {
     this.clearScene();
     this.setupLights();
     this.addFloorGrid();
 
-    this.cameraRadius = 15;
-    this.cameraTarget.set(0, 3, 0);
+    this.cameraRadius = 14;
+    this.cameraTarget.set(0, 2.8, 0);
+    this.theta = 0.85;
+    this.phi = 1.15;
     this.updateCameraPosition();
 
     const printerGroup = new THREE.Group();
-    printerGroup.position.set(0, 0.5, 0);
+    printerGroup.position.set(0, 0.4, 0);
     this.scene.add(printerGroup);
     this.objects.printerGroup = printerGroup;
 
-    // Metall ramka profillari (Alyuminiy ekstruziya)
+    // Filament ranglar palitrasi
+    this.filamentPresets = [
+      { name: "Oltin (Silk Gold PLA)", hex: 0xf59e0b, emissive: 0xb45309, metalness: 0.88, roughness: 0.2 },
+      { name: "Zumrad (Emerald Silk PLA)", hex: 0x10b981, emissive: 0x059669, metalness: 0.72, roughness: 0.25 },
+      { name: "Sapfir (Cyan Blue PLA)", hex: 0x06b6d4, emissive: 0x0891b2, metalness: 0.75, roughness: 0.22 },
+      { name: "Yoqut (Ruby Red PLA)", hex: 0xf43f5e, emissive: 0xe11d48, metalness: 0.7, roughness: 0.25 },
+      { name: "Siyohrang (Neon Purple PLA)", hex: 0xa855f7, emissive: 0x9333ea, metalness: 0.8, roughness: 0.2 }
+    ];
+    if (this.currentFilamentIdx === undefined) this.currentFilamentIdx = 0;
+    const curFilament = this.filamentPresets[this.currentFilamentIdx];
+
+    // Metall ramka profillari (Alyuminiy ekstruziya 4040/2040)
     const frameMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.9, roughness: 0.25 });
+    const silverMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.95, roughness: 0.15 });
+    const brassMat = new THREE.MeshStandardMaterial({ color: 0xd97706, metalness: 0.95, roughness: 0.2 });
+    const darkMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.6 });
+
     const createBeam = (w, h, d, x, y, z) => {
       const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), frameMat);
       b.position.set(x, y, z);
@@ -26109,79 +26138,495 @@ class TechnologyLab {
       return b;
     };
 
-    // Pastki ramka
-    createBeam(8, 0.5, 0.5, 0, 0.25, 3.5);
-    createBeam(8, 0.5, 0.5, 0, 0.25, -3.5);
-    createBeam(0.5, 0.5, 7, -3.75, 0.25, 0);
-    createBeam(0.5, 0.5, 7, 3.75, 0.25, 0);
+    // Pastki taglik ramkasi
+    createBeam(8.2, 0.5, 0.5, 0, 0.25, 3.5);
+    createBeam(8.2, 0.5, 0.5, 0, 0.25, -3.5);
+    createBeam(0.5, 0.5, 7.5, -3.85, 0.25, 0);
+    createBeam(0.5, 0.5, 7.5, 3.85, 0.25, 0);
 
-    // Vertikal Z-ustunlar
-    createBeam(0.6, 7.5, 0.6, -3.75, 4.0, 0);
-    createBeam(0.6, 7.5, 0.6, 3.75, 4.0, 0);
-    createBeam(8, 0.6, 0.6, 0, 7.75, 0);
+    // Rezina oyoqchalar
+    const footMat = new THREE.MeshStandardMaterial({ color: 0x020617, roughness: 0.9 });
+    [[-3.7, 3.4], [3.7, 3.4], [-3.7, -3.4], [3.7, -3.4]].forEach(([fx, fz]) => {
+      const foot = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.4, 0.15, 16), footMat);
+      foot.position.set(fx, 0.075, fz);
+      printerGroup.add(foot);
+    });
 
-    // Qizitish stoli (Heatbed)
-    const bedGeo = new THREE.BoxGeometry(5.5, 0.25, 5.5);
-    const bedMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.4 });
-    const bed = new THREE.Mesh(bedGeo, bedMat);
-    bed.position.set(0, 1.2, 0);
+    // Vertikal Z-ustunlar (Chap va O'ng)
+    createBeam(0.65, 7.8, 0.65, -3.8, 4.15, 0);
+    createBeam(0.65, 7.8, 0.65, 3.8, 4.15, 0);
+    createBeam(8.25, 0.65, 0.65, 0, 8.05, 0); // Yuqori to'sin
+
+    // Z-o'qi aylanuvchi vintlari (Lead-screws T8)
+    const leftScrew = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 7.4, 16), silverMat);
+    leftScrew.position.set(-3.25, 4.0, 0);
+    printerGroup.add(leftScrew);
+    this.objects.leftLeadScrew = leftScrew;
+
+    const rightScrew = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 7.4, 16), silverMat);
+    rightScrew.position.set(3.25, 4.0, 0);
+    printerGroup.add(rightScrew);
+    this.objects.rightLeadScrew = rightScrew;
+
+    // Z Stepper motorlari pastda
+    const lMotor = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.9, 0.9), darkMat);
+    lMotor.position.set(-3.25, 0.5, 0);
+    printerGroup.add(lMotor);
+
+    const rMotor = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.9, 0.9), darkMat);
+    rMotor.position.set(3.25, 0.5, 0);
+    printerGroup.add(rMotor);
+
+    // Filament g'altagi (Spool) yuqori to'sinda
+    const spoolGroup = new THREE.Group();
+    spoolGroup.position.set(2.2, 9.1, 0);
+    printerGroup.add(spoolGroup);
+
+    const spoolRollMat = new THREE.MeshStandardMaterial({
+      color: curFilament.hex,
+      metalness: curFilament.metalness,
+      roughness: curFilament.roughness
+    });
+    const spoolRoll = new THREE.Mesh(new THREE.CylinderGeometry(0.95, 0.95, 0.6, 24), spoolRollMat);
+    spoolRoll.rotation.x = Math.PI * 0.5;
+    spoolGroup.add(spoolRoll);
+    this.objects.spoolRoll = spoolRoll;
+
+    const spoolFlangeMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.3 });
+    const f1 = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.2, 0.04, 24), spoolFlangeMat);
+    f1.position.z = 0.32;
+    f1.rotation.x = Math.PI * 0.5;
+    spoolGroup.add(f1);
+    const f2 = f1.clone();
+    f2.position.z = -0.32;
+    spoolGroup.add(f2);
+
+    // Y-o'qi relslari va qizdiriladigan termo-stol (Heatbed)
+    const yRail1 = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 7.0, 16), silverMat);
+    yRail1.rotation.x = Math.PI * 0.5;
+    yRail1.position.set(-1.8, 0.9, 0);
+    printerGroup.add(yRail1);
+
+    const yRail2 = yRail1.clone();
+    yRail2.position.x = 1.8;
+    printerGroup.add(yRail2);
+
+    // Stol asosi va 4 ta latun buraluvchi sozlash g'ildirakchalari
+    const bedBase = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.1, 5.2), frameMat);
+    bedBase.position.set(0, 1.05, 0);
+    printerGroup.add(bedBase);
+
+    [[-2.1, 2.1], [2.1, 2.1], [-2.1, -2.1], [2.1, -2.1]].forEach(([bx, bz]) => {
+      const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.12, 16), brassMat);
+      knob.position.set(bx, 1.15, bz);
+      printerGroup.add(knob);
+    });
+
+    // Qizitish stoli (Heatbed) - Y-o'qi bo'yicha siljiydi
+    const bed = new THREE.Group();
+    bed.position.set(0, 1.25, 0);
     printerGroup.add(bed);
+    this.objects.bed = bed;
 
-    // X-o'qi ko'prigi (X-Gantry)
+    // Magnit PEI plastinka
+    const bedPlate = new THREE.Mesh(
+      new THREE.BoxGeometry(5.6, 0.2, 5.6),
+      new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.55, metalness: 0.15 })
+    );
+    bed.add(bedPlate);
+
+    // PEI sirtidagi nozik tilla hoshiya
+    const bedBorder = new THREE.Mesh(
+      new THREE.BoxGeometry(5.3, 0.01, 5.3),
+      new THREE.MeshBasicMaterial({ color: 0x3f3f46, wireframe: true })
+    );
+    bedBorder.position.y = 0.105;
+    bed.add(bedBorder);
+
+    // X-o'qi ko'prigi (X-Gantry) - Z bo'yicha yuqoriga qadamlaydi
     const gantry = new THREE.Group();
-    gantry.position.set(0, 3.5, 0);
+    gantry.position.set(0, 2.41, 0);
     printerGroup.add(gantry);
     this.objects.gantry = gantry;
 
-    const xRail = new THREE.Mesh(new THREE.BoxGeometry(7.5, 0.4, 0.4), frameMat);
+    const xRail = new THREE.Mesh(new THREE.BoxGeometry(7.6, 0.45, 0.45), frameMat);
     gantry.add(xRail);
 
-    // Ekstruder kallagi (Print Head)
+    // Z-vint latun gaykalari
+    const leftNut = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.4, 12), brassMat);
+    leftNut.position.set(-3.25, 0, 0);
+    gantry.add(leftNut);
+    const rightNut = leftNut.clone();
+    rightNut.position.x = 3.25;
+    gantry.add(rightNut);
+
+    // Ekstruder kallagi (Print Head Carriage)
     const head = new THREE.Group();
     gantry.add(head);
     this.objects.printHead = head;
 
-    const headBody = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.2, 1.2), new THREE.MeshStandardMaterial({ color: 0xef4444, metalness: 0.5 }));
+    // Ekstruder sovutgichi (Qizil alyuminiy radiator)
+    const headBody = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.8, 1.0), new THREE.MeshStandardMaterial({ color: 0xef4444, metalness: 0.6, roughness: 0.3 }));
     head.add(headBody);
 
-    // Nozzle (Latun konus)
-    const nozzle = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.4, 16), new THREE.MeshStandardMaterial({ color: 0xfbbf24, metalness: 0.95 }));
-    nozzle.position.set(0, -0.75, 0);
+    // Ekstruder stepper motori
+    const headMotor = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.9, 0.8), darkMat);
+    headMotor.position.set(0, 0.55, -0.2);
+    head.add(headMotor);
+
+    // Shamollatish kanali (Part Cooling Duct)
+    const fanDuct = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.6, 0.4), new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.4 }));
+    fanDuct.position.set(0, -0.15, 0.55);
+    head.add(fanDuct);
+
+    // Qizdiruvchi latun blok (Heater Block)
+    const heaterBlock = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.32, 0.5), brassMat);
+    heaterBlock.position.set(0, -0.55, 0);
+    head.add(heaterBlock);
+
+    // Latun konus Nozzle (Nozzle uchi local y = -0.95 da)
+    const nozzle = new THREE.Mesh(new THREE.ConeGeometry(0.18, 0.35, 16), brassMat);
+    nozzle.position.set(0, -0.775, 0);
     nozzle.rotation.x = Math.PI;
     head.add(nozzle);
 
-    // Chop etilayotgan 3D obyekt (Qatlam-qatlam o'suvchi geksagonal vaza)
-    const printedGeo = new THREE.CylinderGeometry(1.4, 1.8, 0.1, 6, 1, false);
-    const printedMat = new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.3, metalness: 0.1 });
-    const printedObj = new THREE.Mesh(printedGeo, printedMat);
-    printedObj.position.set(0, 1.35, 0);
-    printerGroup.add(printedObj);
-    this.objects.printedObj = printedObj;
+    // Eritilgan filament tomchisi (Nozzle uchida porlaydi)
+    const nozzleBead = new THREE.Mesh(
+      new THREE.SphereGeometry(0.08, 12, 12),
+      new THREE.MeshBasicMaterial({ color: curFilament.hex })
+    );
+    nozzleBead.position.set(0, -0.95, 0);
+    head.add(nozzleBead);
+    this.objects.nozzleBead = nozzleBead;
 
-    this.params.printProgress = 0.1;
+    // Nozzle issiqlik yoritgichi (PointLight)
+    const nozzleGlow = new THREE.PointLight(curFilament.hex, 1.8, 3.5);
+    nozzleGlow.position.set(0, -0.95, 0);
+    head.add(nozzleGlow);
+    this.objects.nozzleGlow = nozzleGlow;
+
+    // ============================================================
+    // CHOP ETILADIGAN HAQIQIY 3D OBYEKT:
+    // "30-Maktab G'alaba Kubogi" (28 ta alohida 3D qatlam)
+    // ============================================================
+    const trophyGroup = new THREE.Group();
+    trophyGroup.position.set(0, 0.10, 0); // To'g'ridan-to'g'ri stol yuzasida
+    bed.add(trophyGroup);
+    this.objects.trophyGroup = trophyGroup;
+
+    const layerMat = new THREE.MeshStandardMaterial({
+      color: curFilament.hex,
+      metalness: curFilament.metalness,
+      roughness: curFilament.roughness
+    });
+    this.filamentMaterial = layerMat;
+
+    // 28 ta qatlamning geometrik radiusi
+    const radii = [
+      // 0-3: Taglik poydevori (Hexagonal plinth)
+      2.0, 1.9, 1.75, 1.55,
+      // 4-6: Poydevor bo'yni
+      1.35, 1.15, 0.95,
+      // 7-11: Nozik ustun (Waist / Column)
+      0.82, 0.74, 0.70, 0.75, 0.86,
+      // 12-14: Kosa kengayishi
+      1.10, 1.38, 1.65,
+      // 15-22: Spiral qovurg'ali g'alaba kubogi tanasi
+      1.80, 1.92, 1.98, 2.00, 1.96, 1.88, 1.80, 1.74,
+      // 23-25: Bezakli tojbarg hoshiyasi (Rim)
+      1.88, 2.05, 1.98,
+      // 26-27: Ichki yulduz poydevori
+      1.45, 1.15
+    ];
+
+    this.layerMeshes = [];
+    for (let i = 0; i < 28; i++) {
+      const r = radii[i];
+      let segments = 12;
+      if (i < 4) segments = 8;
+      else if (i >= 23 && i <= 25) segments = 16;
+
+      const layerGeo = new THREE.CylinderGeometry(r, r, 0.11, segments, 1, false);
+      const layerMesh = new THREE.Mesh(layerGeo, layerMat);
+      const layerY = i * 0.11 + 0.055;
+      layerMesh.position.set(0, layerY, 0);
+
+      // Kubok tanasidagi nafis spiral burilish
+      if (i >= 15 && i <= 22) {
+        layerMesh.rotation.y = (i - 15) * 0.16;
+      }
+
+      layerMesh.visible = false;
+      trophyGroup.add(layerMesh);
+      this.layerMeshes.push(layerMesh);
+    }
+
+    // Kubok yon quloqchalari (Handles)
+    const leftHandle = new THREE.Mesh(new THREE.TorusGeometry(0.72, 0.09, 12, 24, Math.PI * 1.15), layerMat);
+    leftHandle.position.set(-1.95, 2.35, 0);
+    leftHandle.rotation.z = Math.PI * 0.5;
+    leftHandle.visible = false;
+    trophyGroup.add(leftHandle);
+    this.objects.trophyLeftHandle = leftHandle;
+
+    const rightHandle = new THREE.Mesh(new THREE.TorusGeometry(0.72, 0.09, 12, 24, Math.PI * 1.15), layerMat);
+    rightHandle.position.set(1.95, 2.35, 0);
+    rightHandle.rotation.z = -Math.PI * 0.5;
+    rightHandle.visible = false;
+    trophyGroup.add(rightHandle);
+    this.objects.trophyRightHandle = rightHandle;
+
+    // Kubok cho'qqisidagi porloq G'alaba Yulduzi (Star Emblem)
+    const starGeo = new THREE.OctahedronGeometry(0.72, 0);
+    const starMat = new THREE.MeshStandardMaterial({
+      color: 0xfbbf24,
+      metalness: 0.95,
+      roughness: 0.15,
+      emissive: 0xd97706,
+      emissiveIntensity: 0.35
+    });
+    const trophyStar = new THREE.Mesh(starGeo, starMat);
+    trophyStar.position.set(0, 28 * 0.11 + 0.42, 0);
+    trophyStar.visible = false;
+    trophyGroup.add(trophyStar);
+    this.objects.trophyStar = trophyStar;
+
+    // 3D Printer holati
+    this.printerState = {
+      currentLayer: 0,
+      layerProgress: 0,
+      totalLayers: 28,
+      isFinished: false,
+      speedMultiplier: 2.5
+    };
+    this.params.printerPrinting = true;
+  }
+
+  getLayerRadius(idx) {
+    const radii = [
+      2.0, 1.9, 1.75, 1.55,
+      1.35, 1.15, 0.95,
+      0.82, 0.74, 0.70, 0.75, 0.86,
+      1.10, 1.38, 1.65,
+      1.80, 1.92, 1.98, 2.00, 1.96, 1.88, 1.80, 1.74,
+      1.88, 2.05, 1.98,
+      1.45, 1.15
+    ];
+    if (idx >= 0 && idx < radii.length) return radii[idx];
+    return 1.5;
   }
 
   update3DPrinter(dt) {
-    if (!this.objects.printHead || !this.objects.printedObj) return;
+    if (!this.objects.printHead || !this.objects.gantry || !this.objects.bed) return;
 
-    if (this.params.printerPrinting) {
-      this.params.printProgress += dt * 0.05 * this.params.printerSpeed;
-      if (this.params.printProgress > 1.0) {
-        this.params.printProgress = 0.1; // qayta boshlash
+    const state = this.printerState;
+    if (!state) return;
+
+    // Agar model to'liq bosib tugatilgan bo'lsa
+    if (state.isFinished) {
+      if (this.objects.trophyGroup) {
+        this.objects.trophyGroup.rotation.y += dt * 0.6; // Tayyor kubok aylanib ko'rsatiladi
+      }
+      if (this.objects.trophyStar) {
+        this.objects.trophyStar.rotation.x += dt * 0.8;
+        this.objects.trophyStar.rotation.y += dt * 1.2;
+      }
+      // Gantry yuqoriga chiqib turadi, stol oldinga siljiydi
+      this.objects.gantry.position.y += (6.8 - this.objects.gantry.position.y) * Math.min(1, dt * 3);
+      this.objects.bed.position.z += (1.4 - this.objects.bed.position.z) * Math.min(1, dt * 3);
+      this.objects.printHead.position.x += (0 - this.objects.printHead.position.x) * Math.min(1, dt * 3);
+      return;
+    }
+
+    if (!this.isRunning || !this.params.printerPrinting) {
+      if (this.objects.nozzleGlow) this.objects.nozzleGlow.intensity = 0.4;
+      return;
+    }
+
+    // Chop etish jarayoni
+    const curLayer = state.currentLayer;
+    const totalLayers = state.totalLayers;
+
+    // Qatlam bo'yicha progress
+    state.layerProgress += dt * 0.55 * state.speedMultiplier;
+
+    // Ekstruder koordinatalari
+    const R = this.getLayerRadius(curLayer);
+    const theta = state.layerProgress * Math.PI * 2 * 2; // 2 marta aylanadi (kontur + to'ldirish)
+
+    // X-ekstruder va Y-stol koordinatalari
+    const targetX = Math.cos(theta) * R;
+    const targetZ = -Math.sin(theta) * R * 0.75;
+    this.objects.printHead.position.x = targetX;
+    this.objects.bed.position.z = targetZ;
+
+    // Gantry balandligi: latun nozzle uchi aniq qatlam ustiga tegib turadi
+    const targetGantryY = 2.30 + (curLayer + 1) * 0.11;
+    this.objects.gantry.position.y = targetGantryY;
+    if (this.objects.leftLeadScrew) this.objects.leftLeadScrew.rotation.y += dt * 8;
+    if (this.objects.rightLeadScrew) this.objects.rightLeadScrew.rotation.y += dt * 8;
+
+    // Nozzle issiqlik effekti va eritilgan filament nuri
+    if (this.objects.nozzleGlow) {
+      this.objects.nozzleGlow.intensity = 1.6 + Math.sin(Date.now() * 0.02) * 0.5;
+    }
+
+    // Joriy qatlam ko'rinishi
+    if (this.layerMeshes && this.layerMeshes[curLayer]) {
+      this.layerMeshes[curLayer].visible = true;
+      const layerScale = Math.min(1, state.layerProgress * 1.5);
+      this.layerMeshes[curLayer].scale.set(layerScale, 1, layerScale);
+    }
+
+    // Quloqchalar (Handles) 18-qatlardan boshlab ko'rinadi
+    if (curLayer >= 18) {
+      if (this.objects.trophyLeftHandle) this.objects.trophyLeftHandle.visible = true;
+      if (this.objects.trophyRightHandle) this.objects.trophyRightHandle.visible = true;
+    }
+
+    // Info panel va statusni yangilab turish
+    const percent = Math.min(100, Math.round(((curLayer + Math.min(1, state.layerProgress)) / totalLayers) * 100));
+    const statusTextEl = document.getElementById('tech-status-text');
+    if (statusTextEl) {
+      const curPreset = this.filamentPresets[this.currentFilamentIdx];
+      statusTextEl.innerHTML = '<strong>🖨️ Qatlam: ' + (curLayer + 1) + ' / ' + totalLayers + ' (' + percent + '%)</strong> | Material: ' + curPreset.name + ' (215°C)';
+    }
+
+    // Qatlam tugashi
+    if (state.layerProgress >= 1.0) {
+      state.layerProgress = 0;
+      if (this.layerMeshes && this.layerMeshes[curLayer]) {
+        this.layerMeshes[curLayer].scale.set(1, 1, 1);
       }
 
-      // Ekstruder kallagi aylana bo'ylab harakatlanadi
-      const t = this.clock.getElapsedTime() * 4 * this.params.printerSpeed;
-      this.objects.printHead.position.x = Math.sin(t) * 1.5;
-      this.objects.printHead.position.z = Math.cos(t) * 1.5;
+      // Stepper motor tovushi
+      if (window.SoundFX && typeof SoundFX.playStepperChirp === 'function') {
+        SoundFX.playStepperChirp(380 + curLayer * 18);
+      }
 
-      // Model balandligi o'sadi
-      const height = this.params.printProgress * 2.8;
-      this.objects.printedObj.scale.set(1, Math.max(0.05, height), 1);
-      this.objects.printedObj.position.y = 1.3 + height / 2;
+      state.currentLayer++;
 
-      // X-gantry model balandligiga qarab ko'tariladi
-      this.objects.gantry.position.y = 1.35 + height + 0.9;
+      // Hamma qatlamlar tugadimi?
+      if (state.currentLayer >= totalLayers) {
+        state.isFinished = true;
+        if (this.objects.trophyStar) this.objects.trophyStar.visible = true;
+        if (this.objects.trophyLeftHandle) this.objects.trophyLeftHandle.visible = true;
+        if (this.objects.trophyRightHandle) this.objects.trophyRightHandle.visible = true;
+
+        if (statusTextEl) {
+          statusTextEl.innerHTML = '<strong>🏆 3D CHOP ETISH YAKUNLANDI (100%)</strong> | 30-Maktab G\'alaba Kubogi tayyor!';
+        }
+
+        // Tantanali fanfara tovushi
+        if (window.SoundFX && typeof SoundFX.playFanfare === 'function') {
+          SoundFX.playFanfare();
+        }
+
+        if (typeof window.showToast === 'function') {
+          window.showToast('🏆 3D Chop etish yakunlandi! 30-Maktab G\'alaba Kubogi tayyor!', 'success');
+        }
+      }
+    }
+  }
+
+  togglePrinterFilament() {
+    if (!this.filamentPresets) return;
+    this.currentFilamentIdx = (this.currentFilamentIdx + 1) % this.filamentPresets.length;
+    const preset = this.filamentPresets[this.currentFilamentIdx];
+
+    const newMat = new THREE.MeshStandardMaterial({
+      color: preset.hex,
+      metalness: preset.metalness,
+      roughness: preset.roughness
+    });
+    this.filamentMaterial = newMat;
+
+    if (this.layerMeshes) {
+      this.layerMeshes.forEach(m => { if (m) m.material = newMat; });
+    }
+    if (this.objects.trophyLeftHandle) this.objects.trophyLeftHandle.material = newMat;
+    if (this.objects.trophyRightHandle) this.objects.trophyRightHandle.material = newMat;
+    if (this.objects.spoolRoll) this.objects.spoolRoll.material = newMat;
+    if (this.objects.nozzleBead) this.objects.nozzleBead.material = new THREE.MeshBasicMaterial({ color: preset.hex });
+    if (this.objects.nozzleGlow) this.objects.nozzleGlow.color.setHex(preset.hex);
+
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+    if (typeof window.showToast === 'function') {
+      window.showToast('🎨 Filament rangi: ' + preset.name, 'info');
+    }
+  }
+
+  togglePrinterSpeed() {
+    if (!this.printerState) return;
+    if (this.printerState.speedMultiplier === 1) {
+      this.printerState.speedMultiplier = 3;
+    } else if (this.printerState.speedMultiplier === 3) {
+      this.printerState.speedMultiplier = 8;
+    } else if (this.printerState.speedMultiplier === 8) {
+      this.instantFinish3DPrinter();
+      return;
+    } else {
+      this.printerState.speedMultiplier = 1;
+    }
+
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+    if (typeof window.showToast === 'function') {
+      window.showToast('⚡ Bosish tezligi: ' + this.printerState.speedMultiplier + 'x', 'info');
+    }
+  }
+
+  instantFinish3DPrinter() {
+    if (!this.printerState) return;
+    this.printerState.currentLayer = this.printerState.totalLayers;
+    this.printerState.isFinished = true;
+    if (this.layerMeshes) {
+      this.layerMeshes.forEach(m => {
+        if (m) {
+          m.visible = true;
+          m.scale.set(1, 1, 1);
+        }
+      });
+    }
+    if (this.objects.trophyStar) this.objects.trophyStar.visible = true;
+    if (this.objects.trophyLeftHandle) this.objects.trophyLeftHandle.visible = true;
+    if (this.objects.trophyRightHandle) this.objects.trophyRightHandle.visible = true;
+
+    if (window.SoundFX && typeof SoundFX.playFanfare === 'function') SoundFX.playFanfare();
+    if (typeof window.showToast === 'function') {
+      window.showToast('🏆 3D Model tayyor holatda ochildi!', 'success');
+    }
+  }
+
+  reset3DPrinter() {
+    if (!this.printerState) return;
+    this.printerState.currentLayer = 0;
+    this.printerState.layerProgress = 0;
+    this.printerState.isFinished = false;
+    this.printerState.speedMultiplier = 2.5;
+
+    if (this.layerMeshes) {
+      this.layerMeshes.forEach(m => {
+        if (m) {
+          m.visible = false;
+          m.scale.set(0.01, 1, 0.01);
+        }
+      });
+    }
+    if (this.objects.trophyStar) this.objects.trophyStar.visible = false;
+    if (this.objects.trophyLeftHandle) this.objects.trophyLeftHandle.visible = false;
+    if (this.objects.trophyRightHandle) this.objects.trophyRightHandle.visible = false;
+    if (this.objects.trophyGroup) this.objects.trophyGroup.rotation.y = 0;
+
+    if (this.objects.gantry) this.objects.gantry.position.y = 2.41;
+    if (this.objects.bed) this.objects.bed.position.z = 0;
+    if (this.objects.printHead) this.objects.printHead.position.x = 0;
+
+    this.isRunning = true;
+    this.params.printerPrinting = true;
+
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+    if (typeof window.showToast === 'function') {
+      window.showToast('🔄 3D Chop etish qaytadan boshlandi', 'info');
     }
   }
 
@@ -26324,8 +26769,107 @@ class TechnologyLab {
       this.buildWindTurbine();
     }
 
+    this.updateBottomControls(type);
+    this.updateSidebarControls(type);
+
     if (typeof window.updateLabExplanation === 'function') {
       window.updateLabExplanation('technology', type, this.isRunning);
+    }
+  }
+
+  updateSidebarControls(type) {
+    const robotSliders = document.getElementById('tech-ctrl-robot');
+    if (robotSliders) {
+      robotSliders.style.display = (type === 'robot-arm') ? 'block' : 'none';
+    }
+
+    const speedLabel = document.querySelector('#technology-info-panel label span:first-child');
+    const speedVal = document.getElementById('val-tech-speed');
+    const speedInput = document.querySelector('#technology-info-panel input[oninput*="setGearSpeed"], #technology-info-panel input[id="tech-speed-slider"]');
+
+    if (speedLabel && speedVal && speedInput) {
+      if (type === '3d-printer') {
+        speedLabel.textContent = "Chop etish tezligi";
+        speedInput.min = "1";
+        speedInput.max = "10";
+        const curSpd = (this.printerState && this.printerState.speedMultiplier) ? this.printerState.speedMultiplier : 2.5;
+        speedInput.value = curSpd;
+        speedVal.textContent = curSpd + "x";
+        speedInput.oninput = (e) => {
+          const v = parseFloat(e.target.value);
+          speedVal.textContent = v + "x";
+          if (this.printerState) this.printerState.speedMultiplier = v;
+        };
+      } else if (type === 'gears') {
+        speedLabel.textContent = "Uzatma tezligi (RPM)";
+        speedInput.min = "20";
+        speedInput.max = "240";
+        speedInput.value = this.params.gearSpeed;
+        speedVal.textContent = this.params.gearSpeed + " RPM";
+        speedInput.oninput = (e) => {
+          speedVal.textContent = e.target.value + " RPM";
+          window.setGearSpeed(e.target.value);
+        };
+      } else if (type === 'engine') {
+        speedLabel.textContent = "Dvigatel tezligi (RPM)";
+        speedInput.min = "30";
+        speedInput.max = "300";
+        speedInput.value = this.params.engineRpm;
+        speedVal.textContent = this.params.engineRpm + " RPM";
+        speedInput.oninput = (e) => {
+          speedVal.textContent = e.target.value + " RPM";
+          window.setEngineRpm(e.target.value);
+        };
+      } else if (type === 'wind-turbine') {
+        speedLabel.textContent = "Shamol tezligi (m/s)";
+        speedInput.min = "2";
+        speedInput.max = "30";
+        speedInput.value = this.params.windSpeed;
+        speedVal.textContent = this.params.windSpeed + " m/s";
+        speedInput.oninput = (e) => {
+          speedVal.textContent = e.target.value + " m/s";
+          window.setWindSpeed(e.target.value);
+        };
+      } else {
+        speedLabel.textContent = "Robot harakat tezligi";
+        speedInput.min = "20";
+        speedInput.max = "200";
+        speedInput.value = "100";
+        speedVal.textContent = "100%";
+      }
+    }
+  }
+
+  updateBottomControls(type) {
+    const actionBtn = document.getElementById('tech-action-btn');
+    const autoBtn = document.getElementById('tech-auto-btn');
+    if (!actionBtn || !autoBtn) return;
+
+    if (type === 'robot-arm') {
+      actionBtn.innerHTML = '<i class="fas fa-hand-rock"></i> Qisqich';
+      actionBtn.onclick = () => window.toggleRobotGripper();
+      autoBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Avtomatika';
+      autoBtn.onclick = () => window.toggleRobotAutoCycle();
+    } else if (type === '3d-printer') {
+      actionBtn.innerHTML = '<i class="fas fa-palette"></i> Rang (Filament)';
+      actionBtn.onclick = () => window.togglePrinterFilament();
+      autoBtn.innerHTML = '<i class="fas fa-bolt"></i> Tezlik (1x/3x/8x)';
+      autoBtn.onclick = () => window.togglePrinterSpeed();
+    } else if (type === 'gears') {
+      actionBtn.innerHTML = '<i class="fas fa-exchange-alt"></i> Yo\'nalish';
+      actionBtn.onclick = () => window.toggleGearDirection();
+      autoBtn.innerHTML = '<i class="fas fa-tachometer-alt"></i> Tezlik';
+      autoBtn.onclick = () => window.cycleGearSpeed();
+    } else if (type === 'engine') {
+      actionBtn.innerHTML = '<i class="fas fa-fire"></i> Shamcha';
+      actionBtn.onclick = () => window.sparkEngine();
+      autoBtn.innerHTML = '<i class="fas fa-tachometer-alt"></i> RPM';
+      autoBtn.onclick = () => window.cycleEngineRpm();
+    } else if (type === 'wind-turbine') {
+      actionBtn.innerHTML = '<i class="fas fa-lightbulb"></i> Chiroqlar';
+      actionBtn.onclick = () => window.toggleTurbineLights();
+      autoBtn.innerHTML = '<i class="fas fa-wind"></i> Shamol';
+      autoBtn.onclick = () => window.cycleWindSpeed();
     }
   }
 
@@ -26384,24 +26928,36 @@ window.selectTechnologyExperiment = function(type) {
 window.startTechnologyExperiment = function() {
   if (window.technologyLabInstance) {
     window.technologyLabInstance.isRunning = true;
+    window.technologyLabInstance.params.printerPrinting = true;
+    if (window.technologyLabInstance.currentExp === '3d-printer' && window.technologyLabInstance.printerState && window.technologyLabInstance.printerState.isFinished) {
+      window.technologyLabInstance.reset3DPrinter();
+    }
     if (typeof window.updateLabExplanation === 'function') {
       window.updateLabExplanation('technology', window.technologyLabInstance.currentExp, true);
     }
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
   }
 };
 
 window.pauseTechnologyExperiment = function() {
   if (window.technologyLabInstance) {
     window.technologyLabInstance.isRunning = false;
+    window.technologyLabInstance.params.printerPrinting = false;
     if (typeof window.updateLabExplanation === 'function') {
       window.updateLabExplanation('technology', window.technologyLabInstance.currentExp, false);
     }
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
   }
 };
 
 window.resetTechnologyExperiment = function() {
   if (window.technologyLabInstance) {
-    window.technologyLabInstance.loadExperiment(window.technologyLabInstance.currentExp);
+    if (window.technologyLabInstance.currentExp === '3d-printer') {
+      window.technologyLabInstance.reset3DPrinter();
+    } else {
+      window.technologyLabInstance.loadExperiment(window.technologyLabInstance.currentExp);
+    }
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
   }
 };
 
@@ -26416,26 +26972,102 @@ window.toggleRobotGripper = function() {
   if (!window.technologyLabInstance) return;
   window.technologyLabInstance.params.gripperOpen = !window.technologyLabInstance.params.gripperOpen;
   window.technologyLabInstance.updateRobotPositions();
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
 };
 
 window.toggleRobotAutoCycle = function() {
   if (!window.technologyLabInstance) return;
   window.technologyLabInstance.params.robotAutoCycle = !window.technologyLabInstance.params.robotAutoCycle;
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast(window.technologyLabInstance.params.robotAutoCycle ? '🤖 Avtomatik yuk tashish sikli boshlandi' : 'Robot avtomatikasi to\'xtatildi', 'info');
+  }
 };
 
-window.setGearSpeed = function(val) {
-  if (!window.technologyLabInstance) return;
-  window.technologyLabInstance.params.gearSpeed = parseFloat(val);
+window.togglePrinterFilament = function() {
+  if (window.technologyLabInstance && typeof window.technologyLabInstance.togglePrinterFilament === 'function') {
+    window.technologyLabInstance.togglePrinterFilament();
+  }
 };
 
-window.setEngineRpm = function(val) {
-  if (!window.technologyLabInstance) return;
-  window.technologyLabInstance.params.engineRpm = parseFloat(val);
+window.togglePrinterSpeed = function() {
+  if (window.technologyLabInstance && typeof window.technologyLabInstance.togglePrinterSpeed === 'function') {
+    window.technologyLabInstance.togglePrinterSpeed();
+  }
 };
 
-window.setWindSpeed = function(val) {
+window.instantFinish3DPrinter = function() {
+  if (window.technologyLabInstance && typeof window.technologyLabInstance.instantFinish3DPrinter === 'function') {
+    window.technologyLabInstance.instantFinish3DPrinter();
+  }
+};
+
+window.toggleGearDirection = function() {
   if (!window.technologyLabInstance) return;
-  window.technologyLabInstance.params.windSpeed = parseFloat(val);
+  window.technologyLabInstance.params.gearDirection *= -1;
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast('Tishli g\'ildiraklar yo\'nalishi o\'zgartirildi', 'info');
+  }
+};
+
+window.cycleGearSpeed = function() {
+  if (!window.technologyLabInstance) return;
+  const speeds = [30, 60, 120, 180];
+  const cur = window.technologyLabInstance.params.gearSpeed;
+  const nextIdx = (speeds.indexOf(cur) + 1) % speeds.length;
+  window.technologyLabInstance.params.gearSpeed = speeds[nextIdx];
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast('Aylanish tezligi: ' + speeds[nextIdx] + ' RPM', 'info');
+  }
+};
+
+window.sparkEngine = function() {
+  if (!window.technologyLabInstance) return;
+  if (window.technologyLabInstance.objects.sparkLight) {
+    window.technologyLabInstance.objects.sparkLight.intensity = 5.0;
+  }
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast('⚡ Shamcha uchquni berildi!', 'warning');
+  }
+};
+
+window.cycleEngineRpm = function() {
+  if (!window.technologyLabInstance) return;
+  const rpms = [60, 120, 240, 480];
+  const cur = window.technologyLabInstance.params.engineRpm;
+  const nextIdx = (rpms.indexOf(cur) + 1) % rpms.length;
+  window.technologyLabInstance.params.engineRpm = rpms[nextIdx];
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast('Dvigatel tezligi: ' + rpms[nextIdx] + ' RPM', 'info');
+  }
+};
+
+window.toggleTurbineLights = function() {
+  if (!window.technologyLabInstance) return;
+  const lamp = window.technologyLabInstance.objects.streetLamp;
+  if (lamp) {
+    lamp.visible = !lamp.visible;
+  }
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast('Shahar ko\'cha chiroqlari holati o\'zgartirildi', 'info');
+  }
+};
+
+window.cycleWindSpeed = function() {
+  if (!window.technologyLabInstance) return;
+  const winds = [6, 12, 18, 25];
+  const cur = window.technologyLabInstance.params.windSpeed;
+  const nextIdx = (winds.indexOf(cur) + 1) % winds.length;
+  window.technologyLabInstance.params.windSpeed = winds[nextIdx];
+  if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  if (typeof window.showToast === 'function') {
+    window.showToast('Shamol tezligi: ' + winds[nextIdx] + ' m/s', 'info');
+  }
 };
 
 </script>
@@ -27091,15 +27723,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // ============================================================
   window.SoundFX = {
     ctx: null,
-    isMuted: false,
+    isMuted: false, // Foydalanuvchi talabi bo'yicha: har doim 100% yoqiq turadi
 
     init: function () {
+      this.isMuted = false;
       try {
-        this.isMuted = (localStorage.getItem('maktab30_sound_muted') === 'true');
-      } catch (e) {
-        this.isMuted = false;
-      }
-      this.updateIcon();
+        localStorage.removeItem('maktab30_sound_muted');
+      } catch (e) {}
     },
 
     getAudioContext: function () {
@@ -27192,6 +27822,26 @@ document.addEventListener('DOMContentLoaded', function() {
       osc.frequency.exponentialRampToValueAtTime(400, now + 0.05);
       gain.gain.setValueAtTime(0.08, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.06);
+    },
+
+    // 3D Printer / Mexatronika qadami (Stepper motor tovushi)
+    playStepperChirp: function (pitch) {
+      if (this.isMuted) return;
+      var ctx = this.getAudioContext();
+      if (!ctx) return;
+      var now = ctx.currentTime;
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'triangle';
+      var freq = pitch || 520;
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.35, now + 0.04);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start(now);

@@ -14,15 +14,13 @@
   // ============================================================
   window.SoundFX = {
     ctx: null,
-    isMuted: false,
+    isMuted: false, // Foydalanuvchi talabi bo'yicha: har doim 100% yoqiq turadi
 
     init: function () {
+      this.isMuted = false;
       try {
-        this.isMuted = (localStorage.getItem('maktab30_sound_muted') === 'true');
-      } catch (e) {
-        this.isMuted = false;
-      }
-      this.updateIcon();
+        localStorage.removeItem('maktab30_sound_muted');
+      } catch (e) {}
     },
 
     getAudioContext: function () {
@@ -115,6 +113,26 @@
       osc.frequency.exponentialRampToValueAtTime(400, now + 0.05);
       gain.gain.setValueAtTime(0.08, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.06);
+    },
+
+    // 3D Printer / Mexatronika qadami (Stepper motor tovushi)
+    playStepperChirp: function (pitch) {
+      if (this.isMuted) return;
+      var ctx = this.getAudioContext();
+      if (!ctx) return;
+      var now = ctx.currentTime;
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'triangle';
+      var freq = pitch || 520;
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.exponentialRampToValueAtTime(freq * 1.35, now + 0.04);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start(now);
