@@ -80,6 +80,10 @@ if (Test-Path $zipTemp) { Remove-Item $zipTemp -Force }
 $itemsToZip = @(
   (Join-Path $baseDir "index.html"),
   (Join-Path $baseDir "30-maktabtest.html"),
+  (Join-Path $baseDir "vercel.json"),
+  (Join-Path $baseDir "README.md"),
+  (Join-Path $baseDir ".gitignore"),
+  (Join-Path $baseDir "PUSH_TO_GITHUB.bat"),
   (Join-Path $baseDir "server.ps1"),
   (Join-Path $baseDir "START_SAYT.bat"),
   (Join-Path $baseDir "START_LOCALHOST.bat"),
