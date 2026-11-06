@@ -1462,6 +1462,18 @@ window.applyStudentProfile = function(profile) {
 };
 
 window.checkStudentProfileOnLoad = function() {
+  // Agar URL da ?register yoki #register bo'lsa, to'g'ridan-to'g'ri ro'yxatdan o'tish oynasini ochish
+  if (window.location.search.indexOf('register') !== -1 || window.location.hash.indexOf('register') !== -1) {
+    setTimeout(function() {
+      if (typeof window.openOnboardingScreenAgain === 'function') {
+        window.openOnboardingScreenAgain();
+      }
+      var input = document.getElementById('onboarding-firstname');
+      if (input) input.focus();
+    }, 200);
+    return;
+  }
+
   var profile = null;
   try {
     profile = JSON.parse(localStorage.getItem('maktab30_student_profile'));
