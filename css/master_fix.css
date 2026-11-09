@@ -3028,8 +3028,7 @@ body.in-test #main-header {
   }
 
   .theme-toggle-btn,
-  .user-avatar,
-  .mobile-menu-btn {
+  .user-avatar {
     width: 34px !important;
     height: 34px !important;
     font-size: 0.95rem !important;
@@ -3039,12 +3038,45 @@ body.in-test #main-header {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 8px !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    gap: 0.4rem !important;
+    padding: 0.35rem 0.75rem !important;
+    height: 36px !important;
+    border-radius: 10px !important;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.25)) !important;
+    border: 1px solid rgba(99, 102, 241, 0.5) !important;
     color: #ffffff !important;
     cursor: pointer !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
     transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25) !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-menu-btn:hover,
+  .mobile-menu-btn.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    border-color: #a5b4fc !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.45) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .mobile-menu-label {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    display: inline-block !important;
+  }
+
+  @media (max-width: 440px) {
+    .mobile-menu-label {
+      display: none !important;
+    }
+    .mobile-menu-btn {
+      padding: 0.35rem !important;
+      width: 34px !important;
+      min-width: 34px !important;
+    }
   }
 
   .student-chip-text {
@@ -3063,17 +3095,29 @@ body.in-test #main-header {
     left: 0 !important;
     right: 0 !important;
     background: rgba(15, 23, 42, 0.98) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
     flex-direction: column !important;
     padding: 1.25rem 1rem !important;
     gap: 0.5rem !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75) !important;
     display: none !important;
     z-index: 9999 !important;
     max-height: calc(100vh - 65px) !important;
     overflow-y: auto !important;
+    animation: slideDownNav 0.22s ease-out !important;
+  }
+
+  @keyframes slideDownNav {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .nav-links.mobile-active {

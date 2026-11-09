@@ -167,6 +167,14 @@ function navigateTo(pageId) {
   if (navLinksMenu && navLinksMenu.classList.contains('mobile-active')) {
     navLinksMenu.classList.remove('mobile-active');
   }
+  var navBtn = document.getElementById('mobile-menu-btn');
+  if (navBtn) {
+    navBtn.classList.remove('active');
+    var navIcon = navBtn.querySelector('i');
+    if (navIcon) navIcon.className = 'fas fa-bars';
+    var navLabel = navBtn.querySelector('.mobile-menu-label');
+    if (navLabel) navLabel.textContent = 'Menyu';
+  }
 
   // Navigatsiya linklarini aktiv qilish
   var navLinks = document.querySelectorAll('.nav-links a');
@@ -374,10 +382,38 @@ function saveModalQuestion() {
 
 function toggleMobileMenu() {
   var navLinks = document.getElementById('nav-links');
-  if (navLinks) {
-    navLinks.classList.toggle('mobile-active');
+  var btn = document.getElementById('mobile-menu-btn');
+  if (!navLinks) return;
+  var isOpen = navLinks.classList.toggle('mobile-active');
+  if (btn) {
+    btn.classList.toggle('active', isOpen);
+    var icon = btn.querySelector('i');
+    if (icon) {
+      icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+    }
+    var label = btn.querySelector('.mobile-menu-label');
+    if (label) {
+      label.textContent = isOpen ? 'Yopish' : 'Menyu';
+    }
   }
 }
+
+// Tashqariga bosilganda mobil menyuni yopish
+document.addEventListener('click', function (e) {
+  var navLinks = document.getElementById('nav-links');
+  var btn = document.getElementById('mobile-menu-btn');
+  if (!navLinks || !navLinks.classList.contains('mobile-active')) return;
+  if (!navLinks.contains(e.target) && !btn.contains(e.target)) {
+    navLinks.classList.remove('mobile-active');
+    if (btn) {
+      btn.classList.remove('active');
+      var icon = btn.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
+      var label = btn.querySelector('.mobile-menu-label');
+      if (label) label.textContent = 'Menyu';
+    }
+  }
+});
 
 /* ============================================================
    TEST MARKAZI - SINF, FAN VA SAVOLLAR SONI (BITTA BOSH EKRANDA)
