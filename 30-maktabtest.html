@@ -4277,64 +4277,90 @@ ul, ol {
 }
 
 .nav-container {
-  max-width: 1200px !important;
+  max-width: 1540px !important;
   width: 100% !important;
   margin: 0 auto !important;
-  padding: 0 1.5rem !important;
+  padding: 0 1.25rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
+  gap: 0.75rem !important;
+  box-sizing: border-box !important;
 }
 
 .nav-logo {
   display: flex !important;
   align-items: center !important;
-  gap: 0.6rem !important;
+  gap: 0.55rem !important;
   cursor: pointer !important;
   text-decoration: none !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 .nav-logo .logo-icon {
   background: linear-gradient(135deg, #6366F1, #EC4899) !important;
   color: #fff !important;
-  width: 38px !important;
-  height: 38px !important;
+  width: 36px !important;
+  height: 36px !important;
   border-radius: 10px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 1.1rem !important;
+  font-size: 1.05rem !important;
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35) !important;
+  flex-shrink: 0 !important;
 }
 
 .nav-logo .logo-text {
-  font-size: 1.35rem !important;
+  font-size: 1.25rem !important;
   font-weight: 900 !important;
   background: linear-gradient(135deg, #38BDF8, #818CF8) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   letter-spacing: -0.5px !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
 }
 
 .nav-links {
   display: flex !important;
+  align-items: center !important;
   list-style: none !important;
-  gap: 0.75rem !important;
+  gap: 0.35rem !important;
   margin: 0 !important;
   padding: 0 !important;
+  flex-shrink: 1 !important;
+}
+
+.nav-links li {
+  flex-shrink: 0 !important;
 }
 
 .nav-links a {
   text-decoration: none !important;
   color: #cbd5e1 !important;
   font-weight: 600 !important;
-  font-size: 0.95rem !important;
+  font-size: 0.88rem !important;
   display: flex !important;
   align-items: center !important;
-  gap: 0.45rem !important;
-  padding: 0.5rem 0.9rem !important;
+  gap: 0.35rem !important;
+  padding: 0.42rem 0.65rem !important;
   border-radius: 8px !important;
   transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+.nav-links a span {
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
+.nav-links a i {
+  font-size: 0.85rem !important;
+  flex-shrink: 0 !important;
 }
 
 .nav-links a:hover {
@@ -4351,14 +4377,15 @@ ul, ol {
 .nav-actions {
   display: flex !important;
   align-items: center !important;
-  gap: 0.75rem !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
 }
 
 .theme-toggle-btn {
   background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  width: 40px !important;
-  height: 40px !important;
+  width: 36px !important;
+  height: 36px !important;
   border-radius: 50% !important;
   cursor: pointer !important;
   color: #e2e8f0 !important;
@@ -4366,6 +4393,60 @@ ul, ol {
   align-items: center !important;
   justify-content: center !important;
   transition: all 0.2s !important;
+  flex-shrink: 0 !important;
+}
+
+/* Katta noutbuklar va o'rta ekranlar (1180px - 1380px) */
+@media (max-width: 1380px) {
+  .nav-links {
+    gap: 0.22rem !important;
+  }
+  .nav-links a {
+    padding: 0.38rem 0.52rem !important;
+    font-size: 0.83rem !important;
+    gap: 0.28rem !important;
+  }
+  .student-chip-grade {
+    display: none !important;
+  }
+  .student-chip-name {
+    max-width: 75px !important;
+  }
+}
+
+/* O'rta ekranlar va ixcham noutbuklar (992px - 1180px) */
+@media (max-width: 1180px) {
+  .nav-container {
+    padding: 0 0.5rem !important;
+    gap: 0.25rem !important;
+  }
+  .nav-logo .logo-text {
+    font-size: 1.12rem !important;
+  }
+  .nav-links {
+    gap: 0.12rem !important;
+  }
+  .nav-links a {
+    padding: 0.3rem 0.36rem !important;
+    font-size: 0.76rem !important;
+    gap: 0.18rem !important;
+  }
+  .nav-links a i {
+    font-size: 0.74rem !important;
+  }
+  .lang-btn {
+    padding: 2px 4px !important;
+    font-size: 0.68rem !important;
+  }
+  .student-chip-text {
+    display: none !important;
+  }
+  .student-profile-chip {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    margin-right: 0.25rem !important;
+  }
 }
 
 .theme-toggle-btn:hover {
@@ -5407,7 +5488,7 @@ body.in-test #main-header {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   /* Header va Mobil menyu */
   .main-header {
     height: 65px !important;
@@ -5415,41 +5496,64 @@ body.in-test #main-header {
   }
 
   .nav-container {
-    padding: 0 0.5rem !important;
-    gap: 0.25rem !important;
+    padding: 0 0.75rem !important;
+    gap: 0.35rem !important;
   }
 
   .nav-logo .logo-text {
-    font-size: 1.05rem !important;
+    font-size: 1.15rem !important;
+    white-space: nowrap !important;
   }
 
   .nav-logo .logo-icon {
-    width: 30px !important;
-    height: 30px !important;
-    font-size: 0.9rem !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.95rem !important;
   }
 
   .nav-actions {
-    gap: 0.25rem !important;
+    gap: 0.35rem !important;
   }
 
   .lang-switcher {
     gap: 2px !important;
-    margin-right: 0.15rem !important;
+    margin-right: 0.2rem !important;
   }
 
   .lang-btn {
-    padding: 2px 4px !important;
-    font-size: 0.7rem !important;
-    min-width: 20px !important;
+    padding: 2px 5px !important;
+    font-size: 0.72rem !important;
+    min-width: 22px !important;
   }
 
   .theme-toggle-btn,
   .user-avatar,
   .mobile-menu-btn {
-    width: 32px !important;
-    height: 32px !important;
+    width: 34px !important;
+    height: 34px !important;
     font-size: 0.95rem !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .student-chip-text {
+    display: none !important;
+  }
+
+  .student-profile-chip {
+    padding: 2px !important;
+    background: transparent !important;
+    border: none !important;
   }
 
   .nav-links {
@@ -5461,23 +5565,35 @@ body.in-test #main-header {
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
     flex-direction: column !important;
-    padding: 1.5rem !important;
-    gap: 0.75rem !important;
+    padding: 1.25rem 1rem !important;
+    gap: 0.5rem !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
     display: none !important;
     z-index: 9999 !important;
+    max-height: calc(100vh - 65px) !important;
+    overflow-y: auto !important;
   }
 
   .nav-links.mobile-active {
     display: flex !important;
   }
 
-  .nav-links a {
-    padding: 0.85rem 1.25rem !important;
-    font-size: 1.05rem !important;
-    border-radius: 12px !important;
+  .nav-links li {
+    width: 100% !important;
   }
+
+  .nav-links a {
+    padding: 0.8rem 1.2rem !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    justify-content: flex-start !important;
+    border-radius: 10px !important;
+    gap: 0.75rem !important;
+  }
+}
+
+@media (max-width: 768px) {
 
   /* Hero va sarlavhalar */
   .hero-content {
@@ -7255,14 +7371,15 @@ body.light-theme .lab-info-toggle-btn {
 .student-profile-chip {
   display: flex !important;
   align-items: center !important;
-  gap: 0.65rem !important;
+  gap: 0.5rem !important;
   background: rgba(30, 41, 59, 0.8) !important;
   border: 1px solid rgba(99, 102, 241, 0.35) !important;
-  padding: 0.35rem 0.85rem !important;
+  padding: 0.25rem 0.6rem !important;
   border-radius: 24px !important;
   cursor: pointer !important;
   transition: all 0.25s ease !important;
   backdrop-filter: blur(8px) !important;
+  flex-shrink: 0 !important;
 }
 
 .student-profile-chip:hover {
@@ -7273,15 +7390,15 @@ body.light-theme .lab-info-toggle-btn {
 }
 
 .student-avatar-icon {
-  width: 32px !important;
-  height: 32px !important;
+  width: 30px !important;
+  height: 30px !important;
   border-radius: 50% !important;
   background: linear-gradient(135deg, #6366f1, #38bdf8) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   color: #fff !important;
-  font-size: 0.95rem !important;
+  font-size: 0.9rem !important;
   flex-shrink: 0 !important;
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4) !important;
 }
@@ -7294,19 +7411,40 @@ body.light-theme .lab-info-toggle-btn {
 }
 
 .student-chip-name {
-  font-size: 0.85rem !important;
+  font-size: 0.82rem !important;
   font-weight: 700 !important;
   color: #f8fafc !important;
   white-space: nowrap !important;
-  max-width: 130px !important;
+  max-width: 90px !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
 
 .student-chip-grade {
-  font-size: 0.72rem !important;
+  font-size: 0.7rem !important;
   color: #38bdf8 !important;
   font-weight: 600 !important;
+}
+
+@media (max-width: 1250px) {
+  .student-chip-grade {
+    display: none !important;
+  }
+  .student-chip-name {
+    max-width: 75px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  .student-chip-text {
+    display: none !important;
+  }
+  .student-profile-chip {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    gap: 0 !important;
+  }
 }
 
 /* Landing Welcome Banner */
