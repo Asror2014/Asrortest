@@ -7047,3 +7047,208 @@ div.leaderboard-drawer.active {
   font-size: 0.82rem !important;
   font-weight: 800 !important;
 }
+
+/* ============================================================
+   CHOP ETISH STILLARI (PRINT / PDF EXPORT)
+   Faqat va faqat Diplom (Sertifikat) chop etilishi uchun
+   ============================================================ */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 4mm;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* Butun sahifadagi hamma narsani ko'rinmas qilish */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Faqat diplom va uning ichidagi elementlar ko'rinadi */
+  #ol-certificate-box,
+  #ol-certificate-box * {
+    visibility: visible !important;
+  }
+
+  /* Barcha tashqi elementlarni butunlay olib tashlash */
+  #main-header,
+  #main-footer,
+  .main-header,
+  .main-footer,
+  #floating-leaderboard-btn,
+  .floating-leaderboard-btn,
+  .nav-container,
+  .nav-links,
+  .nav-actions,
+  .mobile-menu-btn,
+  .theme-toggle-btn,
+  .student-profile-chip,
+  .student-welcome-banner,
+  .hero-bg-animation,
+  .floating-shape,
+  .toast-container,
+  .modal-overlay,
+  .loading-overlay,
+  .onboarding-overlay,
+  .accounts-drawer,
+  .accounts-drawer-backdrop,
+  #olympiad-welcome-view,
+  .olympiad-hero-card,
+  #olympiad-quiz-view,
+  .olympiad-quiz-card,
+  .ol-result-header,
+  .ol-stats-row,
+  .ol-result-actions,
+  .olympiad-start-actions,
+  .olympiad-grade-selector-box,
+  .olympiad-rules-grid,
+  .page-section:not(#page-olympiad) {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    top: -9999px !important;
+  }
+
+  /* Olimpiada sahifasi va natija kartasi */
+  #page-olympiad,
+  .olympiad-container,
+  .olympiad-card,
+  #olympiad-result-view {
+    display: block !important;
+    visibility: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* FAQAT VA FAQAT OLTIN DIPLOM (SERTIFIKAT) - A4 Landscape sahifasiga to'liq 1 bet qilib joylash */
+  #ol-certificate-box.ol-gold-certificate,
+  .ol-gold-certificate {
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    width: 95% !important;
+    max-width: 950px !important;
+    max-height: 185mm !important;
+    margin: 2mm auto !important;
+    padding: 1.2rem 1.6rem !important;
+    background: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #1e1b4b 100%) !important;
+    border: 4px solid #fbbf24 !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    box-sizing: border-box !important;
+  }
+
+  .ol-cert-border {
+    border: 2px dashed rgba(251, 191, 36, 0.75) !important;
+    border-radius: 16px !important;
+    padding: 1.1rem 1.6rem !important;
+  }
+
+  .ol-cert-emblem {
+    font-size: 2.5rem !important;
+    color: #fbbf24 !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .ol-cert-school {
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 2.5px !important;
+    color: #fcd34d !important;
+  }
+
+  .ol-cert-title {
+    font-size: 1.65rem !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    margin: 0.2rem 0 0.4rem !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .ol-cert-subtitle {
+    font-size: 0.88rem !important;
+    color: #cbd5e1 !important;
+    margin: 0 !important;
+  }
+
+  .ol-cert-name {
+    font-size: 2.2rem !important;
+    font-weight: 900 !important;
+    color: #fbbf24 !important;
+    margin: 0.35rem 0 0.25rem !important;
+    text-shadow: 0 2px 10px rgba(251, 191, 36, 0.4) !important;
+  }
+
+  .ol-cert-class {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #38bdf8 !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .ol-cert-desc {
+    font-size: 0.92rem !important;
+    color: #e2e8f0 !important;
+    max-width: 640px !important;
+    margin: 0 auto 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .ol-cert-footer {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    border-top: 1.5px solid rgba(251, 191, 36, 0.45) !important;
+    padding-top: 0.75rem !important;
+    margin-top: 0.75rem !important;
+    color: #cbd5e1 !important;
+    font-size: 0.88rem !important;
+  }
+
+  .ol-cert-seal {
+    padding: 0.35rem 0.8rem !important;
+    background: rgba(251, 191, 36, 0.2) !important;
+    border: 1.5px solid #fbbf24 !important;
+    border-radius: 10px !important;
+    color: #fbbf24 !important;
+    font-weight: 900 !important;
+    font-size: 0.8rem !important;
+  }
+}
+    color: #fbbf24 !important;
+    font-weight: 900 !important;
+    font-size: 0.85rem !important;
+  }
+}
+    color: #fbbf24 !important;
+    font-weight: 900 !important;
+    font-size: 0.95rem !important;
+  }
+}

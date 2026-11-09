@@ -1347,7 +1347,23 @@
       document.getElementById('ol-cert-name').textContent = name;
       document.getElementById('ol-cert-class').textContent = this.selectedGrade + '-sinf Maktab Olimpiadasi Ishtirokchisi';
       document.getElementById('ol-cert-score').textContent = this.totalPoints + ' ball (' + correctCount + '/10 to\'g\'ri)';
+      
+      var now = new Date();
+      var months = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];
+      var dateEl = document.getElementById('ol-cert-date');
+      if (dateEl) dateEl.textContent = now.getDate() + '-' + months[now.getMonth()] + ', ' + now.getFullYear() + '-yil';
     }
+  };
+
+  // Faqat diplomni chop etish funksiyasi
+  window.printOlympiadDiploma = function () {
+    var dateEl = document.getElementById('ol-cert-date');
+    if (dateEl && (!dateEl.textContent || dateEl.textContent === '2026-yil')) {
+      var now = new Date();
+      var months = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];
+      dateEl.textContent = now.getDate() + '-' + months[now.getMonth()] + ', ' + now.getFullYear() + '-yil';
+    }
+    window.print();
   };
 
   // DOM yuklanganda SoundFX va Olimpiada sinfini initsializatsiya qilish
@@ -1355,6 +1371,28 @@
     if (window.SoundFX) window.SoundFX.init();
     setTimeout(function () {
       if (window.OlympiadEngine) window.OlympiadEngine.initGradeFromUser();
+      
+      // Diplomni to'g'ridan-to'g'ri tekshirish uchun (?test_diplom=1 yoki #diplom)
+      if (window.location.search.indexOf('test_diplom') !== -1 || window.location.hash.indexOf('diplom') !== -1) {
+        if (typeof navigateTo === 'function') navigateTo('page-olympiad');
+        var intro = document.getElementById('olympiad-welcome-view');
+        var quiz = document.getElementById('olympiad-quiz-view');
+        var res = document.getElementById('olympiad-result-view');
+        if (intro) intro.style.display = 'none';
+        if (quiz) quiz.style.display = 'none';
+        if (res) res.style.display = 'block';
+        
+        var currentAcc = window.AccountsManager ? window.AccountsManager.getCurrentAccount() : null;
+        var name = currentAcc ? (currentAcc.firstName + ' ' + (currentAcc.lastName || '')) : 'Sardorbek Yusupov';
+        if (document.getElementById('ol-cert-name')) document.getElementById('ol-cert-name').textContent = name;
+        if (document.getElementById('ol-cert-class')) document.getElementById('ol-cert-class').textContent = '8-A sinf Maktab Olimpiadasi G\'olibi';
+        if (document.getElementById('ol-cert-score')) document.getElementById('ol-cert-score').textContent = '540 ball (8/10 to\'g\'ri)';
+        
+        var now = new Date();
+        var months = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];
+        var dateEl = document.getElementById('ol-cert-date');
+        if (dateEl) dateEl.textContent = now.getDate() + '-' + months[now.getMonth()] + ', ' + now.getFullYear() + '-yil';
+      }
     }, 400);
   });
 
