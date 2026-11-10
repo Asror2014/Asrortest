@@ -1,9 +1,17 @@
 @echo off
 chcp 65001 > nul
+if exist "c:\Users\Hp\Downloads\new\.git" (
+    cd /d "c:\Users\Hp\Downloads\new"
+) else if exist "c:\Users\Hp\Downloads\30-maktabtest\.git" (
+    cd /d "c:\Users\Hp\Downloads\30-maktabtest"
+) else (
+    cd /d "%~dp0"
+)
 echo ========================================================
 echo     30-IDUM MAKTABTEST - GITHUB GA YUKLASH YORDAMCHISI
 echo ========================================================
 echo.
+echo Loyiha manzili: %CD%
 echo GitHub hisobingiz: asrordev14
 echo Tavsiya etilgan repozitoriy nomi: 30-maktabtest
 echo.
