@@ -410,6 +410,7 @@ class TestEngine {
     if (this.currentIndex < this.questions.length - 1) {
       this.currentIndex++;
       this.renderQuestion();
+      this.renderNavigator();
     } else {
       // Oxirgi savolda testni yakunlash
       this.finishTest();
@@ -420,6 +421,7 @@ class TestEngine {
     if (this.currentIndex > 0) {
       this.currentIndex--;
       this.renderQuestion();
+      this.renderNavigator();
     }
   }
 
@@ -427,12 +429,19 @@ class TestEngine {
     if (index >= 0 && index < this.questions.length) {
       this.currentIndex = index;
       this.renderQuestion();
+      this.renderNavigator();
     }
   }
 
   renderNavigator() {
     var navGrid = document.getElementById('navigator-grid');
     if (!navGrid) return;
+
+    var statusBadge = document.getElementById('navigator-status-badge');
+    if (statusBadge) {
+      var answeredCount = Object.keys(this.answers).length;
+      statusBadge.textContent = 'Javob berildi: ' + answeredCount + ' / ' + this.questions.length;
+    }
 
     var html = '';
     for (var i = 0; i < this.questions.length; i++) {
@@ -457,6 +466,11 @@ class TestEngine {
         '</button>';
     }
     navGrid.innerHTML = html;
+
+    var currentBtn = navGrid.querySelector('.navigator-btn.current');
+    if (currentBtn && typeof currentBtn.scrollIntoView === 'function') {
+      currentBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
   }
 
   updateNavigatorHighlight() {

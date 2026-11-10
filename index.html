@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
@@ -524,7 +524,22 @@
             <div class="progress-fill" id="test-progress-fill" style="width: 5%;"></div>
         </div>
 
-        <div class="test-content-wrapper">
+                <div class="test-content-wrapper">
+            <!-- 1 2 3 Tepa Savollar Navigatori (Top Question Navigator Bar) -->
+            <div class="question-navigator" id="question-navigator">
+                <div class="navigator-header">
+                    <h4 class="navigator-title">
+                        <i class="fas fa-th"></i> Savollar (1, 2, 3...):
+                    </h4>
+                    <span class="navigator-badge" id="navigator-status-badge">
+                        Javob berildi: 0 / 20
+                    </span>
+                </div>
+                <div class="navigator-grid" id="navigator-grid">
+                    <!-- JavaScript orqali dinamik ravishda to'ldiriladi -->
+                </div>
+            </div>
+
             <!-- Savol kartasi -->
             <div class="test-main">
                 <div class="question-card" id="question-card">
@@ -555,16 +570,7 @@
                     </button>
                 </div>
             </div>
-
-            <!-- Savol navigatori paneli -->
-            <div class="question-navigator" id="question-navigator">
-                <h4 class="navigator-title">
-                    <i class="fas fa-th"></i> Savollar
-                </h4>
-                <div class="navigator-grid" id="navigator-grid">
-                    <!-- JavaScript orqali dinamik ravishda to'ldiriladi -->
-                </div>
-            </div>
+        </div>
         </div>
     </section>
 

@@ -7296,3 +7296,223 @@ div.leaderboard-drawer.active {
     font-size: 0.95rem !important;
   }
 }
+
+/* ============================================================
+   TEPA SAVOLLAR NAVIGATORI (TOP QUESTION NUMBER BAR: 1, 2, 3...)
+   ============================================================ */
+#page-test .test-content-wrapper {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 85px 1.5rem 3rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+  width: 100% !important;
+}
+
+#page-test .test-main {
+  width: 100% !important;
+  flex: none !important;
+  order: 2 !important;
+}
+
+#page-test .question-navigator {
+  width: 100% !important;
+  max-width: 100% !important;
+  background: rgba(30, 41, 59, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 18px !important;
+  padding: 1.15rem 1.4rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  margin-bottom: 0 !important;
+  order: 1 !important;
+}
+
+#page-test .navigator-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.85rem !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+}
+
+#page-test .navigator-title {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #f8fafc !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  letter-spacing: 0.3px !important;
+}
+
+#page-test .navigator-badge {
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  background: rgba(99, 102, 241, 0.18) !important;
+  color: #a5b4fc !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+}
+
+#page-test .navigator-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  max-height: 140px !important;
+  overflow-y: auto !important;
+  padding: 8px !important;
+  border-radius: 12px !important;
+  background: rgba(15, 23, 42, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  scrollbar-width: thin !important;
+}
+
+#page-test .navigator-btn {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  flex: 0 0 42px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(30, 41, 59, 0.8) !important;
+  color: #cbd5e1 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#page-test .navigator-btn:hover {
+  background: rgba(99, 102, 241, 0.35) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(99, 102, 241, 0.6) !important;
+}
+
+#page-test .navigator-btn.current {
+  background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+  color: #ffffff !important;
+  border-color: #a5b4fc !important;
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.8) !important;
+  transform: scale(1.08) !important;
+  z-index: 2 !important;
+}
+
+#page-test .navigator-btn.answered {
+  background: rgba(16, 185, 129, 0.25) !important;
+  color: #34d399 !important;
+  border-color: rgba(16, 185, 129, 0.6) !important;
+}
+
+#page-test .navigator-btn.answered.nav-correct {
+  background: rgba(16, 185, 129, 0.3) !important;
+  color: #4ade80 !important;
+  border-color: #22c55e !important;
+}
+
+#page-test .navigator-btn.answered.nav-wrong {
+  background: rgba(239, 68, 68, 0.25) !important;
+  color: #f87171 !important;
+  border-color: #ef4444 !important;
+}
+
+#page-test .nav-icon-badge {
+  position: absolute !important;
+  top: -4px !important;
+  right: -4px !important;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50% !important;
+  font-size: 9px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#page-test .badge-nav-ok {
+  background: #10b981 !important;
+  color: #fff !important;
+}
+
+#page-test .badge-nav-err {
+  background: #ef4444 !important;
+  color: #fff !important;
+}
+
+/* Light theme support */
+body.light-theme #page-test .question-navigator {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.light-theme #page-test .navigator-title {
+  color: #1e293b !important;
+}
+
+body.light-theme #page-test .navigator-badge {
+  background: #ede9fe !important;
+  color: #6366f1 !important;
+  border-color: #c4b5fd !important;
+}
+
+body.light-theme #page-test .navigator-grid {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-theme #page-test .navigator-btn {
+  background: #ffffff !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme #page-test .navigator-btn:hover {
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+body.light-theme #page-test .navigator-btn.current {
+  background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
+  color: #ffffff !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4) !important;
+}
+
+body.light-theme #page-test .navigator-btn.answered {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+  border-color: #86efac !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #page-test .test-content-wrapper {
+    padding-top: 68px !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    gap: 1rem !important;
+  }
+  
+  #page-test .question-navigator {
+    padding: 0.85rem !important;
+    border-radius: 14px !important;
+  }
+  
+  #page-test .navigator-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex: 0 0 38px !important;
+    font-size: 13px !important;
+  }
+}
