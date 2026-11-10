@@ -7551,3 +7551,174 @@ body.light-theme #page-test .navigator-btn.answered {
     font-size: 13px !important;
   }
 }
+
+/* ============================================================
+   OLIMPIADA TEPADAGI UZUN GORIZONTAL SAVOLLAR NAVIGATORI
+   ============================================================ */
+.olympiad-top-nav-wrap {
+  width: 100% !important;
+  margin: 12px 0 16px !important;
+  padding: 10px 14px !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.ol-nav-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 8px !important;
+  padding: 0 2px !important;
+}
+
+.ol-nav-title {
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  color: #f8fafc !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.ol-nav-badge {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  padding: 3px 10px !important;
+  border-radius: 20px !important;
+  background: rgba(236, 72, 153, 0.2) !important;
+  color: #f472b6 !important;
+  border: 1px solid rgba(236, 72, 153, 0.4) !important;
+}
+
+.ol-nav-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 6px 4px 8px !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #ec4899 rgba(15, 23, 42, 0.5) !important;
+}
+
+.ol-nav-grid::-webkit-scrollbar {
+  height: 6px !important;
+}
+
+.ol-nav-grid::-webkit-scrollbar-thumb {
+  background: #ec4899 !important;
+  border-radius: 10px !important;
+}
+
+.ol-nav-btn {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  max-width: 42px !important;
+  flex: 0 0 42px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(30, 41, 59, 0.85) !important;
+  color: #cbd5e1 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  user-select: none !important;
+}
+
+.ol-nav-btn:hover {
+  background: rgba(236, 72, 153, 0.3) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(236, 72, 153, 0.6) !important;
+}
+
+.ol-nav-btn.current {
+  background: linear-gradient(135deg, #ec4899, #be185d) !important;
+  color: #ffffff !important;
+  border-color: #fbcfe8 !important;
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.85) !important;
+  transform: scale(1.08) !important;
+  z-index: 2 !important;
+}
+
+.ol-nav-btn.answered.nav-correct {
+  background: rgba(16, 185, 129, 0.35) !important;
+  color: #4ade80 !important;
+  border-color: #22c55e !important;
+}
+
+.ol-nav-btn.answered.nav-wrong {
+  background: rgba(239, 68, 68, 0.35) !important;
+  color: #f87171 !important;
+  border-color: #ef4444 !important;
+}
+
+.ol-nav-icon {
+  position: absolute !important;
+  top: -4px !important;
+  right: -4px !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  font-size: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ol-nav-icon.ok {
+  background: #10b981 !important;
+  color: #fff !important;
+}
+
+.ol-nav-icon.err {
+  background: #ef4444 !important;
+  color: #fff !important;
+}
+
+.ol-nav-controls {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 1.5rem !important;
+  gap: 0.75rem !important;
+  flex-wrap: wrap !important;
+}
+
+.ol-nav-controls .btn {
+  padding: 0.65rem 1.25rem !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+}
+
+/* Light theme support for Olympiad nav */
+body.light-theme .olympiad-top-nav-wrap {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-theme .ol-nav-title {
+  color: #1e293b !important;
+}
+
+body.light-theme .ol-nav-btn {
+  background: #ffffff !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .ol-nav-btn:hover {
+  background: #fdf2f8 !important;
+  color: #be185d !important;
+}

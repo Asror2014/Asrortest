@@ -2228,6 +2228,17 @@
                     </div>
                 </div>
 
+                <!-- OLIMPIADA TEPADAGI UZUN GORIZONTAL SAVOLLAR NAVIGATORI (TOP LONG NUMBER BAR) -->
+                <div class="olympiad-top-nav-wrap">
+                    <div class="ol-nav-header">
+                        <span class="ol-nav-title"><i class="fas fa-th-list"></i> Savollar:</span>
+                        <span class="ol-nav-badge" id="olympiad-nav-badge">Javob berildi: 0 / 10</span>
+                    </div>
+                    <div class="ol-nav-grid" id="ol-nav-grid">
+                        <!-- 1, 2, 3, 4, 5... gorizontal uzun qator -->
+                    </div>
+                </div>
+
                 <!-- Question Text -->
                 <div class="olympiad-question-box">
                     <h2 id="olympiad-q-text" class="olympiad-question-title">Savol yuklanmoqda...</h2>
@@ -2235,6 +2246,19 @@
 
                 <!-- Options -->
                 <div id="olympiad-options-box" class="olympiad-options-grid"></div>
+
+                <!-- Olimpiada Navigatsiya Tugmalari (Pastki) -->
+                <div class="ol-nav-controls">
+                    <button type="button" class="btn btn-outline" id="ol-prev-btn" onclick="OlympiadEngine.prevQuestion()">
+                        <i class="fas fa-arrow-left"></i> Oldingi
+                    </button>
+                    <button type="button" class="btn btn-primary" id="ol-next-btn" onclick="OlympiadEngine.nextQuestion()">
+                        Keyingi <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="OlympiadEngine.confirmFinish()">
+                        <i class="fas fa-flag-checkered"></i> Yakunlash
+                    </button>
+                </div>
             </div>
 
             <!-- 3. Result View with Golden Certificate -->

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-IDUM Maktab Test Platformasi
  * Tovush Effektlari (SoundFX), Yutuqlar (Achievements & Badges) va Maktab Olimpiadasi (Olympiad)
  * 1-11 sinflar uchun alohida moslashtirilgan (1-sinf alohida, 2,3,4,5,6,7,8,9,10,11 sinflar o'ziga xos)
@@ -706,10 +706,10 @@
         subject: "Geografiya"
       },
       {
-        q: "9. [Adabiyot] O'zbek xalq qahramonlik dostonlaridan biri qaysi?",
-        options: ["Alpomish", "Garri Potter", "Robinzon Kruzo", "Zolushka"],
+        q: "9. [Ona tili - 1-CHSB] Nutq tovushlari ifodalanishiga ko'ra nechaga bo'linadi?",
+        options: ["2 ga (unli va undosh)", "3 ga (unli, undosh, tutuq)", "4 ga", "Bo'linmaydi"],
         answer: 0,
-        subject: "Adabiyot"
+        subject: "Ona tili"
       },
       {
         q: "10. [Mantiq] Ketma-ketlik: 5, 10, 15, 20, ... keyingi son qaysi?",
@@ -814,10 +814,10 @@
         subject: "Kimyo"
       },
       {
-        q: "5. [Biologiya] Odam organizmida suyaklarning o'zaro birikmasi nima deyiladi?",
-        options: ["Muskul", "Skelet", "To'qima", "Qon"],
-        answer: 1,
-        subject: "Biologiya"
+        q: "5. [Adabiyot - 1-chorak] G'afur G'ulomning mashhur 'Shum bola' qissasida bosh qahramonning ismi nima?",
+        options: ["Qoravoy", "Sariq", "Hoshimjon", "Omon"],
+        answer: 0,
+        subject: "Adabiyot"
       },
       {
         q: "6. [Tarix] Amir Temur saltanatining poytaxti qaysi shahar bo'lgan?",
@@ -904,10 +904,10 @@
         subject: "Ingliz tili"
       },
       {
-        q: "9. [Astronomiya] Oy Yerning nimasi hisoblanadi?",
-        options: ["Sayyorasi", "Tabiiy yo'ldoshi", "Yulduzi", "Kometasi"],
-        answer: 1,
-        subject: "Astronomiya"
+        q: "9. [Ingliz tili - Guess What! 8] If something is 'ancient', what does it mean?",
+        options: ["Very old, from long ago", "Brand new", "Extremely fast", "Very expensive"],
+        answer: 0,
+        subject: "Ingliz tili"
       },
       {
         q: "10. [Adabiyot] O'zbek adabiyotida ilk realistik roman 'O'tkan kunlar' muallifi kim?",
@@ -1108,10 +1108,10 @@
         subject: "Adabiyot"
       },
       {
-        q: "10. [Mantiq] 'Men fikrlayapman, demak men mavjudman' mashhur falsafiy xulosasining muallifi:",
-        options: ["Rene Dekart", "Aristotel", "Suqrot", "I. Kant"],
+        q: "10. [Ingliz tili - Grade 11] Which idiom means 'to disclose a secret carelessly or prematurely'?",
+        options: ["Spill the beans", "Bite the bullet", "Break a leg", "Hit the books"],
         answer: 0,
-        subject: "Mantiq"
+        subject: "Ingliz tili"
       }
     ]
   };
@@ -1183,6 +1183,7 @@
       if (resultView) resultView.style.display = 'none';
 
       this.renderQuestion();
+      this.renderNavigator();
       this.startTimer();
     },
 
@@ -1237,7 +1238,7 @@
       var gradeTagEl = document.getElementById('olympiad-q-grade-tag');
       var textEl = document.getElementById('olympiad-q-text');
 
-      if (qNumEl) qNumEl.textContent = (this.currentIndex + 1) + ' / 10';
+      if (qNumEl) qNumEl.textContent = (this.currentIndex + 1) + ' / ' + questions.length;
       if (subjEl) subjEl.textContent = q.subject;
       if (gradeTagEl) gradeTagEl.textContent = this.selectedGrade + '-sinf Olimpiadasi';
       var displayQ = (typeof window.cleanQuestionTitle === 'function')
@@ -1248,9 +1249,18 @@
       var optionsBox = document.getElementById('olympiad-options-box');
       var letters = ['A', 'B', 'C', 'D'];
       var html = '';
+      var selectedAns = this.answers[this.currentIndex];
 
       for (var i = 0; i < q.options.length; i++) {
-        html += '<button type="button" class="olympiad-option-btn" onclick="OlympiadEngine.selectAnswer(' + i + ')">';
+        var optCls = 'olympiad-option-btn';
+        if (selectedAns !== undefined) {
+          if (selectedAns === i) {
+            optCls += (selectedAns === q.answer ? ' correct' : ' wrong');
+          } else if (i === q.answer) {
+            optCls += ' correct';
+          }
+        }
+        html += '<button type="button" class="' + optCls + '" onclick="OlympiadEngine.selectAnswer(' + i + ')">';
         html += '  <span class="ol-opt-letter">' + letters[i] + '</span>';
         html += '  <span class="ol-opt-text">' + q.options[i] + '</span>';
         html += '</button>';
@@ -1258,6 +1268,81 @@
 
       if (optionsBox) optionsBox.innerHTML = html;
       this.updateComboUI();
+      this.renderNavigator();
+    },
+
+    renderNavigator: function () {
+      var navGrid = document.getElementById('ol-nav-grid');
+      if (!navGrid) return;
+      var questions = this.getCurrentQuestions();
+      var answeredCount = Object.keys(this.answers).length;
+
+      var badge = document.getElementById('olympiad-nav-badge');
+      if (badge) {
+        badge.textContent = 'Javob berildi: ' + answeredCount + ' / ' + questions.length;
+      }
+
+      var html = '';
+      for (var i = 0; i < questions.length; i++) {
+        var isCurrent = (i === this.currentIndex);
+        var selected = this.answers[i];
+        var isAnswered = (selected !== undefined && selected !== null);
+        var isCorrect = isAnswered && (selected === questions[i].answer);
+
+        var cls = 'ol-nav-btn';
+        if (isCurrent) cls += ' current';
+        if (isAnswered) {
+          cls += ' answered ' + (isCorrect ? 'nav-correct' : 'nav-wrong');
+        }
+        var icon = isAnswered 
+          ? (isCorrect 
+              ? '<span class="ol-nav-icon ok"><i class="fas fa-check"></i></span>' 
+              : '<span class="ol-nav-icon err"><i class="fas fa-times"></i></span>') 
+          : '';
+
+        html += '<button type="button" class="' + cls + '" onclick="OlympiadEngine.goToQuestion(' + i + ')" title="Savol ' + (i + 1) + '">' +
+          '<span class="ol-btn-num">' + (i + 1) + '</span>' +
+          icon +
+          '</button>';
+      }
+      navGrid.innerHTML = html;
+
+      var currentBtn = navGrid.querySelector('.ol-nav-btn.current');
+      if (currentBtn && typeof currentBtn.scrollIntoView === 'function') {
+        currentBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }
+
+      var prevBtn = document.getElementById('ol-prev-btn');
+      if (prevBtn) prevBtn.disabled = (this.currentIndex === 0);
+    },
+
+    goToQuestion: function (idx) {
+      if (!this.isActive) return;
+      var questions = this.getCurrentQuestions();
+      if (idx >= 0 && idx < questions.length) {
+        this.currentIndex = idx;
+        this.renderQuestion();
+        this.startTimer();
+      }
+    },
+
+    prevQuestion: function () {
+      if (this.currentIndex > 0) {
+        this.goToQuestion(this.currentIndex - 1);
+      }
+    },
+
+    confirmFinish: function () {
+      if (!this.isActive) return;
+      var questions = this.getCurrentQuestions();
+      var answered = Object.keys(this.answers).length;
+      if (answered < questions.length) {
+        if (confirm("Siz hali barcha savollarga javob bermadingiz (" + answered + " / " + questions.length + "). Olimpiadani yakunlashni tasdiqlaysizmi?")) {
+          this.finish();
+        }
+      } else {
+        this.finish();
+      }
     },
 
     selectAnswer: function (optIdx) {

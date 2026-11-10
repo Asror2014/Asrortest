@@ -10050,6 +10050,177 @@ body.light-theme #page-test .navigator-btn.answered {
     font-size: 13px !important;
   }
 }
+
+/* ============================================================
+   OLIMPIADA TEPADAGI UZUN GORIZONTAL SAVOLLAR NAVIGATORI
+   ============================================================ */
+.olympiad-top-nav-wrap {
+  width: 100% !important;
+  margin: 12px 0 16px !important;
+  padding: 10px 14px !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
+}
+
+.ol-nav-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 8px !important;
+  padding: 0 2px !important;
+}
+
+.ol-nav-title {
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  color: #f8fafc !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.ol-nav-badge {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  padding: 3px 10px !important;
+  border-radius: 20px !important;
+  background: rgba(236, 72, 153, 0.2) !important;
+  color: #f472b6 !important;
+  border: 1px solid rgba(236, 72, 153, 0.4) !important;
+}
+
+.ol-nav-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 6px 4px 8px !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #ec4899 rgba(15, 23, 42, 0.5) !important;
+}
+
+.ol-nav-grid::-webkit-scrollbar {
+  height: 6px !important;
+}
+
+.ol-nav-grid::-webkit-scrollbar-thumb {
+  background: #ec4899 !important;
+  border-radius: 10px !important;
+}
+
+.ol-nav-btn {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  max-width: 42px !important;
+  flex: 0 0 42px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(30, 41, 59, 0.85) !important;
+  color: #cbd5e1 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  user-select: none !important;
+}
+
+.ol-nav-btn:hover {
+  background: rgba(236, 72, 153, 0.3) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(236, 72, 153, 0.6) !important;
+}
+
+.ol-nav-btn.current {
+  background: linear-gradient(135deg, #ec4899, #be185d) !important;
+  color: #ffffff !important;
+  border-color: #fbcfe8 !important;
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.85) !important;
+  transform: scale(1.08) !important;
+  z-index: 2 !important;
+}
+
+.ol-nav-btn.answered.nav-correct {
+  background: rgba(16, 185, 129, 0.35) !important;
+  color: #4ade80 !important;
+  border-color: #22c55e !important;
+}
+
+.ol-nav-btn.answered.nav-wrong {
+  background: rgba(239, 68, 68, 0.35) !important;
+  color: #f87171 !important;
+  border-color: #ef4444 !important;
+}
+
+.ol-nav-icon {
+  position: absolute !important;
+  top: -4px !important;
+  right: -4px !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  font-size: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ol-nav-icon.ok {
+  background: #10b981 !important;
+  color: #fff !important;
+}
+
+.ol-nav-icon.err {
+  background: #ef4444 !important;
+  color: #fff !important;
+}
+
+.ol-nav-controls {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 1.5rem !important;
+  gap: 0.75rem !important;
+  flex-wrap: wrap !important;
+}
+
+.ol-nav-controls .btn {
+  padding: 0.65rem 1.25rem !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+}
+
+/* Light theme support for Olympiad nav */
+body.light-theme .olympiad-top-nav-wrap {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-theme .ol-nav-title {
+  color: #1e293b !important;
+}
+
+body.light-theme .ol-nav-btn {
+  background: #ffffff !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .ol-nav-btn:hover {
+  background: #fdf2f8 !important;
+  color: #be185d !important;
+}
 </style>
 </head>
 <body>
@@ -12262,6 +12433,17 @@ body.light-theme #page-test .navigator-btn.answered {
                     </div>
                 </div>
 
+                <!-- OLIMPIADA TEPADAGI UZUN GORIZONTAL SAVOLLAR NAVIGATORI (TOP LONG NUMBER BAR) -->
+                <div class="olympiad-top-nav-wrap">
+                    <div class="ol-nav-header">
+                        <span class="ol-nav-title"><i class="fas fa-th-list"></i> Savollar:</span>
+                        <span class="ol-nav-badge" id="olympiad-nav-badge">Javob berildi: 0 / 10</span>
+                    </div>
+                    <div class="ol-nav-grid" id="ol-nav-grid">
+                        <!-- 1, 2, 3, 4, 5... gorizontal uzun qator -->
+                    </div>
+                </div>
+
                 <!-- Question Text -->
                 <div class="olympiad-question-box">
                     <h2 id="olympiad-q-text" class="olympiad-question-title">Savol yuklanmoqda...</h2>
@@ -12269,6 +12451,19 @@ body.light-theme #page-test .navigator-btn.answered {
 
                 <!-- Options -->
                 <div id="olympiad-options-box" class="olympiad-options-grid"></div>
+
+                <!-- Olimpiada Navigatsiya Tugmalari (Pastki) -->
+                <div class="ol-nav-controls">
+                    <button type="button" class="btn btn-outline" id="ol-prev-btn" onclick="OlympiadEngine.prevQuestion()">
+                        <i class="fas fa-arrow-left"></i> Oldingi
+                    </button>
+                    <button type="button" class="btn btn-primary" id="ol-next-btn" onclick="OlympiadEngine.nextQuestion()">
+                        Keyingi <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="OlympiadEngine.confirmFinish()">
+                        <i class="fas fa-flag-checkered"></i> Yakunlash
+                    </button>
+                </div>
             </div>
 
             <!-- 3. Result View with Golden Certificate -->
@@ -26852,10 +27047,10 @@ document.addEventListener('DOMContentLoaded', function() {
         subject: "Geografiya"
       },
       {
-        q: "9. [Adabiyot] O'zbek xalq qahramonlik dostonlaridan biri qaysi?",
-        options: ["Alpomish", "Garri Potter", "Robinzon Kruzo", "Zolushka"],
+        q: "9. [Ona tili - 1-CHSB] Nutq tovushlari ifodalanishiga ko'ra nechaga bo'linadi?",
+        options: ["2 ga (unli va undosh)", "3 ga (unli, undosh, tutuq)", "4 ga", "Bo'linmaydi"],
         answer: 0,
-        subject: "Adabiyot"
+        subject: "Ona tili"
       },
       {
         q: "10. [Mantiq] Ketma-ketlik: 5, 10, 15, 20, ... keyingi son qaysi?",
@@ -26960,10 +27155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         subject: "Kimyo"
       },
       {
-        q: "5. [Biologiya] Odam organizmida suyaklarning o'zaro birikmasi nima deyiladi?",
-        options: ["Muskul", "Skelet", "To'qima", "Qon"],
-        answer: 1,
-        subject: "Biologiya"
+        q: "5. [Adabiyot - 1-chorak] G'afur G'ulomning mashhur 'Shum bola' qissasida bosh qahramonning ismi nima?",
+        options: ["Qoravoy", "Sariq", "Hoshimjon", "Omon"],
+        answer: 0,
+        subject: "Adabiyot"
       },
       {
         q: "6. [Tarix] Amir Temur saltanatining poytaxti qaysi shahar bo'lgan?",
@@ -27050,10 +27245,10 @@ document.addEventListener('DOMContentLoaded', function() {
         subject: "Ingliz tili"
       },
       {
-        q: "9. [Astronomiya] Oy Yerning nimasi hisoblanadi?",
-        options: ["Sayyorasi", "Tabiiy yo'ldoshi", "Yulduzi", "Kometasi"],
-        answer: 1,
-        subject: "Astronomiya"
+        q: "9. [Ingliz tili - Guess What! 8] If something is 'ancient', what does it mean?",
+        options: ["Very old, from long ago", "Brand new", "Extremely fast", "Very expensive"],
+        answer: 0,
+        subject: "Ingliz tili"
       },
       {
         q: "10. [Adabiyot] O'zbek adabiyotida ilk realistik roman 'O'tkan kunlar' muallifi kim?",
@@ -27254,10 +27449,10 @@ document.addEventListener('DOMContentLoaded', function() {
         subject: "Adabiyot"
       },
       {
-        q: "10. [Mantiq] 'Men fikrlayapman, demak men mavjudman' mashhur falsafiy xulosasining muallifi:",
-        options: ["Rene Dekart", "Aristotel", "Suqrot", "I. Kant"],
+        q: "10. [Ingliz tili - Grade 11] Which idiom means 'to disclose a secret carelessly or prematurely'?",
+        options: ["Spill the beans", "Bite the bullet", "Break a leg", "Hit the books"],
         answer: 0,
-        subject: "Mantiq"
+        subject: "Ingliz tili"
       }
     ]
   };
@@ -27329,6 +27524,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (resultView) resultView.style.display = 'none';
 
       this.renderQuestion();
+      this.renderNavigator();
       this.startTimer();
     },
 
@@ -27383,7 +27579,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var gradeTagEl = document.getElementById('olympiad-q-grade-tag');
       var textEl = document.getElementById('olympiad-q-text');
 
-      if (qNumEl) qNumEl.textContent = (this.currentIndex + 1) + ' / 10';
+      if (qNumEl) qNumEl.textContent = (this.currentIndex + 1) + ' / ' + questions.length;
       if (subjEl) subjEl.textContent = q.subject;
       if (gradeTagEl) gradeTagEl.textContent = this.selectedGrade + '-sinf Olimpiadasi';
       var displayQ = (typeof window.cleanQuestionTitle === 'function')
@@ -27394,9 +27590,18 @@ document.addEventListener('DOMContentLoaded', function() {
       var optionsBox = document.getElementById('olympiad-options-box');
       var letters = ['A', 'B', 'C', 'D'];
       var html = '';
+      var selectedAns = this.answers[this.currentIndex];
 
       for (var i = 0; i < q.options.length; i++) {
-        html += '<button type="button" class="olympiad-option-btn" onclick="OlympiadEngine.selectAnswer(' + i + ')">';
+        var optCls = 'olympiad-option-btn';
+        if (selectedAns !== undefined) {
+          if (selectedAns === i) {
+            optCls += (selectedAns === q.answer ? ' correct' : ' wrong');
+          } else if (i === q.answer) {
+            optCls += ' correct';
+          }
+        }
+        html += '<button type="button" class="' + optCls + '" onclick="OlympiadEngine.selectAnswer(' + i + ')">';
         html += '  <span class="ol-opt-letter">' + letters[i] + '</span>';
         html += '  <span class="ol-opt-text">' + q.options[i] + '</span>';
         html += '</button>';
@@ -27404,6 +27609,81 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (optionsBox) optionsBox.innerHTML = html;
       this.updateComboUI();
+      this.renderNavigator();
+    },
+
+    renderNavigator: function () {
+      var navGrid = document.getElementById('ol-nav-grid');
+      if (!navGrid) return;
+      var questions = this.getCurrentQuestions();
+      var answeredCount = Object.keys(this.answers).length;
+
+      var badge = document.getElementById('olympiad-nav-badge');
+      if (badge) {
+        badge.textContent = 'Javob berildi: ' + answeredCount + ' / ' + questions.length;
+      }
+
+      var html = '';
+      for (var i = 0; i < questions.length; i++) {
+        var isCurrent = (i === this.currentIndex);
+        var selected = this.answers[i];
+        var isAnswered = (selected !== undefined && selected !== null);
+        var isCorrect = isAnswered && (selected === questions[i].answer);
+
+        var cls = 'ol-nav-btn';
+        if (isCurrent) cls += ' current';
+        if (isAnswered) {
+          cls += ' answered ' + (isCorrect ? 'nav-correct' : 'nav-wrong');
+        }
+        var icon = isAnswered 
+          ? (isCorrect 
+              ? '<span class="ol-nav-icon ok"><i class="fas fa-check"></i></span>' 
+              : '<span class="ol-nav-icon err"><i class="fas fa-times"></i></span>') 
+          : '';
+
+        html += '<button type="button" class="' + cls + '" onclick="OlympiadEngine.goToQuestion(' + i + ')" title="Savol ' + (i + 1) + '">' +
+          '<span class="ol-btn-num">' + (i + 1) + '</span>' +
+          icon +
+          '</button>';
+      }
+      navGrid.innerHTML = html;
+
+      var currentBtn = navGrid.querySelector('.ol-nav-btn.current');
+      if (currentBtn && typeof currentBtn.scrollIntoView === 'function') {
+        currentBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }
+
+      var prevBtn = document.getElementById('ol-prev-btn');
+      if (prevBtn) prevBtn.disabled = (this.currentIndex === 0);
+    },
+
+    goToQuestion: function (idx) {
+      if (!this.isActive) return;
+      var questions = this.getCurrentQuestions();
+      if (idx >= 0 && idx < questions.length) {
+        this.currentIndex = idx;
+        this.renderQuestion();
+        this.startTimer();
+      }
+    },
+
+    prevQuestion: function () {
+      if (this.currentIndex > 0) {
+        this.goToQuestion(this.currentIndex - 1);
+      }
+    },
+
+    confirmFinish: function () {
+      if (!this.isActive) return;
+      var questions = this.getCurrentQuestions();
+      var answered = Object.keys(this.answers).length;
+      if (answered < questions.length) {
+        if (confirm("Siz hali barcha savollarga javob bermadingiz (" + answered + " / " + questions.length + "). Olimpiadani yakunlashni tasdiqlaysizmi?")) {
+          this.finish();
+        }
+      } else {
+        this.finish();
+      }
     },
 
     selectAnswer: function (optIdx) {
