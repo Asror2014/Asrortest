@@ -478,9 +478,9 @@
         subject: "Tabiat"
       },
       {
-        q: "4. [Ingliz tili] 'Mother' so'zi nimani anglatadi?",
-        options: ["Ota", "Ona", "Singil", "Aka"],
-        answer: 1,
+        q: "4. [Ingliz tili - Guess What! 2] What is this? 🎒",
+        options: ["It's a backpack.", "It's an apple.", "It's a dog.", "It's a car."],
+        answer: 0,
         subject: "Ingliz tili"
       },
       {
@@ -514,27 +514,27 @@
         subject: "Mantiq"
       },
       {
-        q: "10. [Rus tili] 'Книга' so'zining tarjimasi qaysi?",
-        options: ["Daftar", "Kitob", "Qalam", "Parta"],
-        answer: 1,
-        subject: "Rus tili"
+        q: "10. [Ingliz tili - Guess What! 2] How do you say 'Kitob' in English?",
+        options: ["Book", "Bag", "Desk", "Chair"],
+        answer: 0,
+        subject: "Ingliz tili"
       }
     ],
 
     // ------------------------------------------------------------
-    // 3-SINF (Ko'paytirish jadvali, informatika asoslari, tabiat)
+    // 3-SINF (Matematika, Ona tili va Guess What! 3 rasmiy testlari)
     // ------------------------------------------------------------
     3: [
       {
-        q: "1. [Matematika] 7 * 8 ko'paytmasi nechaga teng?",
-        options: ["54", "56", "58", "64"],
+        q: "1. [Matematika - Darslik] 245 + 132 = ?",
+        options: ["377", "367", "357", "387"],
         answer: 1,
         subject: "Matematika"
       },
       {
-        q: "2. [Ona tili] Qaysi so'z harakatni (fe'l) bildiradi?",
-        options: ["Parta", "Yugurdi", "Qizil", "Daraxt"],
-        answer: 1,
+        q: "2. [Ona tili - Darslik] O'zbek tilida nechta unli tovush bor?",
+        options: ["6 ta", "5 ta", "7 ta", "8 ta"],
+        answer: 0,
         subject: "Ona tili"
       },
       {
@@ -550,14 +550,14 @@
         subject: "Informatika"
       },
       {
-        q: "5. [Ingliz tili] 'Ten plus five is ...' (10 + 5 = ?)",
-        options: ["Twelve", "Fifteen", "Twenty", "Fourteen"],
-        answer: 1,
+        q: "5. [Ingliz tili - Guess What! 3] 'Qayerdan kelgansan?' degan savol ingliz tilida qanday beriladi?",
+        options: ["Where are you from?", "What is your name?", "How old are you?", "Where do you live?"],
+        answer: 0,
         subject: "Ingliz tili"
       },
       {
-        q: "6. [Matematika] Tomonlari 4 sm va 6 sm bo'lgan to'g'ri to'rtburchak yuzi qancha?",
-        options: ["20 sm²", "24 sm²", "10 sm²", "12 sm²"],
+        q: "6. [Matematika - Darslik] 7 * 5 = ?",
+        options: ["30", "35", "40", "25"],
         answer: 1,
         subject: "Matematika"
       },
@@ -574,21 +574,21 @@
         subject: "Tarix"
       },
       {
-        q: "9. [Tabiat] O'simlik barglariga yashil rang beruvchi modda nima?",
-        options: ["Suv", "Xlorofill", "Shakar", "Havo"],
-        answer: 1,
-        subject: "Tabiat"
+        q: "9. [Ona tili - Darslik] Kishilarning ismi qanday harf bilan yoziladi?",
+        options: ["Bosh harf", "Kichik harf", "Unli harf", "Undosh harf"],
+        answer: 0,
+        subject: "Ona tili"
       },
       {
-        q: "10. [Ona tili] 'Katta' so'zining qarama-qarshi ma'nodagi so'zi (antonimi) qaysi?",
-        options: ["Ulkan", "Kichik", "Baland", "Keng"],
-        answer: 1,
-        subject: "Ona tili"
+        q: "10. [Ingliz tili - Guess What! 3] 'Men O'zbekistondanman' jumlasining to'g'ri tarjimasini toping:",
+        options: ["I'm from Uzbekistan.", "I live in Uzbekistan.", "I go to Uzbekistan.", "I like Uzbekistan."],
+        answer: 0,
+        subject: "Ingliz tili"
       }
     ],
 
     // ------------------------------------------------------------
-    // 4-SINF (Boshlang'ich bitiruv bosqichi, perimetr, inson a'zolari)
+    // 4-SINF (Boshlang'ich bitiruv bosqichi, Guess What! 4 rasmiy testi)
     // ------------------------------------------------------------
     4: [
       {
@@ -610,9 +610,9 @@
         subject: "Tabiat"
       },
       {
-        q: "4. [Ingliz tili] Which one is an animal?",
-        options: ["Apple", "Elephant", "Table", "Pencil"],
-        answer: 1,
+        q: "4. [Ingliz tili - Guess What! 4] Where do animals like monkeys and parrots live?",
+        options: ["In the rainforest.", "In the ocean.", "In the desert.", "In the snow."],
+        answer: 0,
         subject: "Ingliz tili"
       },
       {
@@ -640,10 +640,10 @@
         subject: "Mantiq"
       },
       {
-        q: "9. [Ona tili] Sifat so'z turkumi qanday so'roqlarga javob bo'ladi?",
-        options: ["Kim? Nima?", "Qanday? Qanaqa?", "Nima qildi?", "Qachon?"],
-        answer: 1,
-        subject: "Ona tili"
+        q: "9. [Ingliz tili - Guess What! 4] Complete: She ________ to school every day.",
+        options: ["goes", "go", "going", "went"],
+        answer: 0,
+        subject: "Ingliz tili"
       },
       {
         q: "10. [Tabiat] Inson tanasida qonni butun vujudga tinimsiz haydab beruvchi a'zo qaysi?",
@@ -654,7 +654,7 @@
     ],
 
     // ------------------------------------------------------------
-    // 5-SINF (Botanika, Tarixdan hikoyalar, Oddiy kasrlar)
+    // 5-SINF (Botanika, Tarixdan hikoyalar, 5-sinf Ona tili 1-CHSB)
     // ------------------------------------------------------------
     5: [
       {
@@ -682,9 +682,9 @@
         subject: "Informatika"
       },
       {
-        q: "5. [Ona tili] Ot so'z turkumiga qaysi qo'shimcha ko'plik ma'nosini qo'shadi?",
-        options: ["-roq", "-lar", "-dek", "-cha"],
-        answer: 1,
+        q: "5. [Ona tili - 1-CHSB] Harflarning ma'lum bir tartibda joylashuvi nima deyiladi?",
+        options: ["alifbo", "alifbe", "imlo", "lug'at"],
+        answer: 0,
         subject: "Ona tili"
       },
       {
@@ -694,10 +694,10 @@
         subject: "Matematika"
       },
       {
-        q: "7. [Ingliz tili] Choose the correct pronoun: '___ am a student.'",
-        options: ["He", "I", "They", "She"],
-        answer: 1,
-        subject: "Ingliz tili"
+        q: "7. [Ona tili - 1-CHSB] 'Alifbo' so'zi qaysi harflar nomining qo'shilishidan hosil bo'lgan?",
+        options: ["alif va bo (be)", "alif va jim", "be va te", "alif va lom"],
+        answer: 0,
+        subject: "Ona tili"
       },
       {
         q: "8. [Geografiya] Sayyoramizdagi eng katta okean qaysi?",
@@ -832,22 +832,22 @@
         subject: "Informatika"
       },
       {
-        q: "8. [Ingliz tili] 'If it rains tomorrow, we ___ stay at home.'",
-        options: ["will", "would", "are", "was"],
+        q: "8. [Ingliz tili - Guess What! 7] What is the past tense of 'buy'?",
+        options: ["bought", "buyed", "buys", "buying"],
         answer: 0,
         subject: "Ingliz tili"
       },
       {
-        q: "9. [Ona tili] Qaysi qo'shimchalar egalik qo'shimchalari hisoblanadi?",
-        options: ["-im, -ing, -i", "-dan, -ga, -da", "-roq, -gina", "-lar"],
+        q: "9. [Ona tili - 1-chorak] Qaysi qatorda so'zlar imlo qoidasiga ko'ra to'g'ri yozilgan?",
+        options: ["video, kompyuter, intellekt, hisobchi", "vidiyo, kampyuter, intelekt, xisobchi", "video, kampyuter, intellekt, hisobchi", "video, kompyuter, intelekt, xaydovchi"],
         answer: 0,
         subject: "Ona tili"
       },
       {
-        q: "10. [Mantiq] 2 ning 5-darajasi (2⁵) nechaga teng?",
-        options: ["10", "25", "32", "64"],
-        answer: 2,
-        subject: "Mantiq"
+        q: "10. [Adabiyot - 1-chorak] Ernest Heminguey fikricha, badiiy asarning qaysi qismi muhimroq?",
+        options: ["Yozilmagan qismi (suv osti)", "Faqat sarlavhasi", "Yozilgan ochiq qismi", "Xotima qismi"],
+        answer: 0,
+        subject: "Adabiyot"
       }
     ],
 
@@ -898,9 +898,9 @@
         subject: "Tarix"
       },
       {
-        q: "8. [Ingliz tili] 'The novel was written ___ a famous Uzbek author.'",
-        options: ["with", "by", "from", "at"],
-        answer: 1,
+        q: "8. [Ingliz tili - Guess What! 8] What is the past participle of 'break'?",
+        options: ["broken", "breaked", "broke", "breaking"],
+        answer: 0,
         subject: "Ingliz tili"
       },
       {
@@ -1096,9 +1096,9 @@
         subject: "Tarix"
       },
       {
-        q: "8. [Ingliz tili] 'If I had studied harder, I ___ the university exam.'",
-        options: ["would pass", "would have passed", "will pass", "had passed"],
-        answer: 1,
+        q: "8. [Ingliz tili - Grade 11] If someone is feeling 'under the weather', what does it mean?",
+        options: ["They are feeling sick or unwell", "They are caught in a rainstorm", "They are extremely excited", "They are busy preparing for exams"],
+        answer: 0,
         subject: "Ingliz tili"
       },
       {
