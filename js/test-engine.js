@@ -1,8 +1,18 @@
-﻿/**
+/**
  * 30-maktabtest - Test Mexanizmi (Test Engine)
  * 1-11 sinflar, 60+ fanlar, 100 tagacha test savollari, taymer,
  * savollar navigatsiyasi va batafsil tahliliy natijalar.
  */
+
+// Savol matnidan oldingi ortiqcha raqamlarni (masalan "20. ", "4) ") tozalash funksiyasi
+window.cleanQuestionTitle = function (str) {
+  if (str === undefined || str === null) return '';
+  return String(str)
+    .replace(/^\s*\d+[\.\)]\s*(\[[^\]]+\]\s*)?/, '$1')
+    .replace(/^(\s*\[[^\]]+\]\s*)\d+[\.\)]\s*/, '$1')
+    .replace(/^\s*\d+[\.\)]\s*/, '')
+    .trim();
+};
 
 // Universal maktab savollari generatori (har qanday fan va sinf uchun)
 window.generateFallbackQuestions = function (grade, subject, count) {
@@ -49,7 +59,7 @@ window.generateFallbackQuestions = function (grade, subject, count) {
   for (var i = 0; i < count; i++) {
     var tmpl = templates[i % templates.length];
     list.push({
-      q: (i + 1) + ". " + tmpl.q,
+      q: tmpl.q,
       options: tmpl.options.slice(),
       answer: tmpl.answer,
       difficulty: diffLevels[i % 3],
@@ -149,7 +159,20 @@ class TestEngine {
     // Shunda to'g'ri javob doim faqat 'A' da emas, balki A, B, C, D bo'ylab teng taqsimlanadi!
     this.questions = this.questions.map(function (q) {
       var origOpts = q.options ? q.options.slice() : [];
-      if (origOpts.length <= 1) return q;
+      var cleanQ = (typeof window.cleanQuestionTitle === 'function')
+        ? window.cleanQuestionTitle(q.q || q.question)
+        : (q.q || q.question);
+
+      if (origOpts.length <= 1) {
+        return {
+          q: cleanQ,
+          question: cleanQ,
+          options: origOpts,
+          answer: q.answer || 0,
+          difficulty: q.difficulty,
+          explanation: q.explanation
+        };
+      }
       var correctText = origOpts[q.answer];
 
       var shuffledOpts = origOpts.slice();
@@ -162,7 +185,8 @@ class TestEngine {
 
       var newAns = shuffledOpts.indexOf(correctText);
       return {
-        q: q.q,
+        q: cleanQ,
+        question: cleanQ,
         options: shuffledOpts,
         answer: newAns >= 0 ? newAns : 0,
         difficulty: q.difficulty,
@@ -225,7 +249,10 @@ class TestEngine {
     // Savol matni
     var textEl = document.getElementById('question-text');
     if (textEl) {
-      textEl.textContent = q.q || q.question;
+      var displayQ = (typeof window.cleanQuestionTitle === 'function')
+        ? window.cleanQuestionTitle(q.q || q.question)
+        : (q.q || q.question);
+      textEl.textContent = displayQ;
       var speakBtn = document.getElementById('speak-question-btn');
       if (!speakBtn && textEl.parentNode) {
         var btn = document.createElement('button');
@@ -494,7 +521,9 @@ class TestEngine {
 
       details.push({
         num: i + 1,
-        question: q.q || q.question,
+        question: (typeof window.cleanQuestionTitle === 'function')
+          ? window.cleanQuestionTitle(q.q || q.question)
+          : (q.q || q.question),
         options: q.options || [],
         correctAnswer: q.answer,
         selectedAnswer: selected,

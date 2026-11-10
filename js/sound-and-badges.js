@@ -1240,7 +1240,10 @@
       if (qNumEl) qNumEl.textContent = (this.currentIndex + 1) + ' / 10';
       if (subjEl) subjEl.textContent = q.subject;
       if (gradeTagEl) gradeTagEl.textContent = this.selectedGrade + '-sinf Olimpiadasi';
-      if (textEl) textEl.textContent = q.q;
+      var displayQ = (typeof window.cleanQuestionTitle === 'function')
+        ? window.cleanQuestionTitle(q.q)
+        : q.q;
+      if (textEl) textEl.textContent = displayQ;
 
       var optionsBox = document.getElementById('olympiad-options-box');
       var letters = ['A', 'B', 'C', 'D'];

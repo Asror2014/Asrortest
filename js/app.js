@@ -1,4 +1,4 @@
-
+﻿
 /* ============================================================
    MULTI-LANGUAGE SUPPORT (O'ZBEK, RUSSIAN, ENGLISH)
    ============================================================ */
@@ -1165,8 +1165,9 @@ function printTeacherTestSheet() {
   var subset = questions.slice(0, count);
   var letters = ['A', 'B', 'C', 'D'];
   subset.forEach(function (q, i) {
+    var qTitle = (typeof window.cleanQuestionTitle === 'function') ? window.cleanQuestionTitle(q.q) : q.q;
     html += '<div class="q-item">' +
-      '<div><strong>' + (i + 1) + '. ' + q.q + '</strong></div>' +
+      '<div><strong>' + (i + 1) + '. ' + qTitle + '</strong></div>' +
       '<div class="options">';
     q.options.forEach(function (opt, oIdx) {
       html += '<div>' + letters[oIdx] + ') ' + opt + '</div>';
