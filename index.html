@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
@@ -603,7 +603,7 @@
                     <i class="fas fa-award"></i> <span id="results-xp-earned">+0</span> BALL (XP) QO'SHILDI!
                 </div>
                 <div style="font-size: 0.95rem; margin-top: 0.4rem; color: #cbd5e1;">
-                    Sizning yangi ballingiz: <strong id="results-xp-total" style="color:#38bdf8;">0 ball</strong> • Reytingdagi o'rningiz: <strong id="results-xp-rank" style="color:#34d399;">#0</strong>
+                    Sizning yangi ballingiz: <strong id="results-xp-total" style="color:#38bdf8;">0 ball</strong> ï¿½ Reytingdagi o'rningiz: <strong id="results-xp-rank" style="color:#34d399;">#0</strong>
                 </div>
             </div>
 
@@ -799,6 +799,21 @@
                         <button class="btn btn-primary" onclick="navigateTo('page-computer-lab')"><i class="fas fa-arrow-right"></i> Laboratoriyaga kirish</button>
                     </div>
                 </div>
+                <!-- 9. Mexanika va Mashinasozlik -->
+                <div class="lab-card lab-card-mechanics" onclick="navigateTo('page-mechanics-lab')">
+                    <div class="lab-card-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="lab-card-content">
+                        <h2>3D Mexanika va Mashinasozlik</h2>
+                        <p>4 taktli dvigatel, tishli uzatmalar, qanot aerodinamikasi va avtomobil podveskasi</p>
+                        <ul class="lab-card-features">
+                            <li><i class="fas fa-check"></i> 4 Taktli ichki yonuv dvigateli (Portlash, porshen, klapanlar)</li>
+                            <li><i class="fas fa-check"></i> Tishli uzatmalar va reduktor (Uzatish nisbati i=2.0)</li>
+                            <li><i class="fas fa-check"></i> Samolyot qanoti aerodinamikasi (Bernulli va ko'tarish kuchi)</li>
+                            <li><i class="fas fa-check"></i> Avtomobil podveskasi va amortizator tebranishlari</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="navigateTo('page-mechanics-lab')"><i class="fas fa-arrow-right"></i> Laboratoriyaga kirish</button>
+                    </div>
+                </div>
                 <!-- 6. Texnologiya va Robototexnika -->
                 <div class="lab-card lab-card-technology" onclick="navigateTo('page-technology-lab')">
                     <div class="lab-card-icon"><i class="fas fa-robot"></i></div>
@@ -910,7 +925,7 @@
 
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-atom"></i> Nima sodir bo'lmoqda?</div>
-                        <p class="section-desc" id="chem-info-desc">Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cu²?) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va gaz pufakchalari ajraladi.</p>
+                        <p class="section-desc" id="chem-info-desc">Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cuï¿½?) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va gaz pufakchalari ajraladi.</p>
                     </div>
 
                     <div class="lab-info-section">
@@ -1027,12 +1042,12 @@
 
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-atom"></i> Nima sodir bo'lmoqda?</div>
-                        <p class="section-desc" id="phys-info-desc">Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/s²) bilan yerga tushadi.</p>
+                        <p class="section-desc" id="phys-info-desc">Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/sï¿½) bilan yerga tushadi.</p>
                     </div>
 
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-square-root-variable"></i> Formula va qonuniyat</div>
-                        <div class="formula-box" id="phys-info-formula">h = ½gt² | v = gt | g ˜ 9.8 m/s²</div>
+                        <div class="formula-box" id="phys-info-formula">h = ï¿½gtï¿½ | v = gt | g ï¿½ 9.8 m/sï¿½</div>
                     </div>
 
                     <!-- Tajriba Parametrlari (Slayderlar o'ng panelda) -->
@@ -1205,7 +1220,7 @@
 
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-square-root-variable"></i> Qonuniyat</div>
-                        <div class="formula-box" id="astr-info-formula">T² / R³ = const (Keplerning 3-qonuni)</div>
+                        <div class="formula-box" id="astr-info-formula">Tï¿½ / Rï¿½ = const (Keplerning 3-qonuni)</div>
                     </div>
 
                     <!-- Parametrlar (Slayder o'ng panelda) -->
@@ -1431,35 +1446,35 @@
                         <span class="experiment-icon"><i class="fas fa-cube" style="color:#6366f1;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Kub / Parallelepiped</span>
-                            <span class="experiment-tag">V = a·b·c</span>
+                            <span class="experiment-tag">V = aï¿½bï¿½c</span>
                         </div>
                     </li>
                     <li class="experiment-item" data-experiment="pyramid" onclick="selectGeometryExperiment('pyramid')">
                         <span class="experiment-icon"><i class="fas fa-mountain" style="color:#f59e0b;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Muntazam Piramida</span>
-                            <span class="experiment-tag">V = ?·S·h</span>
+                            <span class="experiment-tag">V = ?ï¿½Sï¿½h</span>
                         </div>
                     </li>
                     <li class="experiment-item" data-experiment="cylinder" onclick="selectGeometryExperiment('cylinder')">
                         <span class="experiment-icon"><i class="fas fa-database" style="color:#06b6d4;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Silindr</span>
-                            <span class="experiment-tag">V = p·R²·H</span>
+                            <span class="experiment-tag">V = pï¿½Rï¿½ï¿½H</span>
                         </div>
                     </li>
                     <li class="experiment-item" data-experiment="cone" onclick="selectGeometryExperiment('cone')">
                         <span class="experiment-icon"><i class="fas fa-ice-cream" style="color:#ec4899;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Konus</span>
-                            <span class="experiment-tag">V = ?·pR²H</span>
+                            <span class="experiment-tag">V = ?ï¿½pRï¿½H</span>
                         </div>
                     </li>
                     <li class="experiment-item" data-experiment="sphere" onclick="selectGeometryExperiment('sphere')">
                         <span class="experiment-icon"><i class="fas fa-circle" style="color:#10b981;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Shar va Sfera</span>
-                            <span class="experiment-tag">V = 4/3·pR³</span>
+                            <span class="experiment-tag">V = 4/3ï¿½pRï¿½</span>
                         </div>
                     </li>
                 </ul>
@@ -1512,12 +1527,12 @@
 
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-atom"></i> Nima sodir bo'lmoqda?</div>
-                        <p class="section-desc" id="geom-info-desc">Kub — barcha 6 ta yog'i teng kvadratlardan iborat to'g'ri ko'pyoq. Uning 8 ta uchi, 12 ta qirrasi va 6 ta yog'i mavjud. O'lchamlar o'zgarganda hajm kub darajada, sirt yuzi kvadrat darajada kengayadi.</p>
+                        <p class="section-desc" id="geom-info-desc">Kub ï¿½ barcha 6 ta yog'i teng kvadratlardan iborat to'g'ri ko'pyoq. Uning 8 ta uchi, 12 ta qirrasi va 6 ta yog'i mavjud. O'lchamlar o'zgarganda hajm kub darajada, sirt yuzi kvadrat darajada kengayadi.</p>
                     </div>
 
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-square-root-variable"></i> Stereometriya formulasi</div>
-                        <div class="formula-box" id="geom-info-formula">V = a³ | S = 6a² | d = av3</div>
+                        <div class="formula-box" id="geom-info-formula">V = aï¿½ | S = 6aï¿½ | d = av3</div>
                     </div>
 
                     <!-- Shakl parametrlari (Slayderlar o'ng panelda) -->
@@ -1596,7 +1611,7 @@
 
                     <div class="lab-info-section fact-section">
                         <div class="section-title"><i class="fas fa-lightbulb"></i> Qiziqarli ilmiy fakt</div>
-                        <p class="fact-text" id="geom-info-fact">Kub — tabiatda eng barqaror shakllardan biridir. Osh tuzi (NaCl) kristallari ham aynan qat'iy kub shaklida o'sadi.</p>
+                        <p class="fact-text" id="geom-info-fact">Kub ï¿½ tabiatda eng barqaror shakllardan biridir. Osh tuzi (NaCl) kristallari ham aynan qat'iy kub shaklida o'sadi.</p>
                     </div>
                 </div>
             </aside>
@@ -1715,23 +1730,23 @@
                             <div style="margin-bottom:0.5rem;">
                                 <label style="display:flex; justify-content:space-between; font-size:0.8rem; color:#cbd5e1;">
                                     <span>Baza burilishi</span>
-                                    <span id="val-base-angle">0°</span>
+                                    <span id="val-base-angle">0ï¿½</span>
                                 </label>
-                                <input type="range" class="form-range" min="-180" max="180" value="0" style="width:100%;" oninput="document.getElementById('val-base-angle').textContent = this.value + '°'; setRobotArmAngle('robotBaseAngle', this.value)">
+                                <input type="range" class="form-range" min="-180" max="180" value="0" style="width:100%;" oninput="document.getElementById('val-base-angle').textContent = this.value + 'ï¿½'; setRobotArmAngle('robotBaseAngle', this.value)">
                             </div>
                             <div style="margin-bottom:0.5rem;">
                                 <label style="display:flex; justify-content:space-between; font-size:0.8rem; color:#cbd5e1;">
                                     <span>Yelka burchagi</span>
-                                    <span id="val-arm-angle">25°</span>
+                                    <span id="val-arm-angle">25ï¿½</span>
                                 </label>
-                                <input type="range" class="form-range" min="-45" max="75" value="25" style="width:100%;" oninput="document.getElementById('val-arm-angle').textContent = this.value + '°'; setRobotArmAngle('robotArmAngle', this.value)">
+                                <input type="range" class="form-range" min="-45" max="75" value="25" style="width:100%;" oninput="document.getElementById('val-arm-angle').textContent = this.value + 'ï¿½'; setRobotArmAngle('robotArmAngle', this.value)">
                             </div>
                             <div style="margin-bottom:0.5rem;">
                                 <label style="display:flex; justify-content:space-between; font-size:0.8rem; color:#cbd5e1;">
                                     <span>Bilak burchagi</span>
-                                    <span id="val-forearm-angle">45°</span>
+                                    <span id="val-forearm-angle">45ï¿½</span>
                                 </label>
-                                <input type="range" class="form-range" min="-60" max="90" value="45" style="width:100%;" oninput="document.getElementById('val-forearm-angle').textContent = this.value + '°'; setRobotArmAngle('robotForearmAngle', this.value)">
+                                <input type="range" class="form-range" min="-60" max="90" value="45" style="width:100%;" oninput="document.getElementById('val-forearm-angle').textContent = this.value + 'ï¿½'; setRobotArmAngle('robotForearmAngle', this.value)">
                             </div>
                         </div>
 
@@ -1752,7 +1767,7 @@
                     <div class="lab-info-section">
                         <div class="section-title"><i class="fas fa-list-check"></i> Muhim ilmiy tushunchalar</div>
                         <ul class="points-list" id="tech-info-points">
-                            <li><i class="fas fa-check-circle"></i> Baza aylanish burchagi (-180° dan +180° gacha)</li>
+                            <li><i class="fas fa-check-circle"></i> Baza aylanish burchagi (-180ï¿½ dan +180ï¿½ gacha)</li>
                             <li><i class="fas fa-check-circle"></i> Yelka va bilak bo'g'imlarining fazoviy koordinatasi</li>
                             <li><i class="fas fa-check-circle"></i> Pnevmatik/mexanik qisqich orqali yukni ushlash</li>
                         </ul>
@@ -2236,6 +2251,171 @@
          FOOTER
          ============================================================ -->
         <!-- ============================================================
+    <!-- ============================================================
+         9-SAHIFA: 3D MEXANIKA VA MASHINASOZLIK LABORATORIYASI
+         ============================================================ -->
+    <section id="page-mechanics-lab" class="page-section" style="display:none;">
+        <div class="lab-layout">
+            <aside class="lab-sidebar" id="mechanics-sidebar">
+                <div class="lab-sidebar-header">
+                    <h3><i class="fas fa-cogs"></i> 3D Mexanika / Muhandislik</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="navigateTo('page-lab-select')">
+                        <i class="fas fa-arrow-left"></i> Orqaga
+                    </button>
+                </div>
+                <ul class="experiment-list" id="mechanics-experiment-list">
+                    <li class="experiment-item active" data-experiment="car-engine" onclick="selectMechanicsExperiment('car-engine')">
+                        <span class="experiment-icon"><i class="fas fa-car" style="color:#f59e0b;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">4 Taktli Dvigatel</span>
+                            <span class="experiment-tag">Porshen, Shamcha, Tirsakli val</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="gearbox-transmission" onclick="selectMechanicsExperiment('gearbox-transmission')">
+                        <span class="experiment-icon"><i class="fas fa-cog" style="color:#38bdf8;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Tishli Uzatmalar (Reduktor)</span>
+                            <span class="experiment-tag">Uzatish nisbati i=2.0, Moment</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="aerodynamics-wing" onclick="selectMechanicsExperiment('aerodynamics-wing')">
+                        <span class="experiment-icon"><i class="fas fa-plane" style="color:#10b981;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Samolyot Qanoti Aerodinamikasi</span>
+                            <span class="experiment-tag">Bernulli qonuni, Ko'tarish kuchi</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="suspension-differential" onclick="selectMechanicsExperiment('suspension-differential')">
+                        <span class="experiment-icon"><i class="fas fa-compress-arrows-alt" style="color:#a855f7;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Podveska va Amortizator</span>
+                            <span class="experiment-tag">Prujina, Damping, Tebranish</span>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="lab-main">
+                <div class="lab-canvas-container" id="mechanics-canvas-container">
+                    <button class="lab-info-toggle-btn active" id="mechanics-info-toggle-btn" onclick="toggleLabInfoPanel('mechanics')">
+                        <i class="fas fa-info-circle"></i> <span>Tushuntirish</span>
+                    </button>
+                    <!-- Floating 3D HUD card -->
+                    <div id="mech-part-hud" class="pc-part-hud-card">
+                        <div class="hud-badge"><i class="fas fa-cogs"></i> <span id="mech-hud-title">3D Mexanizm Qismlari</span></div>
+                        <div id="mech-hud-desc">Mexanizm detallari ustiga bosing yoki parametrlarni boshqaring!</div>
+                    </div>
+                    <div class="lab-canvas-overlay" id="mechanics-canvas-overlay">
+                        <div class="lab-loading">
+                            <div class="lab-loading-spinner"></div>
+                            <p>Mexanika laboratoriyasi yuklanmoqda...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lab-bottom-panel" id="mechanics-bottom-panel">
+                    <div class="lab-controls" id="mechanics-controls">
+                        <button class="btn btn-success" id="mech-start-btn" onclick="startMechanicsExperiment()" disabled>
+                            <i class="fas fa-play"></i> Boshlash
+                        </button>
+                        <button class="btn btn-warning" id="mech-pause-btn" onclick="pauseMechanicsExperiment()">
+                            <i class="fas fa-pause"></i> To'xtatish
+                        </button>
+                        <button class="btn btn-outline" id="mech-reset-btn" onclick="resetMechanicsExperiment()">
+                            <i class="fas fa-redo"></i> Qayta yuklash
+                        </button>
+                        <button class="btn btn-primary" id="mech-action-btn" onclick="if(window.mechanicsLabInstance) mechanicsLabInstance.triggerQuickAction()">
+                            <i class="fas fa-tachometer-alt"></i> Gaz berish (RPM)
+                        </button>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="lab-info-panel" id="mechanics-info-panel">
+                <div class="lab-info-header">
+                    <div class="lab-info-title-wrap">
+                        <span class="info-status-badge running" id="mech-status-badge"></span>
+                        <h4 id="mech-info-title">4 Taktli Dvigatel</h4>
+                    </div>
+                    <button class="lab-info-collapse-btn" onclick="toggleLabInfoPanel('mechanics')" title="Panelni yopish">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="lab-info-body">
+                    <div class="lab-info-status" id="mech-status-text">
+                        <strong>Faol ishlamoqda</strong>
+                    </div>
+
+                    <!-- Parametrlarni sozlash (Slayderlar va boshqaruv) -->
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-sliders-h"></i> Parametrlarni sozlash</div>
+                        <!-- 1. Car Engine -->
+                        <div class="info-sliders" id="mech-sliders-car-engine">
+                            <div class="info-slider-group">
+                                <label><span>Dvigatel aylanishi (RPM):</span> <strong id="slider-mech-rpm-val">1200 RPM</strong></label>
+                                <input type="range" class="lab-slider" id="slider-mech-rpm" min="400" max="4500" step="100" value="1200"
+                                       oninput="if(window.mechanicsLabInstance) { mechanicsLabInstance.setEngineRPM(this.value); document.getElementById('slider-mech-rpm-val').textContent = this.value+' RPM'; }">
+                            </div>
+                        </div>
+                        <!-- 2. Gearbox -->
+                        <div class="info-sliders" id="mech-sliders-gearbox-transmission" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>Yetaklovchi val tezligi:</span> <strong id="slider-mech-gear-speed-val">1.0x</strong></label>
+                                <input type="range" class="lab-slider" id="slider-mech-gear-speed" min="0.2" max="3" step="0.1" value="1.0"
+                                       oninput="if(window.mechanicsLabInstance) { mechanicsLabInstance.setGearSpeed(this.value); document.getElementById('slider-mech-gear-speed-val').textContent = this.value+'x'; }">
+                            </div>
+                        </div>
+                        <!-- 3. Aerodynamics -->
+                        <div class="info-sliders" id="mech-sliders-aerodynamics-wing" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>Hujum burchagi (AoA):</span> <strong id="slider-mech-aoa-val">8Ã‚Â°</strong></label>
+                                <input type="range" class="lab-slider" id="slider-mech-aoa" min="-5" max="25" step="1" value="8"
+                                       oninput="if(window.mechanicsLabInstance) { mechanicsLabInstance.setAngleAttack(this.value); document.getElementById('slider-mech-aoa-val').textContent = this.value+'Ã‚Â°'; }">
+                            </div>
+                        </div>
+                        <!-- 4. Suspension -->
+                        <div class="info-sliders" id="mech-sliders-suspension-differential" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>Yo'l notekisligi chastotasi:</span> <strong id="slider-mech-road-freq-val">1.2 Hz</strong></label>
+                                <input type="range" class="lab-slider" id="slider-mech-road-freq" min="0.4" max="3.5" step="0.1" value="1.2"
+                                       oninput="if(window.mechanicsLabInstance) { mechanicsLabInstance.setRoadFrequency(this.value); document.getElementById('slider-mech-road-freq-val').textContent = this.value+' Hz'; }">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formula va ilmiy qonun -->
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-square-root-alt"></i> Fizik formula va qonun</div>
+                        <div class="formula-box" id="mech-info-formula">4 Takt: Kiritish -> Siqish -> Ishchi yo'l -> Chiqarish</div>
+                    </div>
+
+                    <!-- Ilmiy tushuntirish -->
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-book-open"></i> Ilmiy jarayon tushuntirishi</div>
+                        <p class="section-desc" id="mech-info-desc">Avtomobil dvigatelining silindr ichida porshenning ilgarilama-qaytma harakatini tirsakli val orqali aylanma harakatga aylantirish jarayoni.</p>
+                    </div>
+
+                    <!-- Asosiy tushunchalar -->
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-list-check"></i> Muhim ilmiy parametrlar</div>
+                        <ul class="points-list" id="mech-info-points">
+                            <li><i class="fas fa-check-circle"></i> 1. Kiritish: Yonilg'i-havo aralashmasi so'riladi</li>
+                            <li><i class="fas fa-check-circle"></i> 2. Siqish: Porshen aralashmani siqadi</li>
+                            <li><i class="fas fa-check-circle"></i> 3. Ishchi yo'l: Shamcha uchqun beradi, gaz portlaydi</li>
+                            <li><i class="fas fa-check-circle"></i> 4. Chiqarish: Tutun chiqarib yuboriladi</li>
+                        </ul>
+                    </div>
+
+                    <!-- Qiziqarli fakt -->
+                    <div class="lab-info-section fact-section">
+                        <div class="section-title"><i class="fas fa-lightbulb"></i> Qiziqarli muhandislik fakti</div>
+                        <div class="fact-box" id="mech-info-fact">Avtomobil 100 km/soat tezlikda harakatlanayotganda sekundiga 50 marta to'liq 4 taktli portlash sikli sodir bo'ladi!</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+    <!-- ============================================================
          10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
          ============================================================ -->
     <section id="page-teacher" class="page-section" style="display:none;">
@@ -2533,7 +2713,7 @@
                 <!-- 1-11 Sinf Tanlash Bloki -->
                 <div class="olympiad-grade-selector-box">
                     <div class="ol-grade-sel-header">
-                        <div><i class="fas fa-graduation-cap" style="color:#ec4899;"></i> <strong>Sinfingizni tanlang (1–11 sinflar):</strong></div>
+                        <div><i class="fas fa-graduation-cap" style="color:#ec4899;"></i> <strong>Sinfingizni tanlang (1ï¿½11 sinflar):</strong></div>
                         <span class="ol-grade-hint">1-sinf alohida (boshlang'ich), 2, 3, ..., 11-sinflarning har biriga o'z darajasiga mos 10 ta intellektual savol beriladi</span>
                     </div>
                     <div class="ol-grade-pills-row" id="olympiad-grade-pills">
@@ -2956,7 +3136,7 @@
                             <label>
                                 <i class="fas fa-calendar-check"></i> O'quv yili
                             </label>
-                            <input type="text" class="onboarding-input" value="2026–2027 o'quv yili" readonly style="opacity:0.75; cursor:not-allowed;">
+                            <input type="text" class="onboarding-input" value="2026ï¿½2027 o'quv yili" readonly style="opacity:0.75; cursor:not-allowed;">
                         </div>
                     </div>
 
@@ -3122,7 +3302,7 @@
                     <div class="lb-my-label">Sizning o'rningiz</div>
                     <div class="lb-my-name" id="lb-my-name">O'quvchi</div>
                     <div class="lb-my-meta">
-                        <span id="lb-my-class">6-sinf</span> • 
+                        <span id="lb-my-class">6-sinf</span> ï¿½ 
                         <span id="lb-my-score"><i class="fas fa-trophy" style="color:#fbbf24;"></i> 450 ball</span>
                     </div>
                 </div>
@@ -3416,6 +3596,7 @@
     <script src="js/lab-technology.js"></script>
     <script src="js/lab-geography.js"></script>
     <script src="js/lab-computer.js"></script>
+    <script src="js/lab-mechanics.js"></script>
     <script src="js/lab-explanations.js"></script>
     <script src="js/sound-and-badges.js"></script>
 

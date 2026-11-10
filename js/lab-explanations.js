@@ -1,4 +1,4 @@
-/**
+Ôªø/**
  * 30-maktabtest - 3D Laboratoriya Jonli Tushuntirish va Ilmiy Tahlil Tizimi
  * Har bir laboratoriya (Kimyo, Fizika, Astronomiya, Biologiya, Geometriya)
  * uchun o'ng tomondagi maxsus interaktiv tushuntirish paneli
@@ -12,7 +12,7 @@ window.LAB_EXPLANATIONS = {
     'copper-acid': {
       title: "Mis va sulfat kislota reaksiyasi",
       formula: "Cu + 2H2SO4(kons.) ?? CuSO4 + SO2? + 2H2O",
-      desc: "Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cu≤?) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va vodorod/oltingugurt gazi shiddat bilan pufakchalar hosil qilib ajraladi.",
+      desc: "Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (CuÔøΩ?) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va vodorod/oltingugurt gazi shiddat bilan pufakchalar hosil qilib ajraladi.",
       activeDesc: "?? REAKSIYA KETMOQDA: Mis parchasi kislotada erimoqda, eritma quyuq ko'k rangga o'tmoqda va shiddatli gaz pufakchalari yuqoriga ko'tarilmoqda!",
       points: [
         "Idish tubidagi mis bo'lagining erishi",
@@ -55,7 +55,7 @@ window.LAB_EXPLANATIONS = {
         "pH shkalasi bo'yicha muhitning aniqlanishi",
         "Neytrallashganda rangning qayta o'zgarishi"
       ],
-      fact: "Inson qonining pH darajasi juda qat'iy (7.35ñ7.45) bo'lib, uning ozgina o'zgarishi ham organizm uchun jiddiy xavf tug'diradi."
+      fact: "Inson qonining pH darajasi juda qat'iy (7.35ÔøΩ7.45) bo'lib, uning ozgina o'zgarishi ham organizm uchun jiddiy xavf tug'diradi."
     },
     'crystal': {
       title: "To'yingan eritmada kristallanish jarayoni",
@@ -77,8 +77,8 @@ window.LAB_EXPLANATIONS = {
   physics: {
     'free-fall': {
       title: "Jismning erkin tushishi (Gravitatsiya)",
-      formula: "h = Ωgt≤ | v = gt | g ò 9.8 m/s≤",
-      desc: "Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/s≤) bilan yerga tushadi.",
+      formula: "h = ÔøΩgtÔøΩ | v = gt | g ÔøΩ 9.8 m/sÔøΩ",
+      desc: "Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/sÔøΩ) bilan yerga tushadi.",
       activeDesc: "?? TUSHISH JARAYONI: Jism pastga tezlanuvchan harakat qilmoqda. Har bir millisekundda uning kinetik energiyasi ortib, potensial energiyasi kamaymoqda!",
       points: [
         "Tushish vaqtining balandlik kvadrat ildiziga proporsionalligi",
@@ -89,7 +89,7 @@ window.LAB_EXPLANATIONS = {
     },
     'spring': {
       title: "Prujinali tebranishlar (Guk qonuni)",
-      formula: "F = -k∑x | T = 2pv(m / k)",
+      formula: "F = -kÔøΩx | T = 2pv(m / k)",
       desc: "Elastiklik kuchi ta'sirida yuz beradigan garmonik tebranishlar. Prujina qancha qattiq (k) bo'lsa, tebranishlar shuncha tezlashadi. Massa (m) ortsa, davr (T) uzayadi.",
       activeDesc: "?? TEBRANISH KETMOQDA: Prujina cho'zilib-qisqarmoqda. Potensial va kinetik energiya bir-biriga doimiy aylanmoqda.",
       points: [
@@ -113,7 +113,7 @@ window.LAB_EXPLANATIONS = {
     },
     'archimedes': {
       title: "Suyuqlikdagi itaruvchi kuch (Arximed qonuni)",
-      formula: "F_A = ?_suyuqlik ∑ g ∑ V_botgan",
+      formula: "F_A = ?_suyuqlik ÔøΩ g ÔøΩ V_botgan",
       desc: "Suyuqlikka botirilgan jismga uning siqib chiqargan suyuqligi og'irligiga teng bo'lgan yuqoriga yo'nalgan itaruvchi kuch ta'sir qiladi. Agar jism zichligi suyuqlikdan kichik bo'lsa, u suzadi.",
       activeDesc: "?? ITARUVCHI KUCH TA'SIRI: Suyuqlik idishga botirilayotgan jismni yuqoriga itarmoqda. Siqib chiqarilgan suv hajmi o'lchanmoqda.",
       points: [
@@ -125,7 +125,7 @@ window.LAB_EXPLANATIONS = {
     },
     'optics': {
       title: "Yorug'lik nurlarining sinishi (Snellius qonuni)",
-      formula: "n1 ∑ sin(a) = n2 ∑ sin(ﬂ)",
+      formula: "n1 ÔøΩ sin(a) = n2 ÔøΩ sin(ÔøΩ)",
       desc: "Yorug'lik nuri bir muhitdan (havodan) ikkinchi zichroq muhitga (suv yoki shishaga) o'tganda tarqalish tezligi o'zgaradi va nur o'z yo'nalishini sindiradi.",
       activeDesc: "?? NUR TARQALMOQDA: Tushish burchagi va sinish burchagi o'rtasidagi optik qonuniyat ko'rinmoqda.",
       points: [
@@ -137,7 +137,7 @@ window.LAB_EXPLANATIONS = {
     },
     'ohm': {
       title: "Zanjir qismi uchun Om qonuni",
-      formula: "I = U / R | Quvvat: P = U ∑ I",
+      formula: "I = U / R | Quvvat: P = U ÔøΩ I",
       desc: "Elektr zanjiridagi tok kuchi (I) kuchlanishga (U) to'g'ri proporsional va o'tkazgich qarshiligiga (R) teskari proporsionaldir. Qarshilik ortsa, tok kamayadi.",
       activeDesc: "?? TOK OQMOQDA: Elektronlar yo'naltirilgan harakati ampermetr va voltmetr ko'rsatkichlarida aks etmoqda.",
       points: [
@@ -155,7 +155,7 @@ window.LAB_EXPLANATIONS = {
   astronomy: {
     'solar-system': {
       title: "Quyosh va 8 ta asosiy sayyora",
-      formula: "T≤ / R≥ = const (Keplerning 3-qonuni)",
+      formula: "TÔøΩ / RÔøΩ = const (Keplerning 3-qonuni)",
       desc: "Quyosh atrofida Merkuriy, Venera, Yer, Mars, Yupiter, Saturn, Uran va Neptun aylanadi. Quyoshga eng yaqin Merkuriy bor-yo'g'i 88 kunda aylanib chiqsa, eng uzoqdagi Neptunga 165 yil kerak bo'ladi.",
       activeDesc: "?? SAYYORALAR HARAKATDA: Sayyoralar real nisbatdagi burchak tezliklari bilan orbitalari bo'ylab aylanmoqda.",
       points: [
@@ -179,7 +179,7 @@ window.LAB_EXPLANATIONS = {
     },
     'planetary-orbit': {
       title: "Keplerning 1-qonuni: Elliptik harakat",
-      formula: "r = p / (1 + e∑cos ?)",
+      formula: "r = p / (1 + eÔøΩcos ?)",
       desc: "Barcha sayyoralar Quyosh atrofida aylanma emas, balki ellips shaklidagi orbitalar bo'ylab harakatlanadi. Quyosh bu ellipsning fokuslaridan birida joylashgan.",
       activeDesc: "?? ELLIPTIK TEZLIK: Sayyora Quyoshga yaqinlashganda (perigeliy) tezlashadi, uzoqlashganda (afeliy) sekinlashadi.",
       points: [
@@ -191,7 +191,7 @@ window.LAB_EXPLANATIONS = {
     },
     'sun-earth': {
       title: "Yer o'qining og'ish burchagi va fasllar",
-      formula: "Yer o'qi og'ishi = 23.5∞ | Yil davri = 365.25 kun",
+      formula: "Yer o'qi og'ishi = 23.5ÔøΩ | Yil davri = 365.25 kun",
       desc: "Yer o'qining 23.5 gradusga og'ganligi tufayli yil davomida Quyosh nurlari Yer sirtiga turli burchak ostida tushadi. Shu sababli sayyoramizda Bahor, Yoz, Kuz va Qish fasllari almashadi.",
       activeDesc: "?? SUTKALIK VA YILLIK AYLANISH: Yer o'z o'qi atrofida (kun/tun) va Quyosh atrofida (fasllar) aylanmoqda.",
       points: [
@@ -245,7 +245,7 @@ window.LAB_EXPLANATIONS = {
       fact: "Bitta inson hujayrasidagi DNK yozib yoyilsa, uzunligi qariyb 2 metrni tashkil qiladi!"
     },
     'cell': {
-      title: "Tiriklikning asosiy birligi ó Hujayra",
+      title: "Tiriklikning asosiy birligi ÔøΩ Hujayra",
       formula: "Tarkibi: Yadro + Sitoplazma + Membrana + Organoidlar",
       desc: "Hujayra barcha tirik organizmlarning tuzilish birligidir. Yadroda irsiy axborot saqlanadi, mitoxondriyalar energiya (ATF) ishlab chiqaradi, ribosomalar oqsil sintezlaydi.",
       activeDesc: "?? HUJAYRA ORGANOIDLARI: Membrana ichida sitoplazma va asosiy organoidlarning harakati va vazifalari.",
@@ -288,57 +288,57 @@ window.LAB_EXPLANATIONS = {
   geometry: {
     'cube': {
       title: "To'g'ri burchakli Parallelepiped va Kub",
-      formula: "Hajm: V = a ∑ b ∑ c | To'la sirt: S = 2(ab + bc + ac)",
-      desc: "Fazoviy 3D jism. Barcha yoqlari to'g'ri to'rtburchaklardan iborat. 8 ta uchi, 12 ta qirrasi va 6 ta yog'i bor. Barcha qirralari teng bo'lsa (a=b=c), kub hosil bo'ladi (V = a≥).",
+      formula: "Hajm: V = a ÔøΩ b ÔøΩ c | To'la sirt: S = 2(ab + bc + ac)",
+      desc: "Fazoviy 3D jism. Barcha yoqlari to'g'ri to'rtburchaklardan iborat. 8 ta uchi, 12 ta qirrasi va 6 ta yog'i bor. Barcha qirralari teng bo'lsa (a=b=c), kub hosil bo'ladi (V = aÔøΩ).",
       activeDesc: "?? O'LCHAMLAR O'ZGARMOQDA: Slayderlar yordamida uzunlik, kenglik va balandlik o'zgarganda hajm va sirt real vaqtda qayta hisoblanmoqda!",
       points: [
         "Qirralar nisbatining hajmga ta'siri",
-        "Fazoviy diagonal: d = v(a≤ + b≤ + c≤)",
+        "Fazoviy diagonal: d = v(aÔøΩ + bÔøΩ + cÔøΩ)",
         "Yoqlar yuzasining hisoblanishi"
       ],
       fact: "Kub tabiatdagi eng mustahkam simmetrik shakllardan biri bo'lib, osh tuzi (NaCl) kristallari kubik shaklida o'sadi."
     },
     'pyramid': {
       title: "Muntazam to'rtburchakli piramida",
-      formula: "Hajm: V = ? ∑ S_asos ∑ h | S_asos = a≤",
+      formula: "Hajm: V = ? ÔøΩ S_asos ÔøΩ h | S_asos = aÔøΩ",
       desc: "Asosi kvadrat bo'lib, yon yoqlari umumiy uchga ega bo'lgan 4 ta teng yonli uchburchakdan iborat ko'pyoq. Piramida hajmi xuddi shunday asos va balandlikka ega prizma hajmining roppa-rosa uchdan bir qismiga tengdir.",
       activeDesc: "?? PIRAMIDA PARAMETRLARI: Balandlik (h) va asos tomoni (a) o'zgarishi piramidaning qiyaligi va fazoviy hajmiga ta'sir qilmoqda.",
       points: [
         "Uchidan asos markaziga tushirilgan balandlik (h)",
-        "Yon yoq balandligi ó apofema (l)",
-        "Yon sirt yuzasi: S_yon = Ω ∑ P_asos ∑ l"
+        "Yon yoq balandligi ÔøΩ apofema (l)",
+        "Yon sirt yuzasi: S_yon = ÔøΩ ÔøΩ P_asos ÔøΩ l"
       ],
       fact: "Qadimgi Misrdagi Xeops piramidasi deyarli 4000 yil davomida insoniyat tomonidan qurilgan Yer yuzidagi eng baland inshoot bo'lib turgan."
     },
     'cylinder': {
-      title: "Aylanma jism ó Silindr",
-      formula: "Hajm: V = p ∑ R≤ ∑ H | Yon sirt: S_yon = 2p∑R∑H",
+      title: "Aylanma jism ÔøΩ Silindr",
+      formula: "Hajm: V = p ÔøΩ RÔøΩ ÔøΩ H | Yon sirt: S_yon = 2pÔøΩRÔøΩH",
       desc: "To'g'ri to'rtburchakning bir tomoni atrofida aylanishidan hosil bo'lgan jism. Ikkita parallel doiraviy asos va yon sirtdan iborat.",
       activeDesc: "?? SILINDR VA RADIUS: Radius (R) yoki balandlik (H) o'zgarganda silindr sig'imi (hajmi) keskin ortadi.",
       points: [
-        "Radius 2 barobar ortsa, hajm 4 barobar kattalashadi (R≤ bog'liqlik)",
+        "Radius 2 barobar ortsa, hajm 4 barobar kattalashadi (RÔøΩ bog'liqlik)",
         "Yon sirtining yoyilmasi to'g'ri to'rtburchakdan iborat",
         "To'la sirt: S_to'la = 2pR(R + H)"
       ],
       fact: "Trubalar, bochkalar, idishlar va quvurlar nega silindr shaklida yasaladi? Chunki silindr eng kam material sarflab, eng katta hajmni sig'diradi."
     },
     'cone': {
-      title: "Aylanma jism ó Konus",
-      formula: "Hajm: V = ? ∑ p ∑ R≤ ∑ H | Yon sirt: S_yon = p ∑ R ∑ L",
+      title: "Aylanma jism ÔøΩ Konus",
+      formula: "Hajm: V = ? ÔøΩ p ÔøΩ RÔøΩ ÔøΩ H | Yon sirt: S_yon = p ÔøΩ R ÔøΩ L",
       desc: "To'g'ri burchakli uchburchakning katetlaridan biri atrofida aylanishidan hosil bo'ladi. Asosi doira bo'lib, uchi konus tepasida joylashgan.",
-      activeDesc: "?? KONUS STEREOMETRIYASI: Yasovchi (L), balandlik (H) va radius (R) o'zaro Pifagor teoremasi orqali bog'langan (L≤ = R≤ + H≤).",
+      activeDesc: "?? KONUS STEREOMETRIYASI: Yasovchi (L), balandlik (H) va radius (R) o'zaro Pifagor teoremasi orqali bog'langan (LÔøΩ = RÔøΩ + HÔøΩ).",
       points: [
         "Konus hajmi silindr hajmining ? qismini tashkil qiladi",
         "Yasovchi to'g'ri chiziqning aylanish burchagi",
         "Yon sirti yoyilmasi doiraviy sektor bo'ladi"
       ],
-      fact: "Konus shakli aerodinamikada juda muhim ó raketalar va samolyotlarning burun qismi havoni yorib o'tish uchun aynan konus shaklida yasaladi."
+      fact: "Konus shakli aerodinamikada juda muhim ÔøΩ raketalar va samolyotlarning burun qismi havoni yorib o'tish uchun aynan konus shaklida yasaladi."
     },
     'sphere': {
       title: "Fazoviy Shar va Sfera",
-      formula: "Hajm: V = 4/3 ∑ p ∑ R≥ | Sirt yuzi: S = 4p ∑ R≤",
+      formula: "Hajm: V = 4/3 ÔøΩ p ÔøΩ RÔøΩ | Sirt yuzi: S = 4p ÔøΩ RÔøΩ",
       desc: "Yarim doiraning o'z diametri atrofida aylanishidan hosil bo'ladi. Fazoda markazdan bir xil masofada (R) joylashgan barcha nuqtalar to'plamidir. Fazodagi eng mukammal simmetrik shakl.",
-      activeDesc: "?? SHAR RADIUSI: Radius (R) o'zgarganda hajm kubik darajada (R≥) juda tez kengayadi.",
+      activeDesc: "?? SHAR RADIUSI: Radius (R) o'zgarganda hajm kubik darajada (RÔøΩ) juda tez kengayadi.",
       points: [
         "Berilgan sirt yuzasi uchun eng maksimal hajmga ega shakl",
         "Har qanday kesimining aylana bo'lishi",
@@ -455,7 +455,7 @@ window.LAB_EXPLANATIONS = {
     },
     'binary-byte': {
       title: "8-Bit Ikkilik Xotira va ASCII (Binary & Data)",
-      formula: "1 Bayt = 8 Bit | 28 = 256 kombinatsiya (0ñ255) | DEC 65 = 'A' (ASCII)",
+      formula: "1 Bayt = 8 Bit | 28 = 256 kombinatsiya (0ÔøΩ255) | DEC 65 = 'A' (ASCII)",
       desc: "Kompyuter xotirasidagi har qanday axborot (matn, rasm, son, dastur kodi) faqat 0 va 1 lardan iborat ikkilik sanoq sistemasida saqlanadi. Har bir bit tranzistorning o'chiq (0) yoki yoniq (1) holatidir. 8 ta bit birlashib 1 baytni hosil qiladi.",
       activeDesc: "?? 8-BIT XOTIRA REGISTRI: 3D bit kubiklarini sichqoncha bilan bosib 0 va 1 holatini o'zgartiring! Sahnada o'nlik qiymat va unga mos keluvchi ASCII belgisi jonli hisoblanadi.",
       points: [
@@ -469,7 +469,7 @@ window.LAB_EXPLANATIONS = {
     'cybersecurity': {
       title: "Kiberxavfsizlik, Firewall va Shifrlash (Cybersecurity 3D)",
       formula: "Firewall (Paket filtri) + AES-256 (Kriptografik qulf) | Xavfsiz tarmoq",
-      desc: "Kiberxavfsizlik ó kompyuterlar, serverlar va ma'lumotlar bazalarini zararli hujumlar (viruslar, xakerlar, DDoS)dan himoya qilish tizimidir. Firewall (himoya devori) kelayotgan har bir paketni tahlil qiladi, zararli paketlarni to'sib xavfsizlantiradi.",
+      desc: "Kiberxavfsizlik ÔøΩ kompyuterlar, serverlar va ma'lumotlar bazalarini zararli hujumlar (viruslar, xakerlar, DDoS)dan himoya qilish tizimidir. Firewall (himoya devori) kelayotgan har bir paketni tahlil qiladi, zararli paketlarni to'sib xavfsizlantiradi.",
       activeDesc: "??? FIREWALL HIMOYA QALQONI FAOL: Qizil rangli viruslar qalqonga urilib yo'q qilinmoqda, xavfsiz yashil paketlar esa serverga yetib bormoqda!",
       points: [
         "Firewall (Himoya devori) - Tarmoq trafigini filtrlovchi kiber qalqon",
@@ -481,8 +481,8 @@ window.LAB_EXPLANATIONS = {
     },
     'algorithm-sort': {
       title: "3D Algoritm va Saralash (Bubble Sort Visualization)",
-      formula: "Bubble Sort murakkabligi: O(N≤) | N ta elementni o'sish tartibida saralash",
-      desc: "Algoritm ó berilgan masalani yechish uchun aniq ketma-ketlikdagi ko'rsatmalar to'plamidir. Pufakchali saralash (Bubble Sort) eng ko'rgazmali algoritm bo'lib, yonma-yon turgan 2 ta elementni solishtiradi va kattasini o'ng tomonga siljitadi.",
+      formula: "Bubble Sort murakkabligi: O(NÔøΩ) | N ta elementni o'sish tartibida saralash",
+      desc: "Algoritm ÔøΩ berilgan masalani yechish uchun aniq ketma-ketlikdagi ko'rsatmalar to'plamidir. Pufakchali saralash (Bubble Sort) eng ko'rgazmali algoritm bo'lib, yonma-yon turgan 2 ta elementni solishtiradi va kattasini o'ng tomonga siljitadi.",
       activeDesc: "?? SARALASH ALGORITMI ISHLAMOQDA: Sariq ustunlar solishtirilmoqda va agar tartib buzilgan bo'lsa o'rni almashtirilmoqda (Swap). Tartiblangan ustunlar yashil rangga kiradi!",
       points: [
         "Algoritm - Muammoni bosqichma-bosqich hal qilishning aniq rejasi",
@@ -493,14 +493,72 @@ window.LAB_EXPLANATIONS = {
       fact: "Google yoki Yandex kabi qidiruv tizimlari milliardlab veb-sahifalarni bir soniyaning mingdan bir ulushida saralab sizga eng muhim natijani chiqarib beradi!"
     }
   },
+  mechanics: {
+    'car-engine': {
+      title: "4 Taktli Ichki Yonuv Dvigateli (Internal Combustion)",
+      formula: "4 Takt: Kiritish -> Siqish -> Ishchi yo'l (Yonish) -> Chiqarish | FIK: eta ~ 35-40%",
+      desc: "Avtomobil dvigatelining silindr ichida porshenning ilgarilama-qaytma harakatini tirsakli val orqali aylanma harakatga aylantirish jarayoni. Shamcha portlashi yuqori bosimli gaz hosil qilib, porshenni pastga itaradi va g'ildiraklarni harakatga keltiradi.",
+      activeDesc: "√∞≈∏‚Äù¬• DVIGATEL ISHLAMOQDA: Tirsakli val aylanmoqda, porshen va klapanlar 4 ta takt siklida sinxron ishlamoqda. Gaz bering (RPM)!",
+      points: [
+        "1. Kiritish: Klapan ochiladi, yonilg'i-havo aralashmasi so'riladi",
+        "2. Siqish: Klapanlar yopiq, porshen aralashmani siqadi",
+        "3. Ishchi yo'l: Shamcha uchqun beradi, gaz portlab porshenni itaradi",
+        "4. Chiqarish: Chiqarish klapani ochilib, tutun chiqarib yuboriladi",
+        "Sinxron tirsakli val harakatni transmissiyaga uzatadi"
+      ],
+      fact: "Avtomobil soatiga 100 km/soat tezlikda ketayotganda dvigatel daqiqasiga 3000 martadan ortiq aylanadi, bu har sekundda 50 ta to'liq 4 taktli portlash sikli deganidir!"
+    },
+    'gearbox-transmission': {
+      title: "Tishli Uzatmalar va Reduktor (Gearbox Transmission)",
+      formula: "Uzatish nisbati: i = Z2 / Z1 = 24 / 12 = 2.0 | Moment: M2 = M1 * i | RPM2 = RPM1 / 2",
+      desc: "Tishli g'ildiraklar mexanik energiyani bitta valdan ikkinchisiga yo'qotishlarsiz uzatadi. Yetaklovchi kichik tishli g'ildirak (Z1=12) yetaklanuvchi katta g'ildirakni (Z2=24) 2 marta sekin aylantiradi, ammo chiqish quvvati va aylanuvchi momenti 2 barobar ortadi.",
+      activeDesc: "√¢≈°‚Ñ¢√Ø¬∏¬è REDUKTOR HARAKATDA: Tishlar bir-biriga tishlashib qarama-qarshi yo'nalishda aylanmoqda. Tezlik va moment o'zgarishini kuzating!",
+      points: [
+        "Yetaklovchi shesternya (Z1=12 tish) - yuqori tezlikda kirish vali",
+        "Yetaklanuvchi tishli charx (Z2=24 tish) - 2 barobar sekin, 2 barobar kuchli",
+        "Qarama-qarshi yo'nalishda aylanuvchi kinematik juftlik",
+        "Mexanikaning 'Oltin qoidasi': tezlikdan yutqazib, kuchdan yutamiz",
+        "Avtomobil uzatmalar qutisi (korobka) aynan shu qonuniyatda ishlaydi"
+      ],
+      fact: "Tog'li yo'lda avtomobil 1-uzatmaga olinganda reduktor kuchni 3-4 baravargacha oshiradi, natijada avtomobil tik qiyaliklarga oson ko'tariladi."
+    },
+    'aerodynamics-wing': {
+      title: "Samolyot Qanoti Aerodinamikasi (Aerodynamics & Lift)",
+      formula: "Bernulli qonuni: P + 0.5*rho*v^2 = const | Ko'tarish kuchi: Y = Cy * (rho*v^2/2) * S",
+      desc: "Samolyot qanotining maxsus asimmetrik profili (aerofoil) havo oqimini ikkiga ajratadi. Qanot ustidan o'tayotgan havo tezroq harakatlanib, past bosim hosil qiladi. Qanot ostidagi yuqori bosim esa samolyotni osmonga ko'taruvchi kuchni (Lift) yaratadi.",
+      activeDesc: "√¢≈ìÀÜ√Ø¬∏¬è SHAMOL TUNNELI FAOL: Qanot atrofidagi havo oqimi zarrachalari Bernulli effekti va ko'tarish vektorini ko'rsatmoqda. Hujum burchagini o'zgartiring!",
+      points: [
+        "Aerodinamik profil ustida havo oqimi tezlashadi va bosim tushadi",
+        "Profil tagida esa havo sekinlashadi va yuqori bosim vujudga keladi",
+        "Bosimlar farqi qanotni tepaga ko'taruvchi Y kuchini paydo qiladi",
+        "Hujum burchagi (AoA) ortishi bilan ko'tarish kuchi ko'payadi",
+        "Kritik burchakdan oshganda oqim uzilishi (stall) yuz beradi"
+      ],
+      fact: "Og'irligi 500 tonna bo'lgan ulkan Boeing-747 samolyotini havoda tutib turuvchi yagona narsa - aynan shu qanot usti va ostidagi mikroskopik havo bosimi farqidir!"
+    },
+    'suspension-differential': {
+      title: "Avtomobil Podveskasi va Amortizator (Vehicle Suspension)",
+      formula: "Guk qonuni: F = -k*x | Damping tebranish: m*x'' + c*x' + k*x = F(t)",
+      desc: "Avtomobil podveskasi g'ildirak va korpus orasidagi zarbalarni yumshatadi. Prujina yo'ldagi chuqurchalar energiyasini yutadi, gidravlik amortizator esa bu energiyani moy orqali so'ndirib, mashinaning tinimsiz sakrashini oldini oladi va yo'l bilan ishonchli ushlanishni ta'minlaydi.",
+      activeDesc: "√∞≈∏≈°‚Äî NOTEKIS YO'L SINOVI: G'ildirak harakatlanib prujina va gidravlik amortizator tebranishlarini so'ndirmoqda. Yo'l chastotasini o'zgartiring!",
+      points: [
+        "Po'lat spiral prujina - zarbani qabul qiluvchi elastik element",
+        "Teleskopik gidravlik amortizator - tebranishlarni tezda so'ndiradi",
+        "G'ildirak va gupchak - yo'l notekisliklari bilan doimiy aloqada",
+        "Rezonans chastotasida amortizatorsiz avtomobil boshqaruvni yo'qotadi",
+        "Mustaqil podveska yo'lovchilarga maksimal darajada qulaylik beradi"
+      ],
+      fact: "Amortizator ichidagi maxsus klapanlar va moy bosimi 0.01 soniya ichida yo'l zarbasini so'ndirib, avtomobilni yo'lda toshdek barqaror ushlab turadi."
+    }
+  },
   technology: {
     'robot-arm': {
       title: "Sanoat Roboti Qo'li (4-DoF Manipulator)",
-      formula: "Koordinatalar: (X, Y, Z) | Erkinlik darajasi: 4-DoF | Tork: M = F ◊ r",
+      formula: "Koordinatalar: (X, Y, Z) | Erkinlik darajasi: 4-DoF | Tork: M = F ÔøΩ r",
       desc: "Zamonaviy avtomatlashtirilgan zavodlarda qo'llaniladigan ko'p bo'g'imli robot qo'li. Baza (burilish), yelka va bilak servomotorlari orqali harakatlanadi. Qisqich (gripper) yuklarni ushlab, kerakli koordinataga aniq ko'chiradi.",
       activeDesc: "?? ROBOT HARAKATLANMOQDA: Servomotorlar dasturlangan burchaklar bo'yicha bo'g'imlarni burmoqda, qisqich yukni ushlab koordinata bo'ylab ko'chirmoqda!",
       points: [
-        "Baza aylanish burchagi (-180∞ dan +180∞ gacha)",
+        "Baza aylanish burchagi (-180ÔøΩ dan +180ÔøΩ gacha)",
         "Yelka va bilak bo'g'imlarining fazoviy koordinatasi",
         "Pnevmatik/mexanik qisqich orqali yukni ushlash",
         "Avtomatlashtirilgan saralash va yig'ish sikli"
@@ -509,7 +567,7 @@ window.LAB_EXPLANATIONS = {
     },
     'gears': {
       title: "Tishli G'ildiraklar va Reduktor (Gear Transmission)",
-      formula: "Uzatish nisbati: i = z2 / z1 = n1 / n2 | Aylanuvchi moment: M2 = M1 ◊ i",
+      formula: "Uzatish nisbati: i = z2 / z1 = n1 / n2 | Aylanuvchi moment: M2 = M1 ÔøΩ i",
       desc: "Mexanik energiyani bitta valdan ikkinchisiga uzatish va aylanish tezligini o'zgartirish mexanizmi. Kichik tishli g'ildirak (z1=12) katta g'ildirakni (z3=28) aylantirganda, tezlik kamayadi, lekin quvvat (aylanuvchi moment) keskin ortadi.",
       activeDesc: "?? TISHLI UZATMA ISHLAMOQDA: G'ildiraklar tishlashib teskari yo'nalishlarda aylanmoqda. Uzatish nisbatiga qarab moment va tezlik o'zgarmoqda!",
       points: [
@@ -521,7 +579,7 @@ window.LAB_EXPLANATIONS = {
     },
     'engine': {
       title: "4 Taktli Ichki Yonuv Dvigateli (4-Stroke Engine)",
-      formula: "Faza: 720∞ aylanish (4 takt) | FIK: ? = (Q1 - Q2) / Q1 ò 35-40%",
+      formula: "Faza: 720ÔøΩ aylanish (4 takt) | FIK: ? = (Q1 - Q2) / Q1 ÔøΩ 35-40%",
       desc: "Silindr ichidagi porshenning ilgarilama-qaytma harakatini tirsakli val yordamida aylanma harakatga aylantiruvchi issiqlik dvigateli. 1. Kiritish, 2. Siqish, 3. Yonish/Ishchi yo'l (shamcha uchquni va portlash), 4. Chiqarish taktlaridan iborat.",
       activeDesc: "?? DVIGATEL ISHLAMOQDA: Porshen yuqoriga va pastga harakatlanmoqda, klapanlar o'z vaqtida ochilib-yopilmoqda, shamcha uchqun sochib yoqilg'ini portlatmoqda!",
       points: [
@@ -534,9 +592,9 @@ window.LAB_EXPLANATIONS = {
     },
     '3d-printer': {
       title: "3D Printer Qatlamli Bosma (Additive Manufacturing)",
-      formula: "Qatlam qalinligi: 0.1 - 0.3 mm | Nozzle harorati: 210∞C | Stol: 60∞C",
+      formula: "Qatlam qalinligi: 0.1 - 0.3 mm | Nozzle harorati: 210ÔøΩC | Stol: 60ÔøΩC",
       desc: "FDM (Fused Deposition Modeling) texnologiyasi: plastik filament (PLA/ABS) qizdirilgan ekstruder orqali eritilib, dastur kodi (G-code) asosida qatlam-qatlam qilib quyiladi va real fazoviy buyum hosil qilinadi.",
-      activeDesc: "??? 3D BOSIB CHIQARILMOQDA: Ekstruder 210∞C da eritilgan filamentni koordinatalar bo'yicha qatlamlab termo-stol ustiga yotqizmoqda!",
+      activeDesc: "??? 3D BOSIB CHIQARILMOQDA: Ekstruder 210ÔøΩC da eritilgan filamentni koordinatalar bo'yicha qatlamlab termo-stol ustiga yotqizmoqda!",
       points: [
         "X, Y va Z o'qlari bo'yicha koordinatali harakat",
         "Plastik ipning (filament) erishi va qotishi",
@@ -546,7 +604,7 @@ window.LAB_EXPLANATIONS = {
     },
     'wind-turbine': {
       title: "Shamol Turbinasi va Yashil Energiya",
-      formula: "Shamol quvvati: P = Ω ∑ ? ∑ A ∑ v≥ (v - shamol tezligi)",
+      formula: "Shamol quvvati: P = ÔøΩ ÔøΩ ? ÔøΩ A ÔøΩ vÔøΩ (v - shamol tezligi)",
       desc: "Shamolning kinetik energiyasini rotordagi 3 ta aerodinamik qanot orqali mexanik harakatga, so'ngra generator orqali elektr energiyasiga aylantiruvchi ekologik toza stansiya.",
       activeDesc: "?? SHAMOL GENERATORI ISHLAMOQDA: Havo oqimi qanotlarni aylantirmoqda, generator elektr toki ishlab chiqarib, ko'cha chiroqlari va xonadonlarni quvvatlamoqda!",
       points: [
@@ -590,6 +648,9 @@ window.updateLabExplanation = function(subject, experimentKey, isRunning) {
   else if (subject === 'biology') prefix = 'bio';
   else if (subject === 'geometry') prefix = 'geom';
   else if (subject === 'technology') prefix = 'tech';
+  else if (subject === 'geography') prefix = 'geo';
+  else if (subject === 'computer') prefix = 'comp';
+  else if (subject === 'mechanics') prefix = 'mech';
 
   var badgeEl = document.getElementById(prefix + '-status-badge');
   var statusTextEl = document.getElementById(prefix + '-status-text');
@@ -649,6 +710,7 @@ window.triggerAllLabResizes = function() {
   if (window.technologyLabInstance && typeof window.technologyLabInstance.onWindowResize === 'function') window.technologyLabInstance.onWindowResize();
   if (window.geographyLabInstance && typeof window.geographyLabInstance.onWindowResize === 'function') window.geographyLabInstance.onWindowResize();
   if (window.computerLabInstance && typeof window.computerLabInstance.onWindowResize === 'function') window.computerLabInstance.onWindowResize();
+  if (window.mechanicsLabInstance && typeof window.mechanicsLabInstance.onWindowResize === 'function') window.mechanicsLabInstance.onWindowResize();
 };
 
 // Panelni ochish/yopish (Collapse/Expand)
@@ -824,4 +886,5 @@ document.addEventListener('DOMContentLoaded', function() {
   window.updateLabExplanation('geometry', 'cube', false);
   window.updateLabExplanation('geography', 'earth-layers', false);
   window.updateLabExplanation('computer', 'pc-inside', false);
+  window.updateLabExplanation('mechanics', 'car-engine', false);
 });

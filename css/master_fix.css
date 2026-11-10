@@ -1,4 +1,4 @@
-
+﻿
 /* ============================================================
    30-MAKTABTEST MASTER UI FIXES (Mukammal moslashtirilgan stillar)
    ============================================================ */
@@ -668,6 +668,9 @@
   width: 100% !important;
   height: 100% !important;
   display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
 }
 
 /* ============================================================
@@ -682,7 +685,8 @@
 #geometry-bottom-panel,
 #technology-bottom-panel,
 #geography-bottom-panel,
-#computer-bottom-panel {
+#computer-bottom-panel,
+#mechanics-bottom-panel {
   display: flex !important;
   visibility: visible !important;
   flex: 0 0 auto !important;
@@ -765,7 +769,8 @@
 
 #technology-bottom-panel,
 #geography-bottom-panel,
-#computer-bottom-panel {
+#computer-bottom-panel,
+#mechanics-bottom-panel {
   overflow-x: auto !important;
   padding: 0.4rem 0.5rem !important;
   justify-content: center !important;
@@ -2014,7 +2019,8 @@
 #page-geometry-lab,
 #page-technology-lab,
 #page-geography-lab,
-#page-computer-lab {
+#page-computer-lab,
+#page-mechanics-lab {
   padding-top: 0 !important;
   height: 100vh !important;
   overflow: hidden !important;
@@ -7776,4 +7782,50 @@ body.light-theme .ol-nav-btn:hover {
   font-size: 0.82rem;
   color: #cbd5e1;
   line-height: 1.35;
+}
+
+/* ============================================================
+   9-LABORATORIYA: MEXANIKA VA MASHINASOZLIK STILLARI
+   ============================================================ */
+.lab-card-mechanics .lab-card-icon {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: #fff !important;
+}
+.lab-card-mechanics:hover {
+  border-color: #f59e0b !important;
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.25) !important;
+}
+
+/* 3D Laboratoriya sahifalarida suzuvchi reyting tugmasi 3D sahna va boshqaruv panelini to'sib qo'ymasligi uchun yashiriladi */
+#page-chemistry-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-physics-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-astronomy-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-biology-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-geometry-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-technology-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-geography-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-computer-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-mechanics-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn {
+  display: none !important;
+}
+
+/* Pastki panel har qanday holatda to'liq ko'rinib turishi uchun kafolat */
+.lab-main {
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.lab-canvas-container {
+  flex: 1 1 0% !important;
+  height: calc(100% - 76px) !important;
+  min-height: 0 !important;
+  position: relative !important;
+}
+.lab-bottom-panel {
+  flex-shrink: 0 !important;
+  height: 76px !important;
+  min-height: 76px !important;
+  max-height: 76px !important;
 }

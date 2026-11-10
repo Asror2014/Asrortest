@@ -1,4 +1,4 @@
-
+﻿
 /* ============================================================
    MULTI-LANGUAGE SUPPORT (O'ZBEK, RUSSIAN, ENGLISH)
    ============================================================ */
@@ -220,7 +220,15 @@ function navigateTo(pageId) {
   // Footer boshqaruvi: 3D laboratoriyalar va faol test paytida footerni yashirish
   var mainFooter = document.getElementById('main-footer');
   if (mainFooter) {
-    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'active-test'];
+    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'mechanics-lab', 'active-test'];
+    var flBtn = document.getElementById('floating-leaderboard-btn') || document.querySelector('.floating-leaderboard-btn');
+    if (flBtn) {
+      if (cleanId.indexOf('lab') !== -1 || cleanId === 'active-test') {
+        flBtn.style.display = 'none';
+      } else {
+        flBtn.style.display = 'inline-flex';
+      }
+    }
     if (hideFooterPages.indexOf(cleanId) !== -1 || cleanId.indexOf('lab') !== -1) {
       mainFooter.style.display = 'none';
     } else {
@@ -291,7 +299,7 @@ function navigateTo(pageId) {
       }
     }, 150);
   }
-  if (cleanId === 'computer-lab') {
+    if (cleanId === 'computer-lab') {
     setTimeout(function () {
       if (typeof window.initComputerLab === 'function') window.initComputerLab();
       var ov = document.getElementById('computer-canvas-overlay');
@@ -303,8 +311,19 @@ function navigateTo(pageId) {
       }
     }, 150);
   }
+  if (cleanId === 'mechanics-lab') {
+    setTimeout(function () {
+      if (typeof window.initMechanicsLab === 'function') window.initMechanicsLab();
+      var ov = document.getElementById('mechanics-canvas-overlay');
+      if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('mech_exp') || 'car-engine';
+      if (typeof window.selectMechanicsExperiment === 'function') {
+        window.selectMechanicsExperiment(exp);
+      }
+    }, 150);
+  }
 
-  // O'qituvchilar paneli ochilganda
   if (cleanId === 'teacher') {
     initTeacherPortal();
   }
