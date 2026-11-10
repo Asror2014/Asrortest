@@ -69,6 +69,12 @@ class BiologyLab {
     this.clock = new THREE.Clock();
     this.setupOrbitControls();
     window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onWindowResize();
+      });
+      this.resizeObserver.observe(this.container);
+    }
 
     this.animate();
   }

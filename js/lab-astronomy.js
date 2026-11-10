@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-maktabtest - 3D Interaktiv Astronomiya va Koinot Laboratoriyasi
  * Three.js asosida ishlaydi (100% oflayn, qo'shimcha kutubxonasiz)
  * 
@@ -78,6 +78,12 @@ class AstronomyLab {
     this.setupStars();
     this.setupOrbitControls();
     window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onWindowResize();
+      });
+      this.resizeObserver.observe(this.container);
+    }
 
     this.animate();
   }

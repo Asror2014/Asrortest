@@ -1,4 +1,4 @@
-/**
+﻿/**
  * EduPlatforma - 3D Interactive Chemistry Laboratory
  * Uses Three.js (loaded globally from CDN)
  * 
@@ -82,6 +82,12 @@ class ChemistryLab {
     // Window resize
     this._onResize = () => this.onResize();
     window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onWindowResize();
+      });
+      this.resizeObserver.observe(this.container);
+    }
 
     // Start render loop
     this.animate();

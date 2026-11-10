@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-maktabtest - 3D Interaktiv Geografiya va Yer Tuzilishi Laboratoriyasi
  * Three.js asosida ishlaydi (100% oflayn, qo'shimcha kutubxonasiz)
  * 
@@ -95,6 +95,13 @@ class GeographyLab {
     // Resize hodisasi
     window.removeEventListener('resize', this._onResize);
     window.addEventListener('resize', this._onResize);
+
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onWindowResize();
+      });
+      this.resizeObserver.observe(this.container);
+    }
 
     // Animatsiya tsiklini ishga tushirish
     this.animate();
@@ -202,9 +209,13 @@ class GeographyLab {
     if (!this.container || !this.camera || !this.renderer) return;
     const width = this.container.clientWidth;
     const height = this.container.clientHeight;
+    if (width <= 0 || height <= 0) return;
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize(width, height);
+    if (this.scene && this.renderer) {
+      this.renderer.render(this.scene, this.camera);
+    }
   }
 
   clearScene() {

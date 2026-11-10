@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-maktabtest - 3D Interaktiv Geometriya va Stereometriya Laboratoriyasi
  * Three.js asosida ishlaydi (100% oflayn)
  * 
@@ -76,6 +76,12 @@ class GeometryLab {
     this.clock = new THREE.Clock();
     this.setupOrbitControls();
     window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onWindowResize();
+      });
+      this.resizeObserver.observe(this.container);
+    }
 
     this.animate();
   }

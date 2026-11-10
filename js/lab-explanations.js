@@ -588,6 +588,30 @@ window.updateLabExplanation = function(subject, experimentKey, isRunning) {
   }
 };
 
+// Barcha faol 3D laboratoriyalarni xatosiz qayta o'lchash (distortion & stretch yo'qotish)
+window.triggerAllLabResizes = function() {
+  window.dispatchEvent(new Event('resize'));
+
+  if (window.chemLab && typeof window.chemLab.onWindowResize === 'function') window.chemLab.onWindowResize();
+  if (window.chemistryLabInstance && typeof window.chemistryLabInstance.onWindowResize === 'function') window.chemistryLabInstance.onWindowResize();
+
+  if (window.physLab && typeof window.physLab.onWindowResize === 'function') window.physLab.onWindowResize();
+  if (window.physicsLabInstance && typeof window.physicsLabInstance.onWindowResize === 'function') window.physicsLabInstance.onWindowResize();
+
+  if (window.astronomyLab && typeof window.astronomyLab.onWindowResize === 'function') window.astronomyLab.onWindowResize();
+  if (window.astronomyLabInstance && typeof window.astronomyLabInstance.onWindowResize === 'function') window.astronomyLabInstance.onWindowResize();
+
+  if (window.biologyLab && typeof window.biologyLab.onWindowResize === 'function') window.biologyLab.onWindowResize();
+  if (window.biologyLabInstance && typeof window.biologyLabInstance.onWindowResize === 'function') window.biologyLabInstance.onWindowResize();
+
+  if (window.geometryLab && typeof window.geometryLab.onWindowResize === 'function') window.geometryLab.onWindowResize();
+  if (window.geometryLabInstance && typeof window.geometryLabInstance.onWindowResize === 'function') window.geometryLabInstance.onWindowResize();
+
+  if (window.technologyLabInstance && typeof window.technologyLabInstance.onWindowResize === 'function') window.technologyLabInstance.onWindowResize();
+  if (window.geographyLabInstance && typeof window.geographyLabInstance.onWindowResize === 'function') window.geographyLabInstance.onWindowResize();
+  if (window.computerLabInstance && typeof window.computerLabInstance.onWindowResize === 'function') window.computerLabInstance.onWindowResize();
+};
+
 // Panelni ochish/yopish (Collapse/Expand)
 window.toggleLabInfoPanel = function(subject) {
   if (!subject) subject = window.currentLabState.subject || 'chemistry';
@@ -601,8 +625,22 @@ window.toggleLabInfoPanel = function(subject) {
     if (btn) {
       btn.classList.toggle('active', !isCollapsed);
     }
-    // 3D canvas resize qilish
-    window.dispatchEvent(new Event('resize'));
+
+    // Animatsiya davomida va tugaganida kadrlar bo'yicha proporsiyalarni to'liq qayta hisoblash
+    window.triggerAllLabResizes();
+    var delays = [30, 80, 150, 220, 310, 380, 500];
+    delays.forEach(function(d) {
+      setTimeout(function() {
+        window.triggerAllLabResizes();
+      }, d);
+    });
+
+    if (!panel._transitionAttached) {
+      panel._transitionAttached = true;
+      panel.addEventListener('transitionend', function() {
+        window.triggerAllLabResizes();
+      });
+    }
   }
 };
 

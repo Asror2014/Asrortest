@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-maktabtest - 3D Interaktiv Texnologiya va Muhandislik Laboratoriyasi
  * Three.js asosida ishlaydi (100% oflayn)
  * 
@@ -96,6 +96,12 @@ class TechnologyLab {
     this.clock = new THREE.Clock();
     this.setupOrbitControls();
     window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.onWindowResize();
+      });
+      this.resizeObserver.observe(this.container);
+    }
 
     this.loadExperiment(this.currentExp);
     this.animate();
