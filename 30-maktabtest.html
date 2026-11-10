@@ -9785,109 +9785,119 @@ div.leaderboard-drawer.active {
     font-size: 0.8rem !important;
   }
 }
-    color: #fbbf24 !important;
-    font-weight: 900 !important;
-    font-size: 0.85rem !important;
-  }
-}
-    color: #fbbf24 !important;
-    font-weight: 900 !important;
-    font-size: 0.95rem !important;
-  }
-}
 
 /* ============================================================
-   TEPA SAVOLLAR NAVIGATORI (TOP QUESTION NUMBER BAR: 1, 2, 3...)
+   TEPA GORIZONTAL UZUN SAVOLLAR NAVIGATORI (TOP LONG NUMBER BAR)
    ============================================================ */
-#page-test .test-content-wrapper {
-  max-width: 1000px !important;
-  margin: 0 auto !important;
-  padding: 85px 1.5rem 3rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1.25rem !important;
-  width: 100% !important;
+
+/* Butun test sahifasining umumiy o'rashi */
+#page-test {
+  padding-bottom: 3rem !important;
 }
 
-#page-test .test-main {
+/* Tepa gorizontal navigator o'rami */
+.test-top-navigator-wrap {
   width: 100% !important;
-  flex: none !important;
-  order: 2 !important;
+  max-width: 980px !important;
+  margin: 18px auto 0 !important;
+  padding: 0 1rem !important;
+  box-sizing: border-box !important;
 }
 
 #page-test .question-navigator {
   width: 100% !important;
   max-width: 100% !important;
-  background: rgba(30, 41, 59, 0.9) !important;
-  backdrop-filter: blur(12px) !important;
+  background: rgba(30, 41, 59, 0.92) !important;
+  backdrop-filter: blur(14px) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 18px !important;
-  padding: 1.15rem 1.4rem !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 16px !important;
+  padding: 0.9rem 1.25rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
   margin-bottom: 0 !important;
-  order: 1 !important;
+  box-sizing: border-box !important;
 }
 
 #page-test .navigator-header {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  margin-bottom: 0.85rem !important;
-  flex-wrap: wrap !important;
-  gap: 0.5rem !important;
+  margin-bottom: 0.65rem !important;
+  padding: 0 2px !important;
 }
 
 #page-test .navigator-title {
   margin: 0 !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+  font-weight: 800 !important;
   color: #f8fafc !important;
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  letter-spacing: 0.3px !important;
+  letter-spacing: 0.2px !important;
 }
 
 #page-test .navigator-badge {
-  font-size: 0.82rem !important;
+  font-size: 0.8rem !important;
   font-weight: 700 !important;
   padding: 4px 12px !important;
   border-radius: 20px !important;
-  background: rgba(99, 102, 241, 0.18) !important;
+  background: rgba(99, 102, 241, 0.2) !important;
   color: #a5b4fc !important;
-  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
 }
 
+/* UZUN GORIZONTAL QATOR (LONG HORIZONTAL STRIP) */
 #page-test .navigator-grid {
   display: flex !important;
-  flex-wrap: wrap !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
   gap: 8px !important;
-  max-height: 140px !important;
-  overflow-y: auto !important;
-  padding: 8px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 8px 6px 10px !important;
   border-radius: 12px !important;
-  background: rgba(15, 23, 42, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(15, 23, 42, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   scrollbar-width: thin !important;
+  scrollbar-color: #6366f1 rgba(15, 23, 42, 0.6) !important;
 }
 
+#page-test .navigator-grid::-webkit-scrollbar {
+  height: 6px !important;
+}
+
+#page-test .navigator-grid::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5) !important;
+  border-radius: 10px !important;
+}
+
+#page-test .navigator-grid::-webkit-scrollbar-thumb {
+  background: #6366f1 !important;
+  border-radius: 10px !important;
+}
+
+/* Son tugmalari (Number buttons) */
 #page-test .navigator-btn {
   width: 42px !important;
   height: 42px !important;
   min-width: 42px !important;
+  max-width: 42px !important;
   flex: 0 0 42px !important;
   border-radius: 10px !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(30, 41, 59, 0.85) !important;
   color: #cbd5e1 !important;
   font-size: 14px !important;
   font-weight: 700 !important;
   cursor: pointer !important;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   position: relative !important;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  user-select: none !important;
 }
 
 #page-test .navigator-btn:hover {
@@ -9900,8 +9910,8 @@ div.leaderboard-drawer.active {
 #page-test .navigator-btn.current {
   background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
   color: #ffffff !important;
-  border-color: #a5b4fc !important;
-  box-shadow: 0 0 16px rgba(99, 102, 241, 0.8) !important;
+  border-color: #c7d2fe !important;
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.85) !important;
   transform: scale(1.08) !important;
   z-index: 2 !important;
 }
@@ -9928,10 +9938,10 @@ div.leaderboard-drawer.active {
   position: absolute !important;
   top: -4px !important;
   right: -4px !important;
-  width: 15px !important;
-  height: 15px !important;
+  width: 14px !important;
+  height: 14px !important;
   border-radius: 50% !important;
-  font-size: 9px !important;
+  font-size: 8px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -9947,7 +9957,28 @@ div.leaderboard-drawer.active {
   color: #fff !important;
 }
 
-/* Light theme support */
+/* Asosiy savol kartasi o'rami (Below the top navigator) */
+#page-test .test-content-wrapper {
+  max-width: 980px !important;
+  margin: 14px auto 0 !important;
+  padding: 0 1rem 2.5rem !important;
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#page-test .test-main {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+#page-test .question-card {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Light theme */
 body.light-theme #page-test .question-navigator {
   background: #ffffff !important;
   border: 1px solid #e2e8f0 !important;
@@ -9967,6 +9998,7 @@ body.light-theme #page-test .navigator-badge {
 body.light-theme #page-test .navigator-grid {
   background: #f8fafc !important;
   border-color: #e2e8f0 !important;
+  scrollbar-color: #6366f1 #f1f5f9 !important;
 }
 
 body.light-theme #page-test .navigator-btn {
@@ -9993,17 +10025,19 @@ body.light-theme #page-test .navigator-btn.answered {
   border-color: #86efac !important;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
+  .test-top-navigator-wrap {
+    padding: 0 0.75rem !important;
+    margin-top: 10px !important;
+  }
+  
   #page-test .test-content-wrapper {
-    padding-top: 68px !important;
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-    gap: 1rem !important;
+    padding: 0 0.75rem 2rem !important;
+    margin-top: 10px !important;
   }
   
   #page-test .question-navigator {
-    padding: 0.85rem !important;
+    padding: 0.75rem 0.9rem !important;
     border-radius: 14px !important;
   }
   
@@ -10011,6 +10045,7 @@ body.light-theme #page-test .navigator-btn.answered {
     width: 38px !important;
     height: 38px !important;
     min-width: 38px !important;
+    max-width: 38px !important;
     flex: 0 0 38px !important;
     font-size: 13px !important;
   }
@@ -10523,22 +10558,24 @@ body.light-theme #page-test .navigator-btn.answered {
             <div class="progress-fill" id="test-progress-fill" style="width: 5%;"></div>
         </div>
 
-                <div class="test-content-wrapper">
-            <!-- 1 2 3 Tepa Savollar Navigatori (Top Question Navigator Bar) -->
+                        <!-- TEPADA UZUN GORIZONTAL SAVOLLAR NAVIGATORI (TOP LONG NUMBER BAR) -->
+        <div class="test-top-navigator-wrap">
             <div class="question-navigator" id="question-navigator">
                 <div class="navigator-header">
-                    <h4 class="navigator-title">
-                        <i class="fas fa-th"></i> Savollar (1, 2, 3...):
-                    </h4>
+                    <span class="navigator-title">
+                        <i class="fas fa-th-list"></i> Savollar:
+                    </span>
                     <span class="navigator-badge" id="navigator-status-badge">
                         Javob berildi: 0 / 20
                     </span>
                 </div>
                 <div class="navigator-grid" id="navigator-grid">
-                    <!-- JavaScript orqali dinamik ravishda to'ldiriladi -->
+                    <!-- 1, 2, 3, 4, 5... gorizontal uzun qator -->
                 </div>
             </div>
+        </div>
 
+        <div class="test-content-wrapper">
             <!-- Savol kartasi -->
             <div class="test-main">
                 <div class="question-card" id="question-card">
@@ -10569,7 +10606,6 @@ body.light-theme #page-test .navigator-btn.answered {
                     </button>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
