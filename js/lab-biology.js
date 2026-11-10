@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-maktabtest - 3D Interaktiv Biologiya va Anatomiya Laboratoriyasi
  * Mukammal vizualizatsiya va 100% xatosiz Three.js modellari
  * 
@@ -721,7 +721,16 @@ class BiologyLab {
     }
 
     if (this.renderer && this.scene && this.camera) {
-      this.renderer.render(this.scene, this.camera);
+          // 5. Nafas olish (Lungs expansion & Diaphragm motion)
+    if (this.currentExperiment === 'human-lungs' && this.objects.leftLung && this.objects.rightLung) {
+      const breath = 1.0 + Math.sin(time * 2.2) * 0.08;
+      this.objects.leftLung.scale.set(breath, breath * 1.6, breath * 0.9);
+      this.objects.rightLung.scale.set(breath * 1.08, breath * 1.6, breath * 0.95);
+      if (this.objects.diaphragm) {
+        this.objects.diaphragm.position.y = -4.5 - Math.sin(time * 2.2) * 0.4;
+      }
+    }
+    this.renderer.render(this.scene, this.camera);
     }
   }
 
@@ -817,6 +826,7 @@ window.selectBiologyExperiment = function (expKey) {
   else if (expKey === 'plant-cell') biologyLab.setupPlantCell();
   else if (expKey === 'dna') biologyLab.setupDNA();
   else if (expKey === 'eye') biologyLab.setupEye();
+  else if (expKey === 'human-lungs') biologyLab.setupLungs();
 };
 
 window.updateBiologySlider = function (key, val) {
@@ -836,5 +846,6 @@ window.resetBiologyExperiment = function () {
     else if (biologyLab.currentExperiment === 'plant-cell') biologyLab.setupPlantCell();
     else if (biologyLab.currentExperiment === 'dna') biologyLab.setupDNA();
     else if (biologyLab.currentExperiment === 'eye') biologyLab.setupEye();
+    else if (biologyLab.currentExperiment === 'human-lungs') biologyLab.setupLungs();
   }
 };

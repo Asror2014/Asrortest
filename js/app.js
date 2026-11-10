@@ -1,4 +1,4 @@
-﻿
+
 /* ============================================================
    MULTI-LANGUAGE SUPPORT (O'ZBEK, RUSSIAN, ENGLISH)
    ============================================================ */
@@ -276,6 +276,26 @@ function navigateTo(pageId) {
       }
       if (params.get('finish_print') === '1' && typeof window.instantFinish3DPrinter === 'function') {
         window.instantFinish3DPrinter();
+      }
+    }, 150);
+  }
+  if (cleanId === 'geography-lab') {
+    setTimeout(function () {
+      if (typeof window.initGeographyLab === 'function') window.initGeographyLab();
+      var ov = document.getElementById('geography-canvas-overlay');
+      if (ov) ov.style.display = 'none';
+      if (typeof window.selectGeographyExperiment === 'function') {
+        window.selectGeographyExperiment('earth-layers');
+      }
+    }, 150);
+  }
+  if (cleanId === 'computer-lab') {
+    setTimeout(function () {
+      if (typeof window.initComputerLab === 'function') window.initComputerLab();
+      var ov = document.getElementById('computer-canvas-overlay');
+      if (ov) ov.style.display = 'none';
+      if (typeof window.selectComputerExperiment === 'function') {
+        window.selectComputerExperiment('pc-inside');
       }
     }, 150);
   }

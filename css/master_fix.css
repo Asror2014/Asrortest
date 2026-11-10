@@ -1569,6 +1569,22 @@
   border: 1px solid rgba(249, 115, 22, 0.45) !important;
 }
 
+.lab-card-geography {
+  background: linear-gradient(145deg, #064e3b 0%, #047857 45%, #d97706 100%) !important;
+  border: 1px solid rgba(16, 185, 129, 0.45) !important;
+}
+.lab-card-geography:hover {
+  border-color: #34d399 !important;
+  box-shadow: 0 20px 45px rgba(16, 185, 129, 0.4) !important;
+}
+.lab-card-computer {
+  background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 45%, #0284c7 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+}
+.lab-card-computer:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 20px 45px rgba(56, 189, 248, 0.45) !important;
+}
 .lab-card-technology:hover {
   border-color: #fb923c !important;
   box-shadow: 0 20px 45px rgba(249, 115, 22, 0.4) !important;

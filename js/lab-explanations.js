@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 30-maktabtest - 3D Laboratoriya Jonli Tushuntirish va Ilmiy Tahlil Tizimi
  * Har bir laboratoriya (Kimyo, Fizika, Astronomiya, Biologiya, Geometriya)
  * uchun o'ng tomondagi maxsus interaktiv tushuntirish paneli
@@ -207,6 +207,19 @@ window.LAB_EXPLANATIONS = {
   // 4. BIOLOGIYA TAJRIBALARI
   // ============================================================
   biology: {
+    'human-lungs': {
+      title: "O'pka va Nafas Olish Tizimi",
+      formula: "Nafas tezligi: 16-20 marta/daqiqada | Oâ‚‚ (kislorod) âž” Qon âž” COâ‚‚ (gaz)",
+      desc: "Inson nafas olganda diafragma pastga tushadi, ko'krak qafasi kengayadi va havo traxeya orqali o'pka bronxlariga kiradi. Alveolalarda kislorod qonga o'tadi, karbonat angidrid esa nafas chiqarilganda tashqariga chiqariladi.",
+      activeDesc: "ðŸ« O'PKA NAFAS OLMOQDA: Diafragma va o'pka to'qimalari ritmik kengayib-toraymoqda, havo oqimi alveolalarga yetib bormoqda!",
+      points: [
+        "Traxeya va asosiy bronxlar (Havo o'tkazuvchi yo'llar)",
+        "O'ng va chap o'pka bo'laklari (O'pka to'qimalari)",
+        "Diafragma mushagining ko'tarilib-tushishi",
+        "Alveolalar orqali gaz almashinuvi jarayoni"
+      ],
+      fact: "Ikkala o'pkadagi barcha mayda alveolalar yuzasini yoyib chiqsa, uning umumiy maydoni butun boshli tennis korti (taxminan 75-100 mÂ²) hajmiga teng bo'ladi!"
+    },
     'heart': {
       title: "3D Urib turuvchi yurak anatomiyasi",
       formula: "Puls: 60-80 zarba/daq | Qon bosimi: 120/80 mm sim.ust.",
@@ -338,6 +351,109 @@ window.LAB_EXPLANATIONS = {
   // ============================================================
   // 6. TEXNOLOGIYA VA MUHANDISLIK TAJRIBALARI
   // ============================================================
+  // ============================================================
+  // 7. GEOGRAFIYA VA YER TUZILISHI TAJRIBALARI
+  // ============================================================
+  geography: {
+    'earth-layers': {
+      title: "Yerning Ichki Qatlamlari (Litosfera, Mantiya, Yadro)",
+      formula: "R_yer â‰ˆ 6371 km | Yadro harorati: T â‰ˆ 5000-6000Â°C | Bosim: P â‰ˆ 3.6 mln atm",
+      desc: "Sayyoramiz bir necha konsentrik qatlamlardan iborat. Eng yupqa tashqi qatlam - Yer qobig'i (5-70 km). Uning ostida qovushqoq mantiya (2900 km gacha), suyuq tashqi yadro (2200 km) va og'ir temir-nikelli ichki qattiq yadro (1220 km) joylashgan.",
+      activeDesc: "ðŸŒ 3D YER QATLAMLARI KO'Z OLDINGIZDA: Sferaning chorak qismi ochiq kesimda ko'rinib turibdi. Slider orqali qatlamlarni ajratib ko'rishingiz mumkin!",
+      points: [
+        "Yer qobig'i (Crust) - qalinligi 5-70 km, biz yashaydigan tog' va okeanlar",
+        "Mantiya (Mantle) - 2900 km gacha cho'zilgan, magma va konveksiya harakatlari",
+        "Tashqi yadro (Outer core) - suyuq erigan temir va nikel, Yer magnit maydonini yaratadi",
+        "Ichki yadro (Inner core) - o'ta yuqori bosim tufayli qattiq metall sfera (6000Â°C)"
+      ],
+      fact: "Yerning markazidagi harorat (taxminan 6000Â°C) Quyosh sirtidagi harorat bilan deyarli tengdir!"
+    },
+    'volcano': {
+      title: "Vulqon Otilishi va Litosfera Plitalari",
+      formula: "Litosfera plitalari tezligi: v â‰ˆ 2-10 sm/yil | Magma bosimi: P = ÏÂ·gÂ·h",
+      desc: "Litosfera plitalarining o'zaro to'qnashuvi yoki ajralishi natijasida Yer ostidagi magma yuqori bosim ostida yuqoriga intiladi. Magma kamerasidan vulqon trubkasi orqali kraterdan lava, qizigan kul va gazlar shiddat bilan otilib chiqadi.",
+      activeDesc: "ðŸŒ‹ VULQON OTILMOQDA: Magma kamerasidan yuqoriga qizil lava oqimlari va vulqon kullari otilmoqda! Yon tomonlarda litosfera plitalarining surilishi ko'rsatilgan.",
+      points: [
+        "Yer osti magma kamerasi (Magma reservoir) - qaynoq suyuq tog' jinsi",
+        "Markaziy vulqon kanali va krater (Vent & Crater)",
+        "Yonbag'irlardan oqib tushuvchi lava daryolari",
+        "Litosfera plitalarining o'zaro to'qnashuv zonalari (Subduksiya)"
+      ],
+      fact: "Tinch okeani atrofidagi 'Olovli halqa' (Ring of Fire) zonasida dunyodagi harakatdagi vulqonlarning 75% dan ortig'i joylashgan."
+    },
+    'water-cycle': {
+      title: "Suvning Tabiatda Aylanishi (Gidrologik sikl)",
+      formula: "Bug'lanish (Evaporation) âž” Kondensatsiya (Clouds) âž” Yog'in (Precipitation) âž” Oqim (Runoff)",
+      desc: "Quyosh energiyasi ta'sirida okean, dengiz va ko'llardagi suv bug'lanib yuqoriga ko'tariladi. Sovuq balandlikda bug'lar quyuqlashib bulutlarni hosil qiladi. Bulutlar to'yingach, yomg'ir va qor ko'rinishida yerga yog'adi va daryolar orqali yana okeanga qaytadi.",
+      activeDesc: "ðŸ’§ SUV SIKLI JONLI HARAKATDA: Okeandan bug'lanayotgan zarrachalar osmonga ko'tarilib, tog'lar ustida yomg'irga aylanmoqda va daryo bo'ylab yana okeanga oqib tushmoqda!",
+      points: [
+        "Bug'lanish (Evaporation) - Quyosh nuri suvni bug'ga aylantiradi",
+        "Kondensatsiya (Condensation) - Havo soviydi va mayda tomchilardan bulutlar shakllanadi",
+        "Yog'in (Precipitation) - Yomg'ir, do'l va qor yog'ishi",
+        "Yerusti va yerosti oqimi - Daryolar orqali yana okeanga qaytish"
+      ],
+      fact: "Yerdagi suvning 97% dan ortig'i sho'r okean suvlari bo'lib, inson ichishi mumkin bo'lgan chuchuk suv atigi 2.5% ni tashkil qiladi va uning katta qismi muzliklarda saqlanadi."
+    },
+    'uzbekistan-relief': {
+      title: "O'zbekiston Relyefi va 3D Landshafti",
+      formula: "Eng baland nuqta: Hazrat Sulton (4643 m) | Eng past nuqta: Mingbuloq (-12.8 m)",
+      desc: "O'zbekiston hududi relyefi sharqdan g'arbga tomon pasayib boradi. Sharqiy va janubi-sharqiy qismini baland Tyanshan va Pomir-Oloy tog' tizmalari, g'arbiy va shimoli-g'arbiy qismini esa ulkan Qizilqum cho'li va Turon pasttekisligi egallaydi.",
+      activeDesc: "ðŸ”ï¸ 3D O'ZBEKISTON HUDUDI: Sharqda qorli cho'qqilar (Hazrat Sulton, Chatqol), markazda Qizilqum, daryolar (Amudaryo, Sirdaryo) va Orol dengizi havzasi namoyon bo'lmoqda!",
+      points: [
+        "Sharqiy baland tog'li mintaqa (Hisor, Tyanshan, Farg'ona vodiysi atrofi)",
+        "Qizilqum cho'li - ulkan qum tepalari va platolar",
+        "Amudaryo va Sirdaryo - O'zbekistonning ikki buyuk daryosi",
+        "Orol dengizi havzasi va Ustyurt platosi"
+      ],
+      fact: "O'zbekiston dunyoda dengizga chiqish uchun kamida ikkita davlat chegarasini kesib o'tish talab qilinadigan (Double landlocked) ikki davlatdan biridir (ikkinchisi Lixtenshteyn)."
+    }
+  },
+
+  // ============================================================
+  // 8. KOMPYUTER VA IT ARXITEKTURASI TAJRIBALARI
+  // ============================================================
+  computer: {
+    'pc-inside': {
+      title: "Kompyuter Tizim Bloki Ichi (PC Hardware)",
+      formula: "CPU (GGS) + RAM (GB) + GPU (VRAM) + SSD (MB/s) | Von Neumann arxitekturasi",
+      desc: "Zamonaviy shaxsiy kompyuterning barcha asosiy tugunlari ko'rsatilgan. Motherboard (ona plata) ustida protsessor (CPU) hisoblaydi, RAM dasturlar uchun tezkor ishchi maydon beradi, GPU 3D tasvirlarni chizadi, SSD esa barcha fayllarni uzoq muddat saqlaydi.",
+      activeDesc: "ðŸ–¥ï¸ KOMPYUTER ISHLAMOQDA: Ventilyatorlar (CPU va GPU kulerlari) aylanmoqda, RGB yoritish tizimi ishlamoqda. Komponent ustiga bosib, uning vazifasini bilib oling!",
+      points: [
+        "CPU (Protsessor) - Hisoblash yuragi, sovutgich va radiator bilan ta'minlangan",
+        "RAM (DDR5 Operativ xotira) - O'ta tezkor ma'lumotlar buferi",
+        "GPU (Videokarta) - 3D poligonlar va grafikalarni sekundiga 100+ kadrda chizadi",
+        "NVMe M.2 SSD - Sekundiga 5000+ MB tezlikda o'quvchi doimiy xotira",
+        "PSU (Quvvat bloki) - Butun tizimni barqaror elektr energiyasi bilan ta'minlaydi"
+      ],
+      fact: "Zamonaviy protsessor mikrosxemasida inson sochidan minglab marta ingichka bo'lgan 10 milliarddan ortiq mikroskopik tranzistorlar joylashgan!"
+    },
+    'logic-gates': {
+      title: "Mantiqiy Elementlar (Logic Gates 3D)",
+      formula: "AND: Y = A Â· B | OR: Y = A + B | NOT: Y = Â¬A | XOR: Y = A âŠ• B",
+      desc: "Barcha kompyuterlar, protsessorlar va smartfonlar mantiqiy elementlar (darvozalar) asosida ishlaydi. 0 (past kuchlanish, 0V) va 1 (yuqori kuchlanish, 5V) signallari mantiqiy amallar yordamida qayta ishlanadi va kompyuter hisob-kitoblarini hosil qiladi.",
+      activeDesc: "âš¡ SXEMA FAOL: Kirish kalitlarini (A va B) bosib holatni o'zgartiring (0 yoki 1). Chiqish lampochkasi (LED) mantiqiy shartga ko'ra yonadi yoki o'chadi!",
+      points: [
+        "AND (VA) - Faqat ikkala kirish ham 1 bo'lganda chiqish 1 bo'ladi",
+        "OR (YOKI) - Hech bo'lmaganda bitta kirish 1 bo'lsa, chiqish 1 bo'ladi",
+        "NOT (INKOR) - Kirishni teskarisiga aylantiradi (0 âž” 1, 1 âž” 0)",
+        "XOR (Istisno YOKI) - Kirishlar har xil bo'lgandagina chiqish 1 bo'ladi"
+      ],
+      fact: "Kvant kompyuterlari an'anaviy 0 va 1 (bitlar) o'rniga superpozitsiya holatidagi kubitlar (qubits) bilan ishlaydi, bu ularga milliardlab hisoblarni parallel bajarish imkonini beradi."
+    },
+    'network-flow': {
+      title: "Internet va Ma'lumotlar Oqimi (Computer Networks)",
+      formula: "TCP/IP protokoli | Paket uzatish: Paket = Sarlavha (IP) + Ma'lumot + Tekshiruv",
+      desc: "Internetda har qanday veb-sayt, rasm yoki video mayda bo'lakchalarga - ma'lumotlar paketlariga bo'linadi. Router va serverlar orqali har bir paket o'z manziliga boradi va foydalanuvchi kompyuterida qayta butun faylga birlashtiriladi.",
+      activeDesc: "ðŸŒ TARMOQDA TRAFIK OQIMI: Server, Bulut, Router va Mijozlar o'rtasida ma'lumotlar paketlari (yashil sharchalar) yugurmoqda!",
+      points: [
+        "Server - Veb-saytlar va ma'lumotlar bazasini saqlovchi markaziy kompyuter",
+        "Router (Marshrutizator) - Paketlarni eng optimal yo'l orqali yo'naltiruvchi qurilma",
+        "Wi-Fi / Ethernet - Qurilmalarni tarmoqqa simli va simsiz bog'lovchi kanal",
+        "Client (Mijoz) - Maktab kompyuteri, noutbuk yoki smartfon"
+      ],
+      fact: "Dunyo bo'ylab har sekundda internet orqali 100 000 gigabaytdan ortiq ma'lumot uzatiladi va uning asosiy qismi okeanlar tubiga yotqizilgan suvosti optik kabellari orqali o'tadi."
+    }
+  },
   technology: {
     'robot-arm': {
       title: "Sanoat Roboti Qo'li (4-DoF Manipulator)",
@@ -629,4 +745,6 @@ document.addEventListener('DOMContentLoaded', function() {
   window.updateLabExplanation('astronomy', 'solar-system', false);
   window.updateLabExplanation('biology', 'heart', false);
   window.updateLabExplanation('geometry', 'cube', false);
+  window.updateLabExplanation('geography', 'earth-layers', false);
+  window.updateLabExplanation('computer', 'pc-inside', false);
 });

@@ -17,6 +17,8 @@ $labAstroJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-astronom
 $labBioJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-biology.js"), [System.Text.Encoding]::UTF8)
 $labGeomJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-geometry.js"), [System.Text.Encoding]::UTF8)
 $labTechJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-technology.js"), [System.Text.Encoding]::UTF8)
+$labGeogJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-geography.js"), [System.Text.Encoding]::UTF8)
+$labCompJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-computer.js"), [System.Text.Encoding]::UTF8)
 $labExplJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-explanations.js"), [System.Text.Encoding]::UTF8)
 $accountsRatingJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\accounts-rating.js"), [System.Text.Encoding]::UTF8)
 $soundBadgesJs = ""
@@ -39,6 +41,8 @@ $html = $html.Replace('<script src="js/lab-astronomy.js"></script>', "<script>`n
 $html = $html.Replace('<script src="js/lab-biology.js"></script>', "<script>`n$labBioJs`n</script>")
 $html = $html.Replace('<script src="js/lab-geometry.js"></script>', "<script>`n$labGeomJs`n</script>")
 $html = $html.Replace('<script src="js/lab-technology.js"></script>', "<script>`n$labTechJs`n</script>")
+$html = $html.Replace('<script src="js/lab-geography.js"></script>', "<script>`n$labGeogJs`n</script>")
+$html = $html.Replace('<script src="js/lab-computer.js"></script>', "<script>`n$labCompJs`n</script>")
 $html = $html.Replace('<script src="js/lab-explanations.js"></script>', "<script>`n$labExplJs`n</script>")
 if ($soundBadgesJs) {
   $html = $html.Replace('<script src="js/sound-and-badges.js"></script>', "<script>`n$soundBadgesJs`n</script>")

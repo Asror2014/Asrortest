@@ -768,6 +768,37 @@
                     </div>
                 </div>
 
+                                <!-- 7. Geografiya va Yer Tuzilishi -->
+                <div class="lab-card lab-card-geography" onclick="navigateTo('page-geography-lab')">
+                    <div class="lab-card-icon"><i class="fas fa-globe-asia"></i></div>
+                    <div class="lab-card-content">
+                        <h2>3D Geografiya va Yer Tuzilishi</h2>
+                        <p>Yer qatlamlari, vulqon otilishi, suv aylanishi va O'zbekiston relyefi</p>
+                        <ul class="lab-card-features">
+                            <li><i class="fas fa-check"></i> Yerning ichki qatlamlari (Litosfera, Mantiya, Yadro)</li>
+                            <li><i class="fas fa-check"></i> Vulqon otilishi va Litosfera plitalari</li>
+                            <li><i class="fas fa-check"></i> Suvning tabiatda aylanishi (Gidrologik sikl)</li>
+                            <li><i class="fas fa-check"></i> O'zbekiston 3D relyefi (Hazrat Sulton, Orol, Qizilqum)</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="navigateTo('page-geography-lab')"><i class="fas fa-arrow-right"></i> Laboratoriyaga kirish</button>
+                    </div>
+                </div>
+
+                <!-- 8. Kompyuter va IT Laboratoriyasi -->
+                <div class="lab-card lab-card-computer" onclick="navigateTo('page-computer-lab')">
+                    <div class="lab-card-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="lab-card-content">
+                        <h2>3D Kompyuter va IT Laboratoriyasi</h2>
+                        <p>Tizim bloki ichi, mantiqiy elementlar va tarmoq trafigi</p>
+                        <ul class="lab-card-features">
+                            <li><i class="fas fa-check"></i> Kompyuter tizim bloki (Motherboard, CPU, GPU, RAM)</li>
+                            <li><i class="fas fa-check"></i> Mantiqiy elementlar (AND, OR, NOT, XOR va 3D LED)</li>
+                            <li><i class="fas fa-check"></i> Internet va ma'lumotlar oqimi (Paketlar harakati)</li>
+                            <li><i class="fas fa-check"></i> Interaktiv komponentlar tahlili</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="navigateTo('page-computer-lab')"><i class="fas fa-arrow-right"></i> Laboratoriyaga kirish</button>
+                    </div>
+                </div>
                 <!-- 6. Texnologiya va Robototexnika -->
                 <div class="lab-card lab-card-technology" onclick="navigateTo('page-technology-lab')">
                     <div class="lab-card-icon"><i class="fas fa-robot"></i></div>
@@ -1245,6 +1276,13 @@
                         <div class="experiment-info">
                             <span class="experiment-name">Inson Yuragi</span>
                             <span class="experiment-tag">Urib turuvchi 3D model</span>
+                        </div>
+                    </li>
+                                        <li class="experiment-item" data-experiment="human-lungs" onclick="selectBiologyExperiment('human-lungs')">
+                        <span class="experiment-icon"><i class="fas fa-lungs" style="color:#f43f5e;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">O'pka va Nafas Olish</span>
+                            <span class="experiment-tag">Diafragma va Bronxi</span>
                         </div>
                     </li>
                     <li class="experiment-item" data-experiment="plant-cell" onclick="selectBiologyExperiment('plant-cell')">
@@ -1837,6 +1875,256 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         8-SAHIFA: GEOGRAFIYA VA YER TUZILISHI LABORATORIYASI
+         ============================================================ -->
+    <section id="page-geography-lab" class="page-section" style="display:none;">
+        <div class="lab-layout">
+            <aside class="lab-sidebar" id="geography-sidebar">
+                <div class="lab-sidebar-header">
+                    <h3><i class="fas fa-globe-asia"></i> 3D Geografiya</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="navigateTo('page-lab-select')">
+                        <i class="fas fa-arrow-left"></i> Orqaga
+                    </button>
+                </div>
+                <ul class="experiment-list" id="geography-experiment-list">
+                    <li class="experiment-item active" data-experiment="earth-layers" onclick="selectGeographyExperiment('earth-layers')">
+                        <span class="experiment-icon"><i class="fas fa-layer-group" style="color:#f59e0b;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Yer Qatlamlari</span>
+                            <span class="experiment-tag">Litosfera, Mantiya, Yadro</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="volcano" onclick="selectGeographyExperiment('volcano')">
+                        <span class="experiment-icon"><i class="fas fa-volcano" style="color:#ef4444;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Vulqon Otilishi</span>
+                            <span class="experiment-tag">Magma va Plitalar</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="water-cycle" onclick="selectGeographyExperiment('water-cycle')">
+                        <span class="experiment-icon"><i class="fas fa-cloud-showers-heavy" style="color:#38bdf8;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Suv Aylanishi</span>
+                            <span class="experiment-tag">Bug'lanish va Yog'in</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="uzbekistan-relief" onclick="selectGeographyExperiment('uzbekistan-relief')">
+                        <span class="experiment-icon"><i class="fas fa-mountain" style="color:#10b981;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">O'zbekiston Relyefi</span>
+                            <span class="experiment-tag">Tog'lar va Cho'llar</span>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="lab-main">
+                <div class="lab-canvas-container" id="geography-canvas-container">
+                    <button class="lab-info-toggle-btn active" id="geography-info-toggle-btn" onclick="toggleLabInfoPanel('geography')">
+                        <i class="fas fa-info-circle"></i> <span>Tushuntirish</span>
+                    </button>
+                    <div class="lab-canvas-overlay" id="geography-canvas-overlay">
+                        <div class="lab-loading">
+                            <div class="lab-loading-spinner"></div>
+                            <p>Geografiya laboratoriyasi yuklanmoqda...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lab-bottom-panel" id="geography-bottom-panel">
+                    <div class="lab-controls" id="geography-controls">
+                        <div class="control-group" data-for="earth-layers" style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                            <label style="color:#cbd5e1; font-size:0.88rem;">
+                                Qatlamlarni ochish (Kesim):
+                                <input type="range" class="form-range" min="0" max="1" step="0.05" value="0" oninput="if(window.geographyLabInstance) geographyLabInstance.setLayerExplosion(this.value)">
+                            </label>
+                        </div>
+                        <div class="control-group" data-for="volcano" style="display:none; align-items:center; gap:1rem; flex-wrap:wrap;">
+                            <label style="color:#cbd5e1; font-size:0.88rem;">
+                                Otilish kuchi:
+                                <input type="range" class="form-range" min="0.2" max="3" step="0.1" value="1" oninput="if(window.geographyLabInstance) geographyLabInstance.setEruptionSpeed(this.value)">
+                            </label>
+                        </div>
+                        <div class="control-group" data-for="water-cycle" style="display:none; align-items:center; gap:1rem; flex-wrap:wrap;">
+                            <label style="color:#cbd5e1; font-size:0.88rem;">
+                                Aylanish tezligi:
+                                <input type="range" class="form-range" min="0.2" max="2.5" step="0.1" value="1" oninput="if(window.geographyLabInstance) geographyLabInstance.setCycleSpeed(this.value)">
+                            </label>
+                        </div>
+                        <div class="control-group" data-for="uzbekistan-relief" style="display:none; align-items:center; gap:1rem; flex-wrap:wrap;">
+                            <span style="color:#38bdf8; font-size:0.88rem;"><i class="fas fa-info-circle"></i> 3D xaritani aylantirish uchun sichqonchani suring!</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="lab-info-panel" id="geography-info-panel">
+                <div class="lab-info-header">
+                    <div class="lab-info-title-wrap">
+                        <span class="info-status-badge running" id="geo-status-badge"></span>
+                        <h4 id="geo-info-title">Yer Qatlamlari</h4>
+                    </div>
+                    <button class="lab-info-collapse-btn" onclick="toggleLabInfoPanel('geography')" title="Panelni yopish">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="lab-info-body">
+                    <div class="lab-info-status" id="geo-status-text">
+                        <strong>Faol ko'rsatilmoqda</strong>
+                    </div>
+                    <div class="lab-info-section formula-section">
+                        <div class="section-title"><i class="fas fa-calculator"></i> Geografik parametrlar</div>
+                        <div class="formula-box" id="geo-info-formula">R_yer â‰ˆ 6371 km | T â‰ˆ 5000-6000Â°C</div>
+                    </div>
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-book-open"></i> Jarayon tushuntirishi</div>
+                        <p class="desc-text" id="geo-info-desc">Sayyoramiz bir necha konsentrik qatlamlardan iborat. Eng yupqa tashqi qatlam - Yer qobig'i (5-70 km).</p>
+                    </div>
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-list-check"></i> Muhim ilmiy ma'lumotlar</div>
+                        <ul class="points-list" id="geo-info-points">
+                            <li><i class="fas fa-check-circle"></i> Yer qobig'i (Litosfera)</li>
+                            <li><i class="fas fa-check-circle"></i> Mantiya va magma harakati</li>
+                        </ul>
+                    </div>
+                    <div class="lab-info-section fact-section">
+                        <div class="section-title"><i class="fas fa-lightbulb"></i> Qiziqarli fakt</div>
+                        <div class="fact-box" id="geo-info-fact">Yer markazidagi harorat Quyosh sirtidagi harorat bilan deyarli tengdir!</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         9-SAHIFA: KOMPYUTER VA IT ARXITEKTURASI LABORATORIYASI
+         ============================================================ -->
+    <section id="page-computer-lab" class="page-section" style="display:none;">
+        <div class="lab-layout">
+            <aside class="lab-sidebar" id="computer-sidebar">
+                <div class="lab-sidebar-header">
+                    <h3><i class="fas fa-microchip"></i> 3D Kompyuter / IT</h3>
+                    <button class="btn btn-sm btn-ghost" onclick="navigateTo('page-lab-select')">
+                        <i class="fas fa-arrow-left"></i> Orqaga
+                    </button>
+                </div>
+                <ul class="experiment-list" id="computer-experiment-list">
+                    <li class="experiment-item active" data-experiment="pc-inside" onclick="selectComputerExperiment('pc-inside')">
+                        <span class="experiment-icon"><i class="fas fa-desktop" style="color:#38bdf8;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Tizim Bloki Ichi</span>
+                            <span class="experiment-tag">Motherboard, CPU, GPU</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="logic-gates" onclick="selectComputerExperiment('logic-gates')">
+                        <span class="experiment-icon"><i class="fas fa-code-branch" style="color:#f59e0b;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Mantiqiy Elementlar</span>
+                            <span class="experiment-tag">AND, OR, NOT, XOR</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="network-flow" onclick="selectComputerExperiment('network-flow')">
+                        <span class="experiment-icon"><i class="fas fa-network-wired" style="color:#10b981;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Internet va Tarmoq</span>
+                            <span class="experiment-tag">Server, Router, Paketlar</span>
+                        </div>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="lab-main">
+                <div class="lab-canvas-container" id="computer-canvas-container">
+                    <button class="lab-info-toggle-btn active" id="computer-info-toggle-btn" onclick="toggleLabInfoPanel('computer')">
+                        <i class="fas fa-info-circle"></i> <span>Tushuntirish</span>
+                    </button>
+                    <div class="lab-canvas-overlay" id="computer-canvas-overlay">
+                        <div class="lab-loading">
+                            <div class="lab-loading-spinner"></div>
+                            <p>Kompyuter laboratoriyasi yuklanmoqda...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lab-bottom-panel" id="computer-bottom-panel">
+                    <div class="lab-controls" id="computer-controls">
+                        <div class="control-group" data-for="pc-inside" style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap; width:100%;">
+                            <label style="color:#cbd5e1; font-size:0.88rem;">
+                                Ventilyator tezligi:
+                                <input type="range" class="form-range" min="0.2" max="3" step="0.1" value="1.5" oninput="if(window.computerLabInstance) computerLabInstance.setFanSpeed(this.value)">
+                            </label>
+                            <div id="pc-part-info" style="margin-left:auto; background:rgba(15,23,42,0.8); border:1px solid rgba(56,189,248,0.3); border-radius:10px; padding:6px 14px; font-size:0.85rem; color:#94a3b8;">
+                                <i class="fas fa-hand-pointer"></i> Detallarni bosib ko'ring!
+                            </div>
+                        </div>
+
+                        <div class="control-group" data-for="logic-gates" style="display:none; align-items:center; gap:1rem; flex-wrap:wrap; width:100%;">
+                            <button class="btn btn-outline" onclick="if(window.computerLabInstance) computerLabInstance.toggleSwitch('A')">
+                                <i class="fas fa-toggle-on"></i> Kalit A (Toggle)
+                            </button>
+                            <button class="btn btn-outline" onclick="if(window.computerLabInstance) computerLabInstance.toggleSwitch('B')">
+                                <i class="fas fa-toggle-on"></i> Kalit B (Toggle)
+                            </button>
+                            <select class="form-select" style="background:#1e293b; color:#fff; border:1px solid #475569; border-radius:8px; padding:6px 10px;" onchange="if(window.computerLabInstance) computerLabInstance.setGateType(this.value)">
+                                <option value="AND">AND (Mantiqiy KO'PAYTIRISH)</option>
+                                <option value="OR">OR (Mantiqiy QO'SHISH)</option>
+                                <option value="NOT">NOT (Mantiqiy INKOR)</option>
+                                <option value="XOR">XOR (Istisno YOKI)</option>
+                            </select>
+                            <div id="logic-result-status" style="margin-left:auto; font-size:0.88rem; color:#cbd5e1;">
+                                Kirish A: 0, B: 0 &rarr; Chiqish: 0
+                            </div>
+                        </div>
+
+                        <div class="control-group" data-for="network-flow" style="display:none; align-items:center; gap:1rem; flex-wrap:wrap; width:100%;">
+                            <label style="color:#cbd5e1; font-size:0.88rem;">
+                                Paketlar tezligi:
+                                <input type="range" class="form-range" min="0.4" max="3" step="0.2" value="1.2" oninput="if(window.computerLabInstance) computerLabInstance.setPacketSpeed(this.value)">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="lab-info-panel" id="computer-info-panel">
+                <div class="lab-info-header">
+                    <div class="lab-info-title-wrap">
+                        <span class="info-status-badge running" id="comp-status-badge"></span>
+                        <h4 id="comp-info-title">Tizim Bloki Ichi</h4>
+                    </div>
+                    <button class="lab-info-collapse-btn" onclick="toggleLabInfoPanel('computer')" title="Panelni yopish">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="lab-info-body">
+                    <div class="lab-info-status" id="comp-status-text">
+                        <strong>Faol ishlamoqda</strong>
+                    </div>
+                    <div class="lab-info-section formula-section">
+                        <div class="section-title"><i class="fas fa-calculator"></i> Texnik parametrlar</div>
+                        <div class="formula-box" id="comp-info-formula">CPU + RAM + GPU + SSD | Von Neumann</div>
+                    </div>
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-book-open"></i> Jarayon tushuntirishi</div>
+                        <p class="desc-text" id="comp-info-desc">Zamonaviy shaxsiy kompyuterning barcha asosiy tugunlari ko'rsatilgan.</p>
+                    </div>
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-list-check"></i> Muhim ilmiy ma'lumotlar</div>
+                        <ul class="points-list" id="comp-info-points">
+                            <li><i class="fas fa-check-circle"></i> CPU - Markaziy protsessor hisoblash yuragi</li>
+                            <li><i class="fas fa-check-circle"></i> GPU - 3D grafikani qayta ishlovchi karta</li>
+                        </ul>
+                    </div>
+                    <div class="lab-info-section fact-section">
+                        <div class="section-title"><i class="fas fa-lightbulb"></i> Qiziqarli fakt</div>
+                        <div class="fact-box" id="comp-info-fact">Zamonaviy CPUda 10 milliarddan ortiq mikroskopik tranzistorlar mavjud!</div>
+                    </div>
+                </div>
+            </aside>
         </div>
     </section>
 
@@ -3022,6 +3310,8 @@
 
     <!-- 3D Laboratoriya Jonli Ilmiy Tushuntirish Tizimi -->
     <script src="js/lab-technology.js"></script>
+    <script src="js/lab-geography.js"></script>
+    <script src="js/lab-computer.js"></script>
     <script src="js/lab-explanations.js"></script>
     <script src="js/sound-and-badges.js"></script>
 
