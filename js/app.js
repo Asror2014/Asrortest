@@ -220,8 +220,8 @@ function navigateTo(pageId) {
   // Footer boshqaruvi: 3D laboratoriyalar va faol test paytida footerni yashirish
   var mainFooter = document.getElementById('main-footer');
   if (mainFooter) {
-    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'active-test'];
-    if (hideFooterPages.indexOf(cleanId) !== -1) {
+    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'active-test'];
+    if (hideFooterPages.indexOf(cleanId) !== -1 || cleanId.indexOf('lab') !== -1) {
       mainFooter.style.display = 'none';
     } else {
       mainFooter.style.display = 'block';

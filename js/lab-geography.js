@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 30-maktabtest - 3D Interaktiv Geografiya va Yer Tuzilishi Laboratoriyasi
  * Three.js asosida ishlaydi (100% oflayn, qo'shimcha kutubxonasiz)
  * 
@@ -381,7 +381,7 @@ class GeographyLab {
     const capMatOuter = new THREE.MeshStandardMaterial({ color: 0xf59e0b, side: THREE.DoubleSide });
     
     // Ma'lumot ko'rsatkichlari (3D Label halqalari)
-    this.addOrbitRing(root, 3.2, 0xfef08a, 'Ichki Yadro (6000°C)');
+    this.addOrbitRing(root, 3.2, 0xfef08a, 'Ichki Yadro (6000�C)');
     this.addOrbitRing(root, 5.8, 0xf59e0b, 'Tashqi Yadro (Suyuq)');
     this.addOrbitRing(root, 9.0, 0xef4444, 'Mantiya (Magma)');
     this.addOrbitRing(root, 10.0, 0x38bdf8, 'Yer Qobig\'i (Litosfera)');
@@ -823,6 +823,59 @@ class GeographyLab {
     this.params.cycleSpeed = parseFloat(val);
   }
 
+  triggerQuickAction() {
+    if (this.currentExp === 'earth-layers') {
+      const nextExp = (this.params.layerExplosion > 0.4) ? 0.0 : 0.8;
+      this.setLayerExplosion(nextExp);
+      const slider = document.getElementById('slider-geo-layers');
+      if (slider) slider.value = nextExp;
+      const valEl = document.getElementById('slider-geo-layers-val');
+      if (valEl) valEl.textContent = (nextExp * 100).toFixed(0) + '%';
+    } else if (this.currentExp === 'volcano') {
+      this.params.eruptionSpeed = (this.params.eruptionSpeed > 1.8) ? 1.0 : 2.5;
+      const slider = document.getElementById('slider-geo-eruption');
+      if (slider) slider.value = this.params.eruptionSpeed;
+      const valEl = document.getElementById('slider-geo-eruption-val');
+      if (valEl) valEl.textContent = this.params.eruptionSpeed + 'x';
+    } else if (this.currentExp === 'water-cycle') {
+      this.params.cycleSpeed = (this.params.cycleSpeed > 1.8) ? 1.0 : 2.5;
+      const slider = document.getElementById('slider-geo-cycle');
+      if (slider) slider.value = this.params.cycleSpeed;
+      const valEl = document.getElementById('slider-geo-cycle-val');
+      if (valEl) valEl.textContent = this.params.cycleSpeed + 'x';
+    } else if (this.currentExp === 'uzbekistan-relief') {
+      this.theta += 1.2;
+      this.updateCameraPosition();
+    }
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  resetExperiment() {
+    this.params.layerExplosion = 0.0;
+    this.params.eruptionSpeed = 1.0;
+    this.params.cycleSpeed = 1.0;
+    this.setLayerExplosion(0.0);
+    this.theta = 0.8;
+    this.phi = 1.1;
+    this.cameraRadius = (this.currentExp === 'uzbekistan-relief') ? 38 : (this.currentExp === 'volcano' ? 36 : 30);
+    this.updateCameraPosition();
+
+    const s1 = document.getElementById('slider-geo-layers');
+    if (s1) s1.value = 0;
+    const v1 = document.getElementById('slider-geo-layers-val');
+    if (v1) v1.textContent = '0%';
+
+    const s2 = document.getElementById('slider-geo-eruption');
+    if (s2) s2.value = 1.0;
+    const v2 = document.getElementById('slider-geo-eruption-val');
+    if (v2) v2.textContent = '1.0x';
+
+    const s3 = document.getElementById('slider-geo-cycle');
+    if (s3) s3.value = 1.0;
+    const v3 = document.getElementById('slider-geo-cycle-val');
+    if (v3) v3.textContent = '1.0x';
+  }
+
   destroy() {
     this.isRunning = false;
     if (this.animationId) cancelAnimationFrame(this.animationId);
@@ -854,10 +907,64 @@ window.selectGeographyExperiment = function (name) {
       el.classList.toggle('active', el.getAttribute('data-experiment') === name);
     });
 
-    // Boshqaruv panellarini almashtirish
-    const panels = document.querySelectorAll('#geography-controls .control-group');
-    panels.forEach(p => {
-      p.style.display = (p.getAttribute('data-for') === name) ? 'block' : 'none';
-    });
+    // O'ng paneldagi slayderlarni almashtirish
+    const slEarth = document.getElementById('geo-sliders-earth-layers');
+    const slVolc = document.getElementById('geo-sliders-volcano');
+    const slWater = document.getElementById('geo-sliders-water-cycle');
+    if (slEarth) slEarth.style.display = (name === 'earth-layers') ? 'block' : 'none';
+    if (slVolc) slVolc.style.display = (name === 'volcano') ? 'block' : 'none';
+    if (slWater) slWater.style.display = (name === 'water-cycle') ? 'block' : 'none';
+
+    // Tezkor harakat tugmasini yangilash
+    const actBtn = document.getElementById('geo-action-btn');
+    if (actBtn) {
+      if (name === 'earth-layers') actBtn.innerHTML = '<i class=\"fas fa-expand-arrows-alt\"></i> Qatlamlarni ajratish';
+      else if (name === 'volcano') actBtn.innerHTML = '<i class=\"fas fa-fire\"></i> Katta otilish';
+      else if (name === 'water-cycle') actBtn.innerHTML = '<i class=\"fas fa-cloud-showers-heavy\"></i> Kuchli yog\'in';
+      else if (name === 'uzbekistan-relief') actBtn.innerHTML = '<i class=\"fas fa-compass\"></i> Relyef sayohati';
+    }
+  }
+};
+
+window.startGeographyExperiment = function () {
+  if (window.geographyLabInstance) {
+    window.geographyLabInstance.isRunning = true;
+    if (typeof window.updateLabExplanation === 'function') {
+      window.updateLabExplanation('geography', window.geographyLabInstance.currentExp, true);
+    }
+    const startBtn = document.getElementById('geo-start-btn');
+    const pauseBtn = document.getElementById('geo-pause-btn');
+    if (startBtn) startBtn.disabled = true;
+    if (pauseBtn) pauseBtn.disabled = false;
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+};
+
+window.pauseGeographyExperiment = function () {
+  if (window.geographyLabInstance) {
+    window.geographyLabInstance.isRunning = false;
+    if (typeof window.updateLabExplanation === 'function') {
+      window.updateLabExplanation('geography', window.geographyLabInstance.currentExp, false);
+    }
+    const startBtn = document.getElementById('geo-start-btn');
+    const pauseBtn = document.getElementById('geo-pause-btn');
+    if (startBtn) startBtn.disabled = false;
+    if (pauseBtn) pauseBtn.disabled = true;
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+};
+
+window.resetGeographyExperiment = function () {
+  if (window.geographyLabInstance) {
+    window.geographyLabInstance.resetExperiment();
+    window.geographyLabInstance.isRunning = true;
+    if (typeof window.updateLabExplanation === 'function') {
+      window.updateLabExplanation('geography', window.geographyLabInstance.currentExp, true);
+    }
+    const startBtn = document.getElementById('geo-start-btn');
+    const pauseBtn = document.getElementById('geo-pause-btn');
+    if (startBtn) startBtn.disabled = true;
+    if (pauseBtn) pauseBtn.disabled = false;
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
   }
 };
