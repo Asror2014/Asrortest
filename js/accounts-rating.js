@@ -3,11 +3,11 @@
  * Akkauntlar va Reyting Tizimi (Accounts & Leaderboard System)
  * 
  * Imkoniyatlar:
- * 1. 686 ta o'quvchi maktabning 24 ta parallel sinfiga to'liq taqsimlangan (har bir sinfda 28-29 tadan o'quvchi).
+ * 1. 707 ta o'quvchi maktabning 24 ta parallel sinfiga to'liq taqsimlangan (har bir sinfda 29-30 tadan o'quvchi).
  * 2. Har bir sinf bo'yicha tahlil (masalan: 7-B sinfiga kirilganda):
  *    - 🔥 Kim ko'p harakat qilgan (Top a'lochilar, yuqori ball va ko'p test yechganlar)
  *    - ⚠️ Kim eng kam harakat qilgan (Kam test yechgan yoki hali boshlamagan, e'tibor talab o'quvchilar)
- *    - 📋 Sinfning barcha 28-29 ta o'quvchisi to'liq reyting jadvali va filtrlari.
+ *    - 📋 Sinfning barcha 29-30 ta o'quvchisi to'liq reyting jadvali va filtrlari.
  * 3. 24 ta parallel sinf reytingi (1-A, 1-B, 1-D, 2-A, 2-B, 3-A, 3-B, 4-A, 4-B, 5-A, 5-B, 5-D, 6-A, 6-B, 7-A, 7-B, 8-A, 8-B, 9-A, 9-B, 10-A, 10-B, 11-A, 11-B).
  * 4. O'quvchilar reytingi (O'zi bo'yicha - shaxsiy o'rin, ballar, filtrlash).
  * 5. Reyting drawerida to'g'ridan-to'g'ri sinf ichiga kirish va orqaga qaytish.
@@ -16,46 +16,48 @@
 (function() {
   'use strict';
 
-  var STORAGE_KEY_ACCOUNTS = 'maktab30_accounts_686_v5';
-  var STORAGE_KEY_CURRENT = 'maktab30_current_account_id_v5';
+  var STORAGE_KEY_ACCOUNTS = 'maktab30_accounts_707_v6';
+  var STORAGE_KEY_CURRENT = 'maktab30_current_account_id_v6';
 
   // 30-maktabning barcha 24 ta parallel sinflari ro'yxati
-  // 14 ta sinfda 29 ta o'quvchi (406), 10 ta sinfda 28 ta o'quvchi (280) = Jami 686 ta o'quvchi!
+  // 14 ta sinfda 29 ta o'quvchi (406), 10 ta sinfda 28 ta o'quvchi (280) = Jami 707 ta o'quvchi!
+  // 30-maktabning barcha 24 ta parallel sinflari ro'yxati
+  // Barcha sinflarda 29 yoki 30 tadan o'quvchi (11 ta sinfda 30, 13 ta sinfda 29) = Jami 707 ta o'quvchi!
   var SCHOOL_CLASSES = [
-    { grade: 1, letter: 'A', id: '1-A', name: '1-A sinf', targetStudents: 29 },
+    { grade: 1, letter: 'A', id: '1-A', name: '1-A sinf', targetStudents: 30 },
     { grade: 1, letter: 'B', id: '1-B', name: '1-B sinf', targetStudents: 29 },
-    { grade: 1, letter: 'D', id: '1-D', name: '1-D sinf', targetStudents: 28 },
+    { grade: 1, letter: 'D', id: '1-D', name: '1-D sinf', targetStudents: 29 },
 
-    { grade: 2, letter: 'A', id: '2-A', name: '2-A sinf', targetStudents: 29 },
-    { grade: 2, letter: 'B', id: '2-B', name: '2-B sinf', targetStudents: 28 },
+    { grade: 2, letter: 'A', id: '2-A', name: '2-A sinf', targetStudents: 30 },
+    { grade: 2, letter: 'B', id: '2-B', name: '2-B sinf', targetStudents: 29 },
 
-    { grade: 3, letter: 'A', id: '3-A', name: '3-A sinf', targetStudents: 29 },
-    { grade: 3, letter: 'B', id: '3-B', name: '3-B sinf', targetStudents: 28 },
+    { grade: 3, letter: 'A', id: '3-A', name: '3-A sinf', targetStudents: 30 },
+    { grade: 3, letter: 'B', id: '3-B', name: '3-B sinf', targetStudents: 29 },
 
-    { grade: 4, letter: 'A', id: '4-A', name: '4-A sinf', targetStudents: 29 },
-    { grade: 4, letter: 'B', id: '4-B', name: '4-B sinf', targetStudents: 28 },
+    { grade: 4, letter: 'A', id: '4-A', name: '4-A sinf', targetStudents: 30 },
+    { grade: 4, letter: 'B', id: '4-B', name: '4-B sinf', targetStudents: 29 },
 
-    { grade: 5, letter: 'A', id: '5-A', name: '5-A sinf', targetStudents: 29 },
+    { grade: 5, letter: 'A', id: '5-A', name: '5-A sinf', targetStudents: 30 },
     { grade: 5, letter: 'B', id: '5-B', name: '5-B sinf', targetStudents: 29 },
-    { grade: 5, letter: 'D', id: '5-D', name: '5-D sinf', targetStudents: 28 },
+    { grade: 5, letter: 'D', id: '5-D', name: '5-D sinf', targetStudents: 29 },
 
-    { grade: 6, letter: 'A', id: '6-A', name: '6-A sinf', targetStudents: 29 },
+    { grade: 6, letter: 'A', id: '6-A', name: '6-A sinf', targetStudents: 30 },
     { grade: 6, letter: 'B', id: '6-B', name: '6-B sinf', targetStudents: 29 },
 
-    { grade: 7, letter: 'A', id: '7-A', name: '7-A sinf', targetStudents: 29 },
+    { grade: 7, letter: 'A', id: '7-A', name: '7-A sinf', targetStudents: 30 },
     { grade: 7, letter: 'B', id: '7-B', name: '7-B sinf', targetStudents: 29 },
 
-    { grade: 8, letter: 'A', id: '8-A', name: '8-A sinf', targetStudents: 29 },
-    { grade: 8, letter: 'B', id: '8-B', name: '8-B sinf', targetStudents: 28 },
+    { grade: 8, letter: 'A', id: '8-A', name: '8-A sinf', targetStudents: 30 },
+    { grade: 8, letter: 'B', id: '8-B', name: '8-B sinf', targetStudents: 29 },
 
-    { grade: 9, letter: 'A', id: '9-A', name: '9-A sinf', targetStudents: 29 },
-    { grade: 9, letter: 'B', id: '9-B', name: '9-B sinf', targetStudents: 28 },
+    { grade: 9, letter: 'A', id: '9-A', name: '9-A sinf', targetStudents: 30 },
+    { grade: 9, letter: 'B', id: '9-B', name: '9-B sinf', targetStudents: 29 },
 
-    { grade: 10, letter: 'A', id: '10-A', name: '10-A sinf', targetStudents: 29 },
-    { grade: 10, letter: 'B', id: '10-B', name: '10-B sinf', targetStudents: 28 },
+    { grade: 10, letter: 'A', id: '10-A', name: '10-A sinf', targetStudents: 30 },
+    { grade: 10, letter: 'B', id: '10-B', name: '10-B sinf', targetStudents: 29 },
 
-    { grade: 11, letter: 'A', id: '11-A', name: '11-A sinf', targetStudents: 29 },
-    { grade: 11, letter: 'B', id: '11-B', name: '11-B sinf', targetStudents: 28 }
+    { grade: 11, letter: 'A', id: '11-A', name: '11-A sinf', targetStudents: 30 },
+    { grade: 11, letter: 'B', id: '11-B', name: '11-B sinf', targetStudents: 29 }
   ];
 
   var BOY_NAMES = [
@@ -96,8 +98,8 @@
 
   var AVATARS = ['🎓', '👨‍🎓', '👩‍🎓', '🧑‍💻', '👩‍💻', '🌟', '⚡', '🚀', '🔬', '📘', '💡', '🏆', '🎯', '🦁', '🦅', '🐱', '🐬', '🥇'];
 
-  // 686 ta deterministik o'quvchini generatsiya qilish
-  function generate686StudentsDatabase() {
+  // 707 ta deterministik o'quvchini generatsiya qilish
+  function generate707StudentsDatabase() {
     var list = [];
     var idCounter = 1;
 
@@ -154,7 +156,7 @@
         }
 
         list.push({
-          id: 'st_686_' + (idCounter++),
+          id: 'st_707_' + (idCounter++),
           firstName: fn,
           lastName: ln,
           grade: sc.grade,
@@ -205,9 +207,9 @@
         this.accounts = [];
       }
 
-      // Agar baza bo'lmasa yoki 600 dan kam bo'lsa, to'liq 686 ta o'quvchini generatsiya qilamiz
-      if (!this.accounts || !Array.isArray(this.accounts) || this.accounts.length < 600) {
-        this.accounts = generate686StudentsDatabase();
+      // Agar baza bo'lmasa yoki 600 dan kam bo'lsa, to'liq 707 ta o'quvchini generatsiya qilamiz
+      if (!this.accounts || !Array.isArray(this.accounts) || this.accounts.length < 700) {
+        this.accounts = generate707StudentsDatabase();
         this.saveAccounts();
       }
 
@@ -431,7 +433,7 @@
     },
 
     // Parallel Sinflar reyting ro'yxati (1-A, 1-B, 1-D, ..., 11-A, 11-B)
-    // 686 ta o'quvchilar ballari va sonlaridan to'g'ridan-to'g'ri dinamik hisoblanadi!
+    // 707 ta o'quvchilar ballari va sonlaridan to'g'ridan-to'g'ri dinamik hisoblanadi!
     getClassRankings: function(gradeFilter) {
       var classMap = {};
       for (var i = 0; i < SCHOOL_CLASSES.length; i++) {
@@ -909,7 +911,7 @@
       html += '    <div>';
       html += '      <div class="lb-detail-school-tag"><i class="fas fa-graduation-cap"></i> 30-IDUM Maktab</div>';
       html += '      <h3 class="lb-detail-class-title">' + analysis.className + ' Tahlili</h3>';
-      html += '      <p class="lb-detail-subtitle">Jami: <strong>' + analysis.studentsCount + ' ta o\'quvchi</strong> &bull; Maktab bo\'yicha jami: <strong>686 ta</strong></p>';
+      html += '      <p class="lb-detail-subtitle">Jami: <strong>' + analysis.studentsCount + ' ta o\'quvchi</strong> &bull; Maktab bo\'yicha jami: <strong>707 ta</strong></p>';
       html += '    </div>';
       html += '    <div class="lb-detail-rank-pill">';
       html += '      <div class="lb-detail-rank-val">#' + analysis.rank + '</div>';
@@ -1138,7 +1140,7 @@
       html += '  <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:0.9rem; text-align:center;">';
       html += '    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; font-weight:700;">Jami O\'quvchilar</div>';
       html += '    <div style="font-size:1.6rem; font-weight:900; color:#fff; margin-top:4px;">' + analysis.studentsCount + ' ta</div>';
-      html += '    <div style="font-size:0.75rem; color:#38bdf8;">Maktabda jami: 686 ta</div>';
+      html += '    <div style="font-size:0.75rem; color:#38bdf8;">Maktabda jami: 707 ta</div>';
       html += '  </div>';
       html += '  <div style="background:rgba(30,41,59,0.7); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:0.9rem; text-align:center;">';
       html += '    <div style="font-size:0.75rem; color:#94a3b8; text-transform:uppercase; font-weight:700;">Umumiy Ball</div>';

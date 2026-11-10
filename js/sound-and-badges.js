@@ -956,22 +956,30 @@
       // Yutuq berish
       if (window.AchievementsManager) {
         window.AchievementsManager.unlock('olympiad');
-        if (correctCount === 10) window.AchievementsManager.unlock('sniper');
+        if (correctCount === questions.length) window.AchievementsManager.unlock('sniper');
       }
 
       document.getElementById('olympiad-quiz-view').style.display = 'none';
       document.getElementById('olympiad-result-view').style.display = 'block';
 
-      document.getElementById('ol-res-correct').textContent = correctCount + ' / 10';
-      document.getElementById('ol-res-score').textContent = '+' + this.totalPoints + ' ball';
-      document.getElementById('ol-res-streak').textContent = this.maxStreak + ' ta ketma-ket';
+      var qTotal = questions.length;
+      var resCorrectEl = document.getElementById('ol-res-correct');
+      var resScoreEl = document.getElementById('ol-res-score');
+      var resStreakEl = document.getElementById('ol-res-streak');
+      var certNameEl = document.getElementById('ol-cert-name');
+      var certClassEl = document.getElementById('ol-cert-class');
+      var certScoreEl = document.getElementById('ol-cert-score');
+
+      if (resCorrectEl) resCorrectEl.textContent = correctCount + ' / ' + qTotal;
+      if (resScoreEl) resScoreEl.textContent = '+' + this.totalPoints + ' ball';
+      if (resStreakEl) resStreakEl.textContent = this.maxStreak + ' ta ketma-ket';
 
       var currentAcc = window.AccountsManager ? window.AccountsManager.getCurrentAccount() : null;
       var name = currentAcc ? (currentAcc.firstName + ' ' + (currentAcc.lastName || '')) : 'O\'quvchi';
 
-      document.getElementById('ol-cert-name').textContent = name;
-      document.getElementById('ol-cert-class').textContent = this.selectedGrade + '-sinf Maktab Olimpiadasi Ishtirokchisi';
-      document.getElementById('ol-cert-score').textContent = this.totalPoints + ' ball (' + correctCount + '/10 to\'g\'ri)';
+      if (certNameEl) certNameEl.textContent = name;
+      if (certClassEl) certClassEl.textContent = this.selectedGrade + '-sinf Maktab Olimpiadasi Ishtirokchisi';
+      if (certScoreEl) certScoreEl.textContent = this.totalPoints + ' ball (' + correctCount + '/' + qTotal + ' to\'g\'ri)';
       
       var now = new Date();
       var months = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr'];

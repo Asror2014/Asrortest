@@ -749,6 +749,7 @@ class TestEngine {
 
 // Global instansiya
 var testEngine = new TestEngine();
+window.testEngine = testEngine;
 
 // Window funksiyalari
 window.startTest = function () {
