@@ -284,8 +284,10 @@ function navigateTo(pageId) {
       if (typeof window.initGeographyLab === 'function') window.initGeographyLab();
       var ov = document.getElementById('geography-canvas-overlay');
       if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('geo_exp') || 'earth-layers';
       if (typeof window.selectGeographyExperiment === 'function') {
-        window.selectGeographyExperiment('earth-layers');
+        window.selectGeographyExperiment(exp);
       }
     }, 150);
   }
@@ -294,8 +296,10 @@ function navigateTo(pageId) {
       if (typeof window.initComputerLab === 'function') window.initComputerLab();
       var ov = document.getElementById('computer-canvas-overlay');
       if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('comp_exp') || 'pc-inside';
       if (typeof window.selectComputerExperiment === 'function') {
-        window.selectComputerExperiment('pc-inside');
+        window.selectComputerExperiment(exp);
       }
     }, 150);
   }

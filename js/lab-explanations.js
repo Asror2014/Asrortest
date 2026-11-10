@@ -1,4 +1,4 @@
-﻿/**
+/**
  * 30-maktabtest - 3D Laboratoriya Jonli Tushuntirish va Ilmiy Tahlil Tizimi
  * Har bir laboratoriya (Kimyo, Fizika, Astronomiya, Biologiya, Geometriya)
  * uchun o'ng tomondagi maxsus interaktiv tushuntirish paneli
@@ -11,57 +11,57 @@ window.LAB_EXPLANATIONS = {
   chemistry: {
     'copper-acid': {
       title: "Mis va sulfat kislota reaksiyasi",
-      formula: "Cu + 2H₂SO₄(kons.) ⎯→ CuSO₄ + SO₂↑ + 2H₂O",
-      desc: "Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cu²⁺) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va vodorod/oltingugurt gazi shiddat bilan pufakchalar hosil qilib ajraladi.",
-      activeDesc: "🟢 REAKSIYA KETMOQDA: Mis parchasi kislotada erimoqda, eritma quyuq ko'k rangga o'tmoqda va shiddatli gaz pufakchalari yuqoriga ko'tarilmoqda!",
+      formula: "Cu + 2H2SO4(kons.) ?? CuSO4 + SO2? + 2H2O",
+      desc: "Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cu�?) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va vodorod/oltingugurt gazi shiddat bilan pufakchalar hosil qilib ajraladi.",
+      activeDesc: "?? REAKSIYA KETMOQDA: Mis parchasi kislotada erimoqda, eritma quyuq ko'k rangga o'tmoqda va shiddatli gaz pufakchalari yuqoriga ko'tarilmoqda!",
       points: [
         "Idish tubidagi mis bo'lagining erishi",
         "Suyuqlik yuzasiga ko'tarilayotgan gaz pufakchalari",
         "Eritma rangining tiniq holatdan yorqin ko'k rangga o'zgarishi"
       ],
-      fact: "Mis sulfat (CuSO₄) xalq tilida 'to'tiyo' deb ataladi va bog'dorchilikda daraxtlarni zararkunanda zamburug'lardan himoya qilishda mashhur vositadir."
+      fact: "Mis sulfat (CuSO4) xalq tilida 'to'tiyo' deb ataladi va bog'dorchilikda daraxtlarni zararkunanda zamburug'lardan himoya qilishda mashhur vositadir."
     },
     'electrolysis': {
       title: "Suvning elektr toki ta'sirida parchalanishi",
-      formula: "2H₂O ⎯(elektr toki)⎯→ 2H₂↑ (katod) + O₂↑ (anod)",
+      formula: "2H2O ?(elektr toki)?? 2H2? (katod) + O2? (anod)",
       desc: "Suvdan o'zgarmas elektr toki o'tganda suv molekulalari tarkibiy elementlari bo'lgan vodorod va kislorod gazlariga parchalanadi. Katod (manfiy qutb)da vodorod, anod (musbat qutb)da esa kislorod ajraladi.",
-      activeDesc: "🟢 ELEKTROLIZ DAVOM ETMOQDA: Katod va anod elektrodlari atrofida tinimsiz gaz pufakchalari hosil bo'lmoqda. Katodda ajralayotgan vodorod hajmi kisloroddan 2 barobar ko'proq!",
+      activeDesc: "?? ELEKTROLIZ DAVOM ETMOQDA: Katod va anod elektrodlari atrofida tinimsiz gaz pufakchalari hosil bo'lmoqda. Katodda ajralayotgan vodorod hajmi kisloroddan 2 barobar ko'proq!",
       points: [
-        "Katodda vodorod (H₂) pufakchalarining shiddatli ajralishi",
-        "Anodda kislorod (O₂) pufakchalarining to'planishi",
+        "Katodda vodorod (H2) pufakchalarining shiddatli ajralishi",
+        "Anodda kislorod (O2) pufakchalarining to'planishi",
         "Hajmlar nisbati aniq 2 : 1 bo'lishi"
       ],
       fact: "Suv elektrolizi orqali olinadigan toza vodorod kelajakning eng ekologik toza va xavfsiz yonilg'isi (yashil vodorod) hisoblanadi."
     },
     'volcano': {
       title: "Kimyoviy vulqon (Kislota-asos reaksiyasi)",
-      formula: "NaHCO₃ + CH₃COOH ⎯→ CH₃COONa + H₂O + CO₂↑",
-      desc: "Natriy gidrokarbonat (iste'mol sodasi) va sirka kislotasi o'rtasidagi shiddatli neytrallanish reaksiyasi. Reaksiya natijasida ko'p miqdorda karbonat angidrid (CO₂) gazi ko'pik hosil qilib, vulqon otilishi kabi tashqariga otiladi.",
-      activeDesc: "🟢 VULQON OTILMOQDA: Gaz ajralishi va qizil ko'pik hosil bo'lishi eng yuqori cho'qqiga chiqdi! Kuchli bosim ostida massa otilib chiqmoqda.",
+      formula: "NaHCO3 + CH3COOH ?? CH3COONa + H2O + CO2?",
+      desc: "Natriy gidrokarbonat (iste'mol sodasi) va sirka kislotasi o'rtasidagi shiddatli neytrallanish reaksiyasi. Reaksiya natijasida ko'p miqdorda karbonat angidrid (CO2) gazi ko'pik hosil qilib, vulqon otilishi kabi tashqariga otiladi.",
+      activeDesc: "?? VULQON OTILMOQDA: Gaz ajralishi va qizil ko'pik hosil bo'lishi eng yuqori cho'qqiga chiqdi! Kuchli bosim ostida massa otilib chiqmoqda.",
       points: [
         "Qizil-olovrang ko'pikning konusdan yuqoriga otilishi",
-        "Reaksiya natijasida CO₂ gazining shiddatli ajralishi",
+        "Reaksiya natijasida CO2 gazining shiddatli ajralishi",
         "Harorat o'zgarishi va shishish effekti"
       ],
       fact: "Ushbu reaksiya oshpazlikda pishiriq xamirini g'ovakli va yumshoq qilishda hamda ko'pikli o't o'chirgichlarda keng qo'llaniladi."
     },
     'indicators': {
       title: "Muhit ko'rsatkichlari (Lakmus, Fenolftalein)",
-      formula: "pH = -lg[H⁺] (Kislotali < 7 | Neytral = 7 | Ishqoriy > 7)",
+      formula: "pH = -lg[H?] (Kislotali < 7 | Neytral = 7 | Ishqoriy > 7)",
       desc: "Turli eritmalar kislotali, neytral yoki ishqoriy muhitga egaligini indikatorlar rangi orqali aniqlash tajribasi. Lakmus kislotada qizil, ishqorda ko'k rang beradi. Fenolftalein esa ishqorda yorqin malina rangiga kiradi.",
-      activeDesc: "🟢 INDIKATOR TA'SIRI: Eritmaga tomizilgan reagent muhitning vodorod ko'rsatkichini (pH) darhol rang o'zgarishi orqali ko'rsatmoqda!",
+      activeDesc: "?? INDIKATOR TA'SIRI: Eritmaga tomizilgan reagent muhitning vodorod ko'rsatkichini (pH) darhol rang o'zgarishi orqali ko'rsatmoqda!",
       points: [
         "Eritma rangining bir necha soniyada o'zgarishi",
         "pH shkalasi bo'yicha muhitning aniqlanishi",
         "Neytrallashganda rangning qayta o'zgarishi"
       ],
-      fact: "Inson qonining pH darajasi juda qat'iy (7.35–7.45) bo'lib, uning ozgina o'zgarishi ham organizm uchun jiddiy xavf tug'diradi."
+      fact: "Inson qonining pH darajasi juda qat'iy (7.35�7.45) bo'lib, uning ozgina o'zgarishi ham organizm uchun jiddiy xavf tug'diradi."
     },
     'crystal': {
       title: "To'yingan eritmada kristallanish jarayoni",
-      formula: "Tuz (erigan) ⎯(sovush/bug'lanish)⎯→ Kristall panjara",
+      formula: "Tuz (erigan) ?(sovush/bug'lanish)?? Kristall panjara",
       desc: "Issiq to'yingan tuz eritmasi sovuganda yoki suyuqlik bug'langanda, ortiqcha tuz molekulalari qat'iy geometrik tartibda birlashib, qirrali go'zal kristall panjaralar hosil qiladi.",
-      activeDesc: "🟢 KRISTALL O'SMOQDA: Eritma markazida kristall karkasi qatlam-qatlam bo'lib o'smoqda va qirralari yorug'likda yaltiramoqda!",
+      activeDesc: "?? KRISTALL O'SMOQDA: Eritma markazida kristall karkasi qatlam-qatlam bo'lib o'smoqda va qirralari yorug'likda yaltiramoqda!",
       points: [
         "Kristallning qirrali geometrik shakli",
         "Yorug'likning kristall qirralarida sinishi",
@@ -77,9 +77,9 @@ window.LAB_EXPLANATIONS = {
   physics: {
     'free-fall': {
       title: "Jismning erkin tushishi (Gravitatsiya)",
-      formula: "h = ½gt² | v = gt | g ≈ 9.8 m/s²",
-      desc: "Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/s²) bilan yerga tushadi.",
-      activeDesc: "🟢 TUSHISH JARAYONI: Jism pastga tezlanuvchan harakat qilmoqda. Har bir millisekundda uning kinetik energiyasi ortib, potensial energiyasi kamaymoqda!",
+      formula: "h = �gt� | v = gt | g � 9.8 m/s�",
+      desc: "Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/s�) bilan yerga tushadi.",
+      activeDesc: "?? TUSHISH JARAYONI: Jism pastga tezlanuvchan harakat qilmoqda. Har bir millisekundda uning kinetik energiyasi ortib, potensial energiyasi kamaymoqda!",
       points: [
         "Tushish vaqtining balandlik kvadrat ildiziga proporsionalligi",
         "Tezlikning tushish davomida chiziqli ortib borishi",
@@ -89,9 +89,9 @@ window.LAB_EXPLANATIONS = {
     },
     'spring': {
       title: "Prujinali tebranishlar (Guk qonuni)",
-      formula: "F = -k·x | T = 2π√(m / k)",
+      formula: "F = -k�x | T = 2pv(m / k)",
       desc: "Elastiklik kuchi ta'sirida yuz beradigan garmonik tebranishlar. Prujina qancha qattiq (k) bo'lsa, tebranishlar shuncha tezlashadi. Massa (m) ortsa, davr (T) uzayadi.",
-      activeDesc: "🟢 TEBRANISH KETMOQDA: Prujina cho'zilib-qisqarmoqda. Potensial va kinetik energiya bir-biriga doimiy aylanmoqda.",
+      activeDesc: "?? TEBRANISH KETMOQDA: Prujina cho'zilib-qisqarmoqda. Potensial va kinetik energiya bir-biriga doimiy aylanmoqda.",
       points: [
         "Muvozanat nuqtasida tezlik maksimal bo'lishi",
         "Eng chekka nuqtalarda tezlik nolga teng bo'lishi",
@@ -101,9 +101,9 @@ window.LAB_EXPLANATIONS = {
     },
     'pendulum': {
       title: "Ipga osilgan yukning tebranishi (Matematik mayatnik)",
-      formula: "T = 2π√(L / g)",
+      formula: "T = 2pv(L / g)",
       desc: "Uzunligi L bo'lgan ipga osilgan yukning kichik burchaklardagi tebranishi. E'tibor bering: mayatnik tebranish davri yukning massasiga bog'liq emas, faqat ip uzunligiga bog'liq!",
-      activeDesc: "🟢 MAYATNIK HARAKATDA: Mayatnik o'z davriy tebranishini davom ettirmoqda. Amplituda va chastota qat'iy saqlanmoqda.",
+      activeDesc: "?? MAYATNIK HARAKATDA: Mayatnik o'z davriy tebranishini davom ettirmoqda. Amplituda va chastota qat'iy saqlanmoqda.",
       points: [
         "Ip uzunligi 4 barobar ortsa, tebranish davri 2 barobar uzayadi",
         "Massa o'zgarganda tebranish vaqti o'zgarmasligi",
@@ -113,21 +113,21 @@ window.LAB_EXPLANATIONS = {
     },
     'archimedes': {
       title: "Suyuqlikdagi itaruvchi kuch (Arximed qonuni)",
-      formula: "F_A = ρ_suyuqlik · g · V_botgan",
+      formula: "F_A = ?_suyuqlik � g � V_botgan",
       desc: "Suyuqlikka botirilgan jismga uning siqib chiqargan suyuqligi og'irligiga teng bo'lgan yuqoriga yo'nalgan itaruvchi kuch ta'sir qiladi. Agar jism zichligi suyuqlikdan kichik bo'lsa, u suzadi.",
-      activeDesc: "🟢 ITARUVCHI KUCH TA'SIRI: Suyuqlik idishga botirilayotgan jismni yuqoriga itarmoqda. Siqib chiqarilgan suv hajmi o'lchanmoqda.",
+      activeDesc: "?? ITARUVCHI KUCH TA'SIRI: Suyuqlik idishga botirilayotgan jismni yuqoriga itarmoqda. Siqib chiqarilgan suv hajmi o'lchanmoqda.",
       points: [
         "Jism to'liq botganda itaruvchi kuch maksimalga yetishi",
         "Jismning suyuqlikdagi og'irligi kamayishi",
-        "Suzish sharti: ρ_jism < ρ_suv"
+        "Suzish sharti: ?_jism < ?_suv"
       ],
       fact: "O'n minglab tonna og'irlikdagi ulkan po'lat kemalarning cho'kmasdan suv yuzida suzishi aynan Arximed qonuni tufaylidir."
     },
     'optics': {
       title: "Yorug'lik nurlarining sinishi (Snellius qonuni)",
-      formula: "n₁ · sin(α) = n₂ · sin(β)",
+      formula: "n1 � sin(a) = n2 � sin(�)",
       desc: "Yorug'lik nuri bir muhitdan (havodan) ikkinchi zichroq muhitga (suv yoki shishaga) o'tganda tarqalish tezligi o'zgaradi va nur o'z yo'nalishini sindiradi.",
-      activeDesc: "🟢 NUR TARQALMOQDA: Tushish burchagi va sinish burchagi o'rtasidagi optik qonuniyat ko'rinmoqda.",
+      activeDesc: "?? NUR TARQALMOQDA: Tushish burchagi va sinish burchagi o'rtasidagi optik qonuniyat ko'rinmoqda.",
       points: [
         "Zichroq muhitga o'tganda nurning perpendikulyarga yaqinlashishi",
         "To'la ichki qaytish hodisasining chegarasi",
@@ -137,9 +137,9 @@ window.LAB_EXPLANATIONS = {
     },
     'ohm': {
       title: "Zanjir qismi uchun Om qonuni",
-      formula: "I = U / R | Quvvat: P = U · I",
+      formula: "I = U / R | Quvvat: P = U � I",
       desc: "Elektr zanjiridagi tok kuchi (I) kuchlanishga (U) to'g'ri proporsional va o'tkazgich qarshiligiga (R) teskari proporsionaldir. Qarshilik ortsa, tok kamayadi.",
-      activeDesc: "🟢 TOK OQMOQDA: Elektronlar yo'naltirilgan harakati ampermetr va voltmetr ko'rsatkichlarida aks etmoqda.",
+      activeDesc: "?? TOK OQMOQDA: Elektronlar yo'naltirilgan harakati ampermetr va voltmetr ko'rsatkichlarida aks etmoqda.",
       points: [
         "Kuchlanish oshirilganda tok kuchining chiziqli o'sishi",
         "Qarshilik oshirilganda tok kuchining kamayishi",
@@ -155,9 +155,9 @@ window.LAB_EXPLANATIONS = {
   astronomy: {
     'solar-system': {
       title: "Quyosh va 8 ta asosiy sayyora",
-      formula: "T² / R³ = const (Keplerning 3-qonuni)",
+      formula: "T� / R� = const (Keplerning 3-qonuni)",
       desc: "Quyosh atrofida Merkuriy, Venera, Yer, Mars, Yupiter, Saturn, Uran va Neptun aylanadi. Quyoshga eng yaqin Merkuriy bor-yo'g'i 88 kunda aylanib chiqsa, eng uzoqdagi Neptunga 165 yil kerak bo'ladi.",
-      activeDesc: "🟢 SAYYORALAR HARAKATDA: Sayyoralar real nisbatdagi burchak tezliklari bilan orbitalari bo'ylab aylanmoqda.",
+      activeDesc: "?? SAYYORALAR HARAKATDA: Sayyoralar real nisbatdagi burchak tezliklari bilan orbitalari bo'ylab aylanmoqda.",
       points: [
         "Ichki sayyoralarning tez, tashqi gigantlarning sokin aylanishi",
         "Saturn halqalari va sayyoralarning Quyoshdan masofasi",
@@ -169,7 +169,7 @@ window.LAB_EXPLANATIONS = {
       title: "Oyning Yer atrofida aylanishi va fazalari",
       formula: "Sinodik oy davri = 29.5 kun",
       desc: "Oy o'zidan yorug'lik chiqarmaydi, u faqat Quyosh nurini qaytaradi. Yer, Oy va Quyoshning fazoviy holati o'zgarishi natijasida biz yangi oy, yarim oy va to'lin oyni ko'ramiz.",
-      activeDesc: "🟢 OY ORBITADA HARAKATLANMOQDA: Quyosh yoritayotgan tomon va Yerdan ko'rinadigan qism fazasi o'zgarmoqda.",
+      activeDesc: "?? OY ORBITADA HARAKATLANMOQDA: Quyosh yoritayotgan tomon va Yerdan ko'rinadigan qism fazasi o'zgarmoqda.",
       points: [
         "Yangi oy (Oy qorong'u) dan To'lin oy (to'liq yorug')gacha davr",
         "Oyning doim bir tomoni Yerga qarab turishi (sinxron aylanish)",
@@ -179,9 +179,9 @@ window.LAB_EXPLANATIONS = {
     },
     'planetary-orbit': {
       title: "Keplerning 1-qonuni: Elliptik harakat",
-      formula: "r = p / (1 + e·cos θ)",
+      formula: "r = p / (1 + e�cos ?)",
       desc: "Barcha sayyoralar Quyosh atrofida aylanma emas, balki ellips shaklidagi orbitalar bo'ylab harakatlanadi. Quyosh bu ellipsning fokuslaridan birida joylashgan.",
-      activeDesc: "🟢 ELLIPTIK TEZLIK: Sayyora Quyoshga yaqinlashganda (perigeliy) tezlashadi, uzoqlashganda (afeliy) sekinlashadi.",
+      activeDesc: "?? ELLIPTIK TEZLIK: Sayyora Quyoshga yaqinlashganda (perigeliy) tezlashadi, uzoqlashganda (afeliy) sekinlashadi.",
       points: [
         "Tezlikning masofaga bog'liq ravishda o'zgarishi",
         "Radius-vektorning teng vaqtlarda teng yuzalarni chizishi (Kepler 2-qonuni)",
@@ -191,9 +191,9 @@ window.LAB_EXPLANATIONS = {
     },
     'sun-earth': {
       title: "Yer o'qining og'ish burchagi va fasllar",
-      formula: "Yer o'qi og'ishi = 23.5° | Yil davri = 365.25 kun",
+      formula: "Yer o'qi og'ishi = 23.5� | Yil davri = 365.25 kun",
       desc: "Yer o'qining 23.5 gradusga og'ganligi tufayli yil davomida Quyosh nurlari Yer sirtiga turli burchak ostida tushadi. Shu sababli sayyoramizda Bahor, Yoz, Kuz va Qish fasllari almashadi.",
-      activeDesc: "🟢 SUTKALIK VA YILLIK AYLANISH: Yer o'z o'qi atrofida (kun/tun) va Quyosh atrofida (fasllar) aylanmoqda.",
+      activeDesc: "?? SUTKALIK VA YILLIK AYLANISH: Yer o'z o'qi atrofida (kun/tun) va Quyosh atrofida (fasllar) aylanmoqda.",
       points: [
         "Quyoshga qaragan yarimsharda yoz, teskari yarimsharda qish bo'lishi",
         "Qutbiy tun va qutbiy kun hodisalari",
@@ -209,22 +209,22 @@ window.LAB_EXPLANATIONS = {
   biology: {
     'human-lungs': {
       title: "O'pka va Nafas Olish Tizimi",
-      formula: "Nafas tezligi: 16-20 marta/daqiqada | Oâ‚‚ (kislorod) âž” Qon âž” COâ‚‚ (gaz)",
+      formula: "Nafas tezligi: 16-20 marta/daqiqada | O₂ (kislorod) ➔ Qon ➔ CO₂ (gaz)",
       desc: "Inson nafas olganda diafragma pastga tushadi, ko'krak qafasi kengayadi va havo traxeya orqali o'pka bronxlariga kiradi. Alveolalarda kislorod qonga o'tadi, karbonat angidrid esa nafas chiqarilganda tashqariga chiqariladi.",
-      activeDesc: "ðŸ« O'PKA NAFAS OLMOQDA: Diafragma va o'pka to'qimalari ritmik kengayib-toraymoqda, havo oqimi alveolalarga yetib bormoqda!",
+      activeDesc: "🫁 O'PKA NAFAS OLMOQDA: Diafragma va o'pka to'qimalari ritmik kengayib-toraymoqda, havo oqimi alveolalarga yetib bormoqda!",
       points: [
         "Traxeya va asosiy bronxlar (Havo o'tkazuvchi yo'llar)",
         "O'ng va chap o'pka bo'laklari (O'pka to'qimalari)",
         "Diafragma mushagining ko'tarilib-tushishi",
         "Alveolalar orqali gaz almashinuvi jarayoni"
       ],
-      fact: "Ikkala o'pkadagi barcha mayda alveolalar yuzasini yoyib chiqsa, uning umumiy maydoni butun boshli tennis korti (taxminan 75-100 mÂ²) hajmiga teng bo'ladi!"
+      fact: "Ikkala o'pkadagi barcha mayda alveolalar yuzasini yoyib chiqsa, uning umumiy maydoni butun boshli tennis korti (taxminan 75-100 m²) hajmiga teng bo'ladi!"
     },
     'heart': {
       title: "3D Urib turuvchi yurak anatomiyasi",
       formula: "Puls: 60-80 zarba/daq | Qon bosimi: 120/80 mm sim.ust.",
       desc: "Yurak inson tanasining tinimsiz ishlaydigan mushakli nasosidir. U 4 ta kameradan (2 ta bo'lmacha va 2 ta qorincha) iborat. Chap qorincha kislorodga boy qonni butun tanaga (katta qon aylanish doirasiga) haydaydi.",
-      activeDesc: "🟢 YURAK URMOQDA: Sistola (qisqarish) va Diastola (bo'shashish) fazalari almashmoqda. Qon tomirlari bo'ylab kislorodli qon yetkazilmoqda.",
+      activeDesc: "?? YURAK URMOQDA: Sistola (qisqarish) va Diastola (bo'shashish) fazalari almashmoqda. Qon tomirlari bo'ylab kislorodli qon yetkazilmoqda.",
       points: [
         "Mushaklar qisqarishi (puls tezligini slayderda boshqarish mumkin)",
         "Aorta va o'pka arteriyalariga qon chiqishi",
@@ -234,9 +234,9 @@ window.LAB_EXPLANATIONS = {
     },
     'dna': {
       title: "DNK molekulasi va irsiy axborot kodi",
-      formula: "A = T (2 ta vodorod bog') | G ≡ C (3 ta vodorod bog')",
+      formula: "A = T (2 ta vodorod bog') | G = C (3 ta vodorod bog')",
       desc: "DNK (Dezoksiribonuklein kislota) tirik organizmlarning butun genetik dasturini saqlaydi. U ikkita spiraldan iborat bo'lib, komplementarlik qoidasiga muvofiq Adenin Timin bilan, Guanin Sitozin bilan bog'lanadi.",
-      activeDesc: "🟢 DNK SPIRALI: Qo'sh spiral fazoda aylanmoqda, genetik kod juftliklari (A-T va G-C) aniq ko'rinmoqda.",
+      activeDesc: "?? DNK SPIRALI: Qo'sh spiral fazoda aylanmoqda, genetik kod juftliklari (A-T va G-C) aniq ko'rinmoqda.",
       points: [
         "Shakar-fosfat karkasi va nukleotidlar zanjiri",
         "Spirallarning bir-birini aniq to'ldirishi",
@@ -245,10 +245,10 @@ window.LAB_EXPLANATIONS = {
       fact: "Bitta inson hujayrasidagi DNK yozib yoyilsa, uzunligi qariyb 2 metrni tashkil qiladi!"
     },
     'cell': {
-      title: "Tiriklikning asosiy birligi — Hujayra",
+      title: "Tiriklikning asosiy birligi � Hujayra",
       formula: "Tarkibi: Yadro + Sitoplazma + Membrana + Organoidlar",
       desc: "Hujayra barcha tirik organizmlarning tuzilish birligidir. Yadroda irsiy axborot saqlanadi, mitoxondriyalar energiya (ATF) ishlab chiqaradi, ribosomalar oqsil sintezlaydi.",
-      activeDesc: "🟢 HUJAYRA ORGANOIDLARI: Membrana ichida sitoplazma va asosiy organoidlarning harakati va vazifalari.",
+      activeDesc: "?? HUJAYRA ORGANOIDLARI: Membrana ichida sitoplazma va asosiy organoidlarning harakati va vazifalari.",
       points: [
         "Yadro va yadrocha joylashuvi",
         "Mitoxondriyalar va endoplazmatik to'r",
@@ -260,7 +260,7 @@ window.LAB_EXPLANATIONS = {
       title: "Harakat va tayanch tizimi (Inson skeleti)",
       formula: "Katta odamda: 206 ta suyak | Chaqaloqda: ~270 ta suyak",
       desc: "Skelet inson tanasiga shakl beradi, harakatlanish imkonini yaratadi va ichki a'zolarni (miya, yurak, o'pka) himoya qiladi. Suyaklar bo'g'inlar va boylamlar orqali o'zaro tutashgan.",
-      activeDesc: "🟢 SKELET ANATOMIYASI: Kalla suyagi, umurtqa pog'onasi, qovurg'alar va qo'l-oyoq suyaklari.",
+      activeDesc: "?? SKELET ANATOMIYASI: Kalla suyagi, umurtqa pog'onasi, qovurg'alar va qo'l-oyoq suyaklari.",
       points: [
         "Umurtqa pog'onasining S-simon elastik egilishi",
         "Bo'g'inlarning harakatchanlik mexanizmi",
@@ -272,7 +272,7 @@ window.LAB_EXPLANATIONS = {
       title: "Oliy asab faoliyati va tafakkur markazi (Bosh miya)",
       formula: "Tarkibi: ~86 milliard neyron | ~100 trillion sinaps",
       desc: "Bosh miya insonning barcha fikrlari, his-tuyg'ulari, xotirasi, nutqi va harakatlarini boshqaruvchi markaziy kompyuterdir. O'ng va chap yarim sharlar qadoqsimon tana orqali bog'langan.",
-      activeDesc: "🟢 MIYA PO'STLOG'I: Bosh miya yarim sharlari, miyacha (muvozanat) va miya ustuni (nafas/yurak boshqaruvi).",
+      activeDesc: "?? MIYA PO'STLOG'I: Bosh miya yarim sharlari, miyacha (muvozanat) va miya ustuni (nafas/yurak boshqaruvi).",
       points: [
         "Miya po'stlog'idagi burmalar (egat va pushtalar)",
         "Miyacha va orqa miya bilan tutashuvi",
@@ -288,57 +288,57 @@ window.LAB_EXPLANATIONS = {
   geometry: {
     'cube': {
       title: "To'g'ri burchakli Parallelepiped va Kub",
-      formula: "Hajm: V = a · b · c | To'la sirt: S = 2(ab + bc + ac)",
-      desc: "Fazoviy 3D jism. Barcha yoqlari to'g'ri to'rtburchaklardan iborat. 8 ta uchi, 12 ta qirrasi va 6 ta yog'i bor. Barcha qirralari teng bo'lsa (a=b=c), kub hosil bo'ladi (V = a³).",
-      activeDesc: "🟢 O'LCHAMLAR O'ZGARMOQDA: Slayderlar yordamida uzunlik, kenglik va balandlik o'zgarganda hajm va sirt real vaqtda qayta hisoblanmoqda!",
+      formula: "Hajm: V = a � b � c | To'la sirt: S = 2(ab + bc + ac)",
+      desc: "Fazoviy 3D jism. Barcha yoqlari to'g'ri to'rtburchaklardan iborat. 8 ta uchi, 12 ta qirrasi va 6 ta yog'i bor. Barcha qirralari teng bo'lsa (a=b=c), kub hosil bo'ladi (V = a�).",
+      activeDesc: "?? O'LCHAMLAR O'ZGARMOQDA: Slayderlar yordamida uzunlik, kenglik va balandlik o'zgarganda hajm va sirt real vaqtda qayta hisoblanmoqda!",
       points: [
         "Qirralar nisbatining hajmga ta'siri",
-        "Fazoviy diagonal: d = √(a² + b² + c²)",
+        "Fazoviy diagonal: d = v(a� + b� + c�)",
         "Yoqlar yuzasining hisoblanishi"
       ],
       fact: "Kub tabiatdagi eng mustahkam simmetrik shakllardan biri bo'lib, osh tuzi (NaCl) kristallari kubik shaklida o'sadi."
     },
     'pyramid': {
       title: "Muntazam to'rtburchakli piramida",
-      formula: "Hajm: V = ⅓ · S_asos · h | S_asos = a²",
+      formula: "Hajm: V = ? � S_asos � h | S_asos = a�",
       desc: "Asosi kvadrat bo'lib, yon yoqlari umumiy uchga ega bo'lgan 4 ta teng yonli uchburchakdan iborat ko'pyoq. Piramida hajmi xuddi shunday asos va balandlikka ega prizma hajmining roppa-rosa uchdan bir qismiga tengdir.",
-      activeDesc: "🟢 PIRAMIDA PARAMETRLARI: Balandlik (h) va asos tomoni (a) o'zgarishi piramidaning qiyaligi va fazoviy hajmiga ta'sir qilmoqda.",
+      activeDesc: "?? PIRAMIDA PARAMETRLARI: Balandlik (h) va asos tomoni (a) o'zgarishi piramidaning qiyaligi va fazoviy hajmiga ta'sir qilmoqda.",
       points: [
         "Uchidan asos markaziga tushirilgan balandlik (h)",
-        "Yon yoq balandligi — apofema (l)",
-        "Yon sirt yuzasi: S_yon = ½ · P_asos · l"
+        "Yon yoq balandligi � apofema (l)",
+        "Yon sirt yuzasi: S_yon = � � P_asos � l"
       ],
       fact: "Qadimgi Misrdagi Xeops piramidasi deyarli 4000 yil davomida insoniyat tomonidan qurilgan Yer yuzidagi eng baland inshoot bo'lib turgan."
     },
     'cylinder': {
-      title: "Aylanma jism — Silindr",
-      formula: "Hajm: V = π · R² · H | Yon sirt: S_yon = 2π·R·H",
+      title: "Aylanma jism � Silindr",
+      formula: "Hajm: V = p � R� � H | Yon sirt: S_yon = 2p�R�H",
       desc: "To'g'ri to'rtburchakning bir tomoni atrofida aylanishidan hosil bo'lgan jism. Ikkita parallel doiraviy asos va yon sirtdan iborat.",
-      activeDesc: "🟢 SILINDR VA RADIUS: Radius (R) yoki balandlik (H) o'zgarganda silindr sig'imi (hajmi) keskin ortadi.",
+      activeDesc: "?? SILINDR VA RADIUS: Radius (R) yoki balandlik (H) o'zgarganda silindr sig'imi (hajmi) keskin ortadi.",
       points: [
-        "Radius 2 barobar ortsa, hajm 4 barobar kattalashadi (R² bog'liqlik)",
+        "Radius 2 barobar ortsa, hajm 4 barobar kattalashadi (R� bog'liqlik)",
         "Yon sirtining yoyilmasi to'g'ri to'rtburchakdan iborat",
-        "To'la sirt: S_to'la = 2πR(R + H)"
+        "To'la sirt: S_to'la = 2pR(R + H)"
       ],
       fact: "Trubalar, bochkalar, idishlar va quvurlar nega silindr shaklida yasaladi? Chunki silindr eng kam material sarflab, eng katta hajmni sig'diradi."
     },
     'cone': {
-      title: "Aylanma jism — Konus",
-      formula: "Hajm: V = ⅓ · π · R² · H | Yon sirt: S_yon = π · R · L",
+      title: "Aylanma jism � Konus",
+      formula: "Hajm: V = ? � p � R� � H | Yon sirt: S_yon = p � R � L",
       desc: "To'g'ri burchakli uchburchakning katetlaridan biri atrofida aylanishidan hosil bo'ladi. Asosi doira bo'lib, uchi konus tepasida joylashgan.",
-      activeDesc: "🟢 KONUS STEREOMETRIYASI: Yasovchi (L), balandlik (H) va radius (R) o'zaro Pifagor teoremasi orqali bog'langan (L² = R² + H²).",
+      activeDesc: "?? KONUS STEREOMETRIYASI: Yasovchi (L), balandlik (H) va radius (R) o'zaro Pifagor teoremasi orqali bog'langan (L� = R� + H�).",
       points: [
-        "Konus hajmi silindr hajmining ⅓ qismini tashkil qiladi",
+        "Konus hajmi silindr hajmining ? qismini tashkil qiladi",
         "Yasovchi to'g'ri chiziqning aylanish burchagi",
         "Yon sirti yoyilmasi doiraviy sektor bo'ladi"
       ],
-      fact: "Konus shakli aerodinamikada juda muhim — raketalar va samolyotlarning burun qismi havoni yorib o'tish uchun aynan konus shaklida yasaladi."
+      fact: "Konus shakli aerodinamikada juda muhim � raketalar va samolyotlarning burun qismi havoni yorib o'tish uchun aynan konus shaklida yasaladi."
     },
     'sphere': {
       title: "Fazoviy Shar va Sfera",
-      formula: "Hajm: V = ⁴/₃ · π · R³ | Sirt yuzi: S = 4π · R²",
+      formula: "Hajm: V = 4/3 � p � R� | Sirt yuzi: S = 4p � R�",
       desc: "Yarim doiraning o'z diametri atrofida aylanishidan hosil bo'ladi. Fazoda markazdan bir xil masofada (R) joylashgan barcha nuqtalar to'plamidir. Fazodagi eng mukammal simmetrik shakl.",
-      activeDesc: "🟢 SHAR RADIUSI: Radius (R) o'zgarganda hajm kubik darajada (R³) juda tez kengayadi.",
+      activeDesc: "?? SHAR RADIUSI: Radius (R) o'zgarganda hajm kubik darajada (R�) juda tez kengayadi.",
       points: [
         "Berilgan sirt yuzasi uchun eng maksimal hajmga ega shakl",
         "Har qanday kesimining aylana bo'lishi",
@@ -357,22 +357,22 @@ window.LAB_EXPLANATIONS = {
   geography: {
     'earth-layers': {
       title: "Yerning Ichki Qatlamlari (Litosfera, Mantiya, Yadro)",
-      formula: "R_yer â‰ˆ 6371 km | Yadro harorati: T â‰ˆ 5000-6000Â°C | Bosim: P â‰ˆ 3.6 mln atm",
+      formula: "R_yer ≈ 6371 km | Yadro harorati: T ≈ 5000-6000°C | Bosim: P ≈ 3.6 mln atm",
       desc: "Sayyoramiz bir necha konsentrik qatlamlardan iborat. Eng yupqa tashqi qatlam - Yer qobig'i (5-70 km). Uning ostida qovushqoq mantiya (2900 km gacha), suyuq tashqi yadro (2200 km) va og'ir temir-nikelli ichki qattiq yadro (1220 km) joylashgan.",
-      activeDesc: "ðŸŒ 3D YER QATLAMLARI KO'Z OLDINGIZDA: Sferaning chorak qismi ochiq kesimda ko'rinib turibdi. Slider orqali qatlamlarni ajratib ko'rishingiz mumkin!",
+      activeDesc: "🌍 3D YER QATLAMLARI KO'Z OLDINGIZDA: Sferaning chorak qismi ochiq kesimda ko'rinib turibdi. Slider orqali qatlamlarni ajratib ko'rishingiz mumkin!",
       points: [
         "Yer qobig'i (Crust) - qalinligi 5-70 km, biz yashaydigan tog' va okeanlar",
         "Mantiya (Mantle) - 2900 km gacha cho'zilgan, magma va konveksiya harakatlari",
         "Tashqi yadro (Outer core) - suyuq erigan temir va nikel, Yer magnit maydonini yaratadi",
-        "Ichki yadro (Inner core) - o'ta yuqori bosim tufayli qattiq metall sfera (6000Â°C)"
+        "Ichki yadro (Inner core) - o'ta yuqori bosim tufayli qattiq metall sfera (6000°C)"
       ],
-      fact: "Yerning markazidagi harorat (taxminan 6000Â°C) Quyosh sirtidagi harorat bilan deyarli tengdir!"
+      fact: "Yerning markazidagi harorat (taxminan 6000°C) Quyosh sirtidagi harorat bilan deyarli tengdir!"
     },
     'volcano': {
       title: "Vulqon Otilishi va Litosfera Plitalari",
-      formula: "Litosfera plitalari tezligi: v â‰ˆ 2-10 sm/yil | Magma bosimi: P = ÏÂ·gÂ·h",
+      formula: "Litosfera plitalari tezligi: v ≈ 2-10 sm/yil | Magma bosimi: P = ρ·g·h",
       desc: "Litosfera plitalarining o'zaro to'qnashuvi yoki ajralishi natijasida Yer ostidagi magma yuqori bosim ostida yuqoriga intiladi. Magma kamerasidan vulqon trubkasi orqali kraterdan lava, qizigan kul va gazlar shiddat bilan otilib chiqadi.",
-      activeDesc: "ðŸŒ‹ VULQON OTILMOQDA: Magma kamerasidan yuqoriga qizil lava oqimlari va vulqon kullari otilmoqda! Yon tomonlarda litosfera plitalarining surilishi ko'rsatilgan.",
+      activeDesc: "🌋 VULQON OTILMOQDA: Magma kamerasidan yuqoriga qizil lava oqimlari va vulqon kullari otilmoqda! Yon tomonlarda litosfera plitalarining surilishi ko'rsatilgan.",
       points: [
         "Yer osti magma kamerasi (Magma reservoir) - qaynoq suyuq tog' jinsi",
         "Markaziy vulqon kanali va krater (Vent & Crater)",
@@ -383,9 +383,9 @@ window.LAB_EXPLANATIONS = {
     },
     'water-cycle': {
       title: "Suvning Tabiatda Aylanishi (Gidrologik sikl)",
-      formula: "Bug'lanish (Evaporation) âž” Kondensatsiya (Clouds) âž” Yog'in (Precipitation) âž” Oqim (Runoff)",
+      formula: "Bug'lanish (Evaporation) ➔ Kondensatsiya (Clouds) ➔ Yog'in (Precipitation) ➔ Oqim (Runoff)",
       desc: "Quyosh energiyasi ta'sirida okean, dengiz va ko'llardagi suv bug'lanib yuqoriga ko'tariladi. Sovuq balandlikda bug'lar quyuqlashib bulutlarni hosil qiladi. Bulutlar to'yingach, yomg'ir va qor ko'rinishida yerga yog'adi va daryolar orqali yana okeanga qaytadi.",
-      activeDesc: "ðŸ’§ SUV SIKLI JONLI HARAKATDA: Okeandan bug'lanayotgan zarrachalar osmonga ko'tarilib, tog'lar ustida yomg'irga aylanmoqda va daryo bo'ylab yana okeanga oqib tushmoqda!",
+      activeDesc: "💧 SUV SIKLI JONLI HARAKATDA: Okeandan bug'lanayotgan zarrachalar osmonga ko'tarilib, tog'lar ustida yomg'irga aylanmoqda va daryo bo'ylab yana okeanga oqib tushmoqda!",
       points: [
         "Bug'lanish (Evaporation) - Quyosh nuri suvni bug'ga aylantiradi",
         "Kondensatsiya (Condensation) - Havo soviydi va mayda tomchilardan bulutlar shakllanadi",
@@ -398,7 +398,7 @@ window.LAB_EXPLANATIONS = {
       title: "O'zbekiston Relyefi va 3D Landshafti",
       formula: "Eng baland nuqta: Hazrat Sulton (4643 m) | Eng past nuqta: Mingbuloq (-12.8 m)",
       desc: "O'zbekiston hududi relyefi sharqdan g'arbga tomon pasayib boradi. Sharqiy va janubi-sharqiy qismini baland Tyanshan va Pomir-Oloy tog' tizmalari, g'arbiy va shimoli-g'arbiy qismini esa ulkan Qizilqum cho'li va Turon pasttekisligi egallaydi.",
-      activeDesc: "ðŸ”ï¸ 3D O'ZBEKISTON HUDUDI: Sharqda qorli cho'qqilar (Hazrat Sulton, Chatqol), markazda Qizilqum, daryolar (Amudaryo, Sirdaryo) va Orol dengizi havzasi namoyon bo'lmoqda!",
+      activeDesc: "🏔️ 3D O'ZBEKISTON HUDUDI: Sharqda qorli cho'qqilar (Hazrat Sulton, Chatqol), markazda Qizilqum, daryolar (Amudaryo, Sirdaryo) va Orol dengizi havzasi namoyon bo'lmoqda!",
       points: [
         "Sharqiy baland tog'li mintaqa (Hisor, Tyanshan, Farg'ona vodiysi atrofi)",
         "Qizilqum cho'li - ulkan qum tepalari va platolar",
@@ -417,7 +417,7 @@ window.LAB_EXPLANATIONS = {
       title: "Kompyuter Tizim Bloki Ichi (PC Hardware)",
       formula: "CPU (GGS) + RAM (GB) + GPU (VRAM) + SSD (MB/s) | Von Neumann arxitekturasi",
       desc: "Zamonaviy shaxsiy kompyuterning barcha asosiy tugunlari ko'rsatilgan. Motherboard (ona plata) ustida protsessor (CPU) hisoblaydi, RAM dasturlar uchun tezkor ishchi maydon beradi, GPU 3D tasvirlarni chizadi, SSD esa barcha fayllarni uzoq muddat saqlaydi.",
-      activeDesc: "ðŸ–¥ï¸ KOMPYUTER ISHLAMOQDA: Ventilyatorlar (CPU va GPU kulerlari) aylanmoqda, RGB yoritish tizimi ishlamoqda. Komponent ustiga bosib, uning vazifasini bilib oling!",
+      activeDesc: "🖥️ KOMPYUTER ISHLAMOQDA: Ventilyatorlar (CPU va GPU kulerlari) aylanmoqda, RGB yoritish tizimi ishlamoqda. Komponent ustiga bosib, uning vazifasini bilib oling!",
       points: [
         "CPU (Protsessor) - Hisoblash yuragi, sovutgich va radiator bilan ta'minlangan",
         "RAM (DDR5 Operativ xotira) - O'ta tezkor ma'lumotlar buferi",
@@ -429,13 +429,13 @@ window.LAB_EXPLANATIONS = {
     },
     'logic-gates': {
       title: "Mantiqiy Elementlar (Logic Gates 3D)",
-      formula: "AND: Y = A Â· B | OR: Y = A + B | NOT: Y = Â¬A | XOR: Y = A âŠ• B",
+      formula: "AND: Y = A · B | OR: Y = A + B | NOT: Y = ¬A | XOR: Y = A ⊕ B",
       desc: "Barcha kompyuterlar, protsessorlar va smartfonlar mantiqiy elementlar (darvozalar) asosida ishlaydi. 0 (past kuchlanish, 0V) va 1 (yuqori kuchlanish, 5V) signallari mantiqiy amallar yordamida qayta ishlanadi va kompyuter hisob-kitoblarini hosil qiladi.",
-      activeDesc: "âš¡ SXEMA FAOL: Kirish kalitlarini (A va B) bosib holatni o'zgartiring (0 yoki 1). Chiqish lampochkasi (LED) mantiqiy shartga ko'ra yonadi yoki o'chadi!",
+      activeDesc: "⚡ SXEMA FAOL: Kirish kalitlarini (A va B) bosib holatni o'zgartiring (0 yoki 1). Chiqish lampochkasi (LED) mantiqiy shartga ko'ra yonadi yoki o'chadi!",
       points: [
         "AND (VA) - Faqat ikkala kirish ham 1 bo'lganda chiqish 1 bo'ladi",
         "OR (YOKI) - Hech bo'lmaganda bitta kirish 1 bo'lsa, chiqish 1 bo'ladi",
-        "NOT (INKOR) - Kirishni teskarisiga aylantiradi (0 âž” 1, 1 âž” 0)",
+        "NOT (INKOR) - Kirishni teskarisiga aylantiradi (0 ➔ 1, 1 ➔ 0)",
         "XOR (Istisno YOKI) - Kirishlar har xil bo'lgandagina chiqish 1 bo'ladi"
       ],
       fact: "Kvant kompyuterlari an'anaviy 0 va 1 (bitlar) o'rniga superpozitsiya holatidagi kubitlar (qubits) bilan ishlaydi, bu ularga milliardlab hisoblarni parallel bajarish imkonini beradi."
@@ -444,7 +444,7 @@ window.LAB_EXPLANATIONS = {
       title: "Internet va Ma'lumotlar Oqimi (Computer Networks)",
       formula: "TCP/IP protokoli | Paket uzatish: Paket = Sarlavha (IP) + Ma'lumot + Tekshiruv",
       desc: "Internetda har qanday veb-sayt, rasm yoki video mayda bo'lakchalarga - ma'lumotlar paketlariga bo'linadi. Router va serverlar orqali har bir paket o'z manziliga boradi va foydalanuvchi kompyuterida qayta butun faylga birlashtiriladi.",
-      activeDesc: "ðŸŒ TARMOQDA TRAFIK OQIMI: Server, Bulut, Router va Mijozlar o'rtasida ma'lumotlar paketlari (yashil sharchalar) yugurmoqda!",
+      activeDesc: "🌐 TARMOQDA TRAFIK OQIMI: Server, Bulut, Router va Mijozlar o'rtasida ma'lumotlar paketlari (yashil sharchalar) yugurmoqda!",
       points: [
         "Server - Veb-saytlar va ma'lumotlar bazasini saqlovchi markaziy kompyuter",
         "Router (Marshrutizator) - Paketlarni eng optimal yo'l orqali yo'naltiruvchi qurilma",
@@ -452,16 +452,55 @@ window.LAB_EXPLANATIONS = {
         "Client (Mijoz) - Maktab kompyuteri, noutbuk yoki smartfon"
       ],
       fact: "Dunyo bo'ylab har sekundda internet orqali 100 000 gigabaytdan ortiq ma'lumot uzatiladi va uning asosiy qismi okeanlar tubiga yotqizilgan suvosti optik kabellari orqali o'tadi."
+    },
+    'binary-byte': {
+      title: "8-Bit Ikkilik Xotira va ASCII (Binary & Data)",
+      formula: "1 Bayt = 8 Bit | 28 = 256 kombinatsiya (0�255) | DEC 65 = 'A' (ASCII)",
+      desc: "Kompyuter xotirasidagi har qanday axborot (matn, rasm, son, dastur kodi) faqat 0 va 1 lardan iborat ikkilik sanoq sistemasida saqlanadi. Har bir bit tranzistorning o'chiq (0) yoki yoniq (1) holatidir. 8 ta bit birlashib 1 baytni hosil qiladi.",
+      activeDesc: "?? 8-BIT XOTIRA REGISTRI: 3D bit kubiklarini sichqoncha bilan bosib 0 va 1 holatini o'zgartiring! Sahnada o'nlik qiymat va unga mos keluvchi ASCII belgisi jonli hisoblanadi.",
+      points: [
+        "Bit - Axborotning eng kichik o'lchov birligi (faqat 0 yoki 1 qiymat oladi)",
+        "Bayt - 8 ta bitdan iborat paket (0 dan 255 gacha bo'lgan sonni ifodalaydi)",
+        "Pozitsion vazn: 128, 64, 32, 16, 8, 4, 2, 1 (2 ning darajalari)",
+        "ASCII shifrlash: 65 - 'A', 66 - 'B', 97 - 'a', 48 - '0'"
+      ],
+      fact: "Agar 1 gigabayt (1 GB) xotirani varaqdagi 0 va 1 lar ko'rinishida chop etilsa, bu qog'ozlar ustuni 100 kilometrdan oshib, kosmik fazoga yetardi!"
+    },
+    'cybersecurity': {
+      title: "Kiberxavfsizlik, Firewall va Shifrlash (Cybersecurity 3D)",
+      formula: "Firewall (Paket filtri) + AES-256 (Kriptografik qulf) | Xavfsiz tarmoq",
+      desc: "Kiberxavfsizlik � kompyuterlar, serverlar va ma'lumotlar bazalarini zararli hujumlar (viruslar, xakerlar, DDoS)dan himoya qilish tizimidir. Firewall (himoya devori) kelayotgan har bir paketni tahlil qiladi, zararli paketlarni to'sib xavfsizlantiradi.",
+      activeDesc: "??? FIREWALL HIMOYA QALQONI FAOL: Qizil rangli viruslar qalqonga urilib yo'q qilinmoqda, xavfsiz yashil paketlar esa serverga yetib bormoqda!",
+      points: [
+        "Firewall (Himoya devori) - Tarmoq trafigini filtrlovchi kiber qalqon",
+        "Zararli hujumlar (Malware / DDoS) - Tizimni buzish yoki to'xtatishga urinishlar",
+        "AES-256 shifrlash - Ma'lumotlarni faqat maxsus kalit bilan ochiladigan qilib kodlash",
+        "Kiber gigiyena - Murakkab parollar va ikki bosqichli himoya (2FA) qo'llash"
+      ],
+      fact: "Dunyo bo'ylab har 39 soniyada yangi kiberhujum sodir bo'ladi, sun'iy intellektga ega zamonaviy firewall tizimlari esa sekundiga millionlab so'rovlarni tahlil qila oladi."
+    },
+    'algorithm-sort': {
+      title: "3D Algoritm va Saralash (Bubble Sort Visualization)",
+      formula: "Bubble Sort murakkabligi: O(N�) | N ta elementni o'sish tartibida saralash",
+      desc: "Algoritm � berilgan masalani yechish uchun aniq ketma-ketlikdagi ko'rsatmalar to'plamidir. Pufakchali saralash (Bubble Sort) eng ko'rgazmali algoritm bo'lib, yonma-yon turgan 2 ta elementni solishtiradi va kattasini o'ng tomonga siljitadi.",
+      activeDesc: "?? SARALASH ALGORITMI ISHLAMOQDA: Sariq ustunlar solishtirilmoqda va agar tartib buzilgan bo'lsa o'rni almashtirilmoqda (Swap). Tartiblangan ustunlar yashil rangga kiradi!",
+      points: [
+        "Algoritm - Muammoni bosqichma-bosqich hal qilishning aniq rejasi",
+        "Solishtirish (Compare) - Qaysi element katta yoki kichikligini tekshirish",
+        "O'rnini almashtirish (Swap) - Elementlarni to'g'ri o'rinda joylashtirish",
+        "Tahlil - Algoritm qadamlar va almashtirishlar sonini hisoblab boradi"
+      ],
+      fact: "Google yoki Yandex kabi qidiruv tizimlari milliardlab veb-sahifalarni bir soniyaning mingdan bir ulushida saralab sizga eng muhim natijani chiqarib beradi!"
     }
   },
   technology: {
     'robot-arm': {
       title: "Sanoat Roboti Qo'li (4-DoF Manipulator)",
-      formula: "Koordinatalar: (X, Y, Z) | Erkinlik darajasi: 4-DoF | Tork: M = F × r",
+      formula: "Koordinatalar: (X, Y, Z) | Erkinlik darajasi: 4-DoF | Tork: M = F � r",
       desc: "Zamonaviy avtomatlashtirilgan zavodlarda qo'llaniladigan ko'p bo'g'imli robot qo'li. Baza (burilish), yelka va bilak servomotorlari orqali harakatlanadi. Qisqich (gripper) yuklarni ushlab, kerakli koordinataga aniq ko'chiradi.",
-      activeDesc: "🤖 ROBOT HARAKATLANMOQDA: Servomotorlar dasturlangan burchaklar bo'yicha bo'g'imlarni burmoqda, qisqich yukni ushlab koordinata bo'ylab ko'chirmoqda!",
+      activeDesc: "?? ROBOT HARAKATLANMOQDA: Servomotorlar dasturlangan burchaklar bo'yicha bo'g'imlarni burmoqda, qisqich yukni ushlab koordinata bo'ylab ko'chirmoqda!",
       points: [
-        "Baza aylanish burchagi (-180° dan +180° gacha)",
+        "Baza aylanish burchagi (-180� dan +180� gacha)",
         "Yelka va bilak bo'g'imlarining fazoviy koordinatasi",
         "Pnevmatik/mexanik qisqich orqali yukni ushlash",
         "Avtomatlashtirilgan saralash va yig'ish sikli"
@@ -470,11 +509,11 @@ window.LAB_EXPLANATIONS = {
     },
     'gears': {
       title: "Tishli G'ildiraklar va Reduktor (Gear Transmission)",
-      formula: "Uzatish nisbati: i = z₂ / z₁ = n₁ / n₂ | Aylanuvchi moment: M₂ = M₁ × i",
-      desc: "Mexanik energiyani bitta valdan ikkinchisiga uzatish va aylanish tezligini o'zgartirish mexanizmi. Kichik tishli g'ildirak (z₁=12) katta g'ildirakni (z₃=28) aylantirganda, tezlik kamayadi, lekin quvvat (aylanuvchi moment) keskin ortadi.",
-      activeDesc: "⚙️ TISHLI UZATMA ISHLAMOQDA: G'ildiraklar tishlashib teskari yo'nalishlarda aylanmoqda. Uzatish nisbatiga qarab moment va tezlik o'zgarmoqda!",
+      formula: "Uzatish nisbati: i = z2 / z1 = n1 / n2 | Aylanuvchi moment: M2 = M1 � i",
+      desc: "Mexanik energiyani bitta valdan ikkinchisiga uzatish va aylanish tezligini o'zgartirish mexanizmi. Kichik tishli g'ildirak (z1=12) katta g'ildirakni (z3=28) aylantirganda, tezlik kamayadi, lekin quvvat (aylanuvchi moment) keskin ortadi.",
+      activeDesc: "?? TISHLI UZATMA ISHLAMOQDA: G'ildiraklar tishlashib teskari yo'nalishlarda aylanmoqda. Uzatish nisbatiga qarab moment va tezlik o'zgarmoqda!",
       points: [
-        "Tishlar soni nisbati (z₁ : z₂ : z₃)",
+        "Tishlar soni nisbati (z1 : z2 : z3)",
         "Aylanish yo'nalishlarining teskari bo'lishi",
         "Tezlik kamayganda aylanuvchi momentning oshishi (Oltin mexanika qoidasi)"
       ],
@@ -482,9 +521,9 @@ window.LAB_EXPLANATIONS = {
     },
     'engine': {
       title: "4 Taktli Ichki Yonuv Dvigateli (4-Stroke Engine)",
-      formula: "Faza: 720° aylanish (4 takt) | FIK: η = (Q₁ - Q₂) / Q₁ ≈ 35-40%",
+      formula: "Faza: 720� aylanish (4 takt) | FIK: ? = (Q1 - Q2) / Q1 � 35-40%",
       desc: "Silindr ichidagi porshenning ilgarilama-qaytma harakatini tirsakli val yordamida aylanma harakatga aylantiruvchi issiqlik dvigateli. 1. Kiritish, 2. Siqish, 3. Yonish/Ishchi yo'l (shamcha uchquni va portlash), 4. Chiqarish taktlaridan iborat.",
-      activeDesc: "🚗 DVIGATEL ISHLAMOQDA: Porshen yuqoriga va pastga harakatlanmoqda, klapanlar o'z vaqtida ochilib-yopilmoqda, shamcha uchqun sochib yoqilg'ini portlatmoqda!",
+      activeDesc: "?? DVIGATEL ISHLAMOQDA: Porshen yuqoriga va pastga harakatlanmoqda, klapanlar o'z vaqtida ochilib-yopilmoqda, shamcha uchqun sochib yoqilg'ini portlatmoqda!",
       points: [
         "1-takt: Kiritish (yonilg'i aralashmasi kirishi)",
         "2-takt: Siqish (porshen gazni siqadi)",
@@ -495,9 +534,9 @@ window.LAB_EXPLANATIONS = {
     },
     '3d-printer': {
       title: "3D Printer Qatlamli Bosma (Additive Manufacturing)",
-      formula: "Qatlam qalinligi: 0.1 - 0.3 mm | Nozzle harorati: 210°C | Stol: 60°C",
+      formula: "Qatlam qalinligi: 0.1 - 0.3 mm | Nozzle harorati: 210�C | Stol: 60�C",
       desc: "FDM (Fused Deposition Modeling) texnologiyasi: plastik filament (PLA/ABS) qizdirilgan ekstruder orqali eritilib, dastur kodi (G-code) asosida qatlam-qatlam qilib quyiladi va real fazoviy buyum hosil qilinadi.",
-      activeDesc: "🖨️ 3D BOSIB CHIQARILMOQDA: Ekstruder 210°C da eritilgan filamentni koordinatalar bo'yicha qatlamlab termo-stol ustiga yotqizmoqda!",
+      activeDesc: "??? 3D BOSIB CHIQARILMOQDA: Ekstruder 210�C da eritilgan filamentni koordinatalar bo'yicha qatlamlab termo-stol ustiga yotqizmoqda!",
       points: [
         "X, Y va Z o'qlari bo'yicha koordinatali harakat",
         "Plastik ipning (filament) erishi va qotishi",
@@ -507,9 +546,9 @@ window.LAB_EXPLANATIONS = {
     },
     'wind-turbine': {
       title: "Shamol Turbinasi va Yashil Energiya",
-      formula: "Shamol quvvati: P = ½ · ρ · A · v³ (v - shamol tezligi)",
+      formula: "Shamol quvvati: P = � � ? � A � v� (v - shamol tezligi)",
       desc: "Shamolning kinetik energiyasini rotordagi 3 ta aerodinamik qanot orqali mexanik harakatga, so'ngra generator orqali elektr energiyasiga aylantiruvchi ekologik toza stansiya.",
-      activeDesc: "💨 SHAMOL GENERATORI ISHLAMOQDA: Havo oqimi qanotlarni aylantirmoqda, generator elektr toki ishlab chiqarib, ko'cha chiroqlari va xonadonlarni quvvatlamoqda!",
+      activeDesc: "?? SHAMOL GENERATORI ISHLAMOQDA: Havo oqimi qanotlarni aylantirmoqda, generator elektr toki ishlab chiqarib, ko'cha chiroqlari va xonadonlarni quvvatlamoqda!",
       points: [
         "Shamol tezligi oshganda quvvatning kub darajada oshishi",
         "Rotor qanotlarining aerodinamik ko'tarish kuchi",
@@ -580,10 +619,10 @@ window.updateLabExplanation = function(subject, experimentKey, isRunning) {
   if (badgeEl && statusTextEl) {
     if (window.currentLabState.isRunning) {
       badgeEl.className = 'info-status-badge running';
-      statusTextEl.innerHTML = '<strong>🟢 Jarayon ketmoqda...</strong>';
+      statusTextEl.innerHTML = '<strong>?? Jarayon ketmoqda...</strong>';
     } else {
       badgeEl.className = 'info-status-badge waiting';
-      statusTextEl.innerHTML = '<strong>🟡 Kutilmoqda</strong> (Boshlashni bosing)';
+      statusTextEl.innerHTML = '<strong>?? Kutilmoqda</strong> (Boshlashni bosing)';
     }
   }
 };
@@ -657,7 +696,7 @@ window.hookLabExplanationControls = function() {
     if (origChemPause) origChemPause();
     window.updateLabExplanation('chemistry', window.currentLabState.experiment, false);
     var st = document.getElementById('chem-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origChemReset = window.resetChemistryExperiment;
   window.resetChemistryExperiment = function() {
@@ -676,7 +715,7 @@ window.hookLabExplanationControls = function() {
     if (origPhysPause) origPhysPause();
     window.updateLabExplanation('physics', window.currentLabState.experiment, false);
     var st = document.getElementById('phys-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origPhysReset = window.resetPhysicsExperiment;
   window.resetPhysicsExperiment = function() {
@@ -695,7 +734,7 @@ window.hookLabExplanationControls = function() {
     if (origAstroPause) origAstroPause();
     window.updateLabExplanation('astronomy', window.currentLabState.experiment, false);
     var st = document.getElementById('astr-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origAstroReset = window.resetAstronomyExperiment;
   window.resetAstronomyExperiment = function() {
@@ -714,7 +753,7 @@ window.hookLabExplanationControls = function() {
     if (origBioPause) origBioPause();
     window.updateLabExplanation('biology', window.currentLabState.experiment, false);
     var st = document.getElementById('bio-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origBioReset = window.resetBiologyExperiment;
   window.resetBiologyExperiment = function() {
@@ -733,7 +772,7 @@ window.hookLabExplanationControls = function() {
     if (origGeomPause) origGeomPause();
     window.updateLabExplanation('geometry', window.currentLabState.experiment, false);
     var st = document.getElementById('geom-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origGeomReset = window.resetGeometryExperiment;
   window.resetGeometryExperiment = function() {

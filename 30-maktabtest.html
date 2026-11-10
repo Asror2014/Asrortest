@@ -11049,7 +11049,7 @@ body.light-theme .ol-nav-btn:hover {
                     <div class="lab-card-icon"><i class="fas fa-microchip"></i></div>
                     <div class="lab-card-content">
                         <h2>3D Kompyuter va IT Laboratoriyasi</h2>
-                        <p>Tizim bloki ichi, mantiqiy elementlar va tarmoq trafigi</p>
+                        <p>Tizim bloki, 8-bit xotira, kiberxavfsizlik, tarmoq va 3D saralash algoritmlari</p>
                         <ul class="lab-card-features">
                             <li><i class="fas fa-check"></i> Kompyuter tizim bloki (Motherboard, CPU, GPU, RAM)</li>
                             <li><i class="fas fa-check"></i> Mantiqiy elementlar (AND, OR, NOT, XOR va 3D LED)</li>
@@ -12304,11 +12304,32 @@ body.light-theme .ol-nav-btn:hover {
                             <span class="experiment-tag">AND, OR, NOT, XOR</span>
                         </div>
                     </li>
+                    <li class="experiment-item" data-experiment="binary-byte" onclick="selectComputerExperiment('binary-byte')">
+                        <span class="experiment-icon"><i class="fas fa-calculator" style="color:#a855f7;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">8-Bit Ikkilik Xotira</span>
+                            <span class="experiment-tag">0/1, Bayt, ASCII</span>
+                        </div>
+                    </li>
                     <li class="experiment-item" data-experiment="network-flow" onclick="selectComputerExperiment('network-flow')">
                         <span class="experiment-icon"><i class="fas fa-network-wired" style="color:#10b981;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Internet va Tarmoq</span>
                             <span class="experiment-tag">Server, Router, Paketlar</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="cybersecurity" onclick="selectComputerExperiment('cybersecurity')">
+                        <span class="experiment-icon"><i class="fas fa-shield-alt" style="color:#ef4444;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Kiberxavfsizlik</span>
+                            <span class="experiment-tag">Firewall, Virus, AES</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="algorithm-sort" onclick="selectComputerExperiment('algorithm-sort')">
+                        <span class="experiment-icon"><i class="fas fa-sort-amount-up-alt" style="color:#06b6d4;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Algoritm va Saralash</span>
+                            <span class="experiment-tag">Bubble Sort, Qadamlar</span>
                         </div>
                     </li>
                 </ul>
@@ -12363,6 +12384,89 @@ body.light-theme .ol-nav-btn:hover {
                 <div class="lab-info-body">
                     <div class="lab-info-status" id="comp-status-text">
                         <strong>Faol ishlamoqda</strong>
+                    </div>
+
+                    <!-- Parametrlarni sozlash (Slayderlar va boshqaruv) -->
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-sliders-h"></i> Parametrlarni sozlash</div>
+                        <!-- 1. PC Inside -->
+                        <div class="info-sliders" id="comp-sliders-pc-inside">
+                            <div class="info-slider-group">
+                                <label><span>Kuler tezligi:</span> <strong id="slider-comp-fan-val">1.5x</strong></label>
+                                <input type="range" class="lab-slider" id="slider-comp-fan" min="0.2" max="3" step="0.1" value="1.5"
+                                       oninput="if(window.computerLabInstance) { computerLabInstance.setFanSpeed(this.value); document.getElementById('slider-comp-fan-val').textContent = this.value+'x'; }">
+                            </div>
+                        </div>
+                        <!-- 2. Logic Gates -->
+                        <div class="info-sliders" id="comp-sliders-logic-gates" style="display:none;">
+                            <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleSwitch('A')">
+                                    <i class="fas fa-toggle-on"></i> Kalit A
+                                </button>
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleSwitch('B')">
+                                    <i class="fas fa-toggle-on"></i> Kalit B
+                                </button>
+                            </div>
+                            <div class="info-slider-group">
+                                <label><span>Mantiqiy element turi:</span></label>
+                                <select class="form-select" style="background:#1e293b; color:#fff; border:1px solid #475569; border-radius:8px; padding:6px 10px; width:100%; font-size:0.85rem;"
+                                        onchange="if(window.computerLabInstance) computerLabInstance.setGateType(this.value)">
+                                    <option value="AND">AND (Mantiqiy KO'PAYTIRISH)</option>
+                                    <option value="OR">OR (Mantiqiy QO'SHISH)</option>
+                                    <option value="NOT">NOT (Mantiqiy INKOR)</option>
+                                    <option value="XOR">XOR (Istisno YOKI)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 3. Binary Byte -->
+                        <div class="info-sliders" id="comp-sliders-binary-byte" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>O'nlik qiymat (DEC):</span> <strong id="byte-dec-val" style="color:#38bdf8; font-size:1.05rem;">65</strong></label>
+                                <input type="range" class="lab-slider" id="slider-comp-byte" min="0" max="255" step="1" value="65"
+                                       oninput="if(window.computerLabInstance) { computerLabInstance.setByteValue(this.value); document.getElementById('byte-dec-val').textContent = this.value; }">
+                            </div>
+                            <div style="margin-top:0.6rem; padding:8px 12px; background:rgba(15,23,42,0.7); border-radius:8px; font-size:0.85rem; color:#cbd5e1; display:flex; justify-content:space-between; align-items:center;">
+                                <span>ASCII kodi: <strong id="byte-ascii-val" style="color:#a855f7; font-size:1.15rem;">'A'</strong></span>
+                                <span>BIN: <strong id="byte-bin-val" style="color:#10b981; font-family:monospace;">01000001</strong></span>
+                            </div>
+                        </div>
+                        <!-- 4. Network Flow -->
+                        <div class="info-sliders" id="comp-sliders-network-flow" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>Paketlar tezligi:</span> <strong id="slider-comp-packet-val">1.2x</strong></label>
+                                <input type="range" class="lab-slider" id="slider-comp-packet" min="0.4" max="3" step="0.2" value="1.2"
+                                       oninput="if(window.computerLabInstance) { computerLabInstance.setPacketSpeed(this.value); document.getElementById('slider-comp-packet-val').textContent = this.value+'x'; }">
+                            </div>
+                        </div>
+                        <!-- 5. Cybersecurity -->
+                        <div class="info-sliders" id="comp-sliders-cybersecurity" style="display:none;">
+                            <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                                <button class="btn btn-sm btn-outline" id="btn-toggle-firewall" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleFirewall()">
+                                    <i class="fas fa-shield-alt"></i> Qalqon: <span id="fw-btn-state" style="color:#10b981; font-weight:700;">YONIQ</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline" id="btn-toggle-aes" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleEncryption()">
+                                    <i class="fas fa-lock"></i> AES-256
+                                </button>
+                            </div>
+                            <div style="font-size:0.85rem; color:#cbd5e1; padding:6px 10px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); border-radius:8px;">
+                                <i class="fas fa-ban" style="color:#ef4444;"></i> To'silgan hujumlar: <strong id="fw-blocked-count" style="color:#ef4444; font-size:1.05rem;">0</strong>
+                            </div>
+                        </div>
+                        <!-- 6. Algorithm Sort -->
+                        <div class="info-sliders" id="comp-sliders-algorithm-sort" style="display:none;">
+                            <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.initSortArray()">
+                                    <i class="fas fa-random"></i> Aralashtirish
+                                </button>
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.stepBubbleSort()">
+                                    <i class="fas fa-step-forward"></i> 1 Qadam
+                                </button>
+                            </div>
+                            <div style="font-size:0.85rem; color:#cbd5e1; display:flex; justify-content:space-between; padding:6px 10px; background:rgba(15,23,42,0.7); border-radius:8px;">
+                                <span>Solishtirish: <strong id="sort-comp-val" style="color:#f59e0b;">0</strong></span>
+                                <span>Almashtirish: <strong id="sort-swap-val" style="color:#ec4899;">0</strong></span>
+                            </div>
+                        </div>
                     </div>
                     <div class="lab-info-section formula-section">
                         <div class="section-title"><i class="fas fa-calculator"></i> Texnik parametrlar</div>
@@ -15459,8 +15563,10 @@ function navigateTo(pageId) {
       if (typeof window.initGeographyLab === 'function') window.initGeographyLab();
       var ov = document.getElementById('geography-canvas-overlay');
       if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('geo_exp') || 'earth-layers';
       if (typeof window.selectGeographyExperiment === 'function') {
-        window.selectGeographyExperiment('earth-layers');
+        window.selectGeographyExperiment(exp);
       }
     }, 150);
   }
@@ -15469,8 +15575,10 @@ function navigateTo(pageId) {
       if (typeof window.initComputerLab === 'function') window.initComputerLab();
       var ov = document.getElementById('computer-canvas-overlay');
       if (ov) ov.style.display = 'none';
+      var params = new URLSearchParams(window.location.search);
+      var exp = params.get('comp_exp') || 'pc-inside';
       if (typeof window.selectComputerExperiment === 'function') {
-        window.selectComputerExperiment('pc-inside');
+        window.selectComputerExperiment(exp);
       }
     }, 150);
   }
@@ -27094,10 +27202,13 @@ window.resetGeographyExperiment = function () {
  * 30-maktabtest - 3D Interaktiv Kompyuter Arxitekturasi va IT Laboratoriyasi
  * Three.js asosida ishlaydi (100% oflayn, qo'shimcha kutubxonasiz)
  * 
- * Tajribalar:
+ * 6 ta Katta Tajriba:
  *   1. pc-inside: Kompyuter Tizim Bloki Ichi (Motherboard, CPU kuler, RAM, GPU videokarta, SSD, PSU)
  *   2. logic-gates: Mantiqiy Elementlar (AND, OR, NOT, XOR darvozalari, 0/1 kalitlar va 3D LED chiroq)
- *   3. network-flow: Internet va Ma'lumotlar Oqimi (Server, Router, Wi-Fi, 3D ma'lumotlar paketlari)
+ *   3. binary-byte: 8-Bit Ikkilik Xotira va ASCII Registr (0/1 neon bitlar, o'nlik va harf hisoblagich)
+ *   4. network-flow: Internet va Ma'lumotlar Oqimi (Server, Router, Wi-Fi, 3D ma'lumotlar paketlari)
+ *   5. cybersecurity: Kiberxavfsizlik va Firewall Himoyasi (Kiber qalqon, viruslar, AES shifrlash)
+ *   6. algorithm-sort: 3D Algoritmlar va Saralash (Bubble Sort animatsiyasi va taqqoslash)
  */
 
 class ComputerLab {
@@ -27124,7 +27235,7 @@ class ComputerLab {
       selectedPart: null,
 
       // Logic Gates
-      gateType: 'AND', // AND, OR, NOT, XOR
+      gateType: 'AND',
       switchA: false,
       switchB: false,
 
@@ -27192,17 +27303,17 @@ class ComputerLab {
     this.ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     this.scene.add(this.ambientLight);
 
-    this.dirLight1 = new THREE.DirectionalLight(0xffffff, 0.9);
+    this.dirLight1 = new THREE.DirectionalLight(0xffffff, 0.85);
     this.dirLight1.position.set(20, 30, 20);
     this.dirLight1.castShadow = true;
     this.scene.add(this.dirLight1);
 
-    this.dirLight2 = new THREE.DirectionalLight(0x818cf8, 0.5);
-    this.dirLight2.position.set(-20, -10, -15);
+    this.dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.4);
+    this.dirLight2.position.set(-20, -10, -20);
     this.scene.add(this.dirLight2);
 
-    this.rgbLight = new THREE.PointLight(0x38bdf8, 1.8, 30);
-    this.rgbLight.position.set(0, 4, 3);
+    this.rgbLight = new THREE.PointLight(0xa855f7, 1.8, 30);
+    this.rgbLight.position.set(0, 5, 0);
     this.scene.add(this.rgbLight);
   }
 
@@ -27218,13 +27329,13 @@ class ComputerLab {
       this.isDragging = false;
     });
 
-    el.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e) => {
       if (!this.isDragging) return;
       const deltaX = e.clientX - this.previousMouse.x;
       const deltaY = e.clientY - this.previousMouse.y;
 
-      this.theta -= deltaX * 0.007;
-      this.phi -= deltaY * 0.007;
+      this.theta -= deltaX * 0.008;
+      this.phi -= deltaY * 0.008;
       this.phi = Math.max(0.1, Math.min(Math.PI - 0.1, this.phi));
 
       this.updateCameraPosition();
@@ -27233,12 +27344,52 @@ class ComputerLab {
 
     el.addEventListener('wheel', (e) => {
       e.preventDefault();
-      this.cameraRadius += e.deltaY * 0.025;
-      this.cameraRadius = Math.max(8, Math.min(80, this.cameraRadius));
+      this.cameraRadius += e.deltaY * 0.04;
+      this.cameraRadius = Math.max(12, Math.min(80, this.cameraRadius));
       this.updateCameraPosition();
     }, { passive: false });
 
-    // Click orqali komponentlarni tanlash (Raycasting)
+    // Touch controls
+    let touchStartDist = 0;
+    el.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        this.isDragging = true;
+        this.previousMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      } else if (e.touches.length === 2) {
+        touchStartDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    });
+
+    el.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1 && this.isDragging) {
+        const deltaX = e.touches[0].clientX - this.previousMouse.x;
+        const deltaY = e.touches[0].clientY - this.previousMouse.y;
+        this.theta -= deltaX * 0.008;
+        this.phi -= deltaY * 0.008;
+        this.phi = Math.max(0.1, Math.min(Math.PI - 0.1, this.phi));
+        this.updateCameraPosition();
+        this.previousMouse = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      } else if (e.touches.length === 2) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const factor = touchStartDist / dist;
+        this.cameraRadius *= factor;
+        this.cameraRadius = Math.max(12, Math.min(80, this.cameraRadius));
+        this.updateCameraPosition();
+        touchStartDist = dist;
+      }
+    });
+
+    el.addEventListener('touchend', () => {
+      this.isDragging = false;
+    });
+
+    // Click handler for 3D components
     el.addEventListener('click', (e) => {
       const rect = el.getBoundingClientRect();
       this.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -27286,6 +27437,31 @@ class ComputerLab {
     this.objects = {};
   }
 
+  createCanvasTextureText(title, subtitle, bgColor = '#0f172a', textColor = '#38bdf8') {
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 160;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, 512, 160);
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 6;
+    ctx.strokeRect(4, 4, 504, 152);
+
+    ctx.fillStyle = textColor;
+    ctx.font = 'bold 36px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(title, 256, 65);
+
+    if (subtitle) {
+      ctx.fillStyle = '#a855f7';
+      ctx.font = 'bold 32px monospace';
+      ctx.fillText(subtitle, 256, 125);
+    }
+    const texture = new THREE.CanvasTexture(canvas);
+    return texture;
+  }
+
   loadExperiment(name) {
     this.currentExp = name;
     this.clearScene();
@@ -27297,15 +27473,24 @@ class ComputerLab {
       case 'logic-gates':
         this.setupLogicGates();
         break;
+      case 'binary-byte':
+        this.setupBinaryByte();
+        break;
       case 'network-flow':
         this.setupNetworkFlow();
+        break;
+      case 'cybersecurity':
+        this.setupCybersecurity();
+        break;
+      case 'algorithm-sort':
+        this.setupAlgorithmSort();
         break;
       default:
         this.setupPcInside();
     }
 
-    if (window.updateLiveExplanation) {
-      window.updateLiveExplanation('computer', name);
+    if (window.updateLabExplanation) {
+      window.updateLabExplanation('computer', name);
     }
   }
 
@@ -27331,267 +27516,443 @@ class ComputerLab {
       roughness: 0.3,
       transparent: true,
       opacity: 0.25,
-      wireframe: false
+      wireframe: true
     });
     const chassis = new THREE.Mesh(chassisGeo, chassisMat);
     root.add(chassis);
 
-    // Qirra ramkasi (Wireframe edges)
-    const edgeGeo = new THREE.EdgesGeometry(chassisGeo);
-    const edgeMat = new THREE.LineBasicMaterial({ color: 0x38bdf8 });
-    root.add(new THREE.LineSegments(edgeGeo, edgeMat));
-
-    // 2. Motherboard (Ona plata) - Orqa devorga o'rnatilgan qora/to'q ko'k plata
+    // 2. Motherboard (Ona plata)
     const mbGeo = new THREE.BoxGeometry(16, 18, 0.4);
-    const mbMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.6 });
+    const mbMat = new THREE.MeshStandardMaterial({
+      color: 0x064e3b,
+      roughness: 0.4,
+      metalness: 0.2
+    });
     const mb = new THREE.Mesh(mbGeo, mbMat);
-    mb.position.set(-1, 0, -4.2);
-    mb.userData = { name: "Ona plata (Motherboard ATX)", desc: "Barcha asosiy qismlarni o'zaro bog'lovchi tizim asosi." };
+    mb.position.set(0, 0, -4.5);
+    mb.userData = {
+      name: "Ona Plata (Motherboard ATX)",
+      desc: "Barcha komponentlarni birlashtiruvchi markaziy elektron plata. Trassalar orqali yuqori tezlikda ma'lumot uzatadi."
+    };
     root.add(mb);
-    this.objects.motherboard = mb;
 
-    // Platadagi mikrosxema liniyalari (Traces)
-    const traceGeo = new THREE.PlaneGeometry(15, 17);
-    const traceMat = new THREE.MeshBasicMaterial({ color: 0x0284c7, wireframe: true, transparent: true, opacity: 0.3 });
-    const traces = new THREE.Mesh(traceGeo, traceMat);
-    traces.position.set(-1, 0, -3.95);
-    root.add(traces);
+    // Ona platadagi kontakt chiziqlari (Circuit traces)
+    for (let c = 0; c < 12; c++) {
+      const trace = new THREE.Mesh(
+        new THREE.PlaneGeometry(12, 0.15),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8 })
+      );
+      trace.position.set(-2 + (c % 4) * 2, -6 + c * 1.2, -4.28);
+      root.add(trace);
+    }
 
-    // 3. CPU va Kuler (Protsessor va sovutish ventilyatori)
-    const cpuSocketGeo = new THREE.BoxGeometry(4.2, 4.2, 0.6);
-    const cpuSocketMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.7 });
-    const cpuSocket = new THREE.Mesh(cpuSocketGeo, cpuSocketMat);
-    cpuSocket.position.set(-2, 3.5, -3.6);
-    cpuSocket.userData = { name: "Markaziy Protsessor (CPU 8-Core)", desc: "Kompyuterning hisoblash 'miyasi'. Sekundiga milliardlab amallarni bajaradi." };
-    root.add(cpuSocket);
+    // 3. Markaziy Protsessor va Kuler (CPU Tower Cooler)
+    const cpuGroup = new THREE.Group();
+    cpuGroup.position.set(-1, 3.5, -3.5);
+    cpuGroup.userData = {
+      name: "Markaziy Protsessor (CPU 8-Core)",
+      desc: "Kompyuterning hisoblash 'miyasi'. Sekundiga milliardlab arifmetik amallarni bajaradi."
+    };
 
-    // CPU Radiatori (Alyuminiy qovurg'alar)
-    const radGeo = new THREE.CylinderGeometry(2.4, 2.4, 1.8, 24);
-    const radMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.85, roughness: 0.2 });
-    const radiator = new THREE.Mesh(radGeo, radMat);
-    radiator.rotation.x = Math.PI / 2;
-    radiator.position.set(-2, 3.5, -2.4);
-    root.add(radiator);
+    const radGeo = new THREE.BoxGeometry(4.2, 4.2, 2.5);
+    const radMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.9, roughness: 0.2 });
+    const rad = new THREE.Mesh(radGeo, radMat);
+    cpuGroup.add(rad);
 
-    // CPU Ventilyatori (RGB Fan blades)
-    const fanGroup = new THREE.Group();
-    fanGroup.position.set(-2, 3.5, -1.3);
+    const fanRing = new THREE.Mesh(new THREE.CylinderGeometry(2.0, 2.0, 0.6, 24), new THREE.MeshStandardMaterial({ color: 0x0f172a }));
+    fanRing.rotation.x = Math.PI / 2;
+    fanRing.position.z = 1.3;
+    cpuGroup.add(fanRing);
 
-    const fanHubGeo = new THREE.CylinderGeometry(0.8, 0.8, 0.4, 16);
-    const fanHubMat = new THREE.MeshStandardMaterial({ color: 0x0284c7 });
-    fanGroup.add(new THREE.Mesh(fanHubGeo, fanHubMat));
-
-    const bladeGeo = new THREE.BoxGeometry(0.12, 1.8, 0.3);
-    const bladeMat = new THREE.MeshStandardMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.85 });
+    const fanBlades = new THREE.Group();
     for (let b = 0; b < 7; b++) {
-      const bMesh = new THREE.Mesh(bladeGeo, bladeMat);
-      bMesh.rotation.z = (b * Math.PI * 2) / 7;
-      bMesh.position.set(Math.sin((b * Math.PI * 2) / 7) * 0.9, Math.cos((b * Math.PI * 2) / 7) * 0.9, 0);
-      fanGroup.add(bMesh);
+      const blade = new THREE.Mesh(new THREE.BoxGeometry(0.3, 1.8, 0.05), new THREE.MeshStandardMaterial({ color: 0x38bdf8 }));
+      blade.rotation.z = (b / 7) * Math.PI * 2;
+      blade.position.set(Math.cos(blade.rotation.z) * 0.9, Math.sin(blade.rotation.z) * 0.9, 0);
+      fanBlades.add(blade);
     }
-    root.add(fanGroup);
-    this.objects.cpuFan = fanGroup;
+    fanBlades.position.z = 1.4;
+    cpuGroup.add(fanBlades);
+    this.objects.cpuFan = fanBlades;
 
-    // 4. Operativ Xotira (RAM DDR5 Sticks) - 2 ta modul
-    const ramGeo = new THREE.BoxGeometry(0.4, 4.8, 1.6);
-    const ramMat = new THREE.MeshStandardMaterial({ color: 0xec4899, metalness: 0.7, roughness: 0.3 });
+    root.add(cpuGroup);
+
+    // 4. DDR5 Operativ Xotira (RAM 32GB)
     for (let r = 0; r < 2; r++) {
-      const ramStick = new THREE.Mesh(ramGeo, ramMat);
-      ramStick.position.set(1.5 + r * 0.9, 3.5, -3.2);
-      ramStick.userData = { name: "Operativ Xotira (RAM DDR5 32GB)", desc: "Dasturlar va o'yinlar ishlashi uchun tezkor vaqtinchalik xotira." };
-      root.add(ramStick);
+      const ramGeo = new THREE.BoxGeometry(0.6, 6.5, 1.2);
+      const ramMat = new THREE.MeshStandardMaterial({ color: 0xec4899, metalness: 0.8, roughness: 0.2 });
+      const ram = new THREE.Mesh(ramGeo, ramMat);
+      ram.position.set(3.2 + r * 1.1, 3.2, -3.5);
+      ram.userData = {
+        name: `DDR5 Operativ Xotira (${r === 0 ? '16GB A' : '16GB B'})`,
+        desc: "Dasturlar ishlashi uchun o'ta yuqori tezlikdagi vaqtinchalik xotira. Kompyuter o'chsa ma'lumot tozalanadi."
+      };
+      root.add(ram);
     }
 
-    // 5. Videokarta (GPU - Graphics Card)
+    // 5. Videokarta (GPU - RTX Gaming)
     const gpuGroup = new THREE.Group();
-    gpuGroup.position.set(-1, -2.5, -1.5);
+    gpuGroup.position.set(0, -3.2, -1.0);
+    gpuGroup.userData = {
+      name: "Grafik Protsessor (GPU Videokarta)",
+      desc: "3D grafika, o'yinlar, sun'iy intellekt va video render uchun mo'ljallangan o'ta kuchli vizualizatsiya platasi."
+    };
 
-    const gpuBodyGeo = new THREE.BoxGeometry(14, 4.2, 3.2);
-    const gpuBodyMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.4, metalness: 0.8 });
-    const gpuBody = new THREE.Mesh(gpuBodyGeo, gpuBodyMat);
+    const gpuBody = new THREE.Mesh(new THREE.BoxGeometry(15, 4.2, 3.2), new THREE.MeshStandardMaterial({ color: 0x090d16, roughness: 0.3 }));
     gpuGroup.add(gpuBody);
 
-    // GPU 2 ta ventilyatori
-    const gpuFan1 = fanGroup.clone();
-    gpuFan1.scale.set(0.7, 0.7, 0.7);
-    gpuFan1.position.set(-3.2, 0, 1.7);
-    gpuGroup.add(gpuFan1);
-
-    const gpuFan2 = fanGroup.clone();
-    gpuFan2.scale.set(0.7, 0.7, 0.7);
-    gpuFan2.position.set(3.2, 0, 1.7);
-    gpuGroup.add(gpuFan2);
-
-    gpuGroup.userData = { name: "Videokarta (GPU RTX 16GB)", desc: "3D grafika, o'yinlar va videolarni qayta ishlovchi qudratli grafik protsessor." };
-    root.add(gpuGroup);
-    this.objects.gpu = gpuGroup;
+    const gpuFan1 = new THREE.Group();
+    const gpuFan2 = new THREE.Group();
+    for (let g = 0; g < 2; g++) {
+      const targetFan = g === 0 ? gpuFan1 : gpuFan2;
+      for (let b = 0; b < 6; b++) {
+        const blade = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.4, 0.04), new THREE.MeshStandardMaterial({ color: 0x06b6d4 }));
+        blade.rotation.z = (b / 6) * Math.PI * 2;
+        blade.position.set(Math.cos(blade.rotation.z) * 0.7, Math.sin(blade.rotation.z) * 0.7, 0);
+        targetFan.add(blade);
+      }
+      targetFan.position.set(-3.5 + g * 7.0, 0, 1.65);
+      gpuGroup.add(targetFan);
+    }
     this.objects.gpuFan1 = gpuFan1;
     this.objects.gpuFan2 = gpuFan2;
 
-    // 6. Quvvat Bloki (PSU - Power Supply)
-    const psuGeo = new THREE.BoxGeometry(7, 4.5, 7);
-    const psuMat = new THREE.MeshStandardMaterial({ color: 0x09090b, roughness: 0.5 });
-    const psu = new THREE.Mesh(psuGeo, psuMat);
-    psu.position.set(-5.5, -8, 0);
-    psu.userData = { name: "Quvvat bloki (PSU 750W)", desc: "220V tokni kompyuter qismlari uchun kerakli 12V, 5V, 3.3V xavfsiz kuchlanishga aylantirib beradi." };
+    root.add(gpuGroup);
+
+    // 6. NVMe M.2 SSD Xotira
+    const ssd = new THREE.Mesh(
+      new THREE.BoxGeometry(4.0, 1.0, 0.2),
+      new THREE.MeshStandardMaterial({ color: 0x10b981, metalness: 0.7 })
+    );
+    ssd.position.set(0, 0, -4.2);
+    ssd.userData = {
+      name: "NVMe M.2 SSD (1TB Xotira)",
+      desc: "Super tezkor qattiq jism xotira. Sekundiga 7000 MB tezlikda operatsion tizim va barcha fayllarni saqlaydi."
+    };
+    root.add(ssd);
+
+    // 7. Quvvat Bloki (PSU 750W)
+    const psu = new THREE.Mesh(
+      new THREE.BoxGeometry(6.5, 4.5, 6.0),
+      new THREE.MeshStandardMaterial({ color: 0x111827, roughness: 0.5 })
+    );
+    psu.position.set(-5.5, -8.0, 0);
+    psu.userData = {
+      name: "Quvvat Manbai (PSU 750W)",
+      desc: "220V o'zgaruvchan tokni 12V, 5V va 3.3V o'zgarmas barqaror kuchlanishga aylantirib beradi."
+    };
     root.add(psu);
 
-    // 7. NVMe SSD Xotira
-    const ssdGeo = new THREE.BoxGeometry(3.5, 0.9, 0.2);
-    const ssdMat = new THREE.MeshStandardMaterial({ color: 0x10b981, metalness: 0.6 });
-    const ssd = new THREE.Mesh(ssdGeo, ssdMat);
-    ssd.position.set(-2, 0.2, -3.8);
-    ssd.userData = { name: "Doimiy Xotira (NVMe M.2 SSD 1TB)", desc: "Operatsion tizim, fayl va darsliklarni tezkor saqlovchi xotira." };
-    root.add(ssd);
+    // HUD ni yangilash
+    const hud = document.getElementById('pc-part-hud');
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    if (hud && hudTitle && hudDesc) {
+      hud.style.display = 'block';
+      hudTitle.innerHTML = '<i class="fas fa-desktop"></i> Tizim Bloki Komponentlari';
+      hudDesc.textContent = "Detal ustiga sichqonchani bosing (CPU, GPU, RAM, SSD, Kuler)!";
+    }
   }
 
   // ============================================================
-  // 2. MANTIQIY ELEMENTLAR (LOGIC GATES 3D)
+  // 2. MANTIQIY ELEMENTLAR (LOGIC GATES)
   // ============================================================
   setupLogicGates() {
-    this.cameraRadius = 24;
+    this.cameraRadius = 28;
     this.cameraTarget.set(0, 0, 0);
     this.theta = 0.5;
-    this.phi = 1.05;
+    this.phi = 1.15;
     this.updateCameraPosition();
 
     const root = new THREE.Group();
     this.scene.add(root);
     this.objects.root = root;
 
-    // Plata asosi (Circuit board)
-    const boardGeo = new THREE.BoxGeometry(22, 14, 1.2);
-    const boardMat = new THREE.MeshStandardMaterial({ color: 0x064e3b, roughness: 0.6 }); // Yashil PCB
+    const boardGeo = new THREE.BoxGeometry(22, 14, 0.8);
+    const boardMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.4 });
     const board = new THREE.Mesh(boardGeo, boardMat);
-    board.position.z = -0.6;
+    board.position.set(0, 0, -1);
     root.add(board);
 
-    // Kirish A kaliti (Switch A)
-    const switchAGroup = this.create3DSwitch(-7, 3, "A", this.params.switchA);
-    root.add(switchAGroup);
-    this.objects.switchAGroup = switchAGroup;
+    this.objects.switchAGroup = this.createSwitchMesh(-8, 3.5, 'A');
+    this.objects.switchBGroup = this.createSwitchMesh(-8, -3.5, 'B');
+    root.add(this.objects.switchAGroup);
+    root.add(this.objects.switchBGroup);
 
-    // Kirish B kaliti (Switch B)
-    const switchBGroup = this.create3DSwitch(-7, -3, "B", this.params.switchB);
-    root.add(switchBGroup);
-    this.objects.switchBGroup = switchBGroup;
+    const gateGeo = new THREE.BoxGeometry(6, 6, 1.8);
+    const gateMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8 });
+    const gateMesh = new THREE.Mesh(gateGeo, gateMat);
+    gateMesh.position.set(0, 0, 0);
+    root.add(gateMesh);
+    this.objects.gateMesh = gateMesh;
 
-    // Mantiqiy mikrosxema korpusi (IC Chip)
-    const icGeo = new THREE.BoxGeometry(6, 7, 1.6);
-    const icMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.4 });
-    const ic = new THREE.Mesh(icGeo, icMat);
-    ic.position.set(0, 0, 0.8);
-    root.add(ic);
+    const symbolGeo = new THREE.BoxGeometry(4.5, 3.0, 0.1);
+    const symbolMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const symbol = new THREE.Mesh(symbolGeo, symbolMat);
+    symbol.position.set(0, 0, 1.0);
+    root.add(symbol);
+    this.objects.gateSymbol = symbol;
 
-    // O'tkazgich simlar (Wire traces)
-    this.objects.wireA = this.createWireLine(root, [-4.5, 3, 0.3], [-3, 3, 0.3]);
-    this.objects.wireB = this.createWireLine(root, [-4.5, -3, 0.3], [-3, -3, 0.3]);
-    this.objects.wireOut = this.createWireLine(root, [3, 0, 0.3], [6, 0, 0.3]);
+    const ledBase = new THREE.Mesh(new THREE.CylinderGeometry(1.4, 1.8, 1.0, 20), new THREE.MeshStandardMaterial({ color: 0x334155 }));
+    ledBase.position.set(8, 0, 0);
+    ledBase.rotation.x = Math.PI / 2;
+    root.add(ledBase);
 
-    // Chiqish indikatori (3D LED lampochka)
-    const ledGroup = new THREE.Group();
-    ledGroup.position.set(7.5, 0, 1.0);
-
-    const ledBaseGeo = new THREE.CylinderGeometry(0.9, 0.9, 0.6, 16);
-    const ledBaseMat = new THREE.MeshStandardMaterial({ color: 0x334155 });
-    ledGroup.add(new THREE.Mesh(ledBaseGeo, ledBaseMat));
-
-    const ledDomeGeo = new THREE.SphereGeometry(1.0, 24, 24, 0, Math.PI * 2, 0, Math.PI / 2);
-    const ledDomeMat = new THREE.MeshStandardMaterial({
+    const ledBulbGeo = new THREE.SphereGeometry(1.2, 24, 24);
+    const ledBulbMat = new THREE.MeshStandardMaterial({
       color: 0xef4444,
-      emissive: 0x000000,
-      emissiveIntensity: 0.0,
-      transparent: true,
-      opacity: 0.85
+      emissive: 0x7f1d1d,
+      emissiveIntensity: 0.2
     });
-    const ledDome = new THREE.Mesh(ledDomeGeo, ledDomeMat);
-    ledDome.rotation.x = -Math.PI / 2;
-    ledDome.position.z = 0.3;
-    ledGroup.add(ledDome);
+    const ledBulb = new THREE.Mesh(ledBulbGeo, ledBulbMat);
+    ledBulb.position.set(8, 0, 1.0);
+    root.add(ledBulb);
+    this.objects.outputLED = ledBulb;
 
-    root.add(ledGroup);
-    this.objects.ledDome = ledDome;
+    this.objects.wireInA = this.createWireMesh([-6, 3.5, 0], [-3, 1.5, 0]);
+    this.objects.wireInB = this.createWireMesh([-6, -3.5, 0], [-3, -1.5, 0]);
+    this.objects.wireOut = this.createWireMesh([3, 0, 0], [7, 0, 0]);
+    root.add(this.objects.wireInA);
+    root.add(this.objects.wireInB);
+    root.add(this.objects.wireOut);
 
     this.updateLogicCircuit();
   }
 
-  create3DSwitch(x, y, label, state) {
-    const group = new THREE.Group();
-    group.position.set(x, y, 0.8);
+  createSwitchMesh(x, y, name) {
+    const grp = new THREE.Group();
+    grp.position.set(x, y, 0);
 
-    const baseGeo = new THREE.BoxGeometry(3.0, 2.4, 0.6);
-    const baseMat = new THREE.MeshStandardMaterial({ color: 0x334155 });
-    group.add(new THREE.Mesh(baseGeo, baseMat));
+    const base = new THREE.Mesh(new THREE.BoxGeometry(2.5, 3.2, 0.6), new THREE.MeshStandardMaterial({ color: 0x334155 }));
+    grp.add(base);
 
-    const leverGeo = new THREE.CylinderGeometry(0.35, 0.35, 1.8, 12);
-    const leverMat = new THREE.MeshStandardMaterial({ color: state ? 0x22c55e : 0xef4444 });
+    const leverGeo = new THREE.BoxGeometry(0.6, 2.0, 0.4);
+    const leverMat = new THREE.MeshStandardMaterial({ color: 0xef4444 });
     const lever = new THREE.Mesh(leverGeo, leverMat);
-    lever.position.set(0, 0, 0.8);
-    lever.rotation.z = state ? 0.35 : -0.35;
-    group.add(lever);
-    group.userData = { lever: lever, leverMat: leverMat };
+    lever.position.set(0, 0, 0.5);
+    lever.rotation.z = -0.35;
+    grp.add(lever);
 
-    return group;
+    grp.userData = { lever: lever, leverMat: leverMat, name: name };
+    return grp;
   }
 
-  createWireLine(parent, p1, p2) {
-    const geo = new THREE.CylinderGeometry(0.18, 0.18, Math.hypot(p2[0] - p1[0], p2[1] - p1[1]), 8);
-    const mat = new THREE.MeshStandardMaterial({ color: 0x64748b, emissive: 0x000000 });
-    const wire = new THREE.Mesh(geo, mat);
-    wire.position.set((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2, p1[2]);
-    wire.rotation.z = Math.PI / 2;
-    parent.add(wire);
+  createWireMesh(p1, p2) {
+    const v1 = new THREE.Vector3(...p1);
+    const v2 = new THREE.Vector3(...p2);
+    const distance = v1.distanceTo(v2);
+    const geom = new THREE.CylinderGeometry(0.12, 0.12, distance, 8);
+    const mat = new THREE.MeshBasicMaterial({ color: 0x475569 });
+    const wire = new THREE.Mesh(geom, mat);
+
+    wire.position.copy(v1).add(v2).multiplyScalar(0.5);
+    wire.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), v2.clone().sub(v1).normalize());
     return wire;
   }
 
   updateLogicCircuit() {
-    const a = this.params.switchA;
-    const b = this.params.switchB;
-    let out = false;
+    const a = this.params.switchA ? 1 : 0;
+    const b = this.params.switchB ? 1 : 0;
+    let out = 0;
 
     switch (this.params.gateType) {
-      case 'AND': out = (a && b); break;
-      case 'OR': out = (a || b); break;
-      case 'NOT': out = !a; break;
-      case 'XOR': out = (a !== b); break;
+      case 'AND':
+        out = (a && b) ? 1 : 0;
+        break;
+      case 'OR':
+        out = (a || b) ? 1 : 0;
+        break;
+      case 'NOT':
+        out = (!a) ? 1 : 0;
+        break;
+      case 'XOR':
+        out = (a !== b) ? 1 : 0;
+        break;
+      default:
+        out = 0;
     }
 
-    // Simlarni yoritish
-    if (this.objects.wireA) {
-      this.objects.wireA.material.color.setHex(a ? 0x38bdf8 : 0x334155);
-      this.objects.wireA.material.emissive.setHex(a ? 0x0284c7 : 0x000000);
-    }
-    if (this.objects.wireB) {
-      this.objects.wireB.material.color.setHex(b ? 0x38bdf8 : 0x334155);
-      this.objects.wireB.material.emissive.setHex(b ? 0x0284c7 : 0x000000);
-    }
-    if (this.objects.wireOut) {
-      this.objects.wireOut.material.color.setHex(out ? 0x22c55e : 0x334155);
-      this.objects.wireOut.material.emissive.setHex(out ? 0x16a34a : 0x000000);
-    }
-
-    // LED lampani yoqish
-    if (this.objects.ledDome) {
-      if (out) {
-        this.objects.ledDome.material.color.setHex(0x22c55e);
-        this.objects.ledDome.material.emissive.setHex(0x16a34a);
-        this.objects.ledDome.material.emissiveIntensity = 0.9;
+    if (this.objects.outputLED) {
+      if (out === 1) {
+        this.objects.outputLED.material.color.setHex(0x22c55e);
+        this.objects.outputLED.material.emissive.setHex(0x16a34a);
+        this.objects.outputLED.material.emissiveIntensity = 1.0;
       } else {
-        this.objects.ledDome.material.color.setHex(0xef4444);
-        this.objects.ledDome.material.emissive.setHex(0x000000);
-        this.objects.ledDome.material.emissiveIntensity = 0.0;
+        this.objects.outputLED.material.color.setHex(0xef4444);
+        this.objects.outputLED.material.emissive.setHex(0x7f1d1d);
+        this.objects.outputLED.material.emissiveIntensity = 0.2;
       }
     }
 
-    // UI holatini yangilash
-    const statusEl = document.getElementById('logic-result-status');
-    if (statusEl) {
-      statusEl.innerHTML = `Kirish A: <strong>${a ? 1 : 0}</strong>, Kirish B: <strong>${b ? 1 : 0}</strong> &rarr; Chiqish (${this.params.gateType}): <strong style="color:${out ? '#34d399' : '#f87171'}">${out ? '1 (ON - 5V)' : '0 (OFF - 0V)'}</strong>`;
+    if (this.objects.wireInA) this.objects.wireInA.material.color.setHex(a ? 0x22c55e : 0x475569);
+    if (this.objects.wireInB) this.objects.wireInB.material.color.setHex(b ? 0x22c55e : 0x475569);
+    if (this.objects.wireOut) this.objects.wireOut.material.color.setHex(out ? 0x22c55e : 0x475569);
+
+    const hud = document.getElementById('pc-part-hud');
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    if (hud && hudTitle && hudDesc) {
+      hud.style.display = 'block';
+      hudTitle.innerHTML = `<i class="fas fa-code-branch" style="color:#f59e0b;"></i> Mantiqiy Element: ${this.params.gateType}`;
+      hudDesc.innerHTML = `Kirish A: <b>${a}</b> | Kirish B: <b>${b}</b> &rarr; Chiqish: <b style="color:${out ? '#10b981' : '#ef4444'}">${out} (${out ? 'LED YONDI' : 'O\'CHIQ'})</b>`;
     }
   }
 
   // ============================================================
-  // 3. INTERNET VA MA'LUMOTLAR OQIMI (NETWORK FLOW)
+  // 3. 8-BIT IKKILIK XOTIRA VA ASCII (BINARY BYTE)
+  // ============================================================
+  setupBinaryByte() {
+    this.cameraRadius = 32;
+    this.cameraTarget.set(0, 1.5, 0);
+    this.theta = 0.55;
+    this.phi = 1.1;
+    this.updateCameraPosition();
+
+    const root = new THREE.Group();
+    this.scene.add(root);
+    this.objects.root = root;
+
+    const baseGeo = new THREE.BoxGeometry(26, 0.8, 10);
+    const baseMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.3, metalness: 0.8 });
+    const base = new THREE.Mesh(baseGeo, baseMat);
+    base.position.set(0, -0.4, 0);
+    root.add(base);
+
+    const busGeo = new THREE.BoxGeometry(24, 0.1, 0.4);
+    const busMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
+    const bus = new THREE.Mesh(busGeo, busMat);
+    bus.position.set(0, 0.05, 2.2);
+    root.add(bus);
+
+    this.byteState = [0, 1, 0, 0, 0, 0, 0, 1]; // 65 = 'A' default
+    this.bitMeshes = [];
+    const weights = [128, 64, 32, 16, 8, 4, 2, 1];
+
+    for (let i = 0; i < 8; i++) {
+      const bitX = -9.8 + i * 2.8;
+
+      const sockGeo = new THREE.BoxGeometry(2.2, 0.4, 2.4);
+      const sockMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.5 });
+      const sock = new THREE.Mesh(sockGeo, sockMat);
+      sock.position.set(bitX, 0.2, 0);
+      root.add(sock);
+
+      const isOne = this.byteState[i] === 1;
+      const bitGeo = new THREE.BoxGeometry(1.8, 1.6, 1.8);
+      const bitMat = new THREE.MeshStandardMaterial({
+        color: isOne ? 0x10b981 : 0x334155,
+        emissive: isOne ? 0x059669 : 0x020617,
+        emissiveIntensity: isOne ? 0.9 : 0.1,
+        roughness: 0.2
+      });
+      const bitMesh = new THREE.Mesh(bitGeo, bitMat);
+      bitMesh.position.set(bitX, 1.2, 0);
+      bitMesh.userData = {
+        isBitCell: true,
+        bitIndex: i,
+        weight: weights[i]
+      };
+      root.add(bitMesh);
+      this.bitMeshes.push(bitMesh);
+
+      const tagGeo = new THREE.BoxGeometry(1.6, 0.15, 0.8);
+      const tagMat = new THREE.MeshStandardMaterial({ color: 0x0284c7 });
+      const tag = new THREE.Mesh(tagGeo, tagMat);
+      tag.position.set(bitX, 0.1, 2.2);
+      root.add(tag);
+    }
+
+    const dispGeo = new THREE.BoxGeometry(18, 3.2, 0.3);
+    const dispMat = new THREE.MeshBasicMaterial({ color: 0x020617 });
+    const disp = new THREE.Mesh(dispGeo, dispMat);
+    disp.position.set(0, 5.0, -3.5);
+    disp.rotation.x = 0.12;
+    root.add(disp);
+    this.objects.byteDisplay = disp;
+
+    this.lastByteTick = 0;
+    this.updateByteDisplay();
+  }
+
+  updateByteDisplay() {
+    let dec = 0;
+    let binStr = '';
+    const weights = [128, 64, 32, 16, 8, 4, 2, 1];
+    for (let i = 0; i < 8; i++) {
+      if (this.byteState[i] === 1) dec += weights[i];
+      binStr += this.byteState[i];
+    }
+    const hex = '0x' + dec.toString(16).toUpperCase().padStart(2, '0');
+    let asciiChar = (dec >= 32 && dec <= 126) ? String.fromCharCode(dec) : (dec === 0 ? 'NULL' : 'N/A');
+
+    if (this.objects.byteDisplay) {
+      const tex = this.createCanvasTextureText(
+        `BIN: ${binStr} | DEC: ${dec}`,
+        `HEX: ${hex} | ASCII: '${asciiChar}'`
+      );
+      this.objects.byteDisplay.material = new THREE.MeshBasicMaterial({ map: tex });
+    }
+
+    const hud = document.getElementById('pc-part-hud');
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    if (hud && hudTitle && hudDesc) {
+      hud.style.display = 'block';
+      hudTitle.innerHTML = `<i class="fas fa-calculator" style="color:#a855f7;"></i> 8-Bit Xotira Registri`;
+      hudDesc.innerHTML = `<b>O'nlik (DEC):</b> ${dec} &nbsp;|&nbsp; <b>Ikkilik:</b> ${binStr} &nbsp;|&nbsp; <b>ASCII:</b> '${asciiChar}'`;
+    }
+
+    const valInp = document.getElementById('byte-dec-val');
+    if (valInp) valInp.textContent = dec;
+    const asciiEl = document.getElementById('byte-ascii-val');
+    if (asciiEl) asciiEl.textContent = `'${asciiChar}'`;
+    const binEl = document.getElementById('byte-bin-val');
+    if (binEl) binEl.textContent = binStr;
+  }
+
+  toggleBit(idx) {
+    if (!this.byteState || typeof this.byteState[idx] === 'undefined') return;
+    this.byteState[idx] = this.byteState[idx] === 1 ? 0 : 1;
+    const mesh = this.bitMeshes[idx];
+    if (mesh) {
+      const isOne = this.byteState[idx] === 1;
+      mesh.material.color.setHex(isOne ? 0x10b981 : 0x334155);
+      mesh.material.emissive.setHex(isOne ? 0x059669 : 0x020617);
+      mesh.material.emissiveIntensity = isOne ? 0.9 : 0.1;
+    }
+    this.updateByteDisplay();
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  setByteValue(val) {
+    let num = parseInt(val) || 0;
+    num = Math.max(0, Math.min(255, num));
+    for (let i = 0; i < 8; i++) {
+      const bitVal = (num >> (7 - i)) & 1;
+      this.byteState[i] = bitVal;
+      const mesh = this.bitMeshes[i];
+      if (mesh) {
+        mesh.material.color.setHex(bitVal ? 0x10b981 : 0x334155);
+        mesh.material.emissive.setHex(bitVal ? 0x059669 : 0x020617);
+        mesh.material.emissiveIntensity = bitVal ? 0.9 : 0.1;
+      }
+    }
+    this.updateByteDisplay();
+  }
+
+  incrementByte() {
+    let dec = 0;
+    const weights = [128, 64, 32, 16, 8, 4, 2, 1];
+    for (let i = 0; i < 8; i++) {
+      if (this.byteState[i] === 1) dec += weights[i];
+    }
+    dec = (dec + 1) % 256;
+    this.setByteValue(dec);
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  // ============================================================
+  // 4. INTERNET VA MA'LUMOTLAR OQIMI (NETWORK FLOW)
   // ============================================================
   setupNetworkFlow() {
     this.cameraRadius = 32;
@@ -27604,7 +27965,6 @@ class ComputerLab {
     this.scene.add(root);
     this.objects.root = root;
 
-    // 1. Markaziy Bulut / Internet Core (Cloud)
     const cloudGeo = new THREE.SphereGeometry(3.5, 24, 24);
     const cloudMat = new THREE.MeshStandardMaterial({
       color: 0x38bdf8,
@@ -27617,28 +27977,24 @@ class ComputerLab {
     root.add(cloud);
     this.objects.networkCloud = cloud;
 
-    // 2. Maktab Serveri (School Data Center Rack)
     const serverGeo = new THREE.BoxGeometry(4.0, 7.5, 4.0);
     const serverMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.4 });
     const server = new THREE.Mesh(serverGeo, serverMat);
     server.position.set(-10, 0, -4);
     root.add(server);
 
-    // Server LED chiroqchalari
     for (let s = 0; s < 6; s++) {
       const led = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.4, 0.2), new THREE.MeshBasicMaterial({ color: 0x34d399 }));
       led.position.set(-8.8 + (s % 3) * 0.8, 1.5 - Math.floor(s / 3) * 1.5, -1.9);
       root.add(led);
     }
 
-    // 3. Wi-Fi Router (Antennali markaziy marshrutizator)
     const routerGeo = new THREE.BoxGeometry(4.2, 1.4, 3.2);
     const routerMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.5 });
     const router = new THREE.Mesh(routerGeo, routerMat);
     router.position.set(0, 0, 2);
     root.add(router);
 
-    // Router antennalari
     for (let a = -1; a <= 1; a += 2) {
       const ant = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 3.5), new THREE.MeshStandardMaterial({ color: 0x334155 }));
       ant.position.set(a * 1.6, 2.0, 1.8);
@@ -27646,7 +28002,6 @@ class ComputerLab {
       root.add(ant);
     }
 
-    // 4. Foydalanuvchi qurilmalari (Mijoz kompyuterlari)
     const clientCoords = [
       { x: 9, y: -2, z: 4, name: "O'quvchi Noutbuki" },
       { x: 7, y: -2, z: -5, name: "O'qituvchi Kompyuteri" },
@@ -27663,7 +28018,6 @@ class ComputerLab {
       root.add(stand);
     });
 
-    // 5. Harakatlanuvchi ma'lumotlar paketlari (Data packets)
     const packetCount = 40;
     const packetGeo = new THREE.SphereGeometry(0.28, 12, 12);
     const packetMat = new THREE.MeshBasicMaterial({ color: 0x34d399 });
@@ -27675,10 +28029,314 @@ class ComputerLab {
       packets.push({
         mesh: mesh,
         progress: Math.random(),
-        route: p % 3 // 0: Server to Cloud, 1: Cloud to Router, 2: Router to Client
+        route: p % 3
       });
     }
     this.objects.packets = packets;
+
+    const hud = document.getElementById('pc-part-hud');
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    if (hud && hudTitle && hudDesc) {
+      hud.style.display = 'block';
+      hudTitle.innerHTML = '<i class="fas fa-network-wired" style="color:#10b981;"></i> Internet va Tarmoq Oqimi';
+      hudDesc.innerHTML = 'Server, Bulut va Router o\'rtasida paketlar uzatilmoqda. Paket tezligini boshqaring!';
+    }
+  }
+
+  // ============================================================
+  // 5. KIBERXAVFSIZLIK VA FIREWALL (CYBERSECURITY)
+  // ============================================================
+  setupCybersecurity() {
+    this.cameraRadius = 36;
+    this.cameraTarget.set(0, 2.5, 0);
+    this.theta = 0.65;
+    this.phi = 1.1;
+    this.updateCameraPosition();
+
+    const root = new THREE.Group();
+    this.scene.add(root);
+    this.objects.root = root;
+
+    this.firewallActive = true;
+    this.encryptionActive = true;
+    this.blockedAttacks = 0;
+
+    const grid = new THREE.GridHelper(50, 25, 0x06b6d4, 0x1e293b);
+    grid.position.y = -0.1;
+    root.add(grid);
+
+    const shieldGeo = new THREE.BoxGeometry(0.8, 10, 18);
+    const shieldMat = new THREE.MeshStandardMaterial({
+      color: 0x06b6d4,
+      emissive: 0x0891b2,
+      emissiveIntensity: 0.6,
+      transparent: true,
+      opacity: 0.55,
+      wireframe: true
+    });
+    const shield = new THREE.Mesh(shieldGeo, shieldMat);
+    shield.position.set(0, 5, 0);
+    root.add(shield);
+    this.objects.firewallShield = shield;
+
+    for (let z of [-9, 9]) {
+      const pylon = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.7, 11), new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.8 }));
+      pylon.position.set(0, 5.5, z);
+      root.add(pylon);
+      const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.6, 12, 12), new THREE.MeshBasicMaterial({ color: 0x06b6d4 }));
+      beacon.position.set(0, 11.2, z);
+      root.add(beacon);
+    }
+
+    const serverGroup = new THREE.Group();
+    serverGroup.position.set(14, 0, 0);
+    root.add(serverGroup);
+    this.objects.cyberServer = serverGroup;
+
+    for (let k = -1; k <= 1; k++) {
+      const rack = new THREE.Mesh(new THREE.BoxGeometry(3.5, 8.5, 3.5), new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.7 }));
+      rack.position.set(0, 4.25, k * 5.5);
+      serverGroup.add(rack);
+      for (let row = 0; row < 5; row++) {
+        const led = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.3, 0.1), new THREE.MeshBasicMaterial({ color: 0x10b981 }));
+        led.position.set(-1.6, 1.5 + row * 1.2, k * 5.5 + 0.8);
+        serverGroup.add(led);
+      }
+    }
+
+    const lockGroup = new THREE.Group();
+    lockGroup.position.set(14, 11, 0);
+    const lockBody = new THREE.Mesh(new THREE.BoxGeometry(2.4, 2.0, 1.2), new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.9, roughness: 0.2 }));
+    lockGroup.add(lockBody);
+    const shackleGeo = new THREE.TorusGeometry(1.0, 0.25, 12, 24, Math.PI);
+    const shackleMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.9 });
+    const shackle = new THREE.Mesh(shackleGeo, shackleMat);
+    shackle.position.set(0, 1.0, 0);
+    lockGroup.add(shackle);
+    root.add(lockGroup);
+    this.objects.cyberLock = lockGroup;
+
+    const attNode = new THREE.Mesh(new THREE.ConeGeometry(2.5, 6, 4), new THREE.MeshStandardMaterial({ color: 0xef4444, wireframe: true }));
+    attNode.position.set(-16, 3, 0);
+    root.add(attNode);
+
+    this.cyberPackets = [];
+    for (let p = 0; p < 14; p++) {
+      const sp = new THREE.Mesh(new THREE.SphereGeometry(0.35, 12, 12), new THREE.MeshBasicMaterial({ color: 0x10b981 }));
+      root.add(sp);
+      this.cyberPackets.push({
+        mesh: sp,
+        isVirus: false,
+        x: -16 + Math.random() * 30,
+        y: 1.5 + Math.random() * 6,
+        z: -6 + Math.random() * 12,
+        speed: 0.15 + Math.random() * 0.1
+      });
+    }
+    for (let v = 0; v < 8; v++) {
+      const vir = new THREE.Mesh(new THREE.IcosahedronGeometry(0.5, 0), new THREE.MeshStandardMaterial({ color: 0xef4444, emissive: 0xb91c1c, wireframe: true }));
+      root.add(vir);
+      this.cyberPackets.push({
+        mesh: vir,
+        isVirus: true,
+        x: -18 - Math.random() * 10,
+        y: 2 + Math.random() * 5,
+        z: -5 + Math.random() * 10,
+        speed: 0.18 + Math.random() * 0.12
+      });
+    }
+
+    this.updateCyberHUD();
+  }
+
+  toggleFirewall() {
+    this.firewallActive = !this.firewallActive;
+    if (this.objects.firewallShield) {
+      if (this.firewallActive) {
+        this.objects.firewallShield.material.color.setHex(0x06b6d4);
+        this.objects.firewallShield.material.opacity = 0.55;
+      } else {
+        this.objects.firewallShield.material.color.setHex(0xef4444);
+        this.objects.firewallShield.material.opacity = 0.15;
+      }
+    }
+    this.updateCyberHUD();
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  toggleEncryption() {
+    this.encryptionActive = !this.encryptionActive;
+    if (this.objects.cyberLock) {
+      this.objects.cyberLock.visible = this.encryptionActive;
+    }
+    this.updateCyberHUD();
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  updateCyberHUD() {
+    const hud = document.getElementById('pc-part-hud');
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    const fwStatus = this.firewallActive ? '<span style="color:#10b981;">FAOL (HIMOYA ON)</span>' : '<span style="color:#ef4444;">O\'CHIQLANGAN</span>';
+    const aesStatus = this.encryptionActive ? '<span style="color:#38bdf8;">AES-256 (Shifrlangan)</span>' : 'Ochiq matn';
+
+    if (hud && hudTitle && hudDesc) {
+      hud.style.display = 'block';
+      hudTitle.innerHTML = `<i class="fas fa-shield-alt" style="color:#ef4444;"></i> Kiberxavfsizlik va Firewall`;
+      hudDesc.innerHTML = `<b>Firewall:</b> ${fwStatus} &nbsp;|&nbsp; <b>To'silgan hujumlar:</b> <span style="color:#ef4444;">${this.blockedAttacks}</span> &nbsp;|&nbsp; <b>Kripto:</b> ${aesStatus}`;
+    }
+
+    const fwBtnState = document.getElementById('fw-btn-state');
+    if (fwBtnState) {
+      fwBtnState.textContent = this.firewallActive ? 'YONIQ' : 'O\'CHIQ';
+      fwBtnState.style.color = this.firewallActive ? '#10b981' : '#ef4444';
+    }
+    const fwBlocked = document.getElementById('fw-blocked-count');
+    if (fwBlocked) fwBlocked.textContent = this.blockedAttacks;
+  }
+
+  // ============================================================
+  // 6. 3D ALGORITM VA SARALASH (ALGORITHM SORT)
+  // ============================================================
+  setupAlgorithmSort() {
+    this.cameraRadius = 32;
+    this.cameraTarget.set(0, 3.5, 0);
+    this.theta = 0.55;
+    this.phi = 1.1;
+    this.updateCameraPosition();
+
+    const root = new THREE.Group();
+    this.scene.add(root);
+    this.objects.root = root;
+
+    const plat = new THREE.Mesh(new THREE.BoxGeometry(26, 0.6, 6), new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.4 }));
+    plat.position.set(0, -0.3, 0);
+    root.add(plat);
+
+    this.initSortArray();
+  }
+
+  initSortArray() {
+    if (this.sortBars) {
+      this.sortBars.forEach(b => {
+        if (b.mesh.parent) b.mesh.parent.remove(b.mesh);
+      });
+    }
+
+    const values = [28, 75, 15, 92, 44, 86, 32, 60];
+    for (let i = values.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [values[i], values[j]] = [values[j], values[i]];
+    }
+
+    this.sortArray = [...values];
+    this.sortBars = [];
+    this.sortI = 0;
+    this.sortJ = 0;
+    this.sortSwaps = 0;
+    this.sortComparisons = 0;
+    this.isSortingComplete = false;
+    this.lastSortTick = 0;
+
+    const count = this.sortArray.length;
+    for (let k = 0; k < count; k++) {
+      const val = this.sortArray[k];
+      const h = (val / 100) * 8 + 1.2;
+      const barGeo = new THREE.BoxGeometry(1.8, h, 1.8);
+      const color = new THREE.Color().setHSL(0.55 + (val / 100) * 0.3, 0.8, 0.55);
+      const barMat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.2, metalness: 0.5 });
+      const barMesh = new THREE.Mesh(barGeo, barMat);
+
+      const x = -8.5 + k * 2.4;
+      barMesh.position.set(x, h / 2, 0);
+      this.objects.root.add(barMesh);
+
+      this.sortBars.push({
+        value: val,
+        height: h,
+        mesh: barMesh,
+        baseColor: color
+      });
+    }
+
+    this.updateSortHUD();
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  resetBarsColor() {
+    if (!this.sortBars) return;
+    this.sortBars.forEach(b => {
+      b.mesh.material.color.copy(b.baseColor);
+    });
+  }
+
+  stepBubbleSort() {
+    if (this.isSortingComplete || !this.sortBars || this.sortBars.length === 0) return;
+
+    const n = this.sortBars.length;
+    if (this.sortI < n - 1) {
+      if (this.sortJ < n - this.sortI - 1) {
+        this.sortComparisons++;
+        const barA = this.sortBars[this.sortJ];
+        const barB = this.sortBars[this.sortJ + 1];
+
+        this.resetBarsColor();
+        barA.mesh.material.color.setHex(0xf59e0b);
+        barB.mesh.material.color.setHex(0xf59e0b);
+
+        if (barA.value > barB.value) {
+          this.sortSwaps++;
+          barA.mesh.material.color.setHex(0xec4899);
+          barB.mesh.material.color.setHex(0xec4899);
+
+          const tempVal = this.sortArray[this.sortJ];
+          this.sortArray[this.sortJ] = this.sortArray[this.sortJ + 1];
+          this.sortArray[this.sortJ + 1] = tempVal;
+
+          const posXA = barA.mesh.position.x;
+          const posXB = barB.mesh.position.x;
+          barA.mesh.position.x = posXB;
+          barB.mesh.position.x = posXA;
+
+          this.sortBars[this.sortJ] = barB;
+          this.sortBars[this.sortJ + 1] = barA;
+
+          if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+        }
+
+        this.sortJ++;
+      } else {
+        const sortedBar = this.sortBars[n - this.sortI - 1];
+        if (sortedBar) sortedBar.mesh.material.color.setHex(0x10b981);
+        this.sortJ = 0;
+        this.sortI++;
+      }
+    } else {
+      this.isSortingComplete = true;
+      this.sortBars.forEach(b => b.mesh.material.color.setHex(0x10b981));
+      if (window.SoundFX && typeof SoundFX.playSuccess === 'function') SoundFX.playSuccess();
+    }
+
+    this.updateSortHUD();
+  }
+
+  updateSortHUD() {
+    const hud = document.getElementById('pc-part-hud');
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    const statusText = this.isSortingComplete ? '<span style="color:#10b981;">TARTIBLANDI (G\'ALABA)</span>' : 'Solishtirilmoqda';
+
+    if (hud && hudTitle && hudDesc) {
+      hud.style.display = 'block';
+      hudTitle.innerHTML = `<i class="fas fa-sort-amount-up-alt" style="color:#06b6d4;"></i> 3D Saralash Algoritmi (Bubble Sort)`;
+      hudDesc.innerHTML = `<b>Holat:</b> ${statusText} &nbsp;|&nbsp; <b>Solishtirish:</b> ${this.sortComparisons} &nbsp;|&nbsp; <b>Almashtirish:</b> ${this.sortSwaps}`;
+    }
+
+    const compEl = document.getElementById('sort-comp-val');
+    if (compEl) compEl.textContent = this.sortComparisons;
+    const swapEl = document.getElementById('sort-swap-val');
+    if (swapEl) swapEl.textContent = this.sortSwaps;
   }
 
   // ============================================================
@@ -27697,18 +28355,26 @@ class ComputerLab {
       if (this.objects.gpuFan1) this.objects.gpuFan1.rotation.z += speed;
       if (this.objects.gpuFan2) this.objects.gpuFan2.rotation.z += speed;
 
-      // RGB yorug'lik pulsatsiyasi
       if (this.rgbLight) {
         this.rgbLight.intensity = 1.5 + Math.sin(time * 3) * 0.4;
       }
     }
 
-    // 2. Logic Gates (Agar kerak bo'lsa)
+    // 2. Logic Gates
     if (this.currentExp === 'logic-gates') {
-      // Barqaror holat
+      // Barqaror
     }
 
-    // 3. Network Flow (Ma'lumotlar paketlari harakati)
+    // 3. Binary Byte avto-hisoblagich
+    if (this.currentExp === 'binary-byte') {
+      if (!this.lastByteTick) this.lastByteTick = time;
+      if (time - this.lastByteTick > 0.8) {
+        this.incrementByte();
+        this.lastByteTick = time;
+      }
+    }
+
+    // 4. Network Flow
     if (this.currentExp === 'network-flow') {
       if (this.objects.networkCloud) {
         this.objects.networkCloud.rotation.y += 0.008;
@@ -27721,40 +28387,179 @@ class ComputerLab {
 
           const pr = p.progress;
           if (p.route === 0) {
-            // Server (-10, 0, -4) -> Cloud (0, 8, 0)
             p.mesh.position.set(-10 + pr * 10, pr * 8, -4 + pr * 4);
           } else if (p.route === 1) {
-            // Cloud (0, 8, 0) -> Router (0, 0, 2)
             p.mesh.position.set(0, 8 - pr * 8, pr * 2);
           } else {
-            // Router (0, 0, 2) -> Client (9, -1, 4)
             p.mesh.position.set(pr * 9, -pr * 1, 2 + pr * 2);
           }
         });
       }
     }
 
+    // 5. Cybersecurity
+    if (this.currentExp === 'cybersecurity') {
+      if (this.objects.cyberLock) {
+        this.objects.cyberLock.rotation.y = time * 1.2;
+      }
+      if (this.objects.firewallShield) {
+        if (this.firewallActive) {
+          this.objects.firewallShield.material.opacity = 0.5 + Math.sin(time * 4) * 0.15;
+          this.objects.firewallShield.material.color.setHex(0x06b6d4);
+        } else {
+          this.objects.firewallShield.material.opacity = 0.15;
+          this.objects.firewallShield.material.color.setHex(0xef4444);
+        }
+      }
+      if (this.cyberPackets) {
+        this.cyberPackets.forEach(p => {
+          p.x += p.speed;
+          p.mesh.position.set(p.x, p.y, p.z);
+          if (p.isVirus) {
+            p.mesh.rotation.x += 0.05;
+            p.mesh.rotation.y += 0.05;
+            if (p.x >= -0.5 && p.x <= 0.5) {
+              if (this.firewallActive) {
+                p.x = -18 - Math.random() * 10;
+                p.z = -6 + Math.random() * 12;
+                this.blockedAttacks++;
+                this.updateCyberHUD();
+              }
+            }
+            if (p.x >= 14) {
+              p.x = -18 - Math.random() * 10;
+            }
+          } else {
+            if (p.x >= 15) {
+              p.x = -16;
+              p.z = -6 + Math.random() * 12;
+            }
+          }
+        });
+      }
+    }
+
+    // 6. Algorithm Sort
+    if (this.currentExp === 'algorithm-sort' && !this.isSortingComplete) {
+      if (!this.lastSortTick) this.lastSortTick = time;
+      if (time - this.lastSortTick > 0.45) {
+        this.stepBubbleSort();
+        this.lastSortTick = time;
+      }
+    }
+
     this.renderer.render(this.scene, this.camera);
   }
 
-  // Interaktiv metodlar
+  // Interaktiv bosish hodisalari (Raycasting)
   handlePartClick() {
-    if (this.currentExp !== 'pc-inside') return;
     this.raycaster.setFromCamera(this.mouse, this.camera);
     const intersects = this.raycaster.intersectObjects(this.objects.root.children, true);
 
-    for (let i = 0; i < intersects.length; i++) {
-      let obj = intersects[i].object;
-      while (obj && !obj.userData.name && obj.parent !== this.objects.root) {
-        obj = obj.parent;
-      }
-      if (obj && obj.userData.name) {
-        const infoEl = document.getElementById('pc-part-info');
-        if (infoEl) {
-          infoEl.innerHTML = `<h4 style="color:#38bdf8; margin:0 0 4px 0;"><i class="fas fa-microchip"></i> ${obj.userData.name}</h4><p style="margin:0; font-size:0.88rem; color:#cbd5e1;">${obj.userData.desc}</p>`;
+    if (this.currentExp === 'pc-inside') {
+      for (let i = 0; i < intersects.length; i++) {
+        let obj = intersects[i].object;
+        while (obj && !obj.userData.name && obj.parent !== this.objects.root) {
+          obj = obj.parent;
         }
-        break;
+        if (obj && obj.userData.name) {
+          const hudTitle = document.getElementById('pc-hud-title');
+          const hudDesc = document.getElementById('pc-hud-desc');
+          if (hudTitle && hudDesc) {
+            hudTitle.innerHTML = `<i class="fas fa-microchip"></i> ` + obj.userData.name;
+            hudDesc.textContent = obj.userData.desc;
+          }
+          const compTitle = document.getElementById('comp-info-title');
+          const compDesc = document.getElementById('comp-info-desc');
+          if (compTitle) compTitle.textContent = obj.userData.name;
+          if (compDesc) compDesc.textContent = obj.userData.desc;
+          if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+          break;
+        }
       }
+    } else if (this.currentExp === 'binary-byte') {
+      for (let i = 0; i < intersects.length; i++) {
+        let obj = intersects[i].object;
+        if (obj && obj.userData && obj.userData.isBitCell) {
+          this.toggleBit(obj.userData.bitIndex);
+          break;
+        }
+      }
+    } else if (this.currentExp === 'cybersecurity') {
+      this.toggleFirewall();
+    } else if (this.currentExp === 'algorithm-sort') {
+      this.stepBubbleSort();
+    }
+  }
+
+  triggerQuickAction() {
+    if (this.currentExp === 'pc-inside') {
+      this.toggleTurbo();
+    } else if (this.currentExp === 'logic-gates') {
+      this.toggleSwitch('A');
+    } else if (this.currentExp === 'binary-byte') {
+      this.incrementByte();
+    } else if (this.currentExp === 'network-flow') {
+      this.burstPackets();
+    } else if (this.currentExp === 'cybersecurity') {
+      this.toggleFirewall();
+    } else if (this.currentExp === 'algorithm-sort') {
+      this.initSortArray();
+    }
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  toggleTurbo() {
+    this.isTurbo = !this.isTurbo;
+    this.params.fanSpeed = this.isTurbo ? 3.0 : 1.5;
+    const slider = document.getElementById('slider-comp-fan');
+    if (slider) slider.value = this.params.fanSpeed;
+    const valEl = document.getElementById('slider-comp-fan-val');
+    if (valEl) valEl.textContent = this.isTurbo ? '3.0x (TURBO)' : '1.5x';
+
+    const hudTitle = document.getElementById('pc-hud-title');
+    const hudDesc = document.getElementById('pc-hud-desc');
+    if (hudTitle && hudDesc) {
+      if (this.isTurbo) {
+        hudTitle.innerHTML = '<i class="fas fa-bolt" style="color:#f59e0b;"></i> Turbo Sovutish Faol!';
+        hudDesc.textContent = "Protsessor va videokarta ventilyatorlari maksimal 3000 RPM tezlikda aylanmoqda.";
+      } else {
+        hudTitle.innerHTML = '<i class="fas fa-microchip"></i> Standart Rejim';
+        hudDesc.textContent = "Ventilyatorlar sokin 1500 RPM tezlikda aylanmoqda.";
+      }
+    }
+  }
+
+  burstPackets() {
+    this.params.packetSpeed = (this.params.packetSpeed > 1.8) ? 1.2 : 2.5;
+    const slider = document.getElementById('slider-comp-packet');
+    if (slider) slider.value = this.params.packetSpeed;
+    const valEl = document.getElementById('slider-comp-packet-val');
+    if (valEl) valEl.textContent = this.params.packetSpeed + 'x';
+  }
+
+  resetExperiment() {
+    if (this.currentExp === 'pc-inside') {
+      this.isTurbo = false;
+      this.params.fanSpeed = 1.5;
+      const s1 = document.getElementById('slider-comp-fan');
+      if (s1) s1.value = 1.5;
+      const v1 = document.getElementById('slider-comp-fan-val');
+      if (v1) v1.textContent = '1.5x';
+    } else if (this.currentExp === 'logic-gates') {
+      this.params.switchA = false;
+      this.params.switchB = false;
+      this.updateLogicCircuit();
+    } else if (this.currentExp === 'binary-byte') {
+      this.setByteValue(0);
+    } else if (this.currentExp === 'network-flow') {
+      this.params.packetSpeed = 1.2;
+    } else if (this.currentExp === 'cybersecurity') {
+      this.firewallActive = true;
+      this.blockedAttacks = 0;
+      this.updateCyberHUD();
+    } else if (this.currentExp === 'algorithm-sort') {
+      this.initSortArray();
     }
   }
 
@@ -27820,10 +28625,66 @@ window.selectComputerExperiment = function (name) {
       el.classList.toggle('active', el.getAttribute('data-experiment') === name);
     });
 
-    const panels = document.querySelectorAll('#computer-controls .control-group');
-    panels.forEach(p => {
-      p.style.display = (p.getAttribute('data-for') === name) ? 'block' : 'none';
+    // O'ng paneldagi slayderlarni almashtirish
+    const sliders = ['pc-inside', 'logic-gates', 'binary-byte', 'network-flow', 'cybersecurity', 'algorithm-sort'];
+    sliders.forEach(s => {
+      const el = document.getElementById('comp-sliders-' + s);
+      if (el) el.style.display = (name === s) ? 'block' : 'none';
     });
+
+    // Tezkor harakat tugmasini yangilash
+    const actBtn = document.getElementById('comp-action-btn');
+    if (actBtn) {
+      if (name === 'pc-inside') actBtn.innerHTML = '<i class="fas fa-bolt"></i> Turbo rejim';
+      else if (name === 'logic-gates') actBtn.innerHTML = '<i class="fas fa-toggle-on"></i> Kalitni almashtirish';
+      else if (name === 'binary-byte') actBtn.innerHTML = '<i class="fas fa-plus"></i> +1 Qo\'shish';
+      else if (name === 'network-flow') actBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Paket jo\'natish';
+      else if (name === 'cybersecurity') actBtn.innerHTML = '<i class="fas fa-shield-alt"></i> Firewall Qalqoni';
+      else if (name === 'algorithm-sort') actBtn.innerHTML = '<i class="fas fa-random"></i> Aralashtirish';
+    }
+  }
+};
+
+window.startComputerExperiment = function () {
+  if (window.computerLabInstance) {
+    window.computerLabInstance.isRunning = true;
+    if (typeof window.updateLabExplanation === 'function') {
+      window.updateLabExplanation('computer', window.computerLabInstance.currentExp, true);
+    }
+    const startBtn = document.getElementById('comp-start-btn');
+    const pauseBtn = document.getElementById('comp-pause-btn');
+    if (startBtn) startBtn.disabled = true;
+    if (pauseBtn) pauseBtn.disabled = false;
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+};
+
+window.pauseComputerExperiment = function () {
+  if (window.computerLabInstance) {
+    window.computerLabInstance.isRunning = false;
+    if (typeof window.updateLabExplanation === 'function') {
+      window.updateLabExplanation('computer', window.computerLabInstance.currentExp, false);
+    }
+    const startBtn = document.getElementById('comp-start-btn');
+    const pauseBtn = document.getElementById('comp-pause-btn');
+    if (startBtn) startBtn.disabled = false;
+    if (pauseBtn) pauseBtn.disabled = true;
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+};
+
+window.resetComputerExperiment = function () {
+  if (window.computerLabInstance) {
+    window.computerLabInstance.resetExperiment();
+    window.computerLabInstance.isRunning = true;
+    if (typeof window.updateLabExplanation === 'function') {
+      window.updateLabExplanation('computer', window.computerLabInstance.currentExp, true);
+    }
+    const startBtn = document.getElementById('comp-start-btn');
+    const pauseBtn = document.getElementById('comp-pause-btn');
+    if (startBtn) startBtn.disabled = true;
+    if (pauseBtn) pauseBtn.disabled = false;
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
   }
 };
 
@@ -27842,57 +28703,57 @@ window.LAB_EXPLANATIONS = {
   chemistry: {
     'copper-acid': {
       title: "Mis va sulfat kislota reaksiyasi",
-      formula: "Cu + 2H₂SO₄(kons.) ⎯→ CuSO₄ + SO₂↑ + 2H₂O",
-      desc: "Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cu²⁺) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va vodorod/oltingugurt gazi shiddat bilan pufakchalar hosil qilib ajraladi.",
-      activeDesc: "🟢 REAKSIYA KETMOQDA: Mis parchasi kislotada erimoqda, eritma quyuq ko'k rangga o'tmoqda va shiddatli gaz pufakchalari yuqoriga ko'tarilmoqda!",
+      formula: "Cu + 2H2SO4(kons.) ?? CuSO4 + SO2? + 2H2O",
+      desc: "Mis parchasi sulfat kislota eritmasiga tushganda oksidlanish-qaytarilish reaksiyasi boshlanadi. Idishdagi eritma asta-sekin mis (Cu�?) ionlari hisobiga go'zal zangori (ko'k) rangga aylanadi va vodorod/oltingugurt gazi shiddat bilan pufakchalar hosil qilib ajraladi.",
+      activeDesc: "?? REAKSIYA KETMOQDA: Mis parchasi kislotada erimoqda, eritma quyuq ko'k rangga o'tmoqda va shiddatli gaz pufakchalari yuqoriga ko'tarilmoqda!",
       points: [
         "Idish tubidagi mis bo'lagining erishi",
         "Suyuqlik yuzasiga ko'tarilayotgan gaz pufakchalari",
         "Eritma rangining tiniq holatdan yorqin ko'k rangga o'zgarishi"
       ],
-      fact: "Mis sulfat (CuSO₄) xalq tilida 'to'tiyo' deb ataladi va bog'dorchilikda daraxtlarni zararkunanda zamburug'lardan himoya qilishda mashhur vositadir."
+      fact: "Mis sulfat (CuSO4) xalq tilida 'to'tiyo' deb ataladi va bog'dorchilikda daraxtlarni zararkunanda zamburug'lardan himoya qilishda mashhur vositadir."
     },
     'electrolysis': {
       title: "Suvning elektr toki ta'sirida parchalanishi",
-      formula: "2H₂O ⎯(elektr toki)⎯→ 2H₂↑ (katod) + O₂↑ (anod)",
+      formula: "2H2O ?(elektr toki)?? 2H2? (katod) + O2? (anod)",
       desc: "Suvdan o'zgarmas elektr toki o'tganda suv molekulalari tarkibiy elementlari bo'lgan vodorod va kislorod gazlariga parchalanadi. Katod (manfiy qutb)da vodorod, anod (musbat qutb)da esa kislorod ajraladi.",
-      activeDesc: "🟢 ELEKTROLIZ DAVOM ETMOQDA: Katod va anod elektrodlari atrofida tinimsiz gaz pufakchalari hosil bo'lmoqda. Katodda ajralayotgan vodorod hajmi kisloroddan 2 barobar ko'proq!",
+      activeDesc: "?? ELEKTROLIZ DAVOM ETMOQDA: Katod va anod elektrodlari atrofida tinimsiz gaz pufakchalari hosil bo'lmoqda. Katodda ajralayotgan vodorod hajmi kisloroddan 2 barobar ko'proq!",
       points: [
-        "Katodda vodorod (H₂) pufakchalarining shiddatli ajralishi",
-        "Anodda kislorod (O₂) pufakchalarining to'planishi",
+        "Katodda vodorod (H2) pufakchalarining shiddatli ajralishi",
+        "Anodda kislorod (O2) pufakchalarining to'planishi",
         "Hajmlar nisbati aniq 2 : 1 bo'lishi"
       ],
       fact: "Suv elektrolizi orqali olinadigan toza vodorod kelajakning eng ekologik toza va xavfsiz yonilg'isi (yashil vodorod) hisoblanadi."
     },
     'volcano': {
       title: "Kimyoviy vulqon (Kislota-asos reaksiyasi)",
-      formula: "NaHCO₃ + CH₃COOH ⎯→ CH₃COONa + H₂O + CO₂↑",
-      desc: "Natriy gidrokarbonat (iste'mol sodasi) va sirka kislotasi o'rtasidagi shiddatli neytrallanish reaksiyasi. Reaksiya natijasida ko'p miqdorda karbonat angidrid (CO₂) gazi ko'pik hosil qilib, vulqon otilishi kabi tashqariga otiladi.",
-      activeDesc: "🟢 VULQON OTILMOQDA: Gaz ajralishi va qizil ko'pik hosil bo'lishi eng yuqori cho'qqiga chiqdi! Kuchli bosim ostida massa otilib chiqmoqda.",
+      formula: "NaHCO3 + CH3COOH ?? CH3COONa + H2O + CO2?",
+      desc: "Natriy gidrokarbonat (iste'mol sodasi) va sirka kislotasi o'rtasidagi shiddatli neytrallanish reaksiyasi. Reaksiya natijasida ko'p miqdorda karbonat angidrid (CO2) gazi ko'pik hosil qilib, vulqon otilishi kabi tashqariga otiladi.",
+      activeDesc: "?? VULQON OTILMOQDA: Gaz ajralishi va qizil ko'pik hosil bo'lishi eng yuqori cho'qqiga chiqdi! Kuchli bosim ostida massa otilib chiqmoqda.",
       points: [
         "Qizil-olovrang ko'pikning konusdan yuqoriga otilishi",
-        "Reaksiya natijasida CO₂ gazining shiddatli ajralishi",
+        "Reaksiya natijasida CO2 gazining shiddatli ajralishi",
         "Harorat o'zgarishi va shishish effekti"
       ],
       fact: "Ushbu reaksiya oshpazlikda pishiriq xamirini g'ovakli va yumshoq qilishda hamda ko'pikli o't o'chirgichlarda keng qo'llaniladi."
     },
     'indicators': {
       title: "Muhit ko'rsatkichlari (Lakmus, Fenolftalein)",
-      formula: "pH = -lg[H⁺] (Kislotali < 7 | Neytral = 7 | Ishqoriy > 7)",
+      formula: "pH = -lg[H?] (Kislotali < 7 | Neytral = 7 | Ishqoriy > 7)",
       desc: "Turli eritmalar kislotali, neytral yoki ishqoriy muhitga egaligini indikatorlar rangi orqali aniqlash tajribasi. Lakmus kislotada qizil, ishqorda ko'k rang beradi. Fenolftalein esa ishqorda yorqin malina rangiga kiradi.",
-      activeDesc: "🟢 INDIKATOR TA'SIRI: Eritmaga tomizilgan reagent muhitning vodorod ko'rsatkichini (pH) darhol rang o'zgarishi orqali ko'rsatmoqda!",
+      activeDesc: "?? INDIKATOR TA'SIRI: Eritmaga tomizilgan reagent muhitning vodorod ko'rsatkichini (pH) darhol rang o'zgarishi orqali ko'rsatmoqda!",
       points: [
         "Eritma rangining bir necha soniyada o'zgarishi",
         "pH shkalasi bo'yicha muhitning aniqlanishi",
         "Neytrallashganda rangning qayta o'zgarishi"
       ],
-      fact: "Inson qonining pH darajasi juda qat'iy (7.35–7.45) bo'lib, uning ozgina o'zgarishi ham organizm uchun jiddiy xavf tug'diradi."
+      fact: "Inson qonining pH darajasi juda qat'iy (7.35�7.45) bo'lib, uning ozgina o'zgarishi ham organizm uchun jiddiy xavf tug'diradi."
     },
     'crystal': {
       title: "To'yingan eritmada kristallanish jarayoni",
-      formula: "Tuz (erigan) ⎯(sovush/bug'lanish)⎯→ Kristall panjara",
+      formula: "Tuz (erigan) ?(sovush/bug'lanish)?? Kristall panjara",
       desc: "Issiq to'yingan tuz eritmasi sovuganda yoki suyuqlik bug'langanda, ortiqcha tuz molekulalari qat'iy geometrik tartibda birlashib, qirrali go'zal kristall panjaralar hosil qiladi.",
-      activeDesc: "🟢 KRISTALL O'SMOQDA: Eritma markazida kristall karkasi qatlam-qatlam bo'lib o'smoqda va qirralari yorug'likda yaltiramoqda!",
+      activeDesc: "?? KRISTALL O'SMOQDA: Eritma markazida kristall karkasi qatlam-qatlam bo'lib o'smoqda va qirralari yorug'likda yaltiramoqda!",
       points: [
         "Kristallning qirrali geometrik shakli",
         "Yorug'likning kristall qirralarida sinishi",
@@ -27908,9 +28769,9 @@ window.LAB_EXPLANATIONS = {
   physics: {
     'free-fall': {
       title: "Jismning erkin tushishi (Gravitatsiya)",
-      formula: "h = ½gt² | v = gt | g ≈ 9.8 m/s²",
-      desc: "Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/s²) bilan yerga tushadi.",
-      activeDesc: "🟢 TUSHISH JARAYONI: Jism pastga tezlanuvchan harakat qilmoqda. Har bir millisekundda uning kinetik energiyasi ortib, potensial energiyasi kamaymoqda!",
+      formula: "h = �gt� | v = gt | g � 9.8 m/s�",
+      desc: "Jism faqat Yerning tortish kuchi ta'sirida pastga qarab tushadi. Nyuton qonuniga ko'ra, havosiz fazoda jism massasidan qat'i nazar bir xil tezlanish (g = 9.8 m/s�) bilan yerga tushadi.",
+      activeDesc: "?? TUSHISH JARAYONI: Jism pastga tezlanuvchan harakat qilmoqda. Har bir millisekundda uning kinetik energiyasi ortib, potensial energiyasi kamaymoqda!",
       points: [
         "Tushish vaqtining balandlik kvadrat ildiziga proporsionalligi",
         "Tezlikning tushish davomida chiziqli ortib borishi",
@@ -27920,9 +28781,9 @@ window.LAB_EXPLANATIONS = {
     },
     'spring': {
       title: "Prujinali tebranishlar (Guk qonuni)",
-      formula: "F = -k·x | T = 2π√(m / k)",
+      formula: "F = -k�x | T = 2pv(m / k)",
       desc: "Elastiklik kuchi ta'sirida yuz beradigan garmonik tebranishlar. Prujina qancha qattiq (k) bo'lsa, tebranishlar shuncha tezlashadi. Massa (m) ortsa, davr (T) uzayadi.",
-      activeDesc: "🟢 TEBRANISH KETMOQDA: Prujina cho'zilib-qisqarmoqda. Potensial va kinetik energiya bir-biriga doimiy aylanmoqda.",
+      activeDesc: "?? TEBRANISH KETMOQDA: Prujina cho'zilib-qisqarmoqda. Potensial va kinetik energiya bir-biriga doimiy aylanmoqda.",
       points: [
         "Muvozanat nuqtasida tezlik maksimal bo'lishi",
         "Eng chekka nuqtalarda tezlik nolga teng bo'lishi",
@@ -27932,9 +28793,9 @@ window.LAB_EXPLANATIONS = {
     },
     'pendulum': {
       title: "Ipga osilgan yukning tebranishi (Matematik mayatnik)",
-      formula: "T = 2π√(L / g)",
+      formula: "T = 2pv(L / g)",
       desc: "Uzunligi L bo'lgan ipga osilgan yukning kichik burchaklardagi tebranishi. E'tibor bering: mayatnik tebranish davri yukning massasiga bog'liq emas, faqat ip uzunligiga bog'liq!",
-      activeDesc: "🟢 MAYATNIK HARAKATDA: Mayatnik o'z davriy tebranishini davom ettirmoqda. Amplituda va chastota qat'iy saqlanmoqda.",
+      activeDesc: "?? MAYATNIK HARAKATDA: Mayatnik o'z davriy tebranishini davom ettirmoqda. Amplituda va chastota qat'iy saqlanmoqda.",
       points: [
         "Ip uzunligi 4 barobar ortsa, tebranish davri 2 barobar uzayadi",
         "Massa o'zgarganda tebranish vaqti o'zgarmasligi",
@@ -27944,21 +28805,21 @@ window.LAB_EXPLANATIONS = {
     },
     'archimedes': {
       title: "Suyuqlikdagi itaruvchi kuch (Arximed qonuni)",
-      formula: "F_A = ρ_suyuqlik · g · V_botgan",
+      formula: "F_A = ?_suyuqlik � g � V_botgan",
       desc: "Suyuqlikka botirilgan jismga uning siqib chiqargan suyuqligi og'irligiga teng bo'lgan yuqoriga yo'nalgan itaruvchi kuch ta'sir qiladi. Agar jism zichligi suyuqlikdan kichik bo'lsa, u suzadi.",
-      activeDesc: "🟢 ITARUVCHI KUCH TA'SIRI: Suyuqlik idishga botirilayotgan jismni yuqoriga itarmoqda. Siqib chiqarilgan suv hajmi o'lchanmoqda.",
+      activeDesc: "?? ITARUVCHI KUCH TA'SIRI: Suyuqlik idishga botirilayotgan jismni yuqoriga itarmoqda. Siqib chiqarilgan suv hajmi o'lchanmoqda.",
       points: [
         "Jism to'liq botganda itaruvchi kuch maksimalga yetishi",
         "Jismning suyuqlikdagi og'irligi kamayishi",
-        "Suzish sharti: ρ_jism < ρ_suv"
+        "Suzish sharti: ?_jism < ?_suv"
       ],
       fact: "O'n minglab tonna og'irlikdagi ulkan po'lat kemalarning cho'kmasdan suv yuzida suzishi aynan Arximed qonuni tufaylidir."
     },
     'optics': {
       title: "Yorug'lik nurlarining sinishi (Snellius qonuni)",
-      formula: "n₁ · sin(α) = n₂ · sin(β)",
+      formula: "n1 � sin(a) = n2 � sin(�)",
       desc: "Yorug'lik nuri bir muhitdan (havodan) ikkinchi zichroq muhitga (suv yoki shishaga) o'tganda tarqalish tezligi o'zgaradi va nur o'z yo'nalishini sindiradi.",
-      activeDesc: "🟢 NUR TARQALMOQDA: Tushish burchagi va sinish burchagi o'rtasidagi optik qonuniyat ko'rinmoqda.",
+      activeDesc: "?? NUR TARQALMOQDA: Tushish burchagi va sinish burchagi o'rtasidagi optik qonuniyat ko'rinmoqda.",
       points: [
         "Zichroq muhitga o'tganda nurning perpendikulyarga yaqinlashishi",
         "To'la ichki qaytish hodisasining chegarasi",
@@ -27968,9 +28829,9 @@ window.LAB_EXPLANATIONS = {
     },
     'ohm': {
       title: "Zanjir qismi uchun Om qonuni",
-      formula: "I = U / R | Quvvat: P = U · I",
+      formula: "I = U / R | Quvvat: P = U � I",
       desc: "Elektr zanjiridagi tok kuchi (I) kuchlanishga (U) to'g'ri proporsional va o'tkazgich qarshiligiga (R) teskari proporsionaldir. Qarshilik ortsa, tok kamayadi.",
-      activeDesc: "🟢 TOK OQMOQDA: Elektronlar yo'naltirilgan harakati ampermetr va voltmetr ko'rsatkichlarida aks etmoqda.",
+      activeDesc: "?? TOK OQMOQDA: Elektronlar yo'naltirilgan harakati ampermetr va voltmetr ko'rsatkichlarida aks etmoqda.",
       points: [
         "Kuchlanish oshirilganda tok kuchining chiziqli o'sishi",
         "Qarshilik oshirilganda tok kuchining kamayishi",
@@ -27986,9 +28847,9 @@ window.LAB_EXPLANATIONS = {
   astronomy: {
     'solar-system': {
       title: "Quyosh va 8 ta asosiy sayyora",
-      formula: "T² / R³ = const (Keplerning 3-qonuni)",
+      formula: "T� / R� = const (Keplerning 3-qonuni)",
       desc: "Quyosh atrofida Merkuriy, Venera, Yer, Mars, Yupiter, Saturn, Uran va Neptun aylanadi. Quyoshga eng yaqin Merkuriy bor-yo'g'i 88 kunda aylanib chiqsa, eng uzoqdagi Neptunga 165 yil kerak bo'ladi.",
-      activeDesc: "🟢 SAYYORALAR HARAKATDA: Sayyoralar real nisbatdagi burchak tezliklari bilan orbitalari bo'ylab aylanmoqda.",
+      activeDesc: "?? SAYYORALAR HARAKATDA: Sayyoralar real nisbatdagi burchak tezliklari bilan orbitalari bo'ylab aylanmoqda.",
       points: [
         "Ichki sayyoralarning tez, tashqi gigantlarning sokin aylanishi",
         "Saturn halqalari va sayyoralarning Quyoshdan masofasi",
@@ -28000,7 +28861,7 @@ window.LAB_EXPLANATIONS = {
       title: "Oyning Yer atrofida aylanishi va fazalari",
       formula: "Sinodik oy davri = 29.5 kun",
       desc: "Oy o'zidan yorug'lik chiqarmaydi, u faqat Quyosh nurini qaytaradi. Yer, Oy va Quyoshning fazoviy holati o'zgarishi natijasida biz yangi oy, yarim oy va to'lin oyni ko'ramiz.",
-      activeDesc: "🟢 OY ORBITADA HARAKATLANMOQDA: Quyosh yoritayotgan tomon va Yerdan ko'rinadigan qism fazasi o'zgarmoqda.",
+      activeDesc: "?? OY ORBITADA HARAKATLANMOQDA: Quyosh yoritayotgan tomon va Yerdan ko'rinadigan qism fazasi o'zgarmoqda.",
       points: [
         "Yangi oy (Oy qorong'u) dan To'lin oy (to'liq yorug')gacha davr",
         "Oyning doim bir tomoni Yerga qarab turishi (sinxron aylanish)",
@@ -28010,9 +28871,9 @@ window.LAB_EXPLANATIONS = {
     },
     'planetary-orbit': {
       title: "Keplerning 1-qonuni: Elliptik harakat",
-      formula: "r = p / (1 + e·cos θ)",
+      formula: "r = p / (1 + e�cos ?)",
       desc: "Barcha sayyoralar Quyosh atrofida aylanma emas, balki ellips shaklidagi orbitalar bo'ylab harakatlanadi. Quyosh bu ellipsning fokuslaridan birida joylashgan.",
-      activeDesc: "🟢 ELLIPTIK TEZLIK: Sayyora Quyoshga yaqinlashganda (perigeliy) tezlashadi, uzoqlashganda (afeliy) sekinlashadi.",
+      activeDesc: "?? ELLIPTIK TEZLIK: Sayyora Quyoshga yaqinlashganda (perigeliy) tezlashadi, uzoqlashganda (afeliy) sekinlashadi.",
       points: [
         "Tezlikning masofaga bog'liq ravishda o'zgarishi",
         "Radius-vektorning teng vaqtlarda teng yuzalarni chizishi (Kepler 2-qonuni)",
@@ -28022,9 +28883,9 @@ window.LAB_EXPLANATIONS = {
     },
     'sun-earth': {
       title: "Yer o'qining og'ish burchagi va fasllar",
-      formula: "Yer o'qi og'ishi = 23.5° | Yil davri = 365.25 kun",
+      formula: "Yer o'qi og'ishi = 23.5� | Yil davri = 365.25 kun",
       desc: "Yer o'qining 23.5 gradusga og'ganligi tufayli yil davomida Quyosh nurlari Yer sirtiga turli burchak ostida tushadi. Shu sababli sayyoramizda Bahor, Yoz, Kuz va Qish fasllari almashadi.",
-      activeDesc: "🟢 SUTKALIK VA YILLIK AYLANISH: Yer o'z o'qi atrofida (kun/tun) va Quyosh atrofida (fasllar) aylanmoqda.",
+      activeDesc: "?? SUTKALIK VA YILLIK AYLANISH: Yer o'z o'qi atrofida (kun/tun) va Quyosh atrofida (fasllar) aylanmoqda.",
       points: [
         "Quyoshga qaragan yarimsharda yoz, teskari yarimsharda qish bo'lishi",
         "Qutbiy tun va qutbiy kun hodisalari",
@@ -28040,22 +28901,22 @@ window.LAB_EXPLANATIONS = {
   biology: {
     'human-lungs': {
       title: "O'pka va Nafas Olish Tizimi",
-      formula: "Nafas tezligi: 16-20 marta/daqiqada | Oâ‚‚ (kislorod) âž” Qon âž” COâ‚‚ (gaz)",
+      formula: "Nafas tezligi: 16-20 marta/daqiqada | O₂ (kislorod) ➔ Qon ➔ CO₂ (gaz)",
       desc: "Inson nafas olganda diafragma pastga tushadi, ko'krak qafasi kengayadi va havo traxeya orqali o'pka bronxlariga kiradi. Alveolalarda kislorod qonga o'tadi, karbonat angidrid esa nafas chiqarilganda tashqariga chiqariladi.",
-      activeDesc: "ðŸ« O'PKA NAFAS OLMOQDA: Diafragma va o'pka to'qimalari ritmik kengayib-toraymoqda, havo oqimi alveolalarga yetib bormoqda!",
+      activeDesc: "🫁 O'PKA NAFAS OLMOQDA: Diafragma va o'pka to'qimalari ritmik kengayib-toraymoqda, havo oqimi alveolalarga yetib bormoqda!",
       points: [
         "Traxeya va asosiy bronxlar (Havo o'tkazuvchi yo'llar)",
         "O'ng va chap o'pka bo'laklari (O'pka to'qimalari)",
         "Diafragma mushagining ko'tarilib-tushishi",
         "Alveolalar orqali gaz almashinuvi jarayoni"
       ],
-      fact: "Ikkala o'pkadagi barcha mayda alveolalar yuzasini yoyib chiqsa, uning umumiy maydoni butun boshli tennis korti (taxminan 75-100 mÂ²) hajmiga teng bo'ladi!"
+      fact: "Ikkala o'pkadagi barcha mayda alveolalar yuzasini yoyib chiqsa, uning umumiy maydoni butun boshli tennis korti (taxminan 75-100 m²) hajmiga teng bo'ladi!"
     },
     'heart': {
       title: "3D Urib turuvchi yurak anatomiyasi",
       formula: "Puls: 60-80 zarba/daq | Qon bosimi: 120/80 mm sim.ust.",
       desc: "Yurak inson tanasining tinimsiz ishlaydigan mushakli nasosidir. U 4 ta kameradan (2 ta bo'lmacha va 2 ta qorincha) iborat. Chap qorincha kislorodga boy qonni butun tanaga (katta qon aylanish doirasiga) haydaydi.",
-      activeDesc: "🟢 YURAK URMOQDA: Sistola (qisqarish) va Diastola (bo'shashish) fazalari almashmoqda. Qon tomirlari bo'ylab kislorodli qon yetkazilmoqda.",
+      activeDesc: "?? YURAK URMOQDA: Sistola (qisqarish) va Diastola (bo'shashish) fazalari almashmoqda. Qon tomirlari bo'ylab kislorodli qon yetkazilmoqda.",
       points: [
         "Mushaklar qisqarishi (puls tezligini slayderda boshqarish mumkin)",
         "Aorta va o'pka arteriyalariga qon chiqishi",
@@ -28065,9 +28926,9 @@ window.LAB_EXPLANATIONS = {
     },
     'dna': {
       title: "DNK molekulasi va irsiy axborot kodi",
-      formula: "A = T (2 ta vodorod bog') | G ≡ C (3 ta vodorod bog')",
+      formula: "A = T (2 ta vodorod bog') | G = C (3 ta vodorod bog')",
       desc: "DNK (Dezoksiribonuklein kislota) tirik organizmlarning butun genetik dasturini saqlaydi. U ikkita spiraldan iborat bo'lib, komplementarlik qoidasiga muvofiq Adenin Timin bilan, Guanin Sitozin bilan bog'lanadi.",
-      activeDesc: "🟢 DNK SPIRALI: Qo'sh spiral fazoda aylanmoqda, genetik kod juftliklari (A-T va G-C) aniq ko'rinmoqda.",
+      activeDesc: "?? DNK SPIRALI: Qo'sh spiral fazoda aylanmoqda, genetik kod juftliklari (A-T va G-C) aniq ko'rinmoqda.",
       points: [
         "Shakar-fosfat karkasi va nukleotidlar zanjiri",
         "Spirallarning bir-birini aniq to'ldirishi",
@@ -28076,10 +28937,10 @@ window.LAB_EXPLANATIONS = {
       fact: "Bitta inson hujayrasidagi DNK yozib yoyilsa, uzunligi qariyb 2 metrni tashkil qiladi!"
     },
     'cell': {
-      title: "Tiriklikning asosiy birligi — Hujayra",
+      title: "Tiriklikning asosiy birligi � Hujayra",
       formula: "Tarkibi: Yadro + Sitoplazma + Membrana + Organoidlar",
       desc: "Hujayra barcha tirik organizmlarning tuzilish birligidir. Yadroda irsiy axborot saqlanadi, mitoxondriyalar energiya (ATF) ishlab chiqaradi, ribosomalar oqsil sintezlaydi.",
-      activeDesc: "🟢 HUJAYRA ORGANOIDLARI: Membrana ichida sitoplazma va asosiy organoidlarning harakati va vazifalari.",
+      activeDesc: "?? HUJAYRA ORGANOIDLARI: Membrana ichida sitoplazma va asosiy organoidlarning harakati va vazifalari.",
       points: [
         "Yadro va yadrocha joylashuvi",
         "Mitoxondriyalar va endoplazmatik to'r",
@@ -28091,7 +28952,7 @@ window.LAB_EXPLANATIONS = {
       title: "Harakat va tayanch tizimi (Inson skeleti)",
       formula: "Katta odamda: 206 ta suyak | Chaqaloqda: ~270 ta suyak",
       desc: "Skelet inson tanasiga shakl beradi, harakatlanish imkonini yaratadi va ichki a'zolarni (miya, yurak, o'pka) himoya qiladi. Suyaklar bo'g'inlar va boylamlar orqali o'zaro tutashgan.",
-      activeDesc: "🟢 SKELET ANATOMIYASI: Kalla suyagi, umurtqa pog'onasi, qovurg'alar va qo'l-oyoq suyaklari.",
+      activeDesc: "?? SKELET ANATOMIYASI: Kalla suyagi, umurtqa pog'onasi, qovurg'alar va qo'l-oyoq suyaklari.",
       points: [
         "Umurtqa pog'onasining S-simon elastik egilishi",
         "Bo'g'inlarning harakatchanlik mexanizmi",
@@ -28103,7 +28964,7 @@ window.LAB_EXPLANATIONS = {
       title: "Oliy asab faoliyati va tafakkur markazi (Bosh miya)",
       formula: "Tarkibi: ~86 milliard neyron | ~100 trillion sinaps",
       desc: "Bosh miya insonning barcha fikrlari, his-tuyg'ulari, xotirasi, nutqi va harakatlarini boshqaruvchi markaziy kompyuterdir. O'ng va chap yarim sharlar qadoqsimon tana orqali bog'langan.",
-      activeDesc: "🟢 MIYA PO'STLOG'I: Bosh miya yarim sharlari, miyacha (muvozanat) va miya ustuni (nafas/yurak boshqaruvi).",
+      activeDesc: "?? MIYA PO'STLOG'I: Bosh miya yarim sharlari, miyacha (muvozanat) va miya ustuni (nafas/yurak boshqaruvi).",
       points: [
         "Miya po'stlog'idagi burmalar (egat va pushtalar)",
         "Miyacha va orqa miya bilan tutashuvi",
@@ -28119,57 +28980,57 @@ window.LAB_EXPLANATIONS = {
   geometry: {
     'cube': {
       title: "To'g'ri burchakli Parallelepiped va Kub",
-      formula: "Hajm: V = a · b · c | To'la sirt: S = 2(ab + bc + ac)",
-      desc: "Fazoviy 3D jism. Barcha yoqlari to'g'ri to'rtburchaklardan iborat. 8 ta uchi, 12 ta qirrasi va 6 ta yog'i bor. Barcha qirralari teng bo'lsa (a=b=c), kub hosil bo'ladi (V = a³).",
-      activeDesc: "🟢 O'LCHAMLAR O'ZGARMOQDA: Slayderlar yordamida uzunlik, kenglik va balandlik o'zgarganda hajm va sirt real vaqtda qayta hisoblanmoqda!",
+      formula: "Hajm: V = a � b � c | To'la sirt: S = 2(ab + bc + ac)",
+      desc: "Fazoviy 3D jism. Barcha yoqlari to'g'ri to'rtburchaklardan iborat. 8 ta uchi, 12 ta qirrasi va 6 ta yog'i bor. Barcha qirralari teng bo'lsa (a=b=c), kub hosil bo'ladi (V = a�).",
+      activeDesc: "?? O'LCHAMLAR O'ZGARMOQDA: Slayderlar yordamida uzunlik, kenglik va balandlik o'zgarganda hajm va sirt real vaqtda qayta hisoblanmoqda!",
       points: [
         "Qirralar nisbatining hajmga ta'siri",
-        "Fazoviy diagonal: d = √(a² + b² + c²)",
+        "Fazoviy diagonal: d = v(a� + b� + c�)",
         "Yoqlar yuzasining hisoblanishi"
       ],
       fact: "Kub tabiatdagi eng mustahkam simmetrik shakllardan biri bo'lib, osh tuzi (NaCl) kristallari kubik shaklida o'sadi."
     },
     'pyramid': {
       title: "Muntazam to'rtburchakli piramida",
-      formula: "Hajm: V = ⅓ · S_asos · h | S_asos = a²",
+      formula: "Hajm: V = ? � S_asos � h | S_asos = a�",
       desc: "Asosi kvadrat bo'lib, yon yoqlari umumiy uchga ega bo'lgan 4 ta teng yonli uchburchakdan iborat ko'pyoq. Piramida hajmi xuddi shunday asos va balandlikka ega prizma hajmining roppa-rosa uchdan bir qismiga tengdir.",
-      activeDesc: "🟢 PIRAMIDA PARAMETRLARI: Balandlik (h) va asos tomoni (a) o'zgarishi piramidaning qiyaligi va fazoviy hajmiga ta'sir qilmoqda.",
+      activeDesc: "?? PIRAMIDA PARAMETRLARI: Balandlik (h) va asos tomoni (a) o'zgarishi piramidaning qiyaligi va fazoviy hajmiga ta'sir qilmoqda.",
       points: [
         "Uchidan asos markaziga tushirilgan balandlik (h)",
-        "Yon yoq balandligi — apofema (l)",
-        "Yon sirt yuzasi: S_yon = ½ · P_asos · l"
+        "Yon yoq balandligi � apofema (l)",
+        "Yon sirt yuzasi: S_yon = � � P_asos � l"
       ],
       fact: "Qadimgi Misrdagi Xeops piramidasi deyarli 4000 yil davomida insoniyat tomonidan qurilgan Yer yuzidagi eng baland inshoot bo'lib turgan."
     },
     'cylinder': {
-      title: "Aylanma jism — Silindr",
-      formula: "Hajm: V = π · R² · H | Yon sirt: S_yon = 2π·R·H",
+      title: "Aylanma jism � Silindr",
+      formula: "Hajm: V = p � R� � H | Yon sirt: S_yon = 2p�R�H",
       desc: "To'g'ri to'rtburchakning bir tomoni atrofida aylanishidan hosil bo'lgan jism. Ikkita parallel doiraviy asos va yon sirtdan iborat.",
-      activeDesc: "🟢 SILINDR VA RADIUS: Radius (R) yoki balandlik (H) o'zgarganda silindr sig'imi (hajmi) keskin ortadi.",
+      activeDesc: "?? SILINDR VA RADIUS: Radius (R) yoki balandlik (H) o'zgarganda silindr sig'imi (hajmi) keskin ortadi.",
       points: [
-        "Radius 2 barobar ortsa, hajm 4 barobar kattalashadi (R² bog'liqlik)",
+        "Radius 2 barobar ortsa, hajm 4 barobar kattalashadi (R� bog'liqlik)",
         "Yon sirtining yoyilmasi to'g'ri to'rtburchakdan iborat",
-        "To'la sirt: S_to'la = 2πR(R + H)"
+        "To'la sirt: S_to'la = 2pR(R + H)"
       ],
       fact: "Trubalar, bochkalar, idishlar va quvurlar nega silindr shaklida yasaladi? Chunki silindr eng kam material sarflab, eng katta hajmni sig'diradi."
     },
     'cone': {
-      title: "Aylanma jism — Konus",
-      formula: "Hajm: V = ⅓ · π · R² · H | Yon sirt: S_yon = π · R · L",
+      title: "Aylanma jism � Konus",
+      formula: "Hajm: V = ? � p � R� � H | Yon sirt: S_yon = p � R � L",
       desc: "To'g'ri burchakli uchburchakning katetlaridan biri atrofida aylanishidan hosil bo'ladi. Asosi doira bo'lib, uchi konus tepasida joylashgan.",
-      activeDesc: "🟢 KONUS STEREOMETRIYASI: Yasovchi (L), balandlik (H) va radius (R) o'zaro Pifagor teoremasi orqali bog'langan (L² = R² + H²).",
+      activeDesc: "?? KONUS STEREOMETRIYASI: Yasovchi (L), balandlik (H) va radius (R) o'zaro Pifagor teoremasi orqali bog'langan (L� = R� + H�).",
       points: [
-        "Konus hajmi silindr hajmining ⅓ qismini tashkil qiladi",
+        "Konus hajmi silindr hajmining ? qismini tashkil qiladi",
         "Yasovchi to'g'ri chiziqning aylanish burchagi",
         "Yon sirti yoyilmasi doiraviy sektor bo'ladi"
       ],
-      fact: "Konus shakli aerodinamikada juda muhim — raketalar va samolyotlarning burun qismi havoni yorib o'tish uchun aynan konus shaklida yasaladi."
+      fact: "Konus shakli aerodinamikada juda muhim � raketalar va samolyotlarning burun qismi havoni yorib o'tish uchun aynan konus shaklida yasaladi."
     },
     'sphere': {
       title: "Fazoviy Shar va Sfera",
-      formula: "Hajm: V = ⁴/₃ · π · R³ | Sirt yuzi: S = 4π · R²",
+      formula: "Hajm: V = 4/3 � p � R� | Sirt yuzi: S = 4p � R�",
       desc: "Yarim doiraning o'z diametri atrofida aylanishidan hosil bo'ladi. Fazoda markazdan bir xil masofada (R) joylashgan barcha nuqtalar to'plamidir. Fazodagi eng mukammal simmetrik shakl.",
-      activeDesc: "🟢 SHAR RADIUSI: Radius (R) o'zgarganda hajm kubik darajada (R³) juda tez kengayadi.",
+      activeDesc: "?? SHAR RADIUSI: Radius (R) o'zgarganda hajm kubik darajada (R�) juda tez kengayadi.",
       points: [
         "Berilgan sirt yuzasi uchun eng maksimal hajmga ega shakl",
         "Har qanday kesimining aylana bo'lishi",
@@ -28188,22 +29049,22 @@ window.LAB_EXPLANATIONS = {
   geography: {
     'earth-layers': {
       title: "Yerning Ichki Qatlamlari (Litosfera, Mantiya, Yadro)",
-      formula: "R_yer â‰ˆ 6371 km | Yadro harorati: T â‰ˆ 5000-6000Â°C | Bosim: P â‰ˆ 3.6 mln atm",
+      formula: "R_yer ≈ 6371 km | Yadro harorati: T ≈ 5000-6000°C | Bosim: P ≈ 3.6 mln atm",
       desc: "Sayyoramiz bir necha konsentrik qatlamlardan iborat. Eng yupqa tashqi qatlam - Yer qobig'i (5-70 km). Uning ostida qovushqoq mantiya (2900 km gacha), suyuq tashqi yadro (2200 km) va og'ir temir-nikelli ichki qattiq yadro (1220 km) joylashgan.",
-      activeDesc: "ðŸŒ 3D YER QATLAMLARI KO'Z OLDINGIZDA: Sferaning chorak qismi ochiq kesimda ko'rinib turibdi. Slider orqali qatlamlarni ajratib ko'rishingiz mumkin!",
+      activeDesc: "🌍 3D YER QATLAMLARI KO'Z OLDINGIZDA: Sferaning chorak qismi ochiq kesimda ko'rinib turibdi. Slider orqali qatlamlarni ajratib ko'rishingiz mumkin!",
       points: [
         "Yer qobig'i (Crust) - qalinligi 5-70 km, biz yashaydigan tog' va okeanlar",
         "Mantiya (Mantle) - 2900 km gacha cho'zilgan, magma va konveksiya harakatlari",
         "Tashqi yadro (Outer core) - suyuq erigan temir va nikel, Yer magnit maydonini yaratadi",
-        "Ichki yadro (Inner core) - o'ta yuqori bosim tufayli qattiq metall sfera (6000Â°C)"
+        "Ichki yadro (Inner core) - o'ta yuqori bosim tufayli qattiq metall sfera (6000°C)"
       ],
-      fact: "Yerning markazidagi harorat (taxminan 6000Â°C) Quyosh sirtidagi harorat bilan deyarli tengdir!"
+      fact: "Yerning markazidagi harorat (taxminan 6000°C) Quyosh sirtidagi harorat bilan deyarli tengdir!"
     },
     'volcano': {
       title: "Vulqon Otilishi va Litosfera Plitalari",
-      formula: "Litosfera plitalari tezligi: v â‰ˆ 2-10 sm/yil | Magma bosimi: P = ÏÂ·gÂ·h",
+      formula: "Litosfera plitalari tezligi: v ≈ 2-10 sm/yil | Magma bosimi: P = ρ·g·h",
       desc: "Litosfera plitalarining o'zaro to'qnashuvi yoki ajralishi natijasida Yer ostidagi magma yuqori bosim ostida yuqoriga intiladi. Magma kamerasidan vulqon trubkasi orqali kraterdan lava, qizigan kul va gazlar shiddat bilan otilib chiqadi.",
-      activeDesc: "ðŸŒ‹ VULQON OTILMOQDA: Magma kamerasidan yuqoriga qizil lava oqimlari va vulqon kullari otilmoqda! Yon tomonlarda litosfera plitalarining surilishi ko'rsatilgan.",
+      activeDesc: "🌋 VULQON OTILMOQDA: Magma kamerasidan yuqoriga qizil lava oqimlari va vulqon kullari otilmoqda! Yon tomonlarda litosfera plitalarining surilishi ko'rsatilgan.",
       points: [
         "Yer osti magma kamerasi (Magma reservoir) - qaynoq suyuq tog' jinsi",
         "Markaziy vulqon kanali va krater (Vent & Crater)",
@@ -28214,9 +29075,9 @@ window.LAB_EXPLANATIONS = {
     },
     'water-cycle': {
       title: "Suvning Tabiatda Aylanishi (Gidrologik sikl)",
-      formula: "Bug'lanish (Evaporation) âž” Kondensatsiya (Clouds) âž” Yog'in (Precipitation) âž” Oqim (Runoff)",
+      formula: "Bug'lanish (Evaporation) ➔ Kondensatsiya (Clouds) ➔ Yog'in (Precipitation) ➔ Oqim (Runoff)",
       desc: "Quyosh energiyasi ta'sirida okean, dengiz va ko'llardagi suv bug'lanib yuqoriga ko'tariladi. Sovuq balandlikda bug'lar quyuqlashib bulutlarni hosil qiladi. Bulutlar to'yingach, yomg'ir va qor ko'rinishida yerga yog'adi va daryolar orqali yana okeanga qaytadi.",
-      activeDesc: "ðŸ’§ SUV SIKLI JONLI HARAKATDA: Okeandan bug'lanayotgan zarrachalar osmonga ko'tarilib, tog'lar ustida yomg'irga aylanmoqda va daryo bo'ylab yana okeanga oqib tushmoqda!",
+      activeDesc: "💧 SUV SIKLI JONLI HARAKATDA: Okeandan bug'lanayotgan zarrachalar osmonga ko'tarilib, tog'lar ustida yomg'irga aylanmoqda va daryo bo'ylab yana okeanga oqib tushmoqda!",
       points: [
         "Bug'lanish (Evaporation) - Quyosh nuri suvni bug'ga aylantiradi",
         "Kondensatsiya (Condensation) - Havo soviydi va mayda tomchilardan bulutlar shakllanadi",
@@ -28229,7 +29090,7 @@ window.LAB_EXPLANATIONS = {
       title: "O'zbekiston Relyefi va 3D Landshafti",
       formula: "Eng baland nuqta: Hazrat Sulton (4643 m) | Eng past nuqta: Mingbuloq (-12.8 m)",
       desc: "O'zbekiston hududi relyefi sharqdan g'arbga tomon pasayib boradi. Sharqiy va janubi-sharqiy qismini baland Tyanshan va Pomir-Oloy tog' tizmalari, g'arbiy va shimoli-g'arbiy qismini esa ulkan Qizilqum cho'li va Turon pasttekisligi egallaydi.",
-      activeDesc: "ðŸ”ï¸ 3D O'ZBEKISTON HUDUDI: Sharqda qorli cho'qqilar (Hazrat Sulton, Chatqol), markazda Qizilqum, daryolar (Amudaryo, Sirdaryo) va Orol dengizi havzasi namoyon bo'lmoqda!",
+      activeDesc: "🏔️ 3D O'ZBEKISTON HUDUDI: Sharqda qorli cho'qqilar (Hazrat Sulton, Chatqol), markazda Qizilqum, daryolar (Amudaryo, Sirdaryo) va Orol dengizi havzasi namoyon bo'lmoqda!",
       points: [
         "Sharqiy baland tog'li mintaqa (Hisor, Tyanshan, Farg'ona vodiysi atrofi)",
         "Qizilqum cho'li - ulkan qum tepalari va platolar",
@@ -28248,7 +29109,7 @@ window.LAB_EXPLANATIONS = {
       title: "Kompyuter Tizim Bloki Ichi (PC Hardware)",
       formula: "CPU (GGS) + RAM (GB) + GPU (VRAM) + SSD (MB/s) | Von Neumann arxitekturasi",
       desc: "Zamonaviy shaxsiy kompyuterning barcha asosiy tugunlari ko'rsatilgan. Motherboard (ona plata) ustida protsessor (CPU) hisoblaydi, RAM dasturlar uchun tezkor ishchi maydon beradi, GPU 3D tasvirlarni chizadi, SSD esa barcha fayllarni uzoq muddat saqlaydi.",
-      activeDesc: "ðŸ–¥ï¸ KOMPYUTER ISHLAMOQDA: Ventilyatorlar (CPU va GPU kulerlari) aylanmoqda, RGB yoritish tizimi ishlamoqda. Komponent ustiga bosib, uning vazifasini bilib oling!",
+      activeDesc: "🖥️ KOMPYUTER ISHLAMOQDA: Ventilyatorlar (CPU va GPU kulerlari) aylanmoqda, RGB yoritish tizimi ishlamoqda. Komponent ustiga bosib, uning vazifasini bilib oling!",
       points: [
         "CPU (Protsessor) - Hisoblash yuragi, sovutgich va radiator bilan ta'minlangan",
         "RAM (DDR5 Operativ xotira) - O'ta tezkor ma'lumotlar buferi",
@@ -28260,13 +29121,13 @@ window.LAB_EXPLANATIONS = {
     },
     'logic-gates': {
       title: "Mantiqiy Elementlar (Logic Gates 3D)",
-      formula: "AND: Y = A Â· B | OR: Y = A + B | NOT: Y = Â¬A | XOR: Y = A âŠ• B",
+      formula: "AND: Y = A · B | OR: Y = A + B | NOT: Y = ¬A | XOR: Y = A ⊕ B",
       desc: "Barcha kompyuterlar, protsessorlar va smartfonlar mantiqiy elementlar (darvozalar) asosida ishlaydi. 0 (past kuchlanish, 0V) va 1 (yuqori kuchlanish, 5V) signallari mantiqiy amallar yordamida qayta ishlanadi va kompyuter hisob-kitoblarini hosil qiladi.",
-      activeDesc: "âš¡ SXEMA FAOL: Kirish kalitlarini (A va B) bosib holatni o'zgartiring (0 yoki 1). Chiqish lampochkasi (LED) mantiqiy shartga ko'ra yonadi yoki o'chadi!",
+      activeDesc: "⚡ SXEMA FAOL: Kirish kalitlarini (A va B) bosib holatni o'zgartiring (0 yoki 1). Chiqish lampochkasi (LED) mantiqiy shartga ko'ra yonadi yoki o'chadi!",
       points: [
         "AND (VA) - Faqat ikkala kirish ham 1 bo'lganda chiqish 1 bo'ladi",
         "OR (YOKI) - Hech bo'lmaganda bitta kirish 1 bo'lsa, chiqish 1 bo'ladi",
-        "NOT (INKOR) - Kirishni teskarisiga aylantiradi (0 âž” 1, 1 âž” 0)",
+        "NOT (INKOR) - Kirishni teskarisiga aylantiradi (0 ➔ 1, 1 ➔ 0)",
         "XOR (Istisno YOKI) - Kirishlar har xil bo'lgandagina chiqish 1 bo'ladi"
       ],
       fact: "Kvant kompyuterlari an'anaviy 0 va 1 (bitlar) o'rniga superpozitsiya holatidagi kubitlar (qubits) bilan ishlaydi, bu ularga milliardlab hisoblarni parallel bajarish imkonini beradi."
@@ -28275,7 +29136,7 @@ window.LAB_EXPLANATIONS = {
       title: "Internet va Ma'lumotlar Oqimi (Computer Networks)",
       formula: "TCP/IP protokoli | Paket uzatish: Paket = Sarlavha (IP) + Ma'lumot + Tekshiruv",
       desc: "Internetda har qanday veb-sayt, rasm yoki video mayda bo'lakchalarga - ma'lumotlar paketlariga bo'linadi. Router va serverlar orqali har bir paket o'z manziliga boradi va foydalanuvchi kompyuterida qayta butun faylga birlashtiriladi.",
-      activeDesc: "ðŸŒ TARMOQDA TRAFIK OQIMI: Server, Bulut, Router va Mijozlar o'rtasida ma'lumotlar paketlari (yashil sharchalar) yugurmoqda!",
+      activeDesc: "🌐 TARMOQDA TRAFIK OQIMI: Server, Bulut, Router va Mijozlar o'rtasida ma'lumotlar paketlari (yashil sharchalar) yugurmoqda!",
       points: [
         "Server - Veb-saytlar va ma'lumotlar bazasini saqlovchi markaziy kompyuter",
         "Router (Marshrutizator) - Paketlarni eng optimal yo'l orqali yo'naltiruvchi qurilma",
@@ -28283,16 +29144,55 @@ window.LAB_EXPLANATIONS = {
         "Client (Mijoz) - Maktab kompyuteri, noutbuk yoki smartfon"
       ],
       fact: "Dunyo bo'ylab har sekundda internet orqali 100 000 gigabaytdan ortiq ma'lumot uzatiladi va uning asosiy qismi okeanlar tubiga yotqizilgan suvosti optik kabellari orqali o'tadi."
+    },
+    'binary-byte': {
+      title: "8-Bit Ikkilik Xotira va ASCII (Binary & Data)",
+      formula: "1 Bayt = 8 Bit | 28 = 256 kombinatsiya (0�255) | DEC 65 = 'A' (ASCII)",
+      desc: "Kompyuter xotirasidagi har qanday axborot (matn, rasm, son, dastur kodi) faqat 0 va 1 lardan iborat ikkilik sanoq sistemasida saqlanadi. Har bir bit tranzistorning o'chiq (0) yoki yoniq (1) holatidir. 8 ta bit birlashib 1 baytni hosil qiladi.",
+      activeDesc: "?? 8-BIT XOTIRA REGISTRI: 3D bit kubiklarini sichqoncha bilan bosib 0 va 1 holatini o'zgartiring! Sahnada o'nlik qiymat va unga mos keluvchi ASCII belgisi jonli hisoblanadi.",
+      points: [
+        "Bit - Axborotning eng kichik o'lchov birligi (faqat 0 yoki 1 qiymat oladi)",
+        "Bayt - 8 ta bitdan iborat paket (0 dan 255 gacha bo'lgan sonni ifodalaydi)",
+        "Pozitsion vazn: 128, 64, 32, 16, 8, 4, 2, 1 (2 ning darajalari)",
+        "ASCII shifrlash: 65 - 'A', 66 - 'B', 97 - 'a', 48 - '0'"
+      ],
+      fact: "Agar 1 gigabayt (1 GB) xotirani varaqdagi 0 va 1 lar ko'rinishida chop etilsa, bu qog'ozlar ustuni 100 kilometrdan oshib, kosmik fazoga yetardi!"
+    },
+    'cybersecurity': {
+      title: "Kiberxavfsizlik, Firewall va Shifrlash (Cybersecurity 3D)",
+      formula: "Firewall (Paket filtri) + AES-256 (Kriptografik qulf) | Xavfsiz tarmoq",
+      desc: "Kiberxavfsizlik � kompyuterlar, serverlar va ma'lumotlar bazalarini zararli hujumlar (viruslar, xakerlar, DDoS)dan himoya qilish tizimidir. Firewall (himoya devori) kelayotgan har bir paketni tahlil qiladi, zararli paketlarni to'sib xavfsizlantiradi.",
+      activeDesc: "??? FIREWALL HIMOYA QALQONI FAOL: Qizil rangli viruslar qalqonga urilib yo'q qilinmoqda, xavfsiz yashil paketlar esa serverga yetib bormoqda!",
+      points: [
+        "Firewall (Himoya devori) - Tarmoq trafigini filtrlovchi kiber qalqon",
+        "Zararli hujumlar (Malware / DDoS) - Tizimni buzish yoki to'xtatishga urinishlar",
+        "AES-256 shifrlash - Ma'lumotlarni faqat maxsus kalit bilan ochiladigan qilib kodlash",
+        "Kiber gigiyena - Murakkab parollar va ikki bosqichli himoya (2FA) qo'llash"
+      ],
+      fact: "Dunyo bo'ylab har 39 soniyada yangi kiberhujum sodir bo'ladi, sun'iy intellektga ega zamonaviy firewall tizimlari esa sekundiga millionlab so'rovlarni tahlil qila oladi."
+    },
+    'algorithm-sort': {
+      title: "3D Algoritm va Saralash (Bubble Sort Visualization)",
+      formula: "Bubble Sort murakkabligi: O(N�) | N ta elementni o'sish tartibida saralash",
+      desc: "Algoritm � berilgan masalani yechish uchun aniq ketma-ketlikdagi ko'rsatmalar to'plamidir. Pufakchali saralash (Bubble Sort) eng ko'rgazmali algoritm bo'lib, yonma-yon turgan 2 ta elementni solishtiradi va kattasini o'ng tomonga siljitadi.",
+      activeDesc: "?? SARALASH ALGORITMI ISHLAMOQDA: Sariq ustunlar solishtirilmoqda va agar tartib buzilgan bo'lsa o'rni almashtirilmoqda (Swap). Tartiblangan ustunlar yashil rangga kiradi!",
+      points: [
+        "Algoritm - Muammoni bosqichma-bosqich hal qilishning aniq rejasi",
+        "Solishtirish (Compare) - Qaysi element katta yoki kichikligini tekshirish",
+        "O'rnini almashtirish (Swap) - Elementlarni to'g'ri o'rinda joylashtirish",
+        "Tahlil - Algoritm qadamlar va almashtirishlar sonini hisoblab boradi"
+      ],
+      fact: "Google yoki Yandex kabi qidiruv tizimlari milliardlab veb-sahifalarni bir soniyaning mingdan bir ulushida saralab sizga eng muhim natijani chiqarib beradi!"
     }
   },
   technology: {
     'robot-arm': {
       title: "Sanoat Roboti Qo'li (4-DoF Manipulator)",
-      formula: "Koordinatalar: (X, Y, Z) | Erkinlik darajasi: 4-DoF | Tork: M = F × r",
+      formula: "Koordinatalar: (X, Y, Z) | Erkinlik darajasi: 4-DoF | Tork: M = F � r",
       desc: "Zamonaviy avtomatlashtirilgan zavodlarda qo'llaniladigan ko'p bo'g'imli robot qo'li. Baza (burilish), yelka va bilak servomotorlari orqali harakatlanadi. Qisqich (gripper) yuklarni ushlab, kerakli koordinataga aniq ko'chiradi.",
-      activeDesc: "🤖 ROBOT HARAKATLANMOQDA: Servomotorlar dasturlangan burchaklar bo'yicha bo'g'imlarni burmoqda, qisqich yukni ushlab koordinata bo'ylab ko'chirmoqda!",
+      activeDesc: "?? ROBOT HARAKATLANMOQDA: Servomotorlar dasturlangan burchaklar bo'yicha bo'g'imlarni burmoqda, qisqich yukni ushlab koordinata bo'ylab ko'chirmoqda!",
       points: [
-        "Baza aylanish burchagi (-180° dan +180° gacha)",
+        "Baza aylanish burchagi (-180� dan +180� gacha)",
         "Yelka va bilak bo'g'imlarining fazoviy koordinatasi",
         "Pnevmatik/mexanik qisqich orqali yukni ushlash",
         "Avtomatlashtirilgan saralash va yig'ish sikli"
@@ -28301,11 +29201,11 @@ window.LAB_EXPLANATIONS = {
     },
     'gears': {
       title: "Tishli G'ildiraklar va Reduktor (Gear Transmission)",
-      formula: "Uzatish nisbati: i = z₂ / z₁ = n₁ / n₂ | Aylanuvchi moment: M₂ = M₁ × i",
-      desc: "Mexanik energiyani bitta valdan ikkinchisiga uzatish va aylanish tezligini o'zgartirish mexanizmi. Kichik tishli g'ildirak (z₁=12) katta g'ildirakni (z₃=28) aylantirganda, tezlik kamayadi, lekin quvvat (aylanuvchi moment) keskin ortadi.",
-      activeDesc: "⚙️ TISHLI UZATMA ISHLAMOQDA: G'ildiraklar tishlashib teskari yo'nalishlarda aylanmoqda. Uzatish nisbatiga qarab moment va tezlik o'zgarmoqda!",
+      formula: "Uzatish nisbati: i = z2 / z1 = n1 / n2 | Aylanuvchi moment: M2 = M1 � i",
+      desc: "Mexanik energiyani bitta valdan ikkinchisiga uzatish va aylanish tezligini o'zgartirish mexanizmi. Kichik tishli g'ildirak (z1=12) katta g'ildirakni (z3=28) aylantirganda, tezlik kamayadi, lekin quvvat (aylanuvchi moment) keskin ortadi.",
+      activeDesc: "?? TISHLI UZATMA ISHLAMOQDA: G'ildiraklar tishlashib teskari yo'nalishlarda aylanmoqda. Uzatish nisbatiga qarab moment va tezlik o'zgarmoqda!",
       points: [
-        "Tishlar soni nisbati (z₁ : z₂ : z₃)",
+        "Tishlar soni nisbati (z1 : z2 : z3)",
         "Aylanish yo'nalishlarining teskari bo'lishi",
         "Tezlik kamayganda aylanuvchi momentning oshishi (Oltin mexanika qoidasi)"
       ],
@@ -28313,9 +29213,9 @@ window.LAB_EXPLANATIONS = {
     },
     'engine': {
       title: "4 Taktli Ichki Yonuv Dvigateli (4-Stroke Engine)",
-      formula: "Faza: 720° aylanish (4 takt) | FIK: η = (Q₁ - Q₂) / Q₁ ≈ 35-40%",
+      formula: "Faza: 720� aylanish (4 takt) | FIK: ? = (Q1 - Q2) / Q1 � 35-40%",
       desc: "Silindr ichidagi porshenning ilgarilama-qaytma harakatini tirsakli val yordamida aylanma harakatga aylantiruvchi issiqlik dvigateli. 1. Kiritish, 2. Siqish, 3. Yonish/Ishchi yo'l (shamcha uchquni va portlash), 4. Chiqarish taktlaridan iborat.",
-      activeDesc: "🚗 DVIGATEL ISHLAMOQDA: Porshen yuqoriga va pastga harakatlanmoqda, klapanlar o'z vaqtida ochilib-yopilmoqda, shamcha uchqun sochib yoqilg'ini portlatmoqda!",
+      activeDesc: "?? DVIGATEL ISHLAMOQDA: Porshen yuqoriga va pastga harakatlanmoqda, klapanlar o'z vaqtida ochilib-yopilmoqda, shamcha uchqun sochib yoqilg'ini portlatmoqda!",
       points: [
         "1-takt: Kiritish (yonilg'i aralashmasi kirishi)",
         "2-takt: Siqish (porshen gazni siqadi)",
@@ -28326,9 +29226,9 @@ window.LAB_EXPLANATIONS = {
     },
     '3d-printer': {
       title: "3D Printer Qatlamli Bosma (Additive Manufacturing)",
-      formula: "Qatlam qalinligi: 0.1 - 0.3 mm | Nozzle harorati: 210°C | Stol: 60°C",
+      formula: "Qatlam qalinligi: 0.1 - 0.3 mm | Nozzle harorati: 210�C | Stol: 60�C",
       desc: "FDM (Fused Deposition Modeling) texnologiyasi: plastik filament (PLA/ABS) qizdirilgan ekstruder orqali eritilib, dastur kodi (G-code) asosida qatlam-qatlam qilib quyiladi va real fazoviy buyum hosil qilinadi.",
-      activeDesc: "🖨️ 3D BOSIB CHIQARILMOQDA: Ekstruder 210°C da eritilgan filamentni koordinatalar bo'yicha qatlamlab termo-stol ustiga yotqizmoqda!",
+      activeDesc: "??? 3D BOSIB CHIQARILMOQDA: Ekstruder 210�C da eritilgan filamentni koordinatalar bo'yicha qatlamlab termo-stol ustiga yotqizmoqda!",
       points: [
         "X, Y va Z o'qlari bo'yicha koordinatali harakat",
         "Plastik ipning (filament) erishi va qotishi",
@@ -28338,9 +29238,9 @@ window.LAB_EXPLANATIONS = {
     },
     'wind-turbine': {
       title: "Shamol Turbinasi va Yashil Energiya",
-      formula: "Shamol quvvati: P = ½ · ρ · A · v³ (v - shamol tezligi)",
+      formula: "Shamol quvvati: P = � � ? � A � v� (v - shamol tezligi)",
       desc: "Shamolning kinetik energiyasini rotordagi 3 ta aerodinamik qanot orqali mexanik harakatga, so'ngra generator orqali elektr energiyasiga aylantiruvchi ekologik toza stansiya.",
-      activeDesc: "💨 SHAMOL GENERATORI ISHLAMOQDA: Havo oqimi qanotlarni aylantirmoqda, generator elektr toki ishlab chiqarib, ko'cha chiroqlari va xonadonlarni quvvatlamoqda!",
+      activeDesc: "?? SHAMOL GENERATORI ISHLAMOQDA: Havo oqimi qanotlarni aylantirmoqda, generator elektr toki ishlab chiqarib, ko'cha chiroqlari va xonadonlarni quvvatlamoqda!",
       points: [
         "Shamol tezligi oshganda quvvatning kub darajada oshishi",
         "Rotor qanotlarining aerodinamik ko'tarish kuchi",
@@ -28411,10 +29311,10 @@ window.updateLabExplanation = function(subject, experimentKey, isRunning) {
   if (badgeEl && statusTextEl) {
     if (window.currentLabState.isRunning) {
       badgeEl.className = 'info-status-badge running';
-      statusTextEl.innerHTML = '<strong>🟢 Jarayon ketmoqda...</strong>';
+      statusTextEl.innerHTML = '<strong>?? Jarayon ketmoqda...</strong>';
     } else {
       badgeEl.className = 'info-status-badge waiting';
-      statusTextEl.innerHTML = '<strong>🟡 Kutilmoqda</strong> (Boshlashni bosing)';
+      statusTextEl.innerHTML = '<strong>?? Kutilmoqda</strong> (Boshlashni bosing)';
     }
   }
 };
@@ -28488,7 +29388,7 @@ window.hookLabExplanationControls = function() {
     if (origChemPause) origChemPause();
     window.updateLabExplanation('chemistry', window.currentLabState.experiment, false);
     var st = document.getElementById('chem-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origChemReset = window.resetChemistryExperiment;
   window.resetChemistryExperiment = function() {
@@ -28507,7 +29407,7 @@ window.hookLabExplanationControls = function() {
     if (origPhysPause) origPhysPause();
     window.updateLabExplanation('physics', window.currentLabState.experiment, false);
     var st = document.getElementById('phys-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origPhysReset = window.resetPhysicsExperiment;
   window.resetPhysicsExperiment = function() {
@@ -28526,7 +29426,7 @@ window.hookLabExplanationControls = function() {
     if (origAstroPause) origAstroPause();
     window.updateLabExplanation('astronomy', window.currentLabState.experiment, false);
     var st = document.getElementById('astr-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origAstroReset = window.resetAstronomyExperiment;
   window.resetAstronomyExperiment = function() {
@@ -28545,7 +29445,7 @@ window.hookLabExplanationControls = function() {
     if (origBioPause) origBioPause();
     window.updateLabExplanation('biology', window.currentLabState.experiment, false);
     var st = document.getElementById('bio-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origBioReset = window.resetBiologyExperiment;
   window.resetBiologyExperiment = function() {
@@ -28564,7 +29464,7 @@ window.hookLabExplanationControls = function() {
     if (origGeomPause) origGeomPause();
     window.updateLabExplanation('geometry', window.currentLabState.experiment, false);
     var st = document.getElementById('geom-status-text');
-    if (st) st.innerHTML = '<strong>⏸ To\'xtatildi (Pauza)</strong>';
+    if (st) st.innerHTML = '<strong>? To\'xtatildi (Pauza)</strong>';
   };
   var origGeomReset = window.resetGeometryExperiment;
   window.resetGeometryExperiment = function() {

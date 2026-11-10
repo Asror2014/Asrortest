@@ -789,7 +789,7 @@
                     <div class="lab-card-icon"><i class="fas fa-microchip"></i></div>
                     <div class="lab-card-content">
                         <h2>3D Kompyuter va IT Laboratoriyasi</h2>
-                        <p>Tizim bloki ichi, mantiqiy elementlar va tarmoq trafigi</p>
+                        <p>Tizim bloki, 8-bit xotira, kiberxavfsizlik, tarmoq va 3D saralash algoritmlari</p>
                         <ul class="lab-card-features">
                             <li><i class="fas fa-check"></i> Kompyuter tizim bloki (Motherboard, CPU, GPU, RAM)</li>
                             <li><i class="fas fa-check"></i> Mantiqiy elementlar (AND, OR, NOT, XOR va 3D LED)</li>
@@ -2044,11 +2044,32 @@
                             <span class="experiment-tag">AND, OR, NOT, XOR</span>
                         </div>
                     </li>
+                    <li class="experiment-item" data-experiment="binary-byte" onclick="selectComputerExperiment('binary-byte')">
+                        <span class="experiment-icon"><i class="fas fa-calculator" style="color:#a855f7;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">8-Bit Ikkilik Xotira</span>
+                            <span class="experiment-tag">0/1, Bayt, ASCII</span>
+                        </div>
+                    </li>
                     <li class="experiment-item" data-experiment="network-flow" onclick="selectComputerExperiment('network-flow')">
                         <span class="experiment-icon"><i class="fas fa-network-wired" style="color:#10b981;"></i></span>
                         <div class="experiment-info">
                             <span class="experiment-name">Internet va Tarmoq</span>
                             <span class="experiment-tag">Server, Router, Paketlar</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="cybersecurity" onclick="selectComputerExperiment('cybersecurity')">
+                        <span class="experiment-icon"><i class="fas fa-shield-alt" style="color:#ef4444;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Kiberxavfsizlik</span>
+                            <span class="experiment-tag">Firewall, Virus, AES</span>
+                        </div>
+                    </li>
+                    <li class="experiment-item" data-experiment="algorithm-sort" onclick="selectComputerExperiment('algorithm-sort')">
+                        <span class="experiment-icon"><i class="fas fa-sort-amount-up-alt" style="color:#06b6d4;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">Algoritm va Saralash</span>
+                            <span class="experiment-tag">Bubble Sort, Qadamlar</span>
                         </div>
                     </li>
                 </ul>
@@ -2103,6 +2124,89 @@
                 <div class="lab-info-body">
                     <div class="lab-info-status" id="comp-status-text">
                         <strong>Faol ishlamoqda</strong>
+                    </div>
+
+                    <!-- Parametrlarni sozlash (Slayderlar va boshqaruv) -->
+                    <div class="lab-info-section">
+                        <div class="section-title"><i class="fas fa-sliders-h"></i> Parametrlarni sozlash</div>
+                        <!-- 1. PC Inside -->
+                        <div class="info-sliders" id="comp-sliders-pc-inside">
+                            <div class="info-slider-group">
+                                <label><span>Kuler tezligi:</span> <strong id="slider-comp-fan-val">1.5x</strong></label>
+                                <input type="range" class="lab-slider" id="slider-comp-fan" min="0.2" max="3" step="0.1" value="1.5"
+                                       oninput="if(window.computerLabInstance) { computerLabInstance.setFanSpeed(this.value); document.getElementById('slider-comp-fan-val').textContent = this.value+'x'; }">
+                            </div>
+                        </div>
+                        <!-- 2. Logic Gates -->
+                        <div class="info-sliders" id="comp-sliders-logic-gates" style="display:none;">
+                            <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleSwitch('A')">
+                                    <i class="fas fa-toggle-on"></i> Kalit A
+                                </button>
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleSwitch('B')">
+                                    <i class="fas fa-toggle-on"></i> Kalit B
+                                </button>
+                            </div>
+                            <div class="info-slider-group">
+                                <label><span>Mantiqiy element turi:</span></label>
+                                <select class="form-select" style="background:#1e293b; color:#fff; border:1px solid #475569; border-radius:8px; padding:6px 10px; width:100%; font-size:0.85rem;"
+                                        onchange="if(window.computerLabInstance) computerLabInstance.setGateType(this.value)">
+                                    <option value="AND">AND (Mantiqiy KO'PAYTIRISH)</option>
+                                    <option value="OR">OR (Mantiqiy QO'SHISH)</option>
+                                    <option value="NOT">NOT (Mantiqiy INKOR)</option>
+                                    <option value="XOR">XOR (Istisno YOKI)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 3. Binary Byte -->
+                        <div class="info-sliders" id="comp-sliders-binary-byte" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>O'nlik qiymat (DEC):</span> <strong id="byte-dec-val" style="color:#38bdf8; font-size:1.05rem;">65</strong></label>
+                                <input type="range" class="lab-slider" id="slider-comp-byte" min="0" max="255" step="1" value="65"
+                                       oninput="if(window.computerLabInstance) { computerLabInstance.setByteValue(this.value); document.getElementById('byte-dec-val').textContent = this.value; }">
+                            </div>
+                            <div style="margin-top:0.6rem; padding:8px 12px; background:rgba(15,23,42,0.7); border-radius:8px; font-size:0.85rem; color:#cbd5e1; display:flex; justify-content:space-between; align-items:center;">
+                                <span>ASCII kodi: <strong id="byte-ascii-val" style="color:#a855f7; font-size:1.15rem;">'A'</strong></span>
+                                <span>BIN: <strong id="byte-bin-val" style="color:#10b981; font-family:monospace;">01000001</strong></span>
+                            </div>
+                        </div>
+                        <!-- 4. Network Flow -->
+                        <div class="info-sliders" id="comp-sliders-network-flow" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>Paketlar tezligi:</span> <strong id="slider-comp-packet-val">1.2x</strong></label>
+                                <input type="range" class="lab-slider" id="slider-comp-packet" min="0.4" max="3" step="0.2" value="1.2"
+                                       oninput="if(window.computerLabInstance) { computerLabInstance.setPacketSpeed(this.value); document.getElementById('slider-comp-packet-val').textContent = this.value+'x'; }">
+                            </div>
+                        </div>
+                        <!-- 5. Cybersecurity -->
+                        <div class="info-sliders" id="comp-sliders-cybersecurity" style="display:none;">
+                            <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                                <button class="btn btn-sm btn-outline" id="btn-toggle-firewall" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleFirewall()">
+                                    <i class="fas fa-shield-alt"></i> Qalqon: <span id="fw-btn-state" style="color:#10b981; font-weight:700;">YONIQ</span>
+                                </button>
+                                <button class="btn btn-sm btn-outline" id="btn-toggle-aes" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.toggleEncryption()">
+                                    <i class="fas fa-lock"></i> AES-256
+                                </button>
+                            </div>
+                            <div style="font-size:0.85rem; color:#cbd5e1; padding:6px 10px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); border-radius:8px;">
+                                <i class="fas fa-ban" style="color:#ef4444;"></i> To'silgan hujumlar: <strong id="fw-blocked-count" style="color:#ef4444; font-size:1.05rem;">0</strong>
+                            </div>
+                        </div>
+                        <!-- 6. Algorithm Sort -->
+                        <div class="info-sliders" id="comp-sliders-algorithm-sort" style="display:none;">
+                            <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.initSortArray()">
+                                    <i class="fas fa-random"></i> Aralashtirish
+                                </button>
+                                <button class="btn btn-sm btn-outline" style="flex:1;" onclick="if(window.computerLabInstance) computerLabInstance.stepBubbleSort()">
+                                    <i class="fas fa-step-forward"></i> 1 Qadam
+                                </button>
+                            </div>
+                            <div style="font-size:0.85rem; color:#cbd5e1; display:flex; justify-content:space-between; padding:6px 10px; background:rgba(15,23,42,0.7); border-radius:8px;">
+                                <span>Solishtirish: <strong id="sort-comp-val" style="color:#f59e0b;">0</strong></span>
+                                <span>Almashtirish: <strong id="sort-swap-val" style="color:#ec4899;">0</strong></span>
+                            </div>
+                        </div>
                     </div>
                     <div class="lab-info-section formula-section">
                         <div class="section-title"><i class="fas fa-calculator"></i> Texnik parametrlar</div>
