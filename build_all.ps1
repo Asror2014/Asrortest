@@ -91,7 +91,7 @@ $itemsToZip = @(
   (Join-Path $baseDir "js"),
   (Join-Path $baseDir "assets"),
   (Join-Path $baseDir "data")
-)
+) | Where-Object { Test-Path $_ }
 
 Compress-Archive -Path $itemsToZip -DestinationPath $zipTemp -Force
 
