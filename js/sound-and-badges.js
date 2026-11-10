@@ -390,729 +390,179 @@
 
   window.OLYMPIAD_QUESTIONS_BY_GRADE = {
     // ------------------------------------------------------------
-    // 1-SINF (Boshlang'ich - Alifbe, hisoblash, qiziqarli tabiat)
+    // 1-SINF (Boshlang'ich maktab bilimlari)
     // ------------------------------------------------------------
     1: [
-      {
-        q: "1. [Matematika] 5 + 4 yig'indisi nechaga teng?",
-        options: ["8", "9", "7", "10"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Alifbe] O'zbek alifbosining birinchi harfi qaysi?",
-        options: ["B", "A", "O", "D"],
-        answer: 1,
-        subject: "Ona tili"
-      },
-      {
-        q: "3. [Atrofimizdagi olam] Quyosh qaysi tomondan chiqadi?",
-        options: ["G'arbdan", "Sharqdan", "Shimoldan", "Janubdan"],
-        answer: 1,
-        subject: "Tabiat"
-      },
-      {
-        q: "4. [Mantiq] Quyidagilardan qaysi biri meva emas?",
-        options: ["Olma", "Nok", "Sabzi", "Shaftoli"],
-        answer: 2,
-        subject: "Mantiq"
-      },
-      {
-        q: "5. [Ingliz tili] 'Cat' so'zining o'zbekcha ma'nosi nima?",
-        options: ["It", "Mushuk", "Qush", "Baliq"],
-        answer: 1,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "6. [Matematika] 10 ta olmadan 3 tasini yesak, nechta olma qoladi?",
-        options: ["6", "7", "8", "5"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "7. [Tasviriy san'at] Qorning rangi qanday bo'ladi?",
-        options: ["Sariq", "Oq", "Ko'k", "Yashil"],
-        answer: 1,
-        subject: "San'at"
-      },
-      {
-        q: "8. [Mantiq] Bir haftada necha kun bor?",
-        options: ["5", "6", "7", "8"],
-        answer: 2,
-        subject: "Mantiq"
-      },
-      {
-        q: "9. [Tabiat] O'simliklar o'sishi uchun nima eng zarur?",
-        options: ["Muz va qor", "Suv va quyosh nuri", "Qorong'ulik", "Hech narsa"],
-        answer: 1,
-        subject: "Tabiat"
-      },
-      {
-        q: "10. [O'qish] Qaysi hayvon uy hayvoni hisoblanadi?",
-        options: ["Bo'ri", "Sigir", "Tulki", "Ayiq"],
-        answer: 1,
-        subject: "O'qish"
-      }
+      { q: "[Matematika] 5 + 3 yig'indisi nechaga teng?", options: ["8", "7", "9", "6"], answer: 0, subject: "Matematika" },
+      { q: "[Ona tili] O'zbek alifbosida nechta harf bor?", options: ["29 ta", "26 ta", "30 ta", "32 ta"], answer: 0, subject: "Ona tili" },
+      { q: "[O'qish] 'Bilim - baxt ...' maqolini to'ldiring:", options: ["kaliti", "yo'li", "eshigi", "uyi"], answer: 0, subject: "O'qish" },
+      { q: "[Tabiat] Bir yilda necha fasl bor?", options: ["4 ta", "2 ta", "3 ta", "5 ta"], answer: 0, subject: "Tabiat" },
+      { q: "[Matematika] 10 dan 4 ni ayirsak necha qoladi?", options: ["6", "5", "7", "4"], answer: 0, subject: "Matematika" },
+      { q: "[Ona tili] Har bir gap qanday harf bilan boshlanadi?", options: ["Katta (bosh) harf bilan", "Kichik harf bilan", "Raqam bilan", "Nuqta bilan"], answer: 0, subject: "Ona tili" },
+      { q: "[Tabiat] Qaysi faslda daraxtlar barg to'kadi?", options: ["Kuzda", "Bahorda", "Yozda", "Qishda"], answer: 0, subject: "Tabiat" },
+      { q: "[Matematika] 7 + 5 yig'indisi nechaga teng?", options: ["12", "11", "13", "10"], answer: 0, subject: "Matematika" },
+      { q: "[O'qish] 'Zumrad va Qimmat' ertagida qaysi qiz odobli va mehnatkash?", options: ["Zumrad", "Qimmat", "Ikkalasi ham", "Hech biri"], answer: 0, subject: "O'qish" },
+      { q: "[Tabiat] Quyosh qaysi tomondan chiqadi?", options: ["Sharqdan", "G'arbdan", "Shimoldan", "Janubdan"], answer: 0, subject: "Tabiat" }
     ],
 
     // ------------------------------------------------------------
-    // 2-SINF (Ko'paytirishga kirish, tabiatshunoslik, so'z turkumlari)
+    // 2-SINF (Guess What! 2 Rasmiy Darslik Testlari)
     // ------------------------------------------------------------
     2: [
-      {
-        q: "1. [Matematika] 4 * 5 ko'paytmasi nechaga teng?",
-        options: ["15", "20", "25", "24"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Ona tili] 'Bola kitob o'qidi' gapida kim o'qidi?",
-        options: ["Kitob", "Bola", "O'qidi", "Daftar"],
-        answer: 1,
-        subject: "Ona tili"
-      },
-      {
-        q: "3. [Tabiatshunoslik] Suv sovuqda (0 darajada) qanday holatga o'tadi?",
-        options: ["Bug'ga", "Muzga", "Qaynoq suvga", "O'zgarmaydi"],
-        answer: 1,
-        subject: "Tabiat"
-      },
-      {
-        q: "4. [Ingliz tili - Guess What! 2] What is this? 🎒",
-        options: ["It's a backpack.", "It's an apple.", "It's a dog.", "It's a car."],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "5. [Mantiq] Bitta qo'lda 5 ta barmoq bo'lsa, 2 ta qo'lda nechta barmoq bor?",
-        options: ["8", "10", "12", "15"],
-        answer: 1,
-        subject: "Mantiq"
-      },
-      {
-        q: "6. [Matematika] Eng kichik ikki xonali son qaysi?",
-        options: ["1", "9", "10", "11"],
-        answer: 2,
-        subject: "Matematika"
-      },
-      {
-        q: "7. [Ona tili] O'zbek tilida nechta unli tovush bor?",
-        options: ["5", "6", "7", "8"],
-        answer: 1,
-        subject: "Ona tili"
-      },
-      {
-        q: "8. [Geografiya] O'zbekistonning poytaxti qaysi shahar?",
-        options: ["Samarqand", "Toshkent", "Buxoro", "Xiva"],
-        answer: 1,
-        subject: "Geografiya"
-      },
-      {
-        q: "9. [Mantiq] Bir yilda nechta oy bor?",
-        options: ["10", "11", "12", "14"],
-        answer: 2,
-        subject: "Mantiq"
-      },
-      {
-        q: "10. [Ingliz tili - Guess What! 2] How do you say 'Kitob' in English?",
-        options: ["Book", "Bag", "Desk", "Chair"],
-        answer: 0,
-        subject: "Ingliz tili"
-      }
+      { q: "[Ingliz tili - Guess What! 2] What is this? ðŸŽ’", options: ["It's a backpack.", "It's an apple.", "It's a dog.", "It's a car."], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] How do you say 'Kitob' in English?", options: ["Book", "Bag", "Desk", "Chair"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] What color is the blackboard?", options: ["Black", "White", "Red", "Yellow"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] Count the stars: â­ â­ â­ â­", options: ["Four", "Three", "Five", "Two"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] What is this? ðŸš—", options: ["Car", "Train", "Plane", "Boat"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] What is this? ðŸ§¸", options: ["Teddy bear", "Doll", "Ball", "Robot"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] Complete: 'I have got a _____.'", options: ["Robot", "Desk", "Ruler", "Rubber"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] Who is she? ðŸ‘©", options: ["Mother", "Father", "Brother", "Uncle"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] What is this? ðŸš²", options: ["Bike", "Car", "Bus", "Train"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 2] What do you use to write on paper?", options: ["Pen", "Rubber", "Chair", "Desk"], answer: 0, subject: "Ingliz tili" }
     ],
 
     // ------------------------------------------------------------
-    // 3-SINF (Matematika, Ona tili va Guess What! 3 rasmiy testlari)
+    // 3-SINF (3-sinf Matematika, Ona tili va Guess What! 3 Darsliklari)
     // ------------------------------------------------------------
     3: [
-      {
-        q: "1. [Matematika - Darslik] 245 + 132 = ?",
-        options: ["377", "367", "357", "387"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Ona tili - Darslik] O'zbek tilida nechta unli tovush bor?",
-        options: ["6 ta", "5 ta", "7 ta", "8 ta"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "3. [Tabiat] Yer sharining ko'p qismini nima egallagan?",
-        options: ["Quruqlik", "Suv (Okeanlar)", "Muzliklar", "O'rmonlar"],
-        answer: 1,
-        subject: "Tabiat"
-      },
-      {
-        q: "4. [Informatika] Kompyuterda matn yozish uchun qaysi qurilma ishlatiladi?",
-        options: ["Sichqoncha", "Klaviatura", "Monitor", "Printer"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "5. [Ingliz tili - Guess What! 3] 'Qayerdan kelgansan?' degan savol ingliz tilida qanday beriladi?",
-        options: ["Where are you from?", "What is your name?", "How old are you?", "Where do you live?"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "6. [Matematika - Darslik] 7 * 5 = ?",
-        options: ["30", "35", "40", "25"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "7. [Mantiq] 1 soatda necha daqiqa bor?",
-        options: ["50", "60", "100", "24"],
-        answer: 1,
-        subject: "Mantiq"
-      },
-      {
-        q: "8. [Tarix] Sohibqiron Amir Temur qayerda tavallud topgan?",
-        options: ["Toshkent", "Shahrisabz (Kesh)", "Samarqand", "Xiva"],
-        answer: 1,
-        subject: "Tarix"
-      },
-      {
-        q: "9. [Ona tili - Darslik] Kishilarning ismi qanday harf bilan yoziladi?",
-        options: ["Bosh harf", "Kichik harf", "Unli harf", "Undosh harf"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "10. [Ingliz tili - Guess What! 3] 'Men O'zbekistondanman' jumlasining to'g'ri tarjimasini toping:",
-        options: ["I'm from Uzbekistan.", "I live in Uzbekistan.", "I go to Uzbekistan.", "I like Uzbekistan."],
-        answer: 0,
-        subject: "Ingliz tili"
-      }
+      { q: "[Matematika - Darslik] 245 + 132 yig'indisini hisoblang:", options: ["377", "367", "357", "387"], answer: 0, subject: "Matematika" },
+      { q: "[Matematika - Darslik] 7 * 5 ko'paytmasi nechaga teng?", options: ["35", "30", "40", "25"], answer: 0, subject: "Matematika" },
+      { q: "[Matematika - Darslik] 700 - 125 ayirmani hisoblang:", options: ["575", "565", "585", "475"], answer: 0, subject: "Matematika" },
+      { q: "[Matematika - Darslik] Tomonlari 4 sm va 6 sm bo'lgan to'g'ri to'rtburchak yuzi qancha?", options: ["24 smÂ²", "20 smÂ²", "10 smÂ²", "12 smÂ²"], answer: 0, subject: "Matematika" },
+      { q: "[Ona tili - Darslik] O'zbek tilida nechta unli tovush bor?", options: ["6 ta", "5 ta", "7 ta", "8 ta"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - Darslik] Kishilarning ismi qanday harf bilan yoziladi?", options: ["Bosh harf bilan", "Kichik harf bilan", "Ixtiyoriy harf bilan", "Qalin harf bilan"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - Darslik] 'Katta' so'zining antonimi (qarama-qarshi ma'nosi) qaysi?", options: ["Kichik", "Baland", "Uzun", "Keng"], answer: 0, subject: "Ona tili" },
+      { q: "[Ingliz tili - Guess What! 3] Where does a camel live?", options: ["In the desert", "In the ocean", "In the forest", "In the polar region"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 3] What animal is the largest mammal on Earth?", options: ["Blue whale", "Elephant", "Giraffe", "Shark"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 3] What do monkeys like to eat?", options: ["Bananas", "Meat", "Fish", "Cheese"], answer: 0, subject: "Ingliz tili" }
     ],
 
     // ------------------------------------------------------------
-    // 4-SINF (Boshlang'ich bitiruv bosqichi, Guess What! 4 rasmiy testi)
+    // 4-SINF (Guess What! 4 Rasmiy Darslik Testlari)
     // ------------------------------------------------------------
     4: [
-      {
-        q: "1. [Matematika] 250 + 750 yig'indisi nechaga teng?",
-        options: ["900", "1000", "1100", "950"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Ona tili] Qaysi so'zda tutuq belgisi (') to'g'ri qo'llangan?",
-        options: ["Ma'no", "Ki'tob", "Da'ftar", "Mak'tab"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "3. [Tabiat] Yer Quyosh atrofini to'liq bir marta aylanib chiqishiga qancha vaqt ketadi?",
-        options: ["1 oy", "1 yil (365 kun)", "24 soat", "100 kun"],
-        answer: 1,
-        subject: "Tabiat"
-      },
-      {
-        q: "4. [Ingliz tili - Guess What! 4] Where do animals like monkeys and parrots live?",
-        options: ["In the rainforest.", "In the ocean.", "In the desert.", "In the snow."],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "5. [Informatika] Axborotni qog'ozga chop etib beruvchi qurilma qaysi?",
-        options: ["Skaner", "Printer", "Klaviatura", "Mikrofon"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "6. [Matematika] Tomoni 8 sm bo'lgan kvadratning perimetri qancha?",
-        options: ["16 sm", "32 sm", "64 sm", "24 sm"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "7. [Tarix] Al-Xorazmiy jahon fani tarixida qaysi fanning asoschisi hisoblanadi?",
-        options: ["Biologiya", "Algebra", "Geografiya", "Kimyo"],
-        answer: 1,
-        subject: "Tarix"
-      },
-      {
-        q: "8. [Mantiq] Bir sutkada necha soat bor?",
-        options: ["12", "24", "48", "60"],
-        answer: 1,
-        subject: "Mantiq"
-      },
-      {
-        q: "9. [Ingliz tili - Guess What! 4] Complete: She ________ to school every day.",
-        options: ["goes", "go", "going", "went"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "10. [Tabiat] Inson tanasida qonni butun vujudga tinimsiz haydab beruvchi a'zo qaysi?",
-        options: ["O'pka", "Yurak", "Jigar", "Oshqozon"],
-        answer: 1,
-        subject: "Tabiat"
-      }
+      { q: "[Ingliz tili - Guess What! 4] Which animal has black and white stripes?", options: ["Zebra", "Lion", "Tiger", "Giraffe"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] What is the capital city of the UK?", options: ["London", "Paris", "New York", "Rome"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] How many days are there in a year?", options: ["365", "350", "300", "400"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] Which of these is a vegetable?", options: ["Carrot", "Apple", "Banana", "Orange"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] What is the opposite of 'fast'?", options: ["Slow", "Quick", "Early", "Late"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] What do birds have that help them fly?", options: ["Wings", "Fins", "Hands", "Paws"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] Complete: My sister is ________ than me.", options: ["taller", "tall", "tallest", "more tall"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] What time is it if the big hand is on 12 and the small hand is on 3?", options: ["It's three o'clock.", "It's half past three.", "It's quarter to three.", "It's twelve o'clock."], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] Which season is the coldest of the year?", options: ["Winter", "Summer", "Spring", "Autumn"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 4] Complete: We ________ play football yesterday because it was raining.", options: ["couldn't", "can't", "don't", "aren't"], answer: 0, subject: "Ingliz tili" }
     ],
 
     // ------------------------------------------------------------
-    // 5-SINF (Botanika, Tarixdan hikoyalar, 5-sinf Ona tili 1-CHSB)
+    // 5-SINF (5-sinf Ona tili 1-CHSB Rasmiy Testlari)
     // ------------------------------------------------------------
     5: [
-      {
-        q: "1. [Matematika] 125 * 8 ko'paytmasi nechaga teng?",
-        options: ["800", "1000", "1200", "950"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Botanika] O'simlik ildizining asosiy biologik vazifasi nima?",
-        options: ["Faqat nafas olish", "Suv va minerallarni shimish", "Meva tugish", "Quyosh nuri yutish"],
-        answer: 1,
-        subject: "Biologiya"
-      },
-      {
-        q: "3. [Tarix] O'zbekiston hududida paydo bo'lgan eng qadimiy davlatlardan biri:",
-        options: ["Qadimgi Baqtriya", "Rim imperiyasi", "Fransiya qirolligi", "Misr"],
-        answer: 0,
-        subject: "Tarix"
-      },
-      {
-        q: "4. [Informatika] Kompyuterning asosiy hisoblash 'miyasi' qaysi?",
-        options: ["Monitor", "Protsessor (CPU)", "Klaviatura", "Fleshka"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "5. [Ona tili - 1-CHSB] Harflarning ma'lum bir tartibda joylashuvi nima deyiladi?",
-        options: ["alifbo", "alifbe", "imlo", "lug'at"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "6. [Matematika] Oddiy kasrlar: 3/4 + 1/4 yig'indisi nechaga teng?",
-        options: ["4/8", "1", "1/2", "2"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "7. [Ona tili - 1-CHSB] 'Alifbo' so'zi qaysi harflar nomining qo'shilishidan hosil bo'lgan?",
-        options: ["alif va bo (be)", "alif va jim", "be va te", "alif va lom"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "8. [Geografiya] Sayyoramizdagi eng katta okean qaysi?",
-        options: ["Atlantika", "Tinch okeani", "Hind okeani", "Shimoliy Muz"],
-        answer: 1,
-        subject: "Geografiya"
-      },
-      {
-        q: "9. [Ona tili - 1-CHSB] Nutq tovushlari ifodalanishiga ko'ra nechaga bo'linadi?",
-        options: ["2 ga (unli va undosh)", "3 ga (unli, undosh, tutuq)", "4 ga", "Bo'linmaydi"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "10. [Mantiq] Ketma-ketlik: 5, 10, 15, 20, ... keyingi son qaysi?",
-        options: ["22", "25", "30", "24"],
-        answer: 1,
-        subject: "Mantiq"
-      }
+      { q: "[Ona tili - 1-CHSB] Harflarning ma'lum bir tartibda joylashuvi nima deyiladi?", options: ["alifbo", "alifbe", "imlo", "lug'at"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] 'Alifbo' so'zi qaysi harflar nomining qo'shilishidan hosil bo'lgan?", options: ["alif va bo (be)", "alif va jim", "be va te", "alif va lom"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Nutq tovushlari ifodalanishiga ko'ra nechaga bo'linadi?", options: ["2 ga (unli va undosh)", "3 ga (unli, undosh, tutuq)", "4 ga", "Bo'linmaydi"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] O'zbek alifbosida nechta harf va nechta belgi bor?", options: ["29 ta harf va 1 ta tutuq belgisi", "28 ta harf va 2 ta belgi", "30 ta harf", "26 ta harf"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Jarangli undosh tovush berilgan qatorni toping:", options: ["b, d, g, v, z", "p, t, k, f, s", "m, n, l, r", "x, h, ch, sh"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Qaysi qatordagi so'zlar bo'g'inga to'g'ri ajratilgan?", options: ["tosh-qin, qax-ra-mon", "to-shqin, qa-xramon", "toshq-in, qaxr-amon", "t-oshqin, q-axramon"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] So'z tarkibidagi ma'noli qismlar qaysilar?", options: ["Asos va qo'shimcha", "Bo'g'in va tovush", "Harf va belgi", "So'z va gap"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Qaysi so'z turkumi shaxs, narsa va hodisalarning nomini bildiradi?", options: ["Ot", "Sifat", "Son", "Fe'l"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Yasama so'zni toping:", options: ["Guldon", "Tosh", "Suv", "Daraxt"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Sinonim so'zlar qatorini toping:", options: ["Chiroyli, go'zal, ko'rkam", "Katta, kichik, baland", "Oq, qora, qizil", "Yaxshi, yomon, xunuk"], answer: 0, subject: "Ona tili" }
     ],
 
     // ------------------------------------------------------------
-    // 6-SINF (Zoologiya, Qadimgi dunyo tarixi, Manfiy sonlar)
+    // 6-SINF (6-sinf Darslik Dasturi)
     // ------------------------------------------------------------
     6: [
-      {
-        q: "1. [Matematika] (-15) + (-25) yig'indisini hisoblang:",
-        options: ["40", "-40", "10", "-10"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Zoologiya] Baliqlar suv ostida qaysi a'zosi orqali nafas oladi?",
-        options: ["O'pka", "Jabra", "Teri", "Qanot"],
-        answer: 1,
-        subject: "Biologiya"
-      },
-      {
-        q: "3. [Tarix] Qadimgi Olimpiada o'yinlari ilk bor qaysi mamlakatda o'tkazilgan?",
-        options: ["Qadimgi Yunoniston (Gretsiya)", "Rim", "Forsiya", "Xitoy"],
-        answer: 0,
-        subject: "Tarix"
-      },
-      {
-        q: "4. [Geografiya] Dunyodagi eng baland tog' cho'qqisi qaysi?",
-        options: ["Monblan", "Everest (Jomolungma)", "Elbrus", "Kilimanjaro"],
-        answer: 1,
-        subject: "Geografiya"
-      },
-      {
-        q: "5. [Informatika] 1 Kilobayt (KB) axborot necha Baytga teng?",
-        options: ["100", "1000", "1024", "2048"],
-        answer: 2,
-        subject: "Informatika"
-      },
-      {
-        q: "6. [Matematika] 3 ta daftar 6000 so'm bo'lsa, 5 ta daftar qancha turadi?",
-        options: ["8000 so'm", "10000 so'm", "12000 so'm", "9000 so'm"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "7. [Ingliz tili] Past simple form of the verb 'go':",
-        options: ["goes", "went", "gone", "going"],
-        answer: 1,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "8. [Ona tili] Yasama so'zni toping:",
-        options: ["Guldon", "Tosh", "Suv", "Kitob"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "9. [Fizika/Tabiat] Yerning tortishish kuchi tufayli otilgan jism qayerga tushadi?",
-        options: ["Yuqoriga", "Pastga (Yerga)", "Yonga", "Muallaq qoladi"],
-        answer: 1,
-        subject: "Fizika"
-      },
-      {
-        q: "10. [Adabiyot] Hazrat Alisher Navoiy qaysi asrda yashab ijod etgan?",
-        options: ["XII asr", "XV asr", "XVIII asr", "XX asr"],
-        answer: 1,
-        subject: "Adabiyot"
-      }
+      { q: "[Matematika] (-15) + (-25) yig'indisini hisoblang:", options: ["-40", "40", "10", "-10"], answer: 0, subject: "Matematika" },
+      { q: "[Zoologiya] Qushlarning uchishiga moslashgan asosiy organi:", options: ["Qanotlari va havo xaltachalari", "Faqat dumi", "Tuyog'i", "Panjasi"], answer: 0, subject: "Biologiya" },
+      { q: "[Tarix] Qadimgi Misr ehromlari kimlar uchun maqbara sifatida qurilgan?", options: ["Fir'avnlar", "Oddiy dehqonlar", "Askarlar", "Savdogarlar"], answer: 0, subject: "Tarix" },
+      { q: "[Geografiya] Dunyodagi eng baland cho'qqi (Everest) qaysi tog' tizmasida?", options: ["Himolay tog'lari", "Tyanshan", "Alp", "Kordilyera"], answer: 0, subject: "Geografiya" },
+      { q: "[Ona tili] Fe'lning zamonlari nechta?", options: ["3 ta (o'tgan, hozirgi, kelasi)", "2 ta", "4 ta", "5 ta"], answer: 0, subject: "Ona tili" },
+      { q: "[Informatika] Matn muharriri dasturi qaysi?", options: ["Microsoft Word", "Photoshop", "Excel", "Paint"], answer: 0, subject: "Informatika" },
+      { q: "[Ingliz tili] Past simple form of the verb 'go':", options: ["went", "goes", "gone", "going"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ona tili] Yasama so'zni toping:", options: ["Guldon", "Tosh", "Suv", "Kitob"], answer: 0, subject: "Ona tili" },
+      { q: "[Matematika] 3/5 kasrni o'nli kasr ko'rinishida yozing:", options: ["0.6", "0.35", "0.53", "1.5"], answer: 0, subject: "Matematika" },
+      { q: "[Tarix] Buyuk ipak yo'li qaysi davlatlarni bog'lagan?", options: ["Xitoy, O'rta Osiyo va O'rta yer dengizi", "Faqat Amerika", "Faqat Avstraliya", "Faqat Afrika"], answer: 0, subject: "Tarix" }
     ],
 
     // ------------------------------------------------------------
-    // 7-SINF (Algebra, Geometriya, Fizika boshlanishi, Kimyo)
+    // 7-SINF (7-sinf Ona tili, Adabiyot va Guess What! 7 Darsliklari)
     // ------------------------------------------------------------
     7: [
-      {
-        q: "1. [Algebra] Qisqa ko'paytirish formulasi: (a + b)² = ?",
-        options: ["a² + b²", "a² + 2ab + b²", "a² - 2ab + b²", "2a + 2b"],
-        answer: 1,
-        subject: "Algebra"
-      },
-      {
-        q: "2. [Fizika] Tekis to'g'ri chiziqli harakatda tezlik formulasi:",
-        options: ["v = s / t", "v = m * g", "v = s * t", "v = F / m"],
-        answer: 0,
-        subject: "Fizika"
-      },
-      {
-        q: "3. [Geometriya] Uchburchakning ichki burchaklari yig'indisi necha gradus?",
-        options: ["90°", "180°", "360°", "270°"],
-        answer: 1,
-        subject: "Geometriya"
-      },
-      {
-        q: "4. [Kimyo] Kimyoviy elementlar davriy qonunining muallifi kim?",
-        options: ["I. Nyuton", "D.I. Mendeleyev", "N. Bor", "A. Eynshteyn"],
-        answer: 1,
-        subject: "Kimyo"
-      },
-      {
-        q: "5. [Adabiyot - 1-chorak] G'afur G'ulomning mashhur 'Shum bola' qissasida bosh qahramonning ismi nima?",
-        options: ["Qoravoy", "Sariq", "Hoshimjon", "Omon"],
-        answer: 0,
-        subject: "Adabiyot"
-      },
-      {
-        q: "6. [Tarix] Amir Temur saltanatining poytaxti qaysi shahar bo'lgan?",
-        options: ["Buxoro", "Samarqand", "Shahrisabz", "Xiva"],
-        answer: 1,
-        subject: "Tarix"
-      },
-      {
-        q: "7. [Informatika] Internetda veb-sahifalar yaratishda qaysi gipermatn tili ishlatiladi?",
-        options: ["HTML", "Python", "C++", "Pascal"],
-        answer: 0,
-        subject: "Informatika"
-      },
-      {
-        q: "8. [Ingliz tili - Guess What! 7] What is the past tense of 'buy'?",
-        options: ["bought", "buyed", "buys", "buying"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "9. [Ona tili - 1-chorak] Qaysi qatorda so'zlar imlo qoidasiga ko'ra to'g'ri yozilgan?",
-        options: ["video, kompyuter, intellekt, hisobchi", "vidiyo, kampyuter, intelekt, xisobchi", "video, kampyuter, intellekt, hisobchi", "video, kompyuter, intelekt, xaydovchi"],
-        answer: 0,
-        subject: "Ona tili"
-      },
-      {
-        q: "10. [Adabiyot - 1-chorak] Ernest Heminguey fikricha, badiiy asarning qaysi qismi muhimroq?",
-        options: ["Yozilmagan qismi (suv osti)", "Faqat sarlavhasi", "Yozilgan ochiq qismi", "Xotima qismi"],
-        answer: 0,
-        subject: "Adabiyot"
-      }
+      { q: "[Ona tili - 1-CHSB] Qaysi qatorda faqat yasama sifatlar berilgan?", options: ["aqlli, bilag'on, do'stona", "katta, kichik, qizil", "beshta, o'nta, yuzta", "kitob, daftar, qalam"], answer: 0, subject: "Ona tili" },
+      { q: "[Ona tili - 1-CHSB] Nisbiy sifat berilgan so'zni toping:", options: ["tosh devor", "shirin choy", "qizil olma", "katta uy"], answer: 0, subject: "Ona tili" },
+      { q: "[Adabiyot - 1-chorak] G'afur G'ulomning mashhur 'Shum bola' qissasida bosh qahramonning ismi nima?", options: ["Qoravoy", "Sariq", "Hoshimjon", "Omon"], answer: 0, subject: "Adabiyot" },
+      { q: "[Adabiyot - 1-chorak] 'Oq kema' qissasining muallifi kim?", options: ["Chingiz Aytmatov", "Said Ahmad", "O'tkir Hoshimov", "Abdulla Qahhor"], answer: 0, subject: "Adabiyot" },
+      { q: "[Ingliz tili - Guess What! 7] What is the past participle of 'write'?", options: ["written", "wrote", "writing", "writes"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 7] If you freeze water, what does it turn into?", options: ["Ice", "Steam", "Gas", "Juice"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 7] Which planet is known as the Red Planet?", options: ["Mars", "Jupiter", "Saturn", "Venus"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 7] Complete: She hasn't arrived ________.", options: ["yet", "already", "just", "since"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 7] What is a large body of salt water called?", options: ["Ocean", "Pond", "River", "Stream"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 7] Choose the synonym of 'gigantic':", options: ["Huge", "Tiny", "Weak", "Narrow"], answer: 0, subject: "Ingliz tili" }
     ],
 
     // ------------------------------------------------------------
-    // 8-SINF (Kvadrat tenglamalar, Om qonuni, Osh tuzi, Pifagor)
+    // 8-SINF (Guess What! 8 Rasmiy Darslik Testlari)
     // ------------------------------------------------------------
     8: [
-      {
-        q: "1. [Algebra] Kvadrat tenglama: x² - 9 = 0 ning ildizlarini toping:",
-        options: ["faqat 3", "3 va -3", "faqat -3", "9 va -9"],
-        answer: 1,
-        subject: "Algebra"
-      },
-      {
-        q: "2. [Fizika] Elektr zanjiri qismi uchun Om qonuni qaysi?",
-        options: ["I = U / R", "I = U * R", "P = I² * R", "U = I / R"],
-        answer: 0,
-        subject: "Fizika"
-      },
-      {
-        q: "3. [Kimyo] Osh tuzining kimyoviy formulasi qaysi?",
-        options: ["HCl", "NaCl", "NaOH", "CaCO3"],
-        answer: 1,
-        subject: "Kimyo"
-      },
-      {
-        q: "4. [Biologiya] Odam yuragi necha kameradan (bo'lmacha va qorinchalar) iborat?",
-        options: ["2", "3", "4", "5"],
-        answer: 2,
-        subject: "Biologiya"
-      },
-      {
-        q: "5. [Geometriya] To'g'ri burchakli uchburchakda Pifagor teoremasi: c² = ?",
-        options: ["a² - b²", "a² + b²", "2ab", "a + b"],
-        answer: 1,
-        subject: "Geometriya"
-      },
-      {
-        q: "6. [Informatika] Python dasturlash tilida ma'lumotni ekranga chiqarish buyrug'i:",
-        options: ["echo()", "print()", "write()", "output()"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "7. [O'zbekiston tarixi] Jaloliddin Manguberdi qaysi bosqinchilarga qarshi mardona kurashgan?",
-        options: ["Arablarga", "Mo'g'ullarga (Chingizxon)", "Rimliklarga", "Inglizlarga"],
-        answer: 1,
-        subject: "Tarix"
-      },
-      {
-        q: "8. [Ingliz tili - Guess What! 8] What is the past participle of 'break'?",
-        options: ["broken", "breaked", "broke", "breaking"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "9. [Ingliz tili - Guess What! 8] If something is 'ancient', what does it mean?",
-        options: ["Very old, from long ago", "Brand new", "Extremely fast", "Very expensive"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "10. [Adabiyot] O'zbek adabiyotida ilk realistik roman 'O'tkan kunlar' muallifi kim?",
-        options: ["Cho'lpon", "Abdulla Qodiriy", "Oybek", "Fitrat"],
-        answer: 1,
-        subject: "Adabiyot"
-      }
+      { q: "[Ingliz tili - Guess What! 8] If something is 'ancient', what does it mean?", options: ["Very old, from long ago", "Brand new", "Extremely fast", "Very expensive"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] Which country is home to the Kangaroo?", options: ["Australia", "Canada", "Egypt", "Brazil"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] What is the chemical symbol for water?", options: ["H2O", "CO2", "NaCl", "O2"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] Complete: If it rains tomorrow, we ________ at home.", options: ["will stay", "stayed", "would stay", "had stayed"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] Who painted the Mona Lisa?", options: ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Claude Monet"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] What is the hardest natural substance on Earth?", options: ["Diamond", "Gold", "Iron", "Granite"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] What do you call a person who travels into space?", options: ["Astronaut", "Architect", "Astronomer", "Biologist"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] Which ocean is the largest on Earth?", options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] Choose the correct passive sentence: 'Shakespeare wrote Hamlet.'", options: ["Hamlet was written by Shakespeare.", "Hamlet is written by Shakespeare.", "Hamlet wrote Shakespeare.", "Hamlet had written Shakespeare."], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Guess What! 8] What is the opposite of 'generous'?", options: ["Mean / Stingy", "Polite", "Helpful", "Kind"], answer: 0, subject: "Ingliz tili" }
     ],
 
     // ------------------------------------------------------------
-    // 9-SINF (Trigonometriya, Gravitatsiya, Sitologiya, Konstitutsiya)
+    // 9-SINF (9-sinf Darslik Dasturi)
     // ------------------------------------------------------------
     9: [
-      {
-        q: "1. [Trigonometriya] Asosiy trigonometrik ayniyat: sin²(α) + cos²(α) = ?",
-        options: ["0", "1", "2", "tan(α)"],
-        answer: 1,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Fizika] Nyutonning butun olam tortishish qonuni formulasi:",
-        options: ["F = G * (m1*m2)/R²", "F = m*a", "E = m*g*h", "p = m*v"],
-        answer: 0,
-        subject: "Fizika"
-      },
-      {
-        q: "3. [Kimyo] Barcha organik moddalarning tarkibida mavjud bo'lgan asosiy element:",
-        options: ["Temir (Fe)", "Uglerod (C)", "Kislorod (O)", "Azot (N)"],
-        answer: 1,
-        subject: "Kimyo"
-      },
-      {
-        q: "4. [Biologiya] Hujayrada oqsillarni biosintez qiluvchi asosiy organoid:",
-        options: ["Lizosoma", "Ribosoma", "Vakuola", "Xloroplast"],
-        answer: 1,
-        subject: "Biologiya"
-      },
-      {
-        q: "5. [Geometriya] Radiusi R bo'lgan doiraning yuzi formulasi qaysi?",
-        options: ["2πR", "πR²", "4πR²", "πD"],
-        answer: 1,
-        subject: "Geometriya"
-      },
-      {
-        q: "6. [Informatika] Ikkilik sanoq sistemasida qaysi raqamlar ishlatiladi?",
-        options: ["1 va 2", "0 va 1", "0 dan 9 gacha", "Faqat 0"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "7. [Tarix] Ikkinchi jahon urushi qaysi yillarda sodir bo'lgan?",
-        options: ["1914-1918", "1939-1945", "1941-1945", "1905-1917"],
-        answer: 1,
-        subject: "Tarix"
-      },
-      {
-        q: "8. [Ingliz tili] 'I have been living in Tashkent for 5 years.' Which tense is this?",
-        options: ["Past Simple", "Present Perfect Continuous", "Future Perfect", "Past Perfect"],
-        answer: 1,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "9. [Huquq] O'zbekiston Respublikasi Konstitutsiyasi qachon qabul qilingan?",
-        options: ["1991-yil 1-sentyabr", "1992-yil 8-dekabr", "1993-yil 18-noyabr", "1990-yil 24-mart"],
-        answer: 1,
-        subject: "Huquq"
-      },
-      {
-        q: "10. [Ona tili] Bosh va ergash gapni biriktiruvchi vositalar qanday ataladi?",
-        options: ["Ergashtiruvchi bog'lovchilar", "Undovlar", "Yuklamalar", "Faqat vergul"],
-        answer: 0,
-        subject: "Ona tili"
-      }
+      { q: "[Kimyo] Kislorodning valentligi nechaga teng?", options: ["II", "I", "III", "IV"], answer: 0, subject: "Kimyo" },
+      { q: "[Algebra] Kvadrat tenglama: x^2 - 9 = 0 ildizlarini toping:", options: ["3 va -3", "faqat 3", "faqat -3", "9 va -9"], answer: 0, subject: "Algebra" },
+      { q: "[Fizika] Nyutonning ikkinchi qonuni formulasi qaysi?", options: ["F = m * a", "E = m * c^2", "P = U * I", "v = s / t"], answer: 0, subject: "Fizika" },
+      { q: "[Biologiya] Odam organizmida qon aylanishining necha doirasi bor?", options: ["2 ta (katta va kichik)", "1 ta", "3 ta", "4 ta"], answer: 0, subject: "Biologiya" },
+      { q: "[Geometriya] To'g'ri burchakli uchburchakda Pifagor teoremasi:", options: ["cÂ² = aÂ² + bÂ²", "c = a + b", "S = a * b", "P = 2(a + b)"], answer: 0, subject: "Geometriya" },
+      { q: "[Tarix] Amir Temur qaysi yili tavallud topgan?", options: ["1336-yil 9-aprel", "1340-yil", "1370-yil", "1405-yil"], answer: 0, subject: "Tarix" },
+      { q: "[Ona tili] Qo'shma gapning nechta asosiy turi bor?", options: ["Bog'langan, ergashgan, bog'lovchisiz", "Faqat sodda", "Faqat bir boshli", "Faqat egasiz"], answer: 0, subject: "Ona tili" },
+      { q: "[Informatika] Dasturlashda o'zgaruvchi qiymatini tekshirish operatori qaysi?", options: ["if / else", "print", "def", "class"], answer: 0, subject: "Informatika" },
+      { q: "[Ingliz tili] 'Although it was raining, ________'", options: ["we went for a walk", "because we stayed", "despite it rained", "since it was wet"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Adabiyot] Alisher Navoiy 'Xamsa'siga nechta doston kiradi?", options: ["5 ta", "4 ta", "6 ta", "7 ta"], answer: 0, subject: "Adabiyot" }
     ],
 
     // ------------------------------------------------------------
-    // 10-SINF (Progressiyalar, Ideal gaz, Benzol, DNK, Relyatsion baza)
+    // 10-SINF (10-sinf Darslik Dasturi)
     // ------------------------------------------------------------
     10: [
-      {
-        q: "1. [Algebra] Arifmetik progressiya: a1 = 3, d = 4 bo'lsa, a5 nechaga teng?",
-        options: ["15", "19", "21", "23"],
-        answer: 1,
-        subject: "Algebra"
-      },
-      {
-        q: "2. [Fizika] Ideal gaz holat tenglamasi (Mendeleyev-Klapeyron tenglamasi):",
-        options: ["P*V = (m/M)*R*T", "E = k*T", "P = F/S", "Q = c*m*ΔT"],
-        answer: 0,
-        subject: "Fizika"
-      },
-      {
-        q: "3. [Kimyo] Benzol (C6H6) qaysi uglevodorodlar sinfiga mansub?",
-        options: ["Alkanlar", "Aromatik uglevodorodlar (Arenlar)", "Alkenlar", "Alkinlar"],
-        answer: 1,
-        subject: "Kimyo"
-      },
-      {
-        q: "4. [Genetika] Hujayrada genetik axborotni saqlovchi va o'tkazuvchi nuklein kislota:",
-        options: ["ATF", "DNK", "Ferment", "Lipid"],
-        answer: 1,
-        subject: "Biologiya"
-      },
-      {
-        q: "5. [Stereometriya] Qirrasi 3 sm bo'lgan kubning hajmi (V) qancha?",
-        options: ["9 sm³", "18 sm³", "27 sm³", "36 sm³"],
-        answer: 2,
-        subject: "Geometriya"
-      },
-      {
-        q: "6. [Informatika] Relyatsion ma'lumotlar bazasini boshqarish tili qaysi?",
-        options: ["HTML", "SQL", "CSS", "JSON"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "7. [O'zbekiston tarixi] XX asr boshidagi Jadidchilik harakatining bosh maqsadi nima edi?",
-        options: ["Ma'rifatparvarlik va milliy taraqqiyot", "Monarxiyani saqlash", "Faqat savdo", "Urush"],
-        answer: 0,
-        subject: "Tarix"
-      },
-      {
-        q: "8. [Ingliz tili] Passive voice: 'New schools ___ in our city every year.'",
-        options: ["are built", "was built", "were built", "been built"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "9. [Iqtisodiyot] Bozor iqtisodiyotida tovar narxi oshsa, unga bo'lgan talab odatda qanday o'zgaradi?",
-        options: ["Oshadi", "Kamayadi", "O'zgarmaydi", "Yo'qoladi"],
-        answer: 1,
-        subject: "Iqtisodiyot"
-      },
-      {
-        q: "10. [Mantiq] Ketma-ketlik: 3, 9, 27, 81, ... keyingi son qaysi?",
-        options: ["162", "243", "180", "300"],
-        answer: 1,
-        subject: "Mantiq"
-      }
+      { q: "[Algebra] sin^2(x) + cos^2(x) ifodaning qiymati nechaga teng?", options: ["1", "0", "-1", "2"], answer: 0, subject: "Algebra" },
+      { q: "[Fizika] Yorug'likning vakuumdagi tezligi qancha?", options: ["300 000 km/s", "150 000 km/s", "1 000 km/s", "30 000 km/s"], answer: 0, subject: "Fizika" },
+      { q: "[Kimyo] Mendeleyev davriy jadvalidagi 1-element qaysi?", options: ["Vodorod (H)", "Geliy (He)", "Kislorod (O)", "Uglerod (C)"], answer: 0, subject: "Kimyo" },
+      { q: "[Biologiya] DNK molekulasining qo'sh spirali tuzilishini kimlar kashf etgan?", options: ["Uotson va Krik", "Darvin va Lamark", "Mendel va Morgan", "Paster va Kox"], answer: 0, subject: "Biologiya" },
+      { q: "[Geometriya] Stereometriyada kubning nechta qirrasi bor?", options: ["12 ta", "6 ta", "8 ta", "10 ta"], answer: 0, subject: "Geometriya" },
+      { q: "[Informatika] Relyatsion ma'lumotlar bazasida ma'lumotlar qanday tuzilmada saqlanadi?", options: ["Jadvallar (Tables)", "Daraxtlar", "Fayllar", "Matnlar"], answer: 0, subject: "Informatika" },
+      { q: "[Tarix] Ikkinchi jahon urushi qaysi yillarda bo'lib o'tgan?", options: ["1939-1945", "1914-1918", "1941-1945", "1938-1946"], answer: 0, subject: "Tarix" },
+      { q: "[Ingliz tili] 'If I ________ you, I would take that opportunity.'", options: ["were", "was", "am", "have been"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Adabiyot] Cho'lponning mashhur romani qaysi?", options: ["Kecha va kunduz", "O'tkan kunlar", "Sarob", "Qutlug' qon"], answer: 0, subject: "Adabiyot" },
+      { q: "[Falsafa] 'Bilim - bu kuch' shiorining muallifi:", options: ["Frensis Bekon", "Rene Dekart", "Jon Lokk", "Aristotel"], answer: 0, subject: "Falsafa" }
     ],
 
     // ------------------------------------------------------------
-    // 11-SINF (DTM/OTM darajasidagi savollar, Hosila, E=mc², ATF, BMT)
+    // 11-SINF (Grade 11 English Rasmiy Testlari - Set 1 & Set 2)
     // ------------------------------------------------------------
     11: [
-      {
-        q: "1. [Matematika] f(x) = x³ - 5x + 7 funksiyaning hosilasini f'(x) toping:",
-        options: ["3x² - 5", "3x² + 5", "x² - 5", "3x - 5"],
-        answer: 0,
-        subject: "Matematika"
-      },
-      {
-        q: "2. [Fizika] Eynshteynning massaning energiyaga mutanosiblik qonuni formulasi:",
-        options: ["E = m * c²", "E = h * v", "p = m * v", "F = G * m1*m2/r²"],
-        answer: 0,
-        subject: "Fizika"
-      },
-      {
-        q: "3. [Kimyo] Oqsillar qanday monomerlarning polikondensatlanishidan hosil bo'ladi?",
-        options: ["Glyukoza", "Aminokislotalar", "Yog' kislotalari", "Nukleotidlar"],
-        answer: 1,
-        subject: "Kimyo"
-      },
-      {
-        q: "4. [Biologiya] Hujayraning universal energiya manbai (akkumulyatori) qaysi birikma?",
-        options: ["DNK", "ATF (Adenozintrifosfat)", "RNK", "Glyukagon"],
-        answer: 1,
-        subject: "Biologiya"
-      },
-      {
-        q: "5. [Geometriya] Radiusi R bo'lgan sferaning sirt yuzi formulasi:",
-        options: ["4πR²", "(4/3)πR³", "2πR", "πR²"],
-        answer: 0,
-        subject: "Geometriya"
-      },
-      {
-        q: "6. [Informatika] O(log n) murakkablikdagi eng samarali qidiruv algoritmi qaysi?",
-        options: ["Chiziqli qidiruv", "Binar (ikkilik) qidiruv", "Pufaksimon saralash", "Tasodifiy"],
-        answer: 1,
-        subject: "Informatika"
-      },
-      {
-        q: "7. [Jahon tarixi] Birlashgan Millatlar Tashkiloti (BMT) nechanchi yilda ta'sis etilgan?",
-        options: ["1918-yil", "1945-yil", "1991-yil", "1939-yil"],
-        answer: 1,
-        subject: "Tarix"
-      },
-      {
-        q: "8. [Ingliz tili - Grade 11] If someone is feeling 'under the weather', what does it mean?",
-        options: ["They are feeling sick or unwell", "They are caught in a rainstorm", "They are extremely excited", "They are busy preparing for exams"],
-        answer: 0,
-        subject: "Ingliz tili"
-      },
-      {
-        q: "9. [Adabiyot] 'Kumush qish o'z oq libosini kiydi' jumlasi qaysi san'atga misol?",
-        options: ["Tashxis (jonlantirish)", "Istiora", "Tazod", "Mubolag'a"],
-        answer: 0,
-        subject: "Adabiyot"
-      },
-      {
-        q: "10. [Ingliz tili - Grade 11] Which idiom means 'to disclose a secret carelessly or prematurely'?",
-        options: ["Spill the beans", "Bite the bullet", "Break a leg", "Hit the books"],
-        answer: 0,
-        subject: "Ingliz tili"
-      }
+      { q: "[Ingliz tili - Grade 11] If someone is feeling 'under the weather', what does it mean?", options: ["They are feeling sick or unwell", "They are caught in a rainstorm", "They are extremely excited", "They are busy preparing for exams"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] Which idiom means 'to disclose a secret carelessly or prematurely'?", options: ["Spill the beans", "Bite the bullet", "Break a leg", "Hit the books"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] 'Had I known about the meeting, I ________ attended.'", options: ["would have", "will have", "would", "had"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] What is a synonym for 'meticulous'?", options: ["Careful and thorough", "Careless", "Quick", "Lazy"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] Choose the correct passive form: 'They are building a new library.'", options: ["A new library is being built.", "A new library was built.", "A new library has been built.", "A new library is built."], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] What is the meaning of the idiom 'to burn the midnight oil'?", options: ["To study or work late into the night", "To waste precious fuel", "To set something on fire", "To wake up early in the morning"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] 'Hardly had she entered the room ________ the phone rang.'", options: ["when", "than", "then", "after"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] Which word best describes someone who speaks many languages?", options: ["Polyglot", "Monolingual", "Linguist", "Diplomat"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] What does the phrasal verb 'call off' mean?", options: ["To cancel", "To shout loudly", "To postpone", "To telephone someone"], answer: 0, subject: "Ingliz tili" },
+      { q: "[Ingliz tili - Grade 11] Choose the antonym of 'abundant':", options: ["Scarce", "Plentiful", "Excessive", "Bountiful"], answer: 0, subject: "Ingliz tili" }
     ]
   };
 
@@ -1160,7 +610,10 @@
       this.setGrade(g);
     },
 
-    getCurrentQuestions: function () {
+        getCurrentQuestions: function () {
+      if (this.sessionQuestions && this.sessionQuestions.length > 0) {
+        return this.sessionQuestions;
+      }
       return window.OLYMPIAD_QUESTIONS_BY_GRADE[this.selectedGrade] || window.OLYMPIAD_QUESTIONS_BY_GRADE[1];
     },
 
@@ -1173,6 +626,89 @@
       this.isActive = true;
 
       if (window.SoundFX) window.SoundFX.playClick();
+
+      var g = this.selectedGrade;
+      var pool = [];
+
+      // Foydalanuvchi yuklagan 865 ta haqiqiy maktab testlaridan tegishli sinf savollarini yig'ish
+      if (window.TEST_DATA) {
+        var prefix = g + '_';
+        for (var key in window.TEST_DATA) {
+          if (key.indexOf(prefix) === 0 && Array.isArray(window.TEST_DATA[key])) {
+            var subjName = key.replace(prefix, '').replace(/_/g, ' ').toUpperCase();
+            var list = window.TEST_DATA[key];
+            for (var k = 0; k < list.length; k++) {
+              var item = list[k];
+              if (item && item.q && Array.isArray(item.options) && item.options.length >= 2) {
+                pool.push({
+                  q: item.q,
+                  options: item.options,
+                  answer: item.answer !== undefined ? item.answer : 0,
+                  subject: item.subject || subjName
+                });
+              }
+            }
+          }
+        }
+      }
+
+      // Agar darsliklardan 10 tadan ortiq haqiqiy testlar bo'lsa, ulardan 10 tasini tanlab aralashtirish
+      if (pool.length >= 10) {
+        var shuffled = pool.slice();
+        for (var i = shuffled.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = shuffled[i];
+          shuffled[i] = shuffled[j];
+          shuffled[j] = t;
+        }
+        var selectedTen = shuffled.slice(0, 10);
+
+        this.sessionQuestions = selectedTen.map(function (q) {
+          var origOpts = q.options ? q.options.slice() : [];
+          if (origOpts.length <= 1) return q;
+          var correctText = origOpts[q.answer];
+
+          var shOpts = origOpts.slice();
+          for (var i = shOpts.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = shOpts[i];
+            shOpts[i] = shOpts[j];
+            shOpts[j] = t;
+          }
+          var newAns = shOpts.indexOf(correctText);
+
+          return {
+            q: (typeof window.cleanQuestionTitle === 'function') ? window.cleanQuestionTitle(q.q) : q.q,
+            options: shOpts,
+            answer: newAns >= 0 ? newAns : 0,
+            subject: q.subject
+          };
+        });
+      } else {
+        // Standart bazadagi rasmiy darslik testlaridan olish
+        var defaultList = (window.OLYMPIAD_QUESTIONS_BY_GRADE[g] || window.OLYMPIAD_QUESTIONS_BY_GRADE[1]).slice();
+        this.sessionQuestions = defaultList.map(function (q) {
+          var origOpts = q.options ? q.options.slice() : [];
+          if (origOpts.length <= 1) return q;
+          var correctText = origOpts[q.answer];
+
+          var shOpts = origOpts.slice();
+          for (var i = shOpts.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var t = shOpts[i];
+            shOpts[i] = shOpts[j];
+            shOpts[j] = t;
+          }
+          var newAns = shOpts.indexOf(correctText);
+
+          return {
+            q: (typeof window.cleanQuestionTitle === 'function') ? window.cleanQuestionTitle(q.q) : q.q,
+            options: shOpts,
+            answer: newAns >= 0 ? newAns : 0,
+            subject: q.subject
+          };
+        });
+      }
 
       var welcomeView = document.getElementById('olympiad-welcome-view');
       var quizView = document.getElementById('olympiad-quiz-view');
@@ -1347,6 +883,7 @@
 
     selectAnswer: function (optIdx) {
       if (!this.isActive) return;
+      if (this.answers[this.currentIndex] !== undefined) return;
       var questions = this.getCurrentQuestions();
       var q = questions[this.currentIndex];
       var isCorrect = (optIdx === q.answer);
