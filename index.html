@@ -843,7 +843,10 @@
                             <li><i class="fas fa-check"></i> Geografik viktorina o'yini (4 ta rejim)</li>
                             <li><i class="fas fa-check"></i> Shaharlararo masofa o'lchagich va Kun/Tun</li>
                         </ul>
-                        <button class="btn btn-primary" onclick="navigateTo('page-globe')"><i class="fas fa-arrow-right"></i> Globusni ochish</button>
+                        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+                            <button class="btn btn-primary" onclick="event.stopPropagation(); navigateTo('page-geography-lab'); setTimeout(function(){ selectGeographyExperiment('world-globe'); }, 200);"><i class="fas fa-cube"></i> 3D Geografiyada ochish</button>
+                            <button class="btn btn-outline" onclick="event.stopPropagation(); window.open('yer-shari.html','_blank');"><i class="fas fa-external-link-alt"></i> Alohida oyna</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1950,6 +1953,13 @@
                             <span class="experiment-tag">Tog'lar va Cho'llar</span>
                         </div>
                     </li>
+                    <li class="experiment-item" data-experiment="world-globe" onclick="selectGeographyExperiment('world-globe')">
+                        <span class="experiment-icon"><i class="fas fa-globe-americas" style="color:#38bdf8;"></i></span>
+                        <div class="experiment-info">
+                            <span class="experiment-name">3D Dunyo Globusi</span>
+                            <span class="experiment-tag">Qit'alar, Poytaxtlar, Grinvich</span>
+                        </div>
+                    </li>
                 </ul>
             </aside>
 
@@ -1958,6 +1968,28 @@
                     <button class="lab-info-toggle-btn active" id="geography-info-toggle-btn" onclick="toggleLabInfoPanel('geography')">
                         <i class="fas fa-info-circle"></i> <span>Tushuntirish</span>
                     </button>
+                    <button class="btn btn-sm btn-globe-launcher" id="geo-globe-ext-btn" style="display:none;" onclick="window.open('yer-shari.html','_blank')">
+                        <i class="fas fa-external-link-alt"></i> Katta globus (Alohida oyna)
+                    </button>
+                    <div id="geo-globe-hud" class="geo-globe-hud" style="display:none;">
+                        <div class="geo-globe-hud-header">
+                            <span class="hud-flag" id="globe-hud-flag">🇺🇿</span>
+                            <div class="hud-title-wrap">
+                                <h4 id="globe-hud-title">Toshkent (O'zbekiston)</h4>
+                                <span class="hud-subtitle" id="globe-hud-subtitle">Markaziy Osiyo | 41.30° N, 69.28° E</span>
+                            </div>
+                            <button class="hud-close-btn" onclick="document.getElementById('geo-globe-hud').style.display='none'" title="Yopish">&times;</button>
+                        </div>
+                        <div class="geo-globe-hud-body">
+                            <p id="globe-hud-desc">O'zbekiston Respublikasi poytaxti. Markaziy Osiyodagi eng yirik megapolis va qadimiy Buyuk Ipak yo'li chorrahasi.</p>
+                            <div class="geo-globe-hud-metrics">
+                                <div class="metric-item"><span class="m-label">Aholi:</span> <strong id="globe-hud-pop">3.0 mln</strong></div>
+                                <div class="metric-item"><span class="m-label">Vaqt:</span> <strong id="globe-hud-tz">UTC+5</strong></div>
+                                <div class="metric-item"><span class="m-label">Kenglik:</span> <strong id="globe-hud-lat">41.30° N</strong></div>
+                                <div class="metric-item"><span class="m-label">Uzunlik:</span> <strong id="globe-hud-lon">69.28° E</strong></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="lab-canvas-overlay" id="geography-canvas-overlay">
                         <div class="lab-loading">
                             <div class="lab-loading-spinner"></div>
@@ -2021,6 +2053,27 @@
                                 <label><span>Aylanish tezligi:</span> <strong id="slider-geo-cycle-val">1.0x</strong></label>
                                 <input type="range" class="lab-slider" id="slider-geo-cycle" min="0.2" max="2.5" step="0.1" value="1.0"
                                        oninput="if(window.geographyLabInstance) { geographyLabInstance.setCycleSpeed(this.value); document.getElementById('slider-geo-cycle-val').textContent = this.value+'x'; }">
+                            </div>
+                        </div>
+                        <div class="info-sliders" id="geo-sliders-world-globe" style="display:none;">
+                            <div class="info-slider-group">
+                                <label><span>Globus aylanish tezligi:</span> <strong id="slider-geo-globe-spd-val">1.0x</strong></label>
+                                <input type="range" class="lab-slider" id="slider-geo-globe-spd" min="0" max="3" step="0.1" value="1.0"
+                                       oninput="if(window.geographyLabInstance) { geographyLabInstance.setGlobeSpeed(this.value); document.getElementById('slider-geo-globe-spd-val').textContent = this.value+'x'; }">
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
+                                <label style="display:flex; align-items:center; gap:8px; font-size:12px; cursor:pointer; color:#e2e8f0;">
+                                    <input type="checkbox" id="geo-globe-clouds-chk" checked onchange="if(window.geographyLabInstance) geographyLabInstance.toggleClouds(this.checked)">
+                                    <span><i class="fas fa-cloud" style="color:#93c5fd;"></i> Bulutlar qatlami</span>
+                                </label>
+                                <label style="display:flex; align-items:center; gap:8px; font-size:12px; cursor:pointer; color:#e2e8f0;">
+                                    <input type="checkbox" id="geo-globe-grid-chk" checked onchange="if(window.geographyLabInstance) geographyLabInstance.toggleGrid(this.checked)">
+                                    <span><i class="fas fa-globe" style="color:#fbbf24;"></i> Ekvator va meridian to'ri</span>
+                                </label>
+                                <label style="display:flex; align-items:center; gap:8px; font-size:12px; cursor:pointer; color:#e2e8f0;">
+                                    <input type="checkbox" id="geo-globe-pins-chk" checked onchange="if(window.geographyLabInstance) geographyLabInstance.togglePins(this.checked)">
+                                    <span><i class="fas fa-map-pin" style="color:#ef4444;"></i> Poytaxt va shahar pinlari</span>
+                                </label>
                             </div>
                         </div>
                     </div>

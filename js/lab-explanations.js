@@ -406,6 +406,20 @@ window.LAB_EXPLANATIONS = {
         "Orol dengizi havzasi va Ustyurt platosi"
       ],
       fact: "O'zbekiston dunyoda dengizga chiqish uchun kamida ikkita davlat chegarasini kesib o'tish talab qilinadigan (Double landlocked) ikki davlatdan biridir (ikkinchisi Lixtenshteyn)."
+    },
+    'world-globe': {
+      title: "3D Interaktiv Butun Dunyo Globusi (Yer Shari)",
+      formula: "R ≈ 6371 km | S ≈ 510.1 mln km² | Ekvator uzunligi ≈ 40,075 km | O'q og'ish burchagi: 23°26'",
+      desc: "Yer shari — Quyosh tizimidagi hayot mavjud bo'lgan yagona ma'lum sayyora. Uning sirtining 71% qismini Jahon okeani, 29% qismini quruqlik (6 ta qit'a va quruqlik massivlari) egallaydi. Globusda meridianlar, parallellar, qit'alar, okeanlar, atmosfera bulutlari va dunyo poytaxtlari aks ettirilgan.",
+      activeDesc: "🌐 3D DUNYO GLOBUSI ISHLAMOQDA: Globusni aylantiring, qit'a va shaharlarni o'rganing. Istalgan shahar pin ustiga bosib uning koordinata va ma'lumotlarini bilib oling!",
+      points: [
+        "6 ta qit'a: Yevrosiyo, Afrika, Shimoliy Amerika, Janubiy Amerika, Antarktida, Avstraliya",
+        "4 ta asosiy okean: Tinch, Atlantika, Hind, Shimoliy Muz okeanlari",
+        "Ekvator (0° kenglik) va Grinvich bosh meridiani (0° uzunlik)",
+        "O'zbekiston (Toshkent: 41.30° N, 69.28° E) - Markaziy Osiyo yuragi",
+        "Atmosfera qatlami va bulutlar harakati"
+      ],
+      fact: "Yer o'z o'qi atrofida g'arbdan sharqqa tomon taxminan 1670 km/soat (ekvatorda) tezlikda aylanadi, Quyosh atrofida esa 107,200 km/soat tezlikda harakatlanadi!"
     }
   },
 
