@@ -2,6 +2,10 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/yer-shari", "destination": "/yer-shari.html" },
+    { "source": "/standalone", "destination": "/30-maktabtest.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",

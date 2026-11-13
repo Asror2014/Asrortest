@@ -84,6 +84,8 @@ if (Test-Path $desktopNew) {
 Copy-Item -Path (Join-Path $baseDir "START_LOCALHOST.bat") -Destination "C:\Users\Hp\Desktop\START_LOCALHOST.bat" -Force
 Copy-Item -Path (Join-Path $baseDir "yer-shari.html") -Destination "C:\Users\Hp\Desktop\yer-shari.html" -Force
 Copy-Item -Path (Join-Path $baseDir "yer-shari.html") -Destination "C:\Users\Hp\Downloads\yer-shari.html" -Force
+Copy-Item -Path (Join-Path $baseDir "GITHUBGA_YUKLASH.bat") -Destination "C:\Users\Hp\Desktop\GITHUBGA_YUKLASH.bat" -Force
+Copy-Item -Path (Join-Path $baseDir "GITHUBGA_YUKLASH.bat") -Destination "C:\Users\Hp\Downloads\GITHUBGA_YUKLASH.bat" -Force
 
 Write-Output "4. ZIP arxiv yaratish..."
 $zipTemp = "C:\Users\Hp\AppData\Local\Temp\30-maktabtest-loyiha.zip"
@@ -93,6 +95,7 @@ $itemsToZip = @(
   (Join-Path $baseDir "index.html"),
   (Join-Path $baseDir "yer-shari.html"),
   (Join-Path $baseDir "30-maktabtest.html"),
+  (Join-Path $baseDir "GITHUBGA_YUKLASH.bat"),
   (Join-Path $baseDir "vercel.json"),
   (Join-Path $baseDir "README.md"),
   (Join-Path $baseDir ".gitignore"),
