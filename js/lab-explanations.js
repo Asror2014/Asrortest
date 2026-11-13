@@ -408,18 +408,18 @@ window.LAB_EXPLANATIONS = {
       fact: "O'zbekiston dunyoda dengizga chiqish uchun kamida ikkita davlat chegarasini kesib o'tish talab qilinadigan (Double landlocked) ikki davlatdan biridir (ikkinchisi Lixtenshteyn)."
     },
     'world-globe': {
-      title: "3D Interaktiv Butun Dunyo Globusi (Yer Shari)",
-      formula: "R ≈ 6371 km | S ≈ 510.1 mln km² | Ekvator uzunligi ≈ 40,075 km | O'q og'ish burchagi: 23°26'",
-      desc: "Yer shari — Quyosh tizimidagi hayot mavjud bo'lgan yagona ma'lum sayyora. Uning sirtining 71% qismini Jahon okeani, 29% qismini quruqlik (6 ta qit'a va quruqlik massivlari) egallaydi. Globusda meridianlar, parallellar, qit'alar, okeanlar, atmosfera bulutlari va dunyo poytaxtlari aks ettirilgan.",
-      activeDesc: "🌐 3D DUNYO GLOBUSI ISHLAMOQDA: Globusni aylantiring, qit'a va shaharlarni o'rganing. Istalgan shahar pin ustiga bosib uning koordinata va ma'lumotlarini bilib oling!",
+      title: "3D Dunyo Globusi va Butun Quyosh Tizimi",
+      formula: "R_yer ≈ 6371 km | Quyosh-Yer: 1 AU ≈ 149.6 mln km | 8 ta sayyora | O'q og'ishi: 23°26'",
+      desc: "Ushbu interaktiv laboratoriyada siz Yerdan uzoqlashib, butun Quyosh tizimini tomosha qilishingiz mumkin! Yerdan uzoqlashgan sari Quyosh, Merkuriy, Venera, Yer va Oy, Mars, Asteroidlar halqasi, Yupiter, Saturn (halqalari bilan), Uran va Neptun sayyoralari o'z orbitalarida namoyon bo'ladi.",
+      activeDesc: "🌍🔭 YER VA QUYOSH TIZIMI FAOL: Sichqoncha g'ildiragini orqaga aylantirib (zoom out) butun Quyosh tizimiga chiqing, istalgan sayyorani bosing yoki Yerga yaqinlashib Toshkent va jahon poytaxtlarini o'rganing!",
       points: [
-        "6 ta qit'a: Yevrosiyo, Afrika, Shimoliy Amerika, Janubiy Amerika, Antarktida, Avstraliya",
-        "4 ta asosiy okean: Tinch, Atlantika, Hind, Shimoliy Muz okeanlari",
-        "Ekvator (0° kenglik) va Grinvich bosh meridiani (0° uzunlik)",
+        "Quyosh tizimidagi 8 ta sayyora va Quyosh markaziy yulduzi",
+        "Yer va Oy juftligi hamda Yer o'qining 23°26' og'ish burchagi",
+        "Qit'alar, okeanlar, Ekvator va Grinvich bosh meridiani",
         "O'zbekiston (Toshkent: 41.30° N, 69.28° E) - Markaziy Osiyo yuragi",
-        "Atmosfera qatlami va bulutlar harakati"
+        "Mars va Yupiter orasidagi ulkan Asteroidlar halqasi hamda kometa"
       ],
-      fact: "Yer o'z o'qi atrofida g'arbdan sharqqa tomon taxminan 1670 km/soat (ekvatorda) tezlikda aylanadi, Quyosh atrofida esa 107,200 km/soat tezlikda harakatlanadi!"
+      fact: "Yerdan uzoqlashib butun Quyosh tizimini kuzatganimizda, yorug'lik Quyoshdan Yergacha yetib kelishi uchun 8 daqiqa 20 soniya, eng olis sayyora Neptungacha yetib borishi uchun esa 4 soatdan ortiq vaqt kerak bo'ladi!"
     }
   },
 

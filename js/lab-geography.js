@@ -46,18 +46,23 @@ class GeographyLab {
       reliefExaggeration: 1.5,
       waterLevel: 0.5,
 
-      // Dunyo globusi
+      // Dunyo globusi va Quyosh tizimi
       globeRotationSpeed: 1.0,
       showClouds: true,
       showGrid: true,
-      showPins: true
+      showPins: true,
+      showSolarPlanets: true,
+      currentFocusBody: 'earth'
     };
 
     // Raycasting va interaktiv elementlar
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
     this.interactivePins = [];
+    this.interactiveCelestialBodies = [];
+    this.planetsList = [];
     this.isFocusingUzbekistan = false;
+    this.isCameraAnimating = false;
 
     // Kamera boshqaruvi (orbit)
     this.isDragging = false;
@@ -81,7 +86,7 @@ class GeographyLab {
     this.scene.background = new THREE.Color(0x070b19);
 
     // Kamera
-    this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 2500);
     this.updateCameraPosition();
 
     // Renderer
@@ -165,10 +170,11 @@ class GeographyLab {
       this.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
       this.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
-      if (this.currentExp === 'world-globe' && this.interactivePins && this.interactivePins.length > 0) {
+      if (this.currentExp === 'world-globe') {
         this.raycaster.setFromCamera(this.mouse, this.camera);
-        const hits = this.raycaster.intersectObjects(this.interactivePins, false);
-        el.style.cursor = (hits.length > 0) ? 'pointer' : (this.isDragging ? 'grabbing' : 'grab');
+        const pinHits = (this.interactivePins && this.interactivePins.length > 0) ? this.raycaster.intersectObjects(this.interactivePins, false) : [];
+        const bodyHits = (this.interactiveCelestialBodies && this.interactiveCelestialBodies.length > 0) ? this.raycaster.intersectObjects(this.interactiveCelestialBodies, false) : [];
+        el.style.cursor = (pinHits.length > 0 || bodyHits.length > 0) ? 'pointer' : (this.isDragging ? 'grabbing' : 'grab');
       }
 
       if (!this.isDragging) return;
@@ -185,8 +191,13 @@ class GeographyLab {
 
     el.addEventListener('wheel', (e) => {
       e.preventDefault();
-      this.cameraRadius += e.deltaY * 0.025;
-      this.cameraRadius = Math.max(8, Math.min(90, this.cameraRadius));
+      const zoomFactor = (this.currentExp === 'world-globe') ? 0.09 : 0.025;
+      const maxDist = (this.currentExp === 'world-globe') ? 600 : 90;
+      this.cameraRadius += e.deltaY * zoomFactor;
+      this.cameraRadius = Math.max(8, Math.min(maxDist, this.cameraRadius));
+      if (this.currentExp === 'world-globe') {
+        this.updateCameraForZoom();
+      }
       this.updateCameraPosition();
     }, { passive: false });
 
@@ -222,8 +233,12 @@ class GeographyLab {
           e.touches[0].clientX - e.touches[1].clientX,
           e.touches[0].clientY - e.touches[1].clientY
         );
-        const factor = (touchStartDist - dist) * 0.05;
-        this.cameraRadius = Math.max(8, Math.min(90, this.cameraRadius + factor));
+        const maxDist = (this.currentExp === 'world-globe') ? 600 : 90;
+        const factor = (touchStartDist - dist) * ((this.currentExp === 'world-globe') ? 0.18 : 0.05);
+        this.cameraRadius = Math.max(8, Math.min(maxDist, this.cameraRadius + factor));
+        if (this.currentExp === 'world-globe') {
+          this.updateCameraForZoom();
+        }
         this.updateCameraPosition();
         touchStartDist = dist;
       }
@@ -771,104 +786,585 @@ class GeographyLab {
   }
 
   // ============================================================
-  // 5. BUTUN DUNYO GLOBUSI (WORLD GLOBE)
+  // 5. BUTUN DUNYO GLOBUSI VA QUYOSH TIZIMI (WORLD GLOBE & SOLAR SYSTEM)
   // ============================================================
   setupWorldGlobe() {
-    this.cameraRadius = 26;
-    this.cameraTarget.set(0, 0, 0);
-    this.theta = 1.05;
-    this.phi = 1.25;
-    this.updateCameraPosition();
+    this.currentExp = 'world-globe';
+    this.currentFocusBody = 'earth';
+    this.interactivePins = [];
+    this.interactiveCelestialBodies = [];
+    this.planetsList = [];
 
     const root = new THREE.Group();
     this.scene.add(root);
     this.objects.root = root;
-    this.interactivePins = [];
 
-    // Kosmik fazo yulduzlari
+    // Chuqur koinot yulduzlari (800 ta yulduz)
     const starGeo = new THREE.BufferGeometry();
-    const starCount = 800;
+    const starCount = 900;
     const starPos = new Float32Array(starCount * 3);
     for (let i = 0; i < starCount * 3; i += 3) {
       const u = Math.random();
       const v = Math.random();
       const theta = u * 2.0 * Math.PI;
       const phi = Math.acos(2.0 * v - 1.0);
-      const r = 70 + Math.random() * 60;
+      const r = 350 + Math.random() * 400;
       starPos[i] = r * Math.sin(phi) * Math.cos(theta);
       starPos[i + 1] = r * Math.sin(phi) * Math.sin(theta);
       starPos[i + 2] = r * Math.cos(phi);
     }
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    const starMat = new THREE.PointsMaterial({ color: 0xcfd8dc, size: 0.9, transparent: true, opacity: 0.85 });
+    const starMat = new THREE.PointsMaterial({ color: 0xe0e7ff, size: 1.2, transparent: true, opacity: 0.85 });
     root.add(new THREE.Points(starGeo, starMat));
 
-    // Yer shari asosiy guruhi (23.44 gradus og'ish burchagi bilan)
-    const earthGroup = new THREE.Group();
-    earthGroup.rotation.z = THREE.MathUtils.degToRad(23.44);
-    root.add(earthGroup);
-    this.objects.earthGroup = earthGroup;
+    // Quyosh tizimi guruhi (Markazda (0,0,0) - Quyosh)
+    const solarGroup = new THREE.Group();
+    root.add(solarGroup);
+    this.objects.solarGroup = solarGroup;
 
-    // Yer shari sferasi va teksturasi
-    const earthGeo = new THREE.SphereGeometry(10, 64, 48);
-    const earthTex = this.createGlobeTexture();
-    const earthMat = new THREE.MeshStandardMaterial({
-      map: earthTex,
-      roughness: 0.65,
-      metalness: 0.12
-    });
-    const earthMesh = new THREE.Mesh(earthGeo, earthMat);
-    earthGroup.add(earthMesh);
-    this.objects.earthMesh = earthMesh;
+    // 1. QUYOSH (THE SUN)
+    const sunGeo = new THREE.SphereGeometry(15, 32, 24);
+    const sunMat = new THREE.MeshBasicMaterial({ color: 0xffdd33 });
+    const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+    sunMesh.userData = {
+      id: 'sun',
+      name: "Quyosh (Sun)",
+      type: "Markaziy Yulduz",
+      diam: "1,392,700 km",
+      sunDist: "0 km (Markaz)",
+      orbitTime: "230 mln yil (galaktik)",
+      flag: "☀️",
+      pop: "1.989 × 10³⁰ kg",
+      tz: "Markaziy Yulduz",
+      lat: "Spektral sinf: G2V",
+      lon: "Harorat: 5,500°C",
+      desc: "Quyosh tizimining markazidagi sariq mitti yulduz. Quyosh tizimi umumiy massasining 99.86% qismini o'zida jamlagan bo'lib, barcha sayyoralar uning atrofida aylanadi."
+    };
+    solarGroup.add(sunMesh);
+    this.objects.sunMesh = sunMesh;
+    this.interactiveCelestialBodies.push(sunMesh);
 
-    // Atmosfera jilosi (cyan glow mesh)
-    const atmoGeo = new THREE.SphereGeometry(10.35, 48, 32);
-    const atmoMat = new THREE.MeshLambertMaterial({
-      color: 0x38bdf8,
+    // Quyosh nurlanishi (Corona toji)
+    const coronaGeo1 = new THREE.SphereGeometry(18.5, 24, 16);
+    const coronaMat1 = new THREE.MeshBasicMaterial({
+      color: 0xffa000,
       transparent: true,
-      opacity: 0.22,
+      opacity: 0.38,
       blending: THREE.AdditiveBlending,
       side: THREE.BackSide
     });
-    const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
-    earthGroup.add(atmoMesh);
-    this.objects.atmoMesh = atmoMesh;
+    solarGroup.add(new THREE.Mesh(coronaGeo1, coronaMat1));
 
-    // Dinamik aylanuvchi bulutlar qatlami
-    const cloudGeo = new THREE.SphereGeometry(10.16, 48, 36);
-    const cloudTex = this.createCloudTexture();
-    const cloudMat = new THREE.MeshLambertMaterial({
-      map: cloudTex,
+    const coronaGeo2 = new THREE.SphereGeometry(25, 24, 16);
+    const coronaMat2 = new THREE.MeshBasicMaterial({
+      color: 0xff6600,
       transparent: true,
-      opacity: 0.42,
-      depthWrite: false
+      opacity: 0.18,
+      blending: THREE.AdditiveBlending,
+      side: THREE.BackSide
     });
-    const cloudMesh = new THREE.Mesh(cloudGeo, cloudMat);
-    earthGroup.add(cloudMesh);
-    this.objects.globeClouds = cloudMesh;
-    cloudMesh.visible = this.params.showClouds;
+    solarGroup.add(new THREE.Mesh(coronaGeo2, coronaMat2));
 
-    // Yerning aylanish o'qi sterjeni (Shimoliy va Janubiy qutb)
-    const axisGeo = new THREE.CylinderGeometry(0.08, 0.08, 25, 16);
-    const axisMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.85, roughness: 0.2 });
-    const axisMesh = new THREE.Mesh(axisGeo, axisMat);
-    earthGroup.add(axisMesh);
+    // Quyosh yorug'lik manbai (PointLight butun tizimni yoritadi)
+    const sunLight = new THREE.PointLight(0xfffaed, 2.8, 2000, 0.4);
+    solarGroup.add(sunLight);
 
-    // Ekvator tashqi oltin xalqasi
-    const eqPts = [];
-    for (let i = 0; i <= 72; i++) {
-      const a = (i / 72) * Math.PI * 2;
-      eqPts.push(new THREE.Vector3(Math.cos(a) * 10.05, 0, Math.sin(a) * 10.05));
+    // 2. SAYYORALAR RO'YXATI VA ORBITALARI
+    this.planetsList = [
+      {
+        id: 'mercury',
+        name: 'Merkuriy',
+        dist: 48,
+        radius: 2.2,
+        color: 0xa8a29e,
+        speed: 3.5,
+        flag: '☿',
+        diam: '4,879 km',
+        sunDist: '57.9 mln km (0.39 AU)',
+        orbitTime: '88 kun',
+        tz: '1 sutka = 59 Yer kuni',
+        pop: 'Qattiq toshli sirt',
+        desc: "Quyoshga eng yaqin va eng kichik sayyora. Zich atmosferasi yo'q, kunduzi +430°C, kechasi -180°C ga tushadi."
+      },
+      {
+        id: 'venus',
+        name: 'Venera',
+        dist: 78,
+        radius: 4.0,
+        color: 0xf59e0b,
+        speed: 1.8,
+        flag: '♀',
+        diam: '12,104 km',
+        sunDist: '108.2 mln km (0.72 AU)',
+        orbitTime: '225 kun',
+        tz: '1 sutka = 243 Yer kuni',
+        pop: 'CO₂ zich atmosfera',
+        desc: "Quyosh tizimidagi eng issiq sayyora (~465°C). Zich karbonat angidrid atmosferasi tufayli kuchli issiqxona effekti mavjud."
+      },
+      {
+        id: 'earth',
+        name: 'Yer (Earth)',
+        dist: 120,
+        radius: 10.0,
+        speed: 1.0,
+        flag: '🌍',
+        diam: '12,742 km',
+        sunDist: '149.6 mln km (1.0 AU)',
+        orbitTime: '365.25 kun',
+        tz: '1 sutka = 24 soat',
+        pop: '8.1 milliard inson',
+        desc: "Quyosh tizimida hayot mavjud bo'lgan yagona ma'lum sayyora. Sirtining 71% qismini Jahon okeani, 29% qismini quruqlik egallaydi."
+      },
+      {
+        id: 'mars',
+        name: 'Mars',
+        dist: 170,
+        radius: 3.2,
+        color: 0xef4444,
+        speed: 0.65,
+        flag: '♂',
+        diam: '6,779 km',
+        sunDist: '227.9 mln km (1.52 AU)',
+        orbitTime: '687 kun',
+        tz: '1 sutka = 24.6 soat',
+        pop: 'Qutb muzliklari mavjud',
+        desc: "Qizil sayyora. Sirtidagi temir oksidi unga qizil tus beradi. Quyosh tizimidagi eng baland vulqon - Olimp tog'i (22 km) shu yerda."
+      },
+      {
+        id: 'jupiter',
+        name: 'Yupiter',
+        dist: 265,
+        radius: 8.5,
+        color: 0xd97706,
+        speed: 0.25,
+        flag: '♃',
+        diam: '139,820 km',
+        sunDist: '778.5 mln km (5.20 AU)',
+        orbitTime: '11.86 yil',
+        tz: '1 sutka = 9.9 soat',
+        pop: '95 ta yo\'ldoshi bor',
+        desc: "Quyosh tizimidagi eng ulkan gigant sayyora. Unda asrlar davomida davom etayotgan Katta qizil dog' ulkan atmosfera girdobi mavjud."
+      },
+      {
+        id: 'saturn',
+        name: 'Saturn',
+        dist: 345,
+        radius: 7.2,
+        color: 0xfef08a,
+        speed: 0.14,
+        flag: '🪐',
+        hasRings: true,
+        diam: '116,460 km',
+        sunDist: '1.43 mlrd km (9.58 AU)',
+        orbitTime: '29.5 yil',
+        tz: '1 sutka = 10.7 soat',
+        pop: '146 ta yo\'ldoshi bor',
+        desc: "Muz va tog' jinsi parchalaridan iborat muazzam halqalari bilan mashhur gaz giganti. Zichligi suv zichligidan ham past yagona sayyora."
+      },
+      {
+        id: 'uranus',
+        name: 'Uran',
+        dist: 415,
+        radius: 5.2,
+        color: 0x67e8f9,
+        speed: 0.07,
+        flag: '♅',
+        diam: '50,724 km',
+        sunDist: '2.87 mlrd km (19.2 AU)',
+        orbitTime: '84 yil',
+        tz: '1 sutka = 17.2 soat',
+        pop: '28 ta yo\'ldoshi bor',
+        desc: "Muzli gaz giganti. O'z o'qi atrofida deyarli 'yonboshlab' aylanadi (og'ish burchagi 98°). Metan gazi unga och feruza rang beradi."
+      },
+      {
+        id: 'neptune',
+        name: 'Neptun',
+        dist: 480,
+        radius: 5.0,
+        color: 0x2563eb,
+        speed: 0.04,
+        flag: '♆',
+        diam: '49,244 km',
+        sunDist: '4.50 mlrd km (30.1 AU)',
+        orbitTime: '165 yil',
+        tz: '1 sutka = 16.1 soat',
+        pop: '16 ta yo\'ldoshi bor',
+        desc: "Quyoshdan eng uzoqda joylashgan muzli gigant. Quyosh tizimidagi eng shiddatli shamollar (2100 km/soatgacha) shu sayyorada esadi."
+      }
+    ];
+
+    // Har bir sayyora uchun orbita chiziqlari va sferalari
+    this.planetsList.forEach(p => {
+      // Orbita chizig'i
+      const orbPts = [];
+      for (let i = 0; i <= 96; i++) {
+        const a = (i / 96) * Math.PI * 2;
+        orbPts.push(new THREE.Vector3(Math.cos(a) * p.dist, 0, Math.sin(a) * p.dist));
+      }
+      const orbGeo = new THREE.BufferGeometry().setFromPoints(orbPts);
+      const orbMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.22 });
+      const orbLine = new THREE.LineLoop(orbGeo, orbMat);
+      solarGroup.add(orbLine);
+      p.orbitLine = orbLine;
+
+      if (p.id === 'earth') {
+        // YER UCHUN MAXSUS GURUH VA BIZNING 3D GLOBUS
+        const earthOrbitGroup = new THREE.Group();
+        earthOrbitGroup.position.set(p.dist, 0, 0);
+        solarGroup.add(earthOrbitGroup);
+        this.objects.earthOrbitGroup = earthOrbitGroup;
+
+        // Yer shari (23.44 gradus og'ish burchagi bilan)
+        const earthGroup = new THREE.Group();
+        earthGroup.rotation.z = THREE.MathUtils.degToRad(23.44);
+        earthOrbitGroup.add(earthGroup);
+        this.objects.earthGroup = earthGroup;
+
+        // Yer shari sferasi va qit'alar teksturasi
+        const earthGeo = new THREE.SphereGeometry(10, 64, 48);
+        const earthTex = this.createGlobeTexture();
+        const earthMat = new THREE.MeshStandardMaterial({
+          map: earthTex,
+          roughness: 0.65,
+          metalness: 0.12
+        });
+        const earthMesh = new THREE.Mesh(earthGeo, earthMat);
+        earthGroup.add(earthMesh);
+        this.objects.earthMesh = earthMesh;
+        earthMesh.userData = p;
+        this.interactiveCelestialBodies.push(earthMesh);
+
+        // Atmosfera jilosi
+        const atmoGeo = new THREE.SphereGeometry(10.35, 48, 32);
+        const atmoMat = new THREE.MeshLambertMaterial({
+          color: 0x38bdf8,
+          transparent: true,
+          opacity: 0.22,
+          blending: THREE.AdditiveBlending,
+          side: THREE.BackSide
+        });
+        const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
+        earthGroup.add(atmoMesh);
+        this.objects.atmoMesh = atmoMesh;
+
+        // Bulutlar qatlami
+        const cloudGeo = new THREE.SphereGeometry(10.16, 48, 36);
+        const cloudTex = this.createCloudTexture();
+        const cloudMat = new THREE.MeshLambertMaterial({
+          map: cloudTex,
+          transparent: true,
+          opacity: 0.42,
+          depthWrite: false
+        });
+        const cloudMesh = new THREE.Mesh(cloudGeo, cloudMat);
+        earthGroup.add(cloudMesh);
+        this.objects.globeClouds = cloudMesh;
+        cloudMesh.visible = this.params.showClouds;
+
+        // Yer o'qi sterjeni
+        const axisGeo = new THREE.CylinderGeometry(0.08, 0.08, 25, 16);
+        const axisMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.85, roughness: 0.2 });
+        earthGroup.add(new THREE.Mesh(axisGeo, axisMat));
+
+        // Ekvator halqasi
+        const eqPts = [];
+        for (let i = 0; i <= 72; i++) {
+          const a = (i / 72) * Math.PI * 2;
+          eqPts.push(new THREE.Vector3(Math.cos(a) * 10.05, 0, Math.sin(a) * 10.05));
+        }
+        const eqGeo = new THREE.BufferGeometry().setFromPoints(eqPts);
+        const eqMat = new THREE.LineBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.8 });
+        const eqLine = new THREE.LineLoop(eqGeo, eqMat);
+        earthGroup.add(eqLine);
+        this.objects.globeGrid = eqLine;
+        eqLine.visible = this.params.showGrid;
+
+        // OY (MOON) - YERNING TABIIY YO'LDOSHI
+        const moonGeo = new THREE.SphereGeometry(2.2, 24, 16);
+        const moonMat = new THREE.MeshStandardMaterial({ color: 0xd6d3d1, roughness: 0.85 });
+        const moonMesh = new THREE.Mesh(moonGeo, moonMat);
+        moonMesh.position.set(22, 0, 0);
+        moonMesh.userData = {
+          id: 'moon',
+          name: "Oy (Moon)",
+          type: "Yer yo'ldoshi",
+          diam: "3,474 km",
+          sunDist: "Yerdan: 384,400 km",
+          orbitTime: "27.3 kun",
+          flag: "🌙",
+          pop: "Atmosferasiz toshli sirt",
+          tz: "1 oy sutkasi = 29.5 Yer kuni",
+          desc: "Yerning yagona tabiiy yo'ldoshi. Yerdagi dengiz va okeanlardagi to'lqinlanish (qalqish va qaytish) hodisalarining asosiy sababchisidir."
+        };
+        earthOrbitGroup.add(moonMesh);
+        this.objects.moonMesh = moonMesh;
+        this.interactiveCelestialBodies.push(moonMesh);
+
+        // Shaharlar pinlari
+        this.setupGlobeCityPins(earthMesh);
+      } else {
+        // BOSHQA SAYYORALAR
+        const pivot = new THREE.Group();
+        const pGeo = new THREE.SphereGeometry(p.radius, 32, 24);
+        const pMat = new THREE.MeshStandardMaterial({
+          color: p.color,
+          roughness: 0.7,
+          metalness: 0.1
+        });
+        const pMesh = new THREE.Mesh(pGeo, pMat);
+        pMesh.position.set(p.dist, 0, 0);
+        pMesh.userData = p;
+        pivot.add(pMesh);
+        solarGroup.add(pivot);
+        p.pivot = pivot;
+        p.mesh = pMesh;
+        this.interactiveCelestialBodies.push(pMesh);
+
+        if (p.hasRings) {
+          // Saturn halqalari
+          const rGeo = new THREE.RingGeometry(p.radius * 1.35, p.radius * 2.3, 48);
+          const rMat = new THREE.MeshStandardMaterial({
+            color: 0xe0c48a,
+            side: THREE.DoubleSide,
+            transparent: true,
+            opacity: 0.75,
+            roughness: 0.8
+          });
+          const ringMesh = new THREE.Mesh(rGeo, rMat);
+          ringMesh.rotation.x = Math.PI / 2 + 0.35;
+          pMesh.add(ringMesh);
+        }
+      }
+    });
+
+    // 3. ASTEROIDLAR HALQASI (Mars va Yupiter o'rtasida)
+    const astCount = 750;
+    const astGeo = new THREE.BufferGeometry();
+    const astPos = new Float32Array(astCount * 3);
+    for (let i = 0; i < astCount * 3; i += 3) {
+      const a = Math.random() * Math.PI * 2;
+      const r = 205 + Math.random() * 28;
+      astPos[i] = Math.cos(a) * r;
+      astPos[i + 1] = (Math.random() - 0.5) * 8;
+      astPos[i + 2] = Math.sin(a) * r;
     }
-    const eqGeo = new THREE.BufferGeometry().setFromPoints(eqPts);
-    const eqMat = new THREE.LineBasicMaterial({ color: 0xfbbf24, transparent: true, opacity: 0.8 });
-    const eqLine = new THREE.LineLoop(eqGeo, eqMat);
-    earthGroup.add(eqLine);
-    this.objects.globeGrid = eqLine;
-    eqLine.visible = this.params.showGrid;
+    astGeo.setAttribute('position', new THREE.BufferAttribute(astPos, 3));
+    const astMat = new THREE.PointsMaterial({ color: 0xa8a29e, size: 1.5, sizeAttenuation: false });
+    const astBelt = new THREE.Points(astGeo, astMat);
+    solarGroup.add(astBelt);
+    this.objects.astBelt = astBelt;
 
-    // Dunyo poytaxtlari va yirik shaharlari pinlari
-    this.setupGlobeCityPins(earthMesh);
+    // 4. KOMETA (Elliptik harakatlanuvchi jism)
+    const cometMesh = new THREE.Mesh(new THREE.SphereGeometry(1.2, 16, 12), new THREE.MeshBasicMaterial({ color: 0xe0f2fe }));
+    solarGroup.add(cometMesh);
+    this.objects.cometMesh = cometMesh;
+
+    // Dastlabki kamera holati (Yerga yo'naltirilgan)
+    this.cameraRadius = 26;
+    if (this.objects.earthOrbitGroup) {
+      this.cameraTarget.copy(this.objects.earthOrbitGroup.position);
+    }
+    this.theta = 1.05;
+    this.phi = 1.25;
+    this.updateCameraPosition();
+    this.updateCameraForZoom();
+  }
+
+  // ============================================================
+  // ZOOM DARAJASIGA QARAB KAMERANI AVTOMATIK MOSLASHTIRISH
+  // ============================================================
+  updateCameraForZoom() {
+    if (this.currentExp !== 'world-globe' || this.isCameraAnimating) return;
+
+    const r = this.cameraRadius;
+    const earthPos = this.objects.earthOrbitGroup ? this.objects.earthOrbitGroup.position : new THREE.Vector3(120, 0, 0);
+
+    // Agar fokus Yerda bo'lsa:
+    if (this.currentFocusBody === 'earth') {
+      if (r <= 38) {
+        this.cameraTarget.copy(earthPos);
+        if (this.objects.pinsGroup) this.objects.pinsGroup.visible = this.params.showPins;
+      } else if (r >= 150) {
+        this.cameraTarget.set(0, 0, 0); // Quyosh tizimi markaziga
+        if (this.objects.pinsGroup) this.objects.pinsGroup.visible = false;
+      } else {
+        const t = (r - 38) / (150 - 38);
+        this.cameraTarget.lerpVectors(earthPos, new THREE.Vector3(0, 0, 0), t);
+        if (this.objects.pinsGroup) this.objects.pinsGroup.visible = (t < 0.35) && this.params.showPins;
+      }
+    }
+
+    // Slayder va indikatorlarni yangilash
+    const zoomSlider = document.getElementById('slider-geo-zoom');
+    const zoomVal = document.getElementById('slider-geo-zoom-val');
+    if (zoomSlider && Math.abs(zoomSlider.value - r) > 2) {
+      zoomSlider.value = r;
+    }
+    if (zoomVal) {
+      if (r < 50) {
+        zoomVal.textContent = "Yer (1x)";
+        zoomVal.style.color = "#38bdf8";
+      } else if (r < 180) {
+        zoomVal.textContent = "Ichki sayyoralar (" + (r / 26).toFixed(1) + "x)";
+        zoomVal.style.color = "#fbbf24";
+      } else {
+        zoomVal.textContent = "Quyosh tizimi (" + (r / 26).toFixed(0) + "x)";
+        zoomVal.style.color = "#f59e0b";
+      }
+    }
+
+    // Toggle tugmasini yangilash
+    const toggleBtn = document.getElementById('geo-solar-toggle-btn');
+    if (toggleBtn) {
+      if (r < 65) {
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Quyosh tizimiga uzoqlashish</span>';
+        toggleBtn.title = "Butun Quyosh tizimini tomosha qilish uchun uzoqlashish";
+      } else {
+        toggleBtn.innerHTML = '<i class="fas fa-globe-americas"></i> <span>Yer globusiga qaytish</span>';
+        toggleBtn.title = "Yer shari globusi va Toshkent shahriga qaytish";
+      }
+    }
+  }
+
+  setCameraZoomDistance(val) {
+    this.cameraRadius = parseFloat(val);
+    this.updateCameraForZoom();
+    this.updateCameraPosition();
+  }
+
+  toggleSolarView() {
+    if (this.cameraRadius < 65) {
+      // Quyosh tizimiga uzoqlashish
+      this.animateCameraTo(420, 0.85, 0.0, new THREE.Vector3(0, 0, 0), () => {
+        this.currentFocusBody = 'sun';
+        this.updatePillActive('sun');
+        if (this.objects.sunMesh) this.showCelestialHud(this.objects.sunMesh.userData);
+      });
+    } else {
+      // Yerga qaytish
+      this.focusBody('earth');
+    }
+  }
+
+  focusBody(bodyId) {
+    this.currentFocusBody = bodyId;
+    this.updatePillActive(bodyId);
+
+    if (bodyId === 'earth') {
+      const earthPos = this.objects.earthOrbitGroup ? this.objects.earthOrbitGroup.position : new THREE.Vector3(120, 0, 0);
+      this.animateCameraTo(26, 1.25, 1.05, earthPos, () => {
+        const toshkent = {
+          name: "Toshkent",
+          country: "O'zbekiston",
+          continent: "Markaziy Osiyo",
+          lat: "41.30° N",
+          lon: "69.28° E",
+          pop: "3.0 mln",
+          tz: "UTC+5",
+          flag: "🇺🇿",
+          desc: "O'zbekiston Respublikasi poytaxti. Yer globusiga qaytildi. Qit'alar, okeanlar va Toshkent shahrini o'rganishingiz mumkin."
+        };
+        this.showCityHud(toshkent);
+      });
+    } else if (bodyId === 'sun') {
+      this.animateCameraTo(75, 0.9, 0.0, new THREE.Vector3(0, 0, 0), () => {
+        if (this.objects.sunMesh) this.showCelestialHud(this.objects.sunMesh.userData);
+      });
+    } else if (bodyId === 'moon') {
+      if (this.objects.moonMesh) {
+        const wPos = new THREE.Vector3();
+        this.objects.moonMesh.getWorldPosition(wPos);
+        this.animateCameraTo(12, 1.1, 0.0, wPos, () => {
+          this.showCelestialHud(this.objects.moonMesh.userData);
+        });
+      }
+    } else {
+      const p = this.planetsList.find(x => x.id === bodyId);
+      if (p && p.mesh) {
+        const wPos = new THREE.Vector3();
+        p.mesh.getWorldPosition(wPos);
+        const targetRadius = Math.max(16, p.radius * 3.4);
+        this.animateCameraTo(targetRadius, 1.0, 0.0, wPos, () => {
+          this.showCelestialHud(p);
+        });
+      }
+    }
+  }
+
+  animateCameraTo(targetRadius, targetPhi, targetTheta, targetTarget, onDone) {
+    this.isCameraAnimating = true;
+    const startRadius = this.cameraRadius;
+    const startPhi = this.phi;
+    const startTheta = this.theta;
+    const startTarget = this.cameraTarget.clone();
+
+    const startTime = performance.now();
+    const duration = 1000;
+
+    const anim = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const ease = 0.5 - Math.cos(progress * Math.PI) / 2;
+
+      this.cameraRadius = startRadius + (targetRadius - startRadius) * ease;
+      this.phi = startPhi + (targetPhi - startPhi) * ease;
+      this.theta = startTheta + (targetTheta - startTheta) * ease;
+      this.cameraTarget.lerpVectors(startTarget, targetTarget, ease);
+
+      this.updateCameraPosition();
+
+      if (progress < 1) {
+        requestAnimationFrame(anim);
+      } else {
+        this.isCameraAnimating = false;
+        this.updateCameraForZoom();
+        if (onDone) onDone();
+      }
+    };
+    requestAnimationFrame(anim);
+  }
+
+  updatePillActive(bodyId) {
+    document.querySelectorAll('.solar-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.id === ('spill-' + bodyId));
+    });
+  }
+
+  showCelestialHud(body) {
+    const hud = document.getElementById('geo-globe-hud');
+    if (!hud) return;
+    const flagEl = document.getElementById('globe-hud-flag');
+    const titleEl = document.getElementById('globe-hud-title');
+    const subEl = document.getElementById('globe-hud-subtitle');
+    const descEl = document.getElementById('globe-hud-desc');
+    const popEl = document.getElementById('globe-hud-pop');
+    const tzEl = document.getElementById('globe-hud-tz');
+    const latEl = document.getElementById('globe-hud-lat');
+    const lonEl = document.getElementById('globe-hud-lon');
+
+    if (flagEl) flagEl.textContent = body.flag || '🪐';
+    if (titleEl) titleEl.textContent = `${body.name}`;
+    if (subEl) subEl.textContent = `Quyosh tizimi | ${body.sunDist || ''}`;
+    if (descEl) descEl.textContent = body.desc;
+    if (popEl) popEl.textContent = body.diam || body.pop;
+    if (tzEl) tzEl.textContent = body.orbitTime || body.tz;
+    if (latEl) latEl.textContent = body.lat || body.diam;
+    if (lonEl) lonEl.textContent = body.lon || body.sunDist;
+
+    hud.style.display = 'block';
+    if (window.SoundFX && typeof SoundFX.playClick === 'function') SoundFX.playClick();
+  }
+
+  toggleSolarPlanets(enabled) {
+    this.params.showSolarPlanets = !!enabled;
+    if (this.planetsList) {
+      this.planetsList.forEach(p => {
+        if (p.orbitLine) p.orbitLine.visible = this.params.showSolarPlanets;
+        if (p.pivot) p.pivot.visible = this.params.showSolarPlanets;
+      });
+    }
+    if (this.objects.astBelt) this.objects.astBelt.visible = this.params.showSolarPlanets;
+    if (this.objects.cometMesh) this.objects.cometMesh.visible = this.params.showSolarPlanets;
   }
 
   latLonToVector3(lat, lon, radius = 10.04) {
@@ -1327,18 +1823,34 @@ class GeographyLab {
   }
 
   handleCanvasClick(e) {
-    if (this.currentExp !== 'world-globe' || !this.interactivePins || this.interactivePins.length === 0) return;
+    if (this.currentExp !== 'world-globe') return;
     const rect = this.renderer.domElement.getBoundingClientRect();
     this.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
     this.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
 
     this.raycaster.setFromCamera(this.mouse, this.camera);
-    const intersects = this.raycaster.intersectObjects(this.interactivePins, false);
 
-    if (intersects.length > 0) {
-      const hitObj = intersects[0].object;
-      if (hitObj.userData && hitObj.userData.name) {
-        this.showCityHud(hitObj.userData);
+    // 1. Quyosh va sayyoralarni tekshirish
+    if (this.interactiveCelestialBodies && this.interactiveCelestialBodies.length > 0) {
+      const bodyHits = this.raycaster.intersectObjects(this.interactiveCelestialBodies, false);
+      if (bodyHits.length > 0) {
+        const hitData = bodyHits[0].object.userData;
+        if (hitData && hitData.id) {
+          this.focusBody(hitData.id);
+          return;
+        }
+      }
+    }
+
+    // 2. Yer sirtidagi shahar pinlarini tekshirish
+    if (this.interactivePins && this.interactivePins.length > 0) {
+      const pinHits = this.raycaster.intersectObjects(this.interactivePins, false);
+      if (pinHits.length > 0) {
+        const hitObj = pinHits[0].object;
+        if (hitObj.userData && hitObj.userData.name) {
+          this.showCityHud(hitObj.userData);
+          return;
+        }
       }
     }
   }
@@ -1511,14 +2023,41 @@ class GeographyLab {
       this.updateCameraPosition();
     }
 
-    // 5. World Globe animatsiyasi
-    if (this.currentExp === 'world-globe' && this.objects.earthMesh) {
-      if (!this.isFocusingUzbekistan) {
-        this.objects.earthMesh.rotation.y += 0.0018 * this.params.globeRotationSpeed;
+    // 5. World Globe va Butun Quyosh tizimi animatsiyasi
+    if (this.currentExp === 'world-globe') {
+      const spd = this.params.globeRotationSpeed;
+
+      // Yer sirti o'z o'qi atrofida aylanishi
+      if (this.objects.earthMesh && !this.isFocusingUzbekistan) {
+        this.objects.earthMesh.rotation.y += 0.0018 * spd;
       }
+      // Bulutlar oqimi
       if (this.objects.globeClouds && this.params.showClouds) {
-        this.objects.globeClouds.rotation.y += 0.0025 * this.params.globeRotationSpeed;
+        this.objects.globeClouds.rotation.y += 0.0025 * spd;
       }
+      // Oyning Yer atrofida orbital aylanishi
+      if (this.objects.moonMesh) {
+        const mTime = time * 0.35 * spd;
+        this.objects.moonMesh.position.set(Math.cos(mTime) * 22, Math.sin(mTime * 0.2) * 2, Math.sin(mTime) * 22);
+      }
+      // Sayyoralarning Quyosh atrofida aylanishi
+      if (this.planetsList && this.params.showSolarPlanets) {
+        this.planetsList.forEach(p => {
+          if (p.pivot && p.id !== 'earth') {
+            p.pivot.rotation.y += 0.002 * p.speed * spd;
+          }
+        });
+      }
+      // Asteroidlar halqasi sekin aylanishi
+      if (this.objects.astBelt) {
+        this.objects.astBelt.rotation.y += 0.0003 * spd;
+      }
+      // Kometa fazoviy harakati
+      if (this.objects.cometMesh) {
+        const cTime = time * 0.12 * spd;
+        this.objects.cometMesh.position.set(Math.cos(cTime) * 310, Math.sin(cTime * 1.8) * 28, Math.sin(cTime) * 190);
+      }
+      // Toshkent nuri pulsatsiyasi
       if (this.objects.pinsGroup) {
         const pulse = 1.0 + Math.sin(time * 4) * 0.25;
         this.objects.pinsGroup.children.forEach(c => {
@@ -1527,6 +2066,8 @@ class GeographyLab {
           }
         });
       }
+      // Dinamik zoom target moslashuvi
+      this.updateCameraForZoom();
     }
     } // end if (this.isRunning)
 
