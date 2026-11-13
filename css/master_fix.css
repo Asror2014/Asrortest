@@ -2020,7 +2020,8 @@
 #page-technology-lab,
 #page-geography-lab,
 #page-computer-lab,
-#page-mechanics-lab {
+#page-mechanics-lab,
+#page-globe {
   padding-top: 0 !important;
   height: 100vh !important;
   overflow: hidden !important;
@@ -7805,7 +7806,8 @@ body.light-theme .ol-nav-btn:hover {
 #page-technology-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
 #page-geography-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
 #page-computer-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
-#page-mechanics-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn {
+#page-mechanics-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-globe:not([style*="display: none"]) ~ .floating-leaderboard-btn {
   display: none !important;
 }
 
@@ -7828,4 +7830,14 @@ body.light-theme .ol-nav-btn:hover {
   height: 76px !important;
   min-height: 76px !important;
   max-height: 76px !important;
+}
+
+/* 10. 3D Interaktiv Yer Shari (Globus) kartochkasi */
+.lab-card-globe .lab-card-icon {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb) !important;
+  color: #fff !important;
+}
+.lab-card-globe:hover {
+  border-color: #0ea5e9 !important;
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25) !important;
 }

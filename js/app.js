@@ -220,7 +220,7 @@ function navigateTo(pageId) {
   // Footer boshqaruvi: 3D laboratoriyalar va faol test paytida footerni yashirish
   var mainFooter = document.getElementById('main-footer');
   if (mainFooter) {
-    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'mechanics-lab', 'active-test'];
+    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'mechanics-lab', 'globe', 'active-test'];
     var flBtn = document.getElementById('floating-leaderboard-btn') || document.querySelector('.floating-leaderboard-btn');
     if (flBtn) {
       if (cleanId.indexOf('lab') !== -1 || cleanId === 'active-test') {
@@ -322,6 +322,13 @@ function navigateTo(pageId) {
         window.selectMechanicsExperiment(exp);
       }
     }, 150);
+  }
+
+  if (cleanId === 'globe') {
+    var gIframe = document.getElementById('globe-iframe');
+    if (gIframe && (!gIframe.src || gIframe.src === 'about:blank')) {
+      gIframe.src = 'yer-shari.html';
+    }
   }
 
   if (cleanId === 'teacher') {

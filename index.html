@@ -830,6 +830,22 @@
                         <button class="btn btn-primary" onclick="navigateTo('page-technology-lab')"><i class="fas fa-arrow-right"></i> Laboratoriyaga kirish</button>
                     </div>
                 </div>
+                <!-- 10. 3D Interaktiv Yer Shari (Globus) -->
+                <div class="lab-card lab-card-globe" onclick="navigateTo('page-globe')">
+                    <div class="lab-card-icon"><i class="fas fa-globe-americas"></i></div>
+                    <div class="lab-card-content">
+                        <h2>3D Interaktiv Yer Shari (Globus)</h2>
+                        <p>195+ Davlatlar, Poytaxtlar, Aholi, Tarixiy davrlar va Buyuk Ipak yo'li sayohati</p>
+                        <ul class="lab-card-features">
+                            <li><i class="fas fa-check"></i> Chegaralar, poytaxtlar, bayroqlar va aholi soni</li>
+                            <li><i class="fas fa-check"></i> 7 ta qit'a va 31 ta tarixiy davr xaritasi</li>
+                            <li><i class="fas fa-check"></i> Buyuk Ipak yo'li va 7 ta sayohat marshruti</li>
+                            <li><i class="fas fa-check"></i> Geografik viktorina o'yini (4 ta rejim)</li>
+                            <li><i class="fas fa-check"></i> Shaharlararo masofa o'lchagich va Kun/Tun</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="navigateTo('page-globe')"><i class="fas fa-arrow-right"></i> Globusni ochish</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2415,8 +2431,18 @@
             </aside>
         </div>
     </section>
-    <!-- ============================================================
-         10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
+        <!-- ============================================================
+         10-SAHIFA: 3D INTERAKTIV YER SHARI (GLOBUS)
+         ============================================================ -->
+    <section id="page-globe" class="page-section" style="display:none; padding-top:0; height:100vh; overflow:hidden;">
+        <div style="position:relative; width:100%; height:calc(100vh - 70px); margin-top:70px;">
+            <iframe id="globe-iframe" src="yer-shari.html" style="width:100%; height:100%; border:none; display:block;" allow="fullscreen"></iframe>
+        </div>
+    </section>
+
+      <!-- ============================================================
+          10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
+          10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
          ============================================================ -->
     <section id="page-teacher" class="page-section" style="display:none;">
         <div class="teacher-container">
@@ -2904,7 +2930,10 @@
                     <ul>
                         <li><a href="#" onclick="navigateTo('page-landing')">Bosh sahifa</a></li>
                         <li><a href="#" onclick="navigateTo('page-dashboard')">Testlar</a></li>
-                        <li><a href="#" onclick="navigateTo('page-lab-select')">Laboratoriya</a></li>
+                        <li><a href="#" onclick="navigateTo('page-globe')" data-nav="globe">
+                      <i class="fas fa-globe-americas" style="color:#38bdf8;"></i> <span>3D Globus</span>
+                  </a></li>
+                  <li><a href="#" onclick="navigateTo('page-lab-select')">Laboratoriya</a></li>
                         <li><a href="#" onclick="navigateTo('page-textbook')">Darsliklar</a></li>
                     </ul>
                 </div>

@@ -4519,7 +4519,8 @@ ul, ol {
 #page-technology-lab,
 #page-geography-lab,
 #page-computer-lab,
-#page-mechanics-lab {
+#page-mechanics-lab,
+#page-globe {
   padding-top: 0 !important;
   height: 100vh !important;
   overflow: hidden !important;
@@ -10304,7 +10305,8 @@ body.light-theme .ol-nav-btn:hover {
 #page-technology-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
 #page-geography-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
 #page-computer-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
-#page-mechanics-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn {
+#page-mechanics-lab:not([style*="display: none"]) ~ .floating-leaderboard-btn,
+#page-globe:not([style*="display: none"]) ~ .floating-leaderboard-btn {
   display: none !important;
 }
 
@@ -10327,6 +10329,16 @@ body.light-theme .ol-nav-btn:hover {
   height: 76px !important;
   min-height: 76px !important;
   max-height: 76px !important;
+}
+
+/* 10. 3D Interaktiv Yer Shari (Globus) kartochkasi */
+.lab-card-globe .lab-card-icon {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb) !important;
+  color: #fff !important;
+}
+.lab-card-globe:hover {
+  border-color: #0ea5e9 !important;
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.25) !important;
 }
 </style>
 </head>
@@ -11140,6 +11152,22 @@ body.light-theme .ol-nav-btn:hover {
                             <li><i class="fas fa-check"></i> Shamol turbinasi va elektr generatori</li>
                         </ul>
                         <button class="btn btn-primary" onclick="navigateTo('page-technology-lab')"><i class="fas fa-arrow-right"></i> Laboratoriyaga kirish</button>
+                    </div>
+                </div>
+                <!-- 10. 3D Interaktiv Yer Shari (Globus) -->
+                <div class="lab-card lab-card-globe" onclick="navigateTo('page-globe')">
+                    <div class="lab-card-icon"><i class="fas fa-globe-americas"></i></div>
+                    <div class="lab-card-content">
+                        <h2>3D Interaktiv Yer Shari (Globus)</h2>
+                        <p>195+ Davlatlar, Poytaxtlar, Aholi, Tarixiy davrlar va Buyuk Ipak yo'li sayohati</p>
+                        <ul class="lab-card-features">
+                            <li><i class="fas fa-check"></i> Chegaralar, poytaxtlar, bayroqlar va aholi soni</li>
+                            <li><i class="fas fa-check"></i> 7 ta qit'a va 31 ta tarixiy davr xaritasi</li>
+                            <li><i class="fas fa-check"></i> Buyuk Ipak yo'li va 7 ta sayohat marshruti</li>
+                            <li><i class="fas fa-check"></i> Geografik viktorina o'yini (4 ta rejim)</li>
+                            <li><i class="fas fa-check"></i> Shaharlararo masofa o'lchagich va Kun/Tun</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="navigateTo('page-globe')"><i class="fas fa-arrow-right"></i> Globusni ochish</button>
                     </div>
                 </div>
             </div>
@@ -12727,8 +12755,18 @@ body.light-theme .ol-nav-btn:hover {
             </aside>
         </div>
     </section>
-    <!-- ============================================================
-         10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
+        <!-- ============================================================
+         10-SAHIFA: 3D INTERAKTIV YER SHARI (GLOBUS)
+         ============================================================ -->
+    <section id="page-globe" class="page-section" style="display:none; padding-top:0; height:100vh; overflow:hidden;">
+        <div style="position:relative; width:100%; height:calc(100vh - 70px); margin-top:70px;">
+            <iframe id="globe-iframe" src="yer-shari.html" style="width:100%; height:100%; border:none; display:block;" allow="fullscreen"></iframe>
+        </div>
+    </section>
+
+      <!-- ============================================================
+          10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
+          10-SAHIFA: O'QITUVCHILAR PANELI (TEACHER PORTAL)
          ============================================================ -->
     <section id="page-teacher" class="page-section" style="display:none;">
         <div class="teacher-container">
@@ -13216,7 +13254,10 @@ body.light-theme .ol-nav-btn:hover {
                     <ul>
                         <li><a href="#" onclick="navigateTo('page-landing')">Bosh sahifa</a></li>
                         <li><a href="#" onclick="navigateTo('page-dashboard')">Testlar</a></li>
-                        <li><a href="#" onclick="navigateTo('page-lab-select')">Laboratoriya</a></li>
+                        <li><a href="#" onclick="navigateTo('page-globe')" data-nav="globe">
+                      <i class="fas fa-globe-americas" style="color:#38bdf8;"></i> <span>3D Globus</span>
+                  </a></li>
+                  <li><a href="#" onclick="navigateTo('page-lab-select')">Laboratoriya</a></li>
                         <li><a href="#" onclick="navigateTo('page-textbook')">Darsliklar</a></li>
                     </ul>
                 </div>
@@ -15731,7 +15772,7 @@ function navigateTo(pageId) {
   // Footer boshqaruvi: 3D laboratoriyalar va faol test paytida footerni yashirish
   var mainFooter = document.getElementById('main-footer');
   if (mainFooter) {
-    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'mechanics-lab', 'active-test'];
+    var hideFooterPages = ['chemistry-lab', 'physics-lab', 'astronomy-lab', 'biology-lab', 'geometry-lab', 'technology-lab', 'geography-lab', 'computer-lab', 'mechanics-lab', 'globe', 'active-test'];
     var flBtn = document.getElementById('floating-leaderboard-btn') || document.querySelector('.floating-leaderboard-btn');
     if (flBtn) {
       if (cleanId.indexOf('lab') !== -1 || cleanId === 'active-test') {
@@ -15833,6 +15874,13 @@ function navigateTo(pageId) {
         window.selectMechanicsExperiment(exp);
       }
     }, 150);
+  }
+
+  if (cleanId === 'globe') {
+    var gIframe = document.getElementById('globe-iframe');
+    if (gIframe && (!gIframe.src || gIframe.src === 'about:blank')) {
+      gIframe.src = 'yer-shari.html';
+    }
   }
 
   if (cleanId === 'teacher') {
