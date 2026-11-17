@@ -42,6 +42,9 @@
                 <li><a href="#" onclick="navigateTo('page-textbook')" data-nav="books">
                     <i class="fas fa-book"></i> <span data-i18n="nav_books">Kitoblar</span>
                 </a></li>
+                <li><a href="#" onclick="navigateTo('page-library')" data-nav="library" style="color:#38bdf8 !important; font-weight:700;">
+                    <i class="fas fa-book-reader" style="color:#38bdf8;"></i> <span>Kitobxonlik</span>
+                </a></li>
                 <li><a href="#" onclick="navigateTo('page-teacher')" data-nav="teacher">
                     <i class="fas fa-chalkboard-teacher"></i> <span data-i18n="nav_teacher">O'qituvchilar</span>
                 </a></li>
@@ -116,6 +119,9 @@
                     </button>
                     <button class="btn btn-outline btn-lg" onclick="navigateTo('page-lab-select')">
                         <i class="fas fa-flask"></i> <span data-i18n="btn_lab">3D Laboratoriya</span>
+                    </button>
+                    <button class="btn btn-info btn-lg" onclick="navigateTo('page-library')" style="background:linear-gradient(135deg,#0284c7,#06b6d4); color:#fff; border:none; box-shadow:0 6px 20px rgba(6,182,212,0.4);">
+                        <i class="fas fa-book-reader"></i> <span>Kitobxonlik</span>
                     </button>
 
                 </div>
@@ -1912,6 +1918,121 @@
         </div>
     </section>
 
+
+    <!-- ============================================================
+         9.1-SAHIFA: KITOBXONLIK VA ELEKTRON KUTUBXONA (E-LIBRARY)
+         ============================================================ -->
+    <section id="page-library" class="page-section" style="display:none;">
+        <div class="library-container">
+            <!-- Hero Banner -->
+            <div class="lib-hero">
+                <div class="lib-hero-content">
+                    <div class="lib-hero-badge">
+                        <i class="fas fa-book-sparkles"></i> <span>Elektron Mutolaa & Adabiyot Maskani</span>
+                    </div>
+                    <h2 class="lib-hero-title">Kitobxonlik va Badiiy Durdonalar</h2>
+                    <p class="lib-hero-desc">
+                        O'zbek va jahon mumtoz adabiyotining eng sara shoh asarlari, shaxsiy rivojlanish va bolalar sarguzashtlari.
+                        Qulay audio eshitish, tungi rejim, bobma-bob mutolaa hamda asar mazmuni bo'yicha interaktiv viktorinalar!
+                    </p>
+                    <div class="lib-hero-pills">
+                        <span class="lib-pill"><i class="fas fa-book-open-reader"></i> Interaktiv Mutolaa Zali</span>
+                        <span class="lib-pill"><i class="fas fa-headphones"></i> Audio Ovozli Mutolaa</span>
+                        <span class="lib-pill"><i class="fas fa-brain"></i> Asar Viktorinalari (+XP)</span>
+                        <span class="lib-pill"><i class="fas fa-fire"></i> Kunlik Mutolaa Chellenji</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mutolaa Chellenji & Statistika Widgeti -->
+            <div class="lib-stats-grid">
+                <div class="lib-stat-card">
+                    <div class="lib-stat-card-header">
+                        <span class="lib-stat-title">Bugungi Mutolaa</span>
+                        <div class="lib-stat-icon-wrap blue"><i class="fas fa-clock"></i></div>
+                    </div>
+                    <div class="lib-stat-val" id="lib-stat-minutes-today">15 daqiqa</div>
+                    <div class="lib-stat-goal-track">
+                        <div class="lib-stat-goal-fill" id="lib-stat-goal-progress" style="width: 75%;"></div>
+                    </div>
+                    <div class="lib-stat-subtext">
+                        <span>Kunlik reja</span>
+                        <span id="lib-stat-goal-label">75% (Maqsad: 20 daq)</span>
+                    </div>
+                </div>
+
+                <div class="lib-stat-card">
+                    <div class="lib-stat-card-header">
+                        <span class="lib-stat-title">Tugatilgan Kitoblar</span>
+                        <div class="lib-stat-icon-wrap green"><i class="fas fa-book-bookmark"></i></div>
+                    </div>
+                    <div class="lib-stat-val" id="lib-stat-books-count">3 ta kitob</div>
+                    <div class="lib-stat-subtext">
+                        <span>Muvaffaqiyatli test</span>
+                        <span style="color:#10b981;">80%+ natija</span>
+                    </div>
+                </div>
+
+                <div class="lib-stat-card">
+                    <div class="lib-stat-card-header">
+                        <span class="lib-stat-title">Ketma-ketlik (Streak)</span>
+                        <div class="lib-stat-icon-wrap orange"><i class="fas fa-fire"></i></div>
+                    </div>
+                    <div class="lib-stat-val" id="lib-stat-streak">4 kun</div>
+                    <div class="lib-stat-subtext">
+                        <span>Har kuni o'qish</span>
+                        <span style="color:#f59e0b;">+5 bonus XP/kun</span>
+                    </div>
+                </div>
+
+                <div class="lib-stat-card">
+                    <div class="lib-stat-card-header">
+                        <span class="lib-stat-title">Kitobxonlik XP</span>
+                        <div class="lib-stat-icon-wrap purple"><i class="fas fa-award"></i></div>
+                    </div>
+                    <div class="lib-stat-val" id="lib-stat-xp">350 XP</div>
+                    <div class="lib-stat-subtext">
+                        <span>Reyting hisobiga</span>
+                        <span style="color:#c084fc;">O'quvchi profiliga</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Qidiruv va Filtrlar -->
+            <div class="lib-toolbar">
+                <div class="lib-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="lib-search-input" class="lib-search-input" placeholder="Asar nomi yoki muallifni qidiring...">
+                </div>
+
+                <div class="lib-filter-chips">
+                    <button type="button" class="lib-filter-chip active" data-cat="all" onclick="window.LibraryManager.setCategory('all')">
+                        <i class="fas fa-layer-group"></i> Barchasi
+                    </button>
+                    <button type="button" class="lib-filter-chip" data-cat="uzbek" onclick="window.LibraryManager.setCategory('uzbek')">
+                        <i class="fas fa-feather-pointed"></i> O'zbek Mumtoz
+                    </button>
+                    <button type="button" class="lib-filter-chip" data-cat="world" onclick="window.LibraryManager.setCategory('world')">
+                        <i class="fas fa-globe"></i> Jahon Klassikasi
+                    </button>
+                    <button type="button" class="lib-filter-chip" data-cat="growth" onclick="window.LibraryManager.setCategory('growth')">
+                        <i class="fas fa-lightbulb"></i> Shaxsiy Rivojlanish
+                    </button>
+                    <button type="button" class="lib-filter-chip" data-cat="kids" onclick="window.LibraryManager.setCategory('kids')">
+                        <i class="fas fa-hat-wizard"></i> Bolalar & Sarguzasht
+                    </button>
+                    <button type="button" class="lib-filter-chip" data-cat="favorites" onclick="window.LibraryManager.setCategory('favorites')">
+                        <i class="fas fa-heart" style="color:#f43f5e;"></i> Sevimlilar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kitoblar kartalari paneli -->
+            <div class="lib-books-grid" id="lib-books-grid">
+                <!-- JavaScript orqali to'ldiriladi -->
+            </div>
+        </div>
+    </section>
     <!-- ============================================================
          8-SAHIFA: GEOGRAFIYA VA YER TUZILISHI LABORATORIYASI
          ============================================================ -->
@@ -3011,6 +3132,7 @@
                   </a></li>
                   <li><a href="#" onclick="navigateTo('page-lab-select')">Laboratoriya</a></li>
                         <li><a href="#" onclick="navigateTo('page-textbook')">Darsliklar</a></li>
+                        <li><a href="#" onclick="navigateTo('page-library')">Kitobxonlik & E-Kutubxona</a></li>
                     </ul>
                 </div>
                 <div class="footer-links-group">
@@ -3659,6 +3781,119 @@
         </div>
     </div>
 
+
+    <!-- ============================================================
+         MUTOLAA ZALI MODALI (BOOK READER)
+         ============================================================ -->
+    <div id="book-reader-modal" class="book-reader-modal" style="display:none;">
+        <div id="reader-sheet" class="reader-sheet theme-dark">
+            <div class="reader-header">
+                <div class="reader-book-meta">
+                    <h3 id="reader-book-title">Asar nomi</h3>
+                    <span id="reader-book-author">Muallif</span>
+                </div>
+
+                <div class="reader-controls">
+                    <select id="reader-chapter-select" class="reader-select"></select>
+
+                    <div class="reader-font-controls" title="Shrift o'lchami">
+                        <button type="button" class="reader-font-btn" onclick="window.LibraryManager.changeFontSize(-2)">A-</button>
+                        <span id="reader-font-display" class="reader-font-disp">18px</span>
+                        <button type="button" class="reader-font-btn" onclick="window.LibraryManager.changeFontSize(2)">A+</button>
+                    </div>
+
+                    <div class="reader-theme-toggle" title="O'qish mavzusi">
+                        <button type="button" class="reader-theme-btn active" data-theme="dark" onclick="window.LibraryManager.setTheme('dark')">🌙 Tun</button>
+                        <button type="button" class="reader-theme-btn" data-theme="sepia" onclick="window.LibraryManager.setTheme('sepia')">📜 Sepia</button>
+                        <button type="button" class="reader-theme-btn" data-theme="light" onclick="window.LibraryManager.setTheme('light')">☀️ Kun</button>
+                    </div>
+
+                    <button type="button" id="reader-speech-btn" class="reader-speech-btn" onclick="window.LibraryManager.toggleSpeech()">
+                        <i class="fas fa-volume-high"></i> Ovozli tinglash
+                    </button>
+
+                    <span class="reader-timer-badge">
+                        <i class="fas fa-stopwatch"></i> <span id="reader-timer-display">00:00</span>
+                    </span>
+
+                    <button type="button" class="reader-close-btn" onclick="window.LibraryManager.closeReader()" title="Yopish">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="reader-scroll-content" id="reader-scroll-content">
+                <h2 id="reader-ch-title" class="reader-ch-title">Bob sarlavhasi</h2>
+                <div id="reader-quotes-box" class="reader-quotes-box" style="display:none;"></div>
+                <div id="reader-char-box" class="reader-char-box" style="display:none;"></div>
+                <div id="reader-ch-body" class="reader-ch-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ASAR TESTI MODALI (BOOK QUIZ)
+         ============================================================ -->
+    <div id="book-quiz-modal" class="book-quiz-modal" style="display:none;">
+        <div class="bquiz-card">
+            <div class="bquiz-header">
+                <h3 class="bquiz-title" id="bquiz-book-title">
+                    <i class="fas fa-book-bookmark"></i> Asar Viktorinasi
+                </h3>
+                <button type="button" class="bquiz-close-btn" onclick="window.LibraryManager.closeQuiz()" title="Yopish">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Savol Ko'rinishi -->
+            <div id="bquiz-screen-question">
+                <div class="bquiz-progress-wrap">
+                    <div class="bquiz-progress-meta">
+                        <span id="bquiz-progress-text">Savol 1 / 5</span>
+                        <span>Har to'g'ri javob: +10 XP</span>
+                    </div>
+                    <div class="bquiz-progress-track">
+                        <div id="bquiz-progress-bar" class="bquiz-progress-bar" style="width: 20%;"></div>
+                    </div>
+                </div>
+
+                <div class="bquiz-body">
+                    <div id="bquiz-question-text" class="bquiz-question-text">Savol matni yuklanmoqda...</div>
+                    <div id="bquiz-options-box" class="bquiz-options-box"></div>
+                    <div id="bquiz-explanation-box" class="bquiz-explanation-box" style="display:none;"></div>
+
+                    <div class="bquiz-footer">
+                        <button type="button" id="bquiz-next-btn" class="bquiz-next-btn" style="display:none;" onclick="window.LibraryManager.nextQuizQuestion()">
+                            Keyingi savol <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Natija Ko'rinishi -->
+            <div id="bquiz-screen-result" class="bquiz-result-view" style="display:none;">
+                <div class="bquiz-trophy-wrap">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="bquiz-result-title">Mutolaa Viktorinasi Yakunlandi!</h3>
+                <p style="color:#94a3b8; margin-bottom:15px;">Siz asar mazmuni bo'yicha bilimlaringizni sinovdan o'tkazdingiz.</p>
+                <div class="bquiz-xp-badge" id="bquiz-res-xp">+50 XP</div>
+                <div class="bquiz-result-metrics">
+                    <div class="bquiz-metric-item">
+                        <div class="bquiz-metric-label">To'g'ri javoblar</div>
+                        <div class="bquiz-metric-value" id="bquiz-res-score">5 / 5</div>
+                    </div>
+                    <div class="bquiz-metric-item">
+                        <div class="bquiz-metric-label">Aniqlik foizi</div>
+                        <div class="bquiz-metric-value" id="bquiz-res-percent">100%</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-lg" onclick="window.LibraryManager.closeQuiz()">
+                    <i class="fas fa-check"></i> Kutubxonaga qaytish
+                </button>
+            </div>
+        </div>
+    </div>
     <!-- ============================================================
          TOAST XABARNOMALAR KONTEYNERI
          ============================================================ -->
@@ -3704,6 +3939,9 @@
     <script src="js/lab-mechanics.js"></script>
     <script src="js/lab-explanations.js"></script>
     <script src="js/sound-and-badges.js"></script>
+
+    <!-- Kitobxonlik va Elektron Kutubxona -->
+    <script src="js/library.js"></script>
 
 </body>
 </html>

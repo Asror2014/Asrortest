@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 $baseDir = "c:\Users\Hp\Downloads\new"
 $artifactDir = "C:\Users\Hp\.gemini\antigravity\brain\eceaab90-a22e-43b4-a834-94dc8938ecbd"
 
@@ -22,6 +22,11 @@ $labCompJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-computer.
 $labMechJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-mechanics.js"), [System.Text.Encoding]::UTF8)
 $labExplJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\lab-explanations.js"), [System.Text.Encoding]::UTF8)
 $accountsRatingJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\accounts-rating.js"), [System.Text.Encoding]::UTF8)
+$libraryJs = ""
+if (Test-Path (Join-Path $baseDir "js\library.js")) {
+  $libraryJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\library.js"), [System.Text.Encoding]::UTF8)
+}
+
 $soundBadgesJs = ""
 if (Test-Path (Join-Path $baseDir "js\sound-and-badges.js")) {
   $soundBadgesJs = [System.IO.File]::ReadAllText((Join-Path $baseDir "js\sound-and-badges.js"), [System.Text.Encoding]::UTF8)
@@ -50,6 +55,11 @@ $labCompJs
 $labMechJs
 </script>")
 $html = $html.Replace('<script src="js/lab-explanations.js"></script>', "<script>`n$labExplJs`n</script>")
+if ($libraryJs) {
+  $html = $html.Replace('<script src="js/library.js"></script>', "<script>
+$libraryJs
+</script>")
+}
 if ($soundBadgesJs) {
   $html = $html.Replace('<script src="js/sound-and-badges.js"></script>', "<script>`n$soundBadgesJs`n</script>")
 }

@@ -192,6 +192,8 @@ function navigateTo(pageId) {
       a.classList.add('active');
     } else if (cleanId === 'olympiad' && navAttr === 'olympiad') {
       a.classList.add('active');
+    } else if (cleanId === 'library' && navAttr === 'library') {
+      a.classList.add('active');
     } else {
       a.classList.remove('active');
     }
@@ -333,6 +335,13 @@ function navigateTo(pageId) {
 
   if (cleanId === 'teacher') {
     initTeacherPortal();
+  }
+
+  if (cleanId === 'library') {
+    if (window.LibraryManager) {
+      window.LibraryManager.renderStatsWidget();
+      window.LibraryManager.renderBooks();
+    }
   }
 
   // Sahifaning yuqorisiga o'tish
