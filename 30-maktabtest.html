@@ -3777,15 +3777,15 @@ ul, ol {
   justify-content: center !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
-  width: auto !important;
-  max-width: 100% !important;
+  width: 100% !important;
+  max-width: 960px !important;
   margin: 0 auto !important;
 }
 
 .hero-buttons .btn {
   height: 48px !important;
-  padding: 0 1.35rem !important;
-  font-size: 0.98rem !important;
+  padding: 0 1.15rem !important;
+  font-size: 0.95rem !important;
   font-weight: 700 !important;
   border-radius: 14px !important;
   display: inline-flex !important;
@@ -3793,7 +3793,8 @@ ul, ol {
   justify-content: center !important;
   gap: 0.55rem !important;
   white-space: nowrap !important;
-  flex: 0 0 auto !important;
+  flex: 1 1 0 !important;
+  min-width: 135px !important;
   box-sizing: border-box !important;
   line-height: 1 !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -3806,11 +3807,44 @@ ul, ol {
 @media (min-width: 769px) and (max-width: 980px) {
   .hero-buttons {
     gap: 0.55rem !important;
+    max-width: 100% !important;
   }
   .hero-buttons .btn {
-    padding: 0 1rem !important;
-    font-size: 0.92rem !important;
-    height: 45px !important;
+    padding: 0 0.85rem !important;
+    font-size: 0.88rem !important;
+    height: 46px !important;
+    min-width: 120px !important;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .hero-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 520px !important;
+  }
+  .hero-buttons .btn {
+    width: 100% !important;
+    min-width: unset !important;
+    flex: unset !important;
+    height: 46px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .hero-buttons .btn {
+    width: 100% !important;
+    min-width: unset !important;
+    flex: unset !important;
+    height: 46px !important;
   }
 }
 
