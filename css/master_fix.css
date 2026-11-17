@@ -1219,7 +1219,7 @@
 }
 
 .hero-content {
-  max-width: 800px !important;
+  max-width: 1050px !important;
   margin: 0 auto 3.5rem !important;
   text-align: center !important;
   position: relative !important;
@@ -1273,9 +1273,46 @@
 
 .hero-buttons {
   display: flex !important;
-  gap: 1.25rem !important;
+  flex-direction: row !important;
+  gap: 0.85rem !important;
   justify-content: center !important;
-  flex-wrap: wrap !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.hero-buttons .btn {
+  height: 48px !important;
+  padding: 0 1.35rem !important;
+  font-size: 0.98rem !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.55rem !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hero-buttons .btn:hover {
+  transform: translateY(-2px) !important;
+}
+
+@media (min-width: 769px) and (max-width: 980px) {
+  .hero-buttons {
+    gap: 0.55rem !important;
+  }
+  .hero-buttons .btn {
+    padding: 0 1rem !important;
+    font-size: 0.92rem !important;
+    height: 45px !important;
+  }
 }
 
 /* Feature Kartalari - 4 ta qatorda yonma-yon */
@@ -2034,7 +2071,10 @@
   color: #ffffff !important;
   border: 2px solid rgba(255, 255, 255, 0.6) !important;
   font-weight: 700 !important;
-  padding: 0.85rem 2rem !important;
+  padding: 0 1.35rem !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
   border-radius: 12px !important;
   backdrop-filter: blur(10px) !important;
   display: inline-flex !important;
