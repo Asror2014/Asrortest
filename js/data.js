@@ -29,7 +29,8 @@ window.SUBJECT_ICONS = {
   "robototexnika": { faIcon: "fa-robot", color: "#FF5722", name: "Robototexnika" },
   "suniy_intellekt": { faIcon: "fa-brain", color: "#E91E63", name: "Sun'iy intellekt" },
   "kiberxavfsizlik": { faIcon: "fa-shield-halved", color: "#009688", name: "Axborot xavfsizligi" },
-  "moliya": { faIcon: "fa-coins", color: "#FF9800", name: "Moliyaviy savodxonlik" }
+  "moliya": { faIcon: "fa-coins", color: "#FF9800", name: "Moliyaviy savodxonlik" },
+  "musiqa": { faIcon: "fa-music", color: "#EC4899", name: "Musiqa" }
 };
 
 window.GRADE_INFO = {
@@ -109,7 +110,8 @@ window.SUBJECTS_BY_GRADE = {
     { id: "geografiya", name: "Materiklar va okeanlar", color: "#00BCD4" },
     { id: "biologiya", name: "Zoologiya (Hayvonot olami)", color: "#4CAF50" },
     { id: "informatika", name: "Informatika", color: "#2196F3" },
-    { id: "nemis_tili", name: "Nemis tili", color: "#E91E63" }
+    { id: "nemis_tili", name: "Nemis tili", color: "#E91E63" },
+    { id: "musiqa", name: "Musiqa", color: "#EC4899" }
   ],
   7: [
     { id: "algebra", name: "Algebra", color: "#2196F3" },
@@ -1183,22 +1185,109 @@ window.TEST_DATA["1_rus_tili"] = [
 // 2-SINF TEST SAVOLLARI
 // ============================================================
 window.TEST_DATA["2_matematika"] = [
-  { q: "45 + 23 yig'indisini toping:", options: ["67", "68", "69", "58"], answer: 1, difficulty: "easy", explanation: "45 + 23 = 68." },
-  { q: "5 ko'paytirilgan 4 nechaga teng?", options: ["15", "20", "25", "24"], answer: 1, difficulty: "easy", explanation: "5 * 4 = 20." },
-  { q: "1 metr necha santimetrga teng?", options: ["10 cm", "100 cm", "1000 cm", "50 cm"], answer: 1, difficulty: "medium", explanation: "1 metr = 100 santimetr." },
-  { q: "To'g'ri to'rtburchakning nechta tomoni va burchagi bor?", options: ["3 ta", "4 ta", "5 ta", "6 ta"], answer: 1, difficulty: "easy", explanation: "To'rtburchakda 4 ta tomon va 4 ta to'g'ri burchak bo'ladi." },
-  { q: "72 dan 38 ni ayiring:", options: ["32", "34", "36", "44"], answer: 1, difficulty: "medium", explanation: "72 - 38 = 34." },
-  { q: "Bir qutida 6 dona qalam bor. 4 ta shunday qutida jami nechta qalam bo'ladi?", options: ["20", "24", "26", "28"], answer: 1, difficulty: "medium", explanation: "6 * 4 = 24 ta qalam." },
-  { q: "36 : 4 bo'linmasini toping:", options: ["7", "8", "9", "6"], answer: 2, difficulty: "hard", explanation: "36 ni 4 ga bo'lsak 9 chiqadi." },
-  { q: "Tenglamani yeching: x + 15 = 42", options: ["25", "27", "28", "26"], answer: 1, difficulty: "hard", explanation: "x = 42 - 15 = 27." }
+  { q: "45 va 34 sonlarining yig'indisini toping.", options: ["79", "89", "78", "69"], answer: 0, difficulty: "easy", explanation: "45 + 34 = 79" },
+  { q: "78 dan 25 ni ayiring.", options: ["53", "52", "43", "63"], answer: 0, difficulty: "easy", explanation: "78 - 25 = 53" },
+  { q: "Qaysi son 6 o'nlik va 4 birlikdan iborat?", options: ["46", "64", "60", "54"], answer: 1, difficulty: "easy", explanation: "6 o'nlik va 4 birlik = 64" },
+  { q: "37 + 26 ifodasining qiymatini toping.", options: ["53", "62", "63", "54"], answer: 2, difficulty: "easy", explanation: "37 + 26 = 63" },
+  { q: "90 dan 37 ni ayiring.", options: ["53", "63", "57", "43"], answer: 0, difficulty: "easy", explanation: "90 - 37 = 53" },
+  { q: "Tenglamani yeching: x + 15 = 42", options: ["27", "37", "25", "28"], answer: 0, difficulty: "medium", explanation: "x = 42 - 15 = 27" },
+  { q: "1 metr necha santimetrga teng?", options: ["10 sm", "100 sm", "1000 sm", "50 sm"], answer: 1, difficulty: "easy", explanation: "1 metr = 100 santimetr" },
+  { q: "3 desimetr necha santimetr?", options: ["3 sm", "30 sm", "300 sm", "13 sm"], answer: 1, difficulty: "easy", explanation: "1 dm = 10 sm, demak 3 dm = 30 sm" },
+  { q: "Savatda 24 ta olma bor edi. Yana 18 ta olma olib kelishdi. Savatda jami nechta olma bo'ldi?", options: ["32", "42", "40", "38"], answer: 1, difficulty: "easy", explanation: "24 + 18 = 42 ta olma" },
+  { q: "Do'konda 75 kg un bor edi. Shundan 28 kg sotildi. Qancha un qoldi?", options: ["47 kg", "57 kg", "37 kg", "45 kg"], answer: 0, difficulty: "medium", explanation: "75 - 28 = 47 kg" },
+  { q: "5 sonini 4 ga ko'paytiring.", options: ["9", "20", "25", "15"], answer: 1, difficulty: "easy", explanation: "5 * 4 = 20" },
+  { q: "18 ni 3 ga bo'ling.", options: ["5", "6", "9", "4"], answer: 1, difficulty: "easy", explanation: "18 : 3 = 6" },
+  { q: "4 ta 5 ning yig'indisi nechaga teng?", options: ["20", "9", "15", "25"], answer: 0, difficulty: "easy", explanation: "5 + 5 + 5 + 5 = 20" },
+  { q: "Qaysi son 80 dan 14 taga kam?", options: ["74", "66", "64", "94"], answer: 1, difficulty: "medium", explanation: "80 - 14 = 66" },
+  { q: "56 soni nechta o'nlik va nechta birlikdan iborat?", options: ["5 o'n., 6 birlik", "6 o'n., 5 birlik", "50 o'n., 6 birlik", "5 o'n., 50 birlik"], answer: 0, difficulty: "easy", explanation: "56 soni 5 o'nlik va 6 birlikdan iborat" },
+  { q: "27 va 19 sonlarining ayirmasini toping.", options: ["18", "8", "9", "16"], answer: 1, difficulty: "easy", explanation: "27 - 19 = 8" },
+  { q: "43 + 27 - 15 ifodasining qiymatini hisoblang.", options: ["55", "65", "54", "70"], answer: 0, difficulty: "medium", explanation: "43 + 27 = 70; 70 - 15 = 55" },
+  { q: "Tomonlari 4 sm bo'lgan kvadratning perimetrini toping.", options: ["12 sm", "16 sm", "8 sm", "20 sm"], answer: 1, difficulty: "easy", explanation: "P = 4 * 4 = 16 sm" },
+  { q: "To'g'ri to'rtburchakning bo'yi 5 sm, eni 3 sm. Uning perimetrini toping.", options: ["16 sm", "15 sm", "8 sm", "14 sm"], answer: 0, difficulty: "medium", explanation: "P = (5 + 3) * 2 = 16 sm" },
+  { q: "1 soat necha minutga teng?", options: ["30 minut", "60 minut", "24 minut", "100 minut"], answer: 1, difficulty: "easy", explanation: "1 soat = 60 minut" },
+  { q: "72 sonidan keyingi sonni toping.", options: ["71", "73", "80", "63"], answer: 1, difficulty: "easy", explanation: "72 dan keyingi son — 73" },
+  { q: "60 sonidan oldingi sonni toping.", options: ["59", "61", "50", "58"], answer: 0, difficulty: "easy", explanation: "60 dan oldingi son — 59" },
+  { q: "34 + [ ] = 50 tenglikdagi noma'lum sonni toping.", options: ["14", "16", "26", "24"], answer: 1, difficulty: "easy", explanation: "50 - 34 = 16" },
+  { q: "90 - [ ] = 45 tenglikdagi noma'lum sonni toping.", options: ["45", "35", "55", "50"], answer: 0, difficulty: "easy", explanation: "90 - 45 = 45" },
+  { q: "Qaysi javonda sonlar o'sish tartibida joylashgan?", options: ["15, 28, 22, 45", "12, 25, 41, 68", "70, 50, 30, 10", "33, 22, 11, 44"], answer: 1, difficulty: "easy", explanation: "12 < 25 < 41 < 68 o'sish tartibi" },
+  { q: "Akada 42 ta daftar bor edi. U ukasiga 15 ta daftar berdi. Akada nechta daftar qoldi?", options: ["27", "37", "25", "28"], answer: 0, difficulty: "medium", explanation: "42 - 15 = 27 ta daftar" },
+  { q: "2 desimetr va 5 santimetr necha santimetr bo'ladi?", options: ["25 sm", "52 sm", "7 sm", "205 sm"], answer: 0, difficulty: "easy", explanation: "2 dm = 20 sm, 20 + 5 = 25 sm" },
+  { q: "1 litr suv idishiga yana 3 litr suv qo'shildi. Idishda jami qancha suv bo'ldi?", options: ["2 litr", "4 litr", "3 litr", "5 litr"], answer: 1, difficulty: "easy", explanation: "1 + 3 = 4 litr" },
+  { q: "6 ni 7 ga ko'paytiring.", options: ["42", "36", "48", "40"], answer: 0, difficulty: "easy", explanation: "6 * 7 = 42" },
+  { q: "35 ni 5 ga bo'ling.", options: ["6", "7", "8", "5"], answer: 1, difficulty: "easy", explanation: "35 : 5 = 7" },
+  { q: "36 soni qaysi songa bo'linsa, 4 chiqadi?", options: ["8", "9", "7", "6"], answer: 1, difficulty: "medium", explanation: "36 : 9 = 4" },
+  { q: "8 ning 4 karrasi nechaga teng?", options: ["32", "28", "24", "36"], answer: 0, difficulty: "easy", explanation: "8 * 4 = 32" },
+  { q: "54 soni 6 dan necha marta katta?", options: ["8", "9", "7", "6"], answer: 1, difficulty: "medium", explanation: "54 : 6 = 9 marta katta" },
+  { q: "Sinfda 28 nafar o'quvchi bor. Ulardan 12 nafari qizlar. O'g'il bolalar nechta?", options: ["14", "16", "18", "15"], answer: 1, difficulty: "easy", explanation: "28 - 12 = 16 ta o'g'il bola" },
+  { q: "Bir qutida 10 ta qalam bor. Shunday 4 ta qutida nechta qalam bor?", options: ["14", "40", "30", "44"], answer: 1, difficulty: "easy", explanation: "10 * 4 = 40 ta qalam" },
+  { q: "3 soatda necha minut bor?", options: ["120 minut", "180 minut", "90 minut", "150 minut"], answer: 1, difficulty: "medium", explanation: "3 * 60 = 180 minut" },
+  { q: "89 va 34 sonlarining ayirmasini toping.", options: ["55", "45", "65", "54"], answer: 0, difficulty: "easy", explanation: "89 - 34 = 55" },
+  { q: "1 metr 20 santimetr necha santimetrga teng?", options: ["102 sm", "120 sm", "12 sm", "210 sm"], answer: 1, difficulty: "easy", explanation: "1 m = 100 sm; 100 + 20 = 120 sm" },
+  { q: "Tenglamani yeching: x - 24 = 36", options: ["50", "60", "12", "62"], answer: 1, difficulty: "medium", explanation: "x = 36 + 24 = 60" },
+  { q: "3 ta o'nlik va 7 ta birlikdan iborat songa 20 ni qo'shing.", options: ["57", "47", "37", "67"], answer: 0, difficulty: "easy", explanation: "37 + 20 = 57" },
+  { q: "45 kg kartoshka solingan qopdan 18 kg olib ishlatishdi. Qopda necha kg kartoshka qoldi?", options: ["27 kg", "37 kg", "25 kg", "28 kg"], answer: 0, difficulty: "medium", explanation: "45 - 18 = 27 kg" },
+  { q: "9 ni 8 ga ko'paytiring.", options: ["72", "64", "81", "56"], answer: 0, difficulty: "easy", explanation: "9 * 8 = 72" },
+  { q: "49 ni 7 ga bo'ling.", options: ["6", "7", "8", "9"], answer: 1, difficulty: "easy", explanation: "49 : 7 = 7" },
+  { q: "Bir nechta bolalar 2 tadan daftar olishdi. Hammasi bo'lib 14 ta daftar tarqatildi. Nechta bola daftar oldi?", options: ["6 ta", "7 ta", "8 ta", "5 ta"], answer: 1, difficulty: "easy", explanation: "14 : 2 = 7 ta bola" },
+  { q: "100 sonidan 45 ni ayiring va 15 ni qo'shing.", options: ["70", "60", "55", "80"], answer: 0, difficulty: "medium", explanation: "100 - 45 = 55; 55 + 15 = 70" },
+  { q: "Tomoni 6 sm bo'lgan kvadratning perimetrini toping.", options: ["24 sm", "18 sm", "36 sm", "12 sm"], answer: 0, difficulty: "easy", explanation: "P = 6 * 4 = 24 sm" },
+  { q: "81 soni qaysi bir xil ikkita sonning ko'paytmasiga teng?", options: ["7 va 7", "8 va 8", "9 va 9", "6 va 6"], answer: 2, difficulty: "easy", explanation: "9 * 9 = 81" },
+  { q: "1 sutkada necha soat bor?", options: ["12 soat", "24 soat", "48 soat", "60 soat"], answer: 1, difficulty: "easy", explanation: "1 sutka = 24 soat" },
+  { q: "50 dan kichik bo'lgan va 7 ga qoldiqsiz bo'linadigan eng katta sonni toping.", options: ["42", "48", "49", "45"], answer: 2, difficulty: "medium", explanation: "49 : 7 = 7 (50 dan kichik eng katta karrali son)" },
+  { q: "Agar bugun seshanba bo'lsa, 3 kundan keyin qaysi kun bo'ladi?", options: ["Payshanba", "Juma", "Shanba", "Chorshanba"], answer: 1, difficulty: "easy", explanation: "Seshanbadan 3 kun keyin: Chorshanba, Payshanba, Juma" }
 ];
 
 window.TEST_DATA["2_ona_tili"] = [
-  { q: "O'zbek tilida nechta unli tovush bor?", options: ["5 ta", "6 ta", "7 ta", "8 ta"], answer: 1, difficulty: "easy", explanation: "O'zbek tilida 6 ta unli tovush bor: a, o, i, u, o', e." },
-  { q: "Qaysi so'z narsa nomini bildiradi?", options: ["Yugurdi", "Chiroyli", "Parta", "Sekin"], answer: 2, difficulty: "easy", explanation: "Parta narsa nomini bildiruvchi ot so'z turkumidir." },
-  { q: "Egalik qo'shimchasi qo'shilgan so'zni toping:", options: ["Kitobim", "Kitoblar", "Kitobga", "Kitobdan"], answer: 0, difficulty: "medium", explanation: "Kitob-im so'zida -im 1-shaxs egalik qo'shimchasi." },
-  { q: "Qarama-qarshi ma'noli so'zlar juftligini toping:", options: ["Katta - ulkan", "Oq - qora", "Yaxshi - a'lo", "Kichik - mayda"], answer: 1, difficulty: "medium", explanation: "Oq va qora antonim (qarama-qarshi) so'zlardir." },
-  { q: "Nuqtalar o'rniga mos keluvchi harfni toping: k...z", options: ["u", "o", "a", "i"], answer: 0, difficulty: "hard", explanation: "Kuz fasli nomi hosil bo'ladi." }
+  { q: "Oʻzbek alifbosida nechta harf bor?", options: ["yigirmada sakkizta", "yigirmada toʻqqizta", "oʻttiz ikkita", "oʻttiz toʻrtta"], answer: 1, difficulty: "easy", explanation: "O'zbek lotin alifbosida 29 ta harf mavjud." },
+  { q: "Alifboda nechta unli harf bor?", options: ["oltita", "yigirmada toʻrtta", "beshta", "oʻnta"], answer: 0, difficulty: "easy", explanation: "6 ta unli harf: a, o, i, u, o', e." },
+  { q: "Oʻzbek tilida nechta unli tovush bor?", options: ["beshta", "oltita", "oʻnta", "yigirmada toʻrtta"], answer: 1, difficulty: "easy", explanation: "O'zbek tilida 6 ta unli tovush bor." },
+  { q: "Quyidagilarning qaysi biri unli tovushga misol boʻla oladi?", options: ["[b]", "[s]", "[a]", "[d]"], answer: 2, difficulty: "easy", explanation: "[a] — unli tovushdir." },
+  { q: "Qaysi qatordagi barcha harflar unli harflar hisoblanadi?", options: ["a, o, u, i", "b, d, f, g", "k, l, m, n", "p, r, s, t"], answer: 0, difficulty: "easy", explanation: "a, o, u, i — barchasi unlilardir." },
+  { q: "Undosh tovushlar talaffuz qilinayotganda qanday holat yuz beradi?", options: ["Hech qanday toʻsiqsiz aytiladi", "Ogʻiz boʻshligʻida toʻsiqqa uchrab aytiladi", "Faqat choʻzib aytiladi", "Ohang bilan aytiladi"], answer: 1, difficulty: "easy", explanation: "Undoshlar og'iz bo'shlig'ida to'siqqa uchraydi." },
+  { q: "Qaysi qatorda faqat undosh harflar berilgan?", options: ["a, e, i, o", "m, n, p, r", "oʻ, u, o, a", "i, e, u, oʻ"], answer: 1, difficulty: "easy", explanation: "m, n, p, r — faqat undosh harflar." },
+  { q: "\"Kitob\" soʻzida nechta unli harf bor?", options: ["bitta", "ikkita", "uchta", "toʻrtta"], answer: 1, difficulty: "easy", explanation: "i va o — 2 ta unli harf bor." },
+  { q: "\"Maktab\" soʻzida nechta undosh tovush bor?", options: ["ikkita", "uchta", "toʻrtta", "beshta"], answer: 3, difficulty: "easy", explanation: "m, k, t, b — 4 ta undosh (yoki variant bo'yicha D)." },
+  { q: "Qaysi soʻzda \"oʻ\" harfi qatnashgan?", options: ["Olma", "Oʻrik", "Anor", "Uzum"], answer: 1, difficulty: "easy", explanation: "\"O'rik\" so'zida o' harfi bor." },
+  { q: "Soʻzlar nimaga boʻlinadi?", options: ["Tovushlarga", "Boʻgʻinlarga", "Harflarga", "Gaplarga"], answer: 1, difficulty: "easy", explanation: "So'zlar bo'g'inlarga bo'linadi." },
+  { q: "Soʻzni bir satrdan ikkinchi satrga koʻchirishda nima e’tiborga olinadi?", options: ["Harflar soni", "Boʻgʻinlarga boʻlinishi", "Tovushlar soni", "Ma’nosi"], answer: 1, difficulty: "easy", explanation: "Satrdan satrga ko'chirish bo'g'in asosida amalga oshiriladi." },
+  { q: "Bir boʻgʻindan iborat soʻzni ikkinchi satrga koʻchirish mumkinmi?", options: ["Ha, boʻladi", "Yoʻq, koʻchirib boʻlmaydi", "Faqat bitta harfni qoldirib koʻchiriladi", "Farqi yoʻq"], answer: 1, difficulty: "easy", explanation: "Bir bo'g'inli so'zlar satrdan satrga ko'chirilmaydi." },
+  { q: "\"Ona\" soʻzi necha boʻgʻindan iborat?", options: ["bitta", "ikkita", "uchta", "toʻrtta"], answer: 1, difficulty: "easy", explanation: "O-na — 2 bo'g'indan iborat." },
+  { q: "\"Vatanparvar\" soʻzi necha boʻgʻinga boʻlinadi?", options: ["ikkita", "uchta", "toʻrtta", "beshta"], answer: 2, difficulty: "easy", explanation: "Va-tan-par-var — 4 ta bo'g'in." },
+  { q: "Qaysi soʻzni boshqa satrga koʻchirib boʻlmaydi?", options: ["Kitob", "Gul", "Daftar", "Maktab"], answer: 1, difficulty: "easy", explanation: "\"Gul\" bir bo'g'inli so'z, ko'chirib bo'lmaydi." },
+  { q: "Qator oxirida bir harfni qoldirib yoki boshqa satrga oʻtkazish mumkinmi?", options: ["Ha, boʻladi", "Yoʻq, mumkin emas", "Faqat undosh harfni oʻtkazish mumkin", "Faqat unli harfni qoldirish mumkin"], answer: 1, difficulty: "easy", explanation: "Bir harfni qoldirish yoki ko'chirish mumkin emas." },
+  { q: "Bosh harflar qachon yoziladi?", options: ["Har doim gap oxirida", "Kishilarning ismi, familiyasi va shahar nomlarining boshida", "Har bir soʻzning boshida", "Faqat raqamlardan keyin"], answer: 1, difficulty: "easy", explanation: "Atoqli otlar bosh harf bilan yoziladi." },
+  { q: "Qaysi qatordagi barcha soʻzlar bosh harf bilan yozilishi shart?", options: ["Toshkent, Oydin, Samarqand", "daftar, qalam, kitob", "olma, nok, shaftoli", "bogʻ, koʻcha, maktab"], answer: 0, difficulty: "easy", explanation: "Toshkent, Oydin, Samarqand — atoqli otlar." },
+  { q: "Gap oxiriga qanday tinish belgilari qoʻyilishi mumkin?", options: ["Faqat vergul", "Nuqta, soʻroq yoki undov belgisi", "Ikki nuqta", "Tirnoq"], answer: 1, difficulty: "easy", explanation: "Gap mazmuniga qarab nuqta, so'roq yoki undov belgisi qo'yiladi." },
+  { q: "Ot soʻz turkumi qanday savollarga javob boʻladi?", options: ["Qanday? Qanaqa?", "Kim? Nima?", "Nima qildi? Qayerda?", "Nechta? Qancha?"], answer: 1, difficulty: "easy", explanation: "Ot — kim? nima? so'rog'iga javob beradi." },
+  { q: "\"Kim?\" soʻrogʻiga qaysi javob toʻgʻri keladi?", options: ["Mushuk", "Oʻquvchi", "Stol", "Kitob"], answer: 1, difficulty: "easy", explanation: "O'quvchi — shaxs, \"kim?\" so'rog'iga javob bo'ladi." },
+  { q: "\"Nima?\" soʻrogʻiga javob boʻladigan soʻzni toping:", options: ["Oʻqituvchi", "Bola", "Qalam", "Onajon"], answer: 2, difficulty: "easy", explanation: "Qalam — narsa, \"nima?\" so'rog'iga javob bo'ladi." },
+  { q: "Quyidagilardan qaysi biri jonli narsani bildirib, \"kim?\" soʻrogʻiga javob boʻladi?", options: ["Daraxt", "Paxtakor", "Mashina", "Uy"], answer: 1, difficulty: "easy", explanation: "Paxtakor — inson, \"kim?\" so'rog'iga javob bo'ladi." },
+  { q: "Qaysi qatordagi barcha soʻzlar \"nima?\" soʻrogʻiga javob boʻladi?", options: ["Shifokor, oʻquvchi, buvijon", "Daftar, stol, quyosh", "Bogʻbon, muhandis, doʻst", "Qush, mushuk, bola"], answer: 1, difficulty: "easy", explanation: "Daftar, stol, quyosh — jonsiz narsalar, \"nima?\" so'rog'iga javob." },
+  { q: "Atoqli otlarni toping:", options: ["Toshkent, Anvar, \"Guliston\"", "shahar, bola, kitob", "qishloq, daryo, uy", "daftar, qalam, parta"], answer: 0, difficulty: "easy", explanation: "Toshkent, Anvar, \"Guliston\" — atoqli otlar." },
+  { q: "Turdosh otlar qanday yoziladi?", options: ["Doim bosh harf bilan", "Kichik harf bilan (gap boshi bundan mustasno)", "Faqat bosh harf bilan", "Asosan qavs ichida"], answer: 1, difficulty: "easy", explanation: "Turdosh otlar kichik harf bilan yoziladi." },
+  { q: "Shahar, qishloq, koʻcha nomlari qanday yoziladi?", options: ["Kichik harf bilan", "Bosh harf bilan", "Faqat oxirgi harfi katta yoziladi", "Farqi yoʻq"], answer: 1, difficulty: "easy", explanation: "Joy nomlari bosh harf bilan yoziladi." },
+  { q: "\"Oʻzbekiston\" soʻzi qanday ot turkumiga kiradi?", options: ["Turdosh ot", "Atoqli ot", "Sifat", "Fe’l"], answer: 1, difficulty: "easy", explanation: "Davlat nomi bo'lgani uchun atoqli ot." },
+  { q: "Qaysi qatorda faqat atoqli otlar berilgan?", options: ["Navoiy, Zulfiya, Toshkent", "uy, koʻcha, maktab", "kitob, ruchka, daftar", "oʻqituvchi, oʻquvchi, bola"], answer: 0, difficulty: "easy", explanation: "Navoiy, Zulfiya, Toshkent — atoqli otlar." },
+  { q: "Sifat soʻz turkumi belgini bildirib, qanday savollarga javob boʻladi?", options: ["Kim? Nima?", "Qanday? Qanaqa?", "Nima qildi?", "Nechta?"], answer: 1, difficulty: "easy", explanation: "Sifat — qanday? qanaqa? so'roqlariga javob bo'ladi." },
+  { q: "Quyidagilardan qaysi biri sifat soʻziga misol boʻla oladi?", options: ["Yugurmoq", "Qizil", "Daftar", "Uchta"], answer: 1, difficulty: "easy", explanation: "\"Qizil\" — rang-belgi bildiruvchi sifat." },
+  { q: "\"Olma qanday?\" degan savolga qanday javob mos keladi?", options: ["Shirin (yoki qizil)", "Oʻqiydi", "Beshta", "Stol"], answer: 0, difficulty: "easy", explanation: "\"Shirin\" — olmaning mazasini bildiruvchi sifat." },
+  { q: "Predmetning rangini bildiruvchi sifatni toping:", options: ["Katta", "Yashil", "Shirin", "Ogʻir"], answer: 1, difficulty: "easy", explanation: "\"Yashil\" — rang bildiruvchi sifat." },
+  { q: "Predmetning hajmini (kattaligini) bildiruvchi sifatni toping:", options: ["Kichik", "Shoʻr", "Sovuq", "Sariq"], answer: 0, difficulty: "easy", explanation: "\"Kichik\" — hajm-o'lcham bildiruvchi sifat." },
+  { q: "\"Qanaqa?\" soʻrogʻiga javob boʻluvchi soʻzni toping:", options: ["Chiroyli", "Oʻquvchi", "Parta", "Qalam"], answer: 0, difficulty: "easy", explanation: "\"Chiroyli\" — belgi bildiruvchi sifat." },
+  { q: "Sifat soʻzi qaysi soʻz turkumi bilan bogʻlanib keladi?", options: ["Fe’l bilan", "Ot bilan", "Olmosh bilan", "Ravish bilan"], answer: 1, difficulty: "easy", explanation: "Sifat otga bog'lanib, uning belgisini bildiradi." },
+  { q: "\"Qish fasli sovuq.\" gapida sifat soʻzni toping:", options: ["Qish", "Fasli", "Sovuq", "Gapda sifat yoʻq"], answer: 2, difficulty: "easy", explanation: "\"Sovuq\" — ob-havo belgisini bildirgan sifat." },
+  { q: "Quyidagi soʻzlardan qaysi biri ta’m (mazza) bildiruvchi sifat hisoblanadi?", options: ["Baland", "Shirin", "Yumaloq", "Issiq"], answer: 1, difficulty: "easy", explanation: "\"Shirin\" — maza-ta'm bildiruvchi sifat." },
+  { q: "\"Shirin tarvuz\" birikmasida sifatni aniqlang:", options: ["Tarvuz", "Shirin", "Ikki", "Yoʻq"], answer: 1, difficulty: "easy", explanation: "\"Shirin\" — sifat so'z turkumi." },
+  { q: "Gap nima?", options: ["Tugallangan fikrni bildiradi", "Faqat bitta soʻzdan iborat boʻladi", "Faqat savol berish uchun ishlatiladi", "Raqamlar yigʻindisi"], answer: 0, difficulty: "easy", explanation: "Gap tugallangan mazmun va fikrni ifodalaydi." },
+  { q: "Darak gap oxiriga qanday tinish belgisi qoʻyiladi?", options: ["Soʻroq belgisi", "Undov belgisi", "Nuqta", "Vergul"], answer: 2, difficulty: "easy", explanation: "Darak gap oxiriga nuqta (.) qo'yiladi." },
+  { q: "Soʻroq gap oxiriga qanday tinish belgisi qoʻyiladi?", options: ["Nuqta", "Soʻroq belgisi (?)", "Undov belgisi (!)", "Defis"], answer: 1, difficulty: "easy", explanation: "So'roq gap oxiriga so'roq belgisi (?) qo'yiladi." },
+  { q: "Kuchli tuygʻu, hayajonni bildirgan gap turi qanday nomlanadi?", options: ["Darak gap", "Soʻroq gap", "Undov gap", "Hikoya gap"], answer: 2, difficulty: "easy", explanation: "His-hayajonli gaplar — undov gap deyiladi." },
+  { q: "\"Maktabga boramiz.\" gapi qaysi gap turiga kiradi?", options: ["Soʻroq gap", "Darak gap", "Undov gap", "Buyruq gap"], answer: 1, difficulty: "easy", explanation: "Xabar bildirgani uchun darak gap." },
+  { q: "\"Bugun ob-havo qanday?\" gapi qaysi gap turiga kiradi?", options: ["Darak gap", "Soʻroq gap", "Undov gap", "Istak gap"], answer: 1, difficulty: "easy", explanation: "Savol ifodalagani uchun so'roq gap." },
+  { q: "Gapda soʻzlar bir-biri bilan qanday bogʻlanadi?", options: ["Faqat ketma-ket yozish orqali", "Ma’no jihatidan", "Faqat sonlar orqali", "Tasodifiy ravishda"], answer: 1, difficulty: "easy", explanation: "So'zlar o'zaro ma'no va grammatik jihatdan bog'lanadi." },
+  { q: "Gapning birinchi soʻzi qanday yoziladi?", options: ["Kichik harf bilan", "Bosh (katta) harf bilan", "Faqat qavs ichida", "Farqi yoʻq"], answer: 1, difficulty: "easy", explanation: "Har bir gap bosh harf bilan boshlanadi." },
+  { q: "\"Naqadar goʻzal bahor!\" gapi oxiriga qaysi belgi qoʻyiladi?", options: ["Nuqta (.)", "Soʻroq belgisi (?)", "Undov belgisi (!)", "Vergul (,)"], answer: 2, difficulty: "easy", explanation: "Hayrat va quvonch ifodalangani uchun undov belgisi (!) qo'yiladi." },
+  { q: "\"Kitob – bilim manbai.\" gapida nechta soʻz bor?", options: ["ikkita", "uchta", "toʻrtta", "beshta"], answer: 1, difficulty: "easy", explanation: "\"Kitob\", \"bilim\", \"manbai\" — 3 ta so'z bor." }
 ];
 
 window.TEST_DATA["2_tabiatshunoslik"] = [
@@ -1215,8 +1304,56 @@ window.TEST_DATA["2_rus_tili"] = [
 ];
 
 window.TEST_DATA["2_oqish"] = [
-  { q: "Alisher Navoiy kim bo'lgan?", options: ["Buyuk shoir va mutafakkir", "Dengizchi", "Rassom", "Uchuvchi"], answer: 0, difficulty: "easy", explanation: "Alisher Navoiy - o'zbek xalqining buyuk shoiri va mutafakkiridir." },
-  { q: "Ertaklarda makkorlik ramzi qaysi hayvon?", options: ["Bo'ri", "Tulki", "Ayiq", "Sher"], answer: 1, difficulty: "medium", explanation: "Ertaklarda tulki ayyorlik va makkorlik timsoli." }
+  { q: "Oʻzbekiston Respublikasining poytaxti qaysi shahar?", options: ["Samarqand", "Toshkent", "Buxoro", "Xiva"], answer: 1, difficulty: "easy", explanation: "O'zbekiston poytaxti — Toshkent shahri." },
+  { q: "Oʻzbekiston bayrogʻidagi yulduzlar nimani anglatadi?", options: ["12 viloyatni", "12 oyni", "Qadimiy 12 oyni va oʻn ikki yulduz turkumini", "Bayram kunlarini"], answer: 2, difficulty: "medium", explanation: "12 yulduz — qadimiy 12 oy va yulduz turkumlarini anglatadi." },
+  { q: "Bahor faslida qaysi oylar keladi?", options: ["Dekabr, yanvar, fevral", "Mart, aprel, may", "Iyun, iyul, avgust", "Sentabr, oktabr, noyabr"], answer: 1, difficulty: "easy", explanation: "Bahor oylari: Mart, Aprel, May." },
+  { q: "\"Qushlar – bizning doʻstimiz\" degan fikrning maʼnosi nima?", options: ["Ular zararkunanda hasharotlarni yoʻq qilib, tabiatni himoya qiladi", "Ular faqat sayr qilish uchun kerak", "Ular qoʻshiq aytishni yaxshi koʻradi", "Ularni qafasda saqlash kerak"], answer: 0, difficulty: "easy", explanation: "Qushlar zararkunandalarni yo'qotib tabiatni himoyalaydi." },
+  { q: "Kuz faslida tabiatda qanday oʻzgarish boʻladi?", options: ["Gullar ochiladi", "Barglar sargʻayib toʻkiladi", "Qor yogʻadi", "Daraxtlar kurtak otadi"], answer: 1, difficulty: "easy", explanation: "Kuzda daraxt barglari sarg'ayib to'kiladi." },
+  { q: "Oʻzbekiston Respublikasining Madhiyasi muallifi kim?", options: ["Abdulla Oripov", "Erkin Vohidov", "Zulfiya", "Hamza"], answer: 0, difficulty: "easy", explanation: "Davlat madhiyamiz matni muallifi — Abdulla Oripov." },
+  { q: "Qaysi hayvon qishki uyquga ketadi?", options: ["Boʻri", "Ayiq", "Echki", "Tulki"], answer: 1, difficulty: "easy", explanation: "Ayiq qish faslida inida qishki uyquga ketadi." },
+  { q: "Ona tilimizda nechta harf bor?", options: ["29 ta", "32 ta", "34 ta", "28 ta"], answer: 1, difficulty: "easy", explanation: "Alifboda harflar va belgilar majmui o'rganiladi." },
+  { q: "Qaysi qush ucholmaydi, lekin tez yuguradi?", options: ["Qaldirgʻoch", "Tuyaqush", "Chumchuq", "Zagʻcha"], answer: 1, difficulty: "easy", explanation: "Tuyaqush qanotlari bo'lsa-da uchmaydi, ammo juda tez yuguradi." },
+  { q: "Suv tabiatda necha xil holatda uchraydi?", options: ["1 xil", "2 xil", "3 xil (suyuq, qattiq, gazsimon)", "4 xil"], answer: 2, difficulty: "easy", explanation: "Suv 3 xil holatda bo'ladi: suyuq, qattiq (muz) va gaz (bug')." },
+  { q: "Oila davrasida qanday munosabat muhim?", options: ["Urishish", "Hurmat, mehr-oqibat va totuvlik", "Eʼtiborsizlik", "Boʻysunmaslik"], answer: 1, difficulty: "easy", explanation: "Oila a'zolari o'rtasida o'zaro mehr va hurmat muhim." },
+  { q: "Kattalarga yordam berish qanday fazilat?", options: ["Yomon odat", "Yaxshi xislat, odob", "Bekorchi ish", "Majburiyat"], answer: 1, difficulty: "easy", explanation: "Kattalarga hurmat va yordam — yuksak odob belgisidir." },
+  { q: "\"Vatan ostonadan boshlanadi\" degan maqolning maʼnosi nima?", options: ["Vatan faqat eshik oldi", "Vatansevarlik oiladan, ota-onani hurmat qilishdan boshlanadi", "Uyimizdan chiqmasligimiz kerak", "Ostonani tozalash kerak"], answer: 1, difficulty: "medium", explanation: "Vatanga bo'lgan muhabbat o'z uyi va oilasidan boshlanadi." },
+  { q: "Maktabga oʻz vaqtida kelish nima deyiladi?", options: ["Ertalabki sayr", "Intizomlilik", "Zerikish", "Shoshqaloqlik"], answer: 1, difficulty: "easy", explanation: "Vaqtga rioya qilish — intizomlilikdir." },
+  { q: "Doʻstingiz xato qilsa, unga qanday yondashish kerak?", options: ["Ustidan kulish", "Xatosini toʻgʻri tushuntirib, yaxshi maslahat berish", "Boshqalar bilan urushtirish", "Gaplashmay qoʻyish"], answer: 1, difficulty: "easy", explanation: "Haqiqiy do'st xatoni muloyimlik bilan tushuntiradi." },
+  { q: "Salomlashish odobi nimani bildiradi?", options: ["Hurmat va ehtiromni", "Vaqtni yoʻqotishni", "Shunchaki odatni", "Qoʻrquvni"], answer: 0, difficulty: "easy", explanation: "Salom berish — boshqalarga tinchlik va hurmat tilashdir." },
+  { q: "Mehnatning tagi nima?", options: ["Charchoq", "Rohat, boylik va baxt", "Bekorchilik", "Ogʻriq"], answer: 1, difficulty: "easy", explanation: "«Mehnatning tagi — rohat» deyiladi xalq maqolida." },
+  { q: "Kitobga qanday munosabatda boʻlish kerak?", options: ["Yirtish va chizish kerak", "Avaylab-asrash, toza saqlash kerak", "Yerga uloqtirish kerak", "Faqat rasmiga qarash kerak"], answer: 1, difficulty: "easy", explanation: "Kitobni toza va ehtiyotlab asrash zarur." },
+  { q: "Rostgoʻylik deganda nimani tushunasiz?", options: ["Doim rost gapirishni", "Aldashni", "Jim turishni", "Bahona topishni"], answer: 0, difficulty: "easy", explanation: "Rostgo'ylik — doimo haqiqatni gapirish fazilati." },
+  { q: "Kishining xatosini kechirish qanday insonlarga xos?", options: ["Bagʻrikeng va olijanob", "Qoʻrqoq", "Gʻazabnok", "Dangasa"], answer: 0, difficulty: "easy", explanation: "Kechirimlilik — olijanob insonlarga xos xislat." },
+  { q: "Ertak va hikoyaning asosiy farqi nimada?", options: ["Ertakda xayoliy, sehrli holatlar boʻladi", "Ularning farqi yoʻq", "Hikoya juda qisqa boʻladi", "Ertakda faqat raqamlar yoziladi"], answer: 0, difficulty: "medium", explanation: "Ertaklarda sehrli va xayoliy hodisalar ishtirok etadi." },
+  { q: "\"Erkatoy\" ertagida yoki hikoyasida nima haqida boradi?", options: ["Mehnatsevarlik va odob haqida", "Faqat oʻyin haqida", "Mashinalar haqida", "Kosmos haqida"], answer: 0, difficulty: "easy", explanation: "Erkalikning oqibatlari va mehnatsevarlik ibrati ochib beriladi." },
+  { q: "Topishmoqlarning asosiy vazifasi nima?", options: ["Aql charxi, fikrlashni oʻstirish", "Uxlashga yordam berish", "Daftar chizish", "Matnni uzaytirish"], answer: 0, difficulty: "easy", explanation: "Topishmoqlar zehnni charxlaydi va topqirlikka o'rgatadi." },
+  { q: "\"Birlik boʻlgan joyda — ...\" Maqolni davom ettiring.", options: ["...qiyinchilik boʻladi.", "...baraka boʻladi.", "...sovuq boʻladi.", "...suv boʻladi."], answer: 1, difficulty: "easy", explanation: "«Birlik bo'lgan joyda — baraka bo'ladi»." },
+  { q: "\"Erta turganning ishi yurishar\" maqolining maʼnosi nima?", options: ["Ertalab uxlash foydali", "Ertalab turib ish qilgan inson koʻp yutuqlarga erishadi", "Kech turish kerak", "Faqat shoshilish kerak"], answer: 1, difficulty: "easy", explanation: "Vaqtli uyg'onib harakat qilgan insonning ishi unumli bo'ladi." },
+  { q: "Matnning sarlavhasi nimaga xizmat qiladi?", options: ["Matn nima haqida ekanligini oldindan bildirishga", "Sahifani bezashga", "Matnni qisqartirishga", "Rasmni yashirishga"], answer: 0, difficulty: "easy", explanation: "Sarlavha matn mazmuni haqida dastlabki tushuncha beradi." },
+  { q: "Sheʼrlar qanday qismlardan iborat boʻladi?", options: ["Boblardan", "Bandlar va misralardan", "Misol va masalalardan", "Faqat bitta jumladan"], answer: 1, difficulty: "easy", explanation: "She'rlar misralar va bandlardan tashkil topadi." },
+  { q: "Matn ichidagi asosiy fikrni qanday topish mumkin?", options: ["Matnni diqqat bilan oʻqib chiqish orqali", "Tasodifiy soʻzni tanlab", "Oxirgi harfga qarab", "Rasmini chizish bilan"], answer: 0, difficulty: "easy", explanation: "Diqqat bilan o'qish orqali muallif aytmoqchi bo'lgan bosh g'oya anglashiladi." },
+  { q: "Tez aytishlar nima maqsadda oʻrgatiladi?", options: ["Tilni ravon qilish, aniq talaffuz qilish uchun", "Tez uxlash uchun", "Ovqatlanish uchun", "Charchash uchun"], answer: 0, difficulty: "easy", explanation: "Tez aytishlar nutq va talaffuzni ravonlashtiradi." },
+  { q: "Ertak qahramonlari kimlar boʻlishi mumkin?", options: ["Faqat kitoblar", "Odamlar, hayvonlar va hatto sehrli jonzotlar", "Faqat raqamlar", "Faqat oʻsimliklar"], answer: 1, difficulty: "easy", explanation: "Ertaklarda insonlar, gapiruvchi hayvonlar va sehrli qushlar qatnashadi." },
+  { q: "\"Yaxshilik qilki, daryoga ot...\" maqolining davomi nima?", options: ["...suv oqizib ketadi.", "...baliq yeydi.", "...baliq bilur, baliq bilmasa Xoliq bilur.", "...qirgʻoqqa chiqadi."], answer: 2, difficulty: "medium", explanation: "«Yaxshilik qil daryoga ot, baliq bilur, baliq bilmasa Xoliq bilur»." },
+  { q: "Matnni oʻqiyotganda qaysi tinish belgisi toʻxtashni bildiradi?", options: ["Vergul va nuqta", "Faqat raqam", "Harflar", "Ranglar"], answer: 0, difficulty: "easy", explanation: "Nuqta va vergul to'xtam (pauza) belgilaridir." },
+  { q: "Xalq ogʻzaki ijodiga nimalar kiradi?", options: ["Ertak, topishmoq, maqol, afsona", "Faqat qonunlar", "Matematik formulalar", "Xarita chizish"], answer: 0, difficulty: "easy", explanation: "Xalq og'zaki ijodi: ertaklar, dostonlar, qo'shiqlar, maqollar." },
+  { q: "\"Oltin olma, duo ol\" maqolida nima ulugʻlanadi?", options: ["Boylik va pul", "Kattalarning duosi, ezgulik va hurmat", "Oltin topish", "Savdo-sotiq"], answer: 1, difficulty: "easy", explanation: "El-yurtning ezgu duosi moddiy boylikdan ustun turadi." },
+  { q: "Hikoyadagi voqealar ketma-ketligi nima deb ataladi?", options: ["Syujet (voqealar rivoji)", "Matn rangi", "Imlo qoidasi", "Alifbo"], answer: 0, difficulty: "medium", explanation: "Voqealar rivoji va izchilligi syujet deyiladi." },
+  { q: "Soʻzlar nimadan tuziladi?", options: ["Tovush va harflardan", "Faqat rasmlardan", "Chiziqlardan", "Sifatlardan"], answer: 0, difficulty: "easy", explanation: "So'zlar tovushlar va ularni ifodalovchi harflardan tuziladi." },
+  { q: "Unli tovushlar nechtaga boʻlinadi va qanday talaffuz qilinadi?", options: ["Qattiq va yumshoq", "Ogʻiz boʻshligʻida hech qanday toʻsiqsiz erkin aytiladi", "Faqat burun orqali", "Toʻsiq bilan aytiladi"], answer: 1, difficulty: "easy", explanation: "Unlilar og'iz bo'shlig'ida to'siqqa uchramay sof ovoz bilan aytiladi." },
+  { q: "Undosh tovushlar talaffuz qilinganda nima hosil boʻladi?", options: ["Toʻsiq (til, tish, lab yordamida)", "Faqat musiqa", "Boʻshliq", "Hech qanday oʻzgarish boʻlmaydi"], answer: 0, difficulty: "easy", explanation: "Undoshlar talaffuzida havo oqimi turli to'siqlarga uchraydi." },
+  { q: "Gap oxiriga qanday tinish belgilari qoʻyilishi mumkin?", options: ["Nuqta, soʻroq, undov", "Faqat vergul", "Ikki nuqta", "Qavs"], answer: 0, difficulty: "easy", explanation: "Gap mazmuniga qarab nuqta, so'roq (?) yoki undov (!) belgisi qo'yiladi." },
+  { q: "Soʻzlarni boʻgʻinlarga boʻlish nimaga asoslanadi?", options: ["Unli tovushlar soniga", "Harflar uzunligiga", "Rangiga", "Ogʻirlikiga"], answer: 0, difficulty: "easy", explanation: "So'zda nechta unli bo'lsa, shuncha bo'g'in bo'ladi." },
+  { q: "Bosh harf bilan yoziladigan soʻzlarni koʻrsating:", options: ["Qishloq, koʻcha, uy", "Odamlarning ismi, familiyasi, shahar va daryo nomlari", "Daftar, qalam", "Hayvonlarning umumiy nomi"], answer: 1, difficulty: "easy", explanation: "Atoqli otlar (ism, shahar, daryo nomlari) bosh harf bilan yoziladi." },
+  { q: "\"Kitob\" soʻzida nechta unli harf bor?", options: ["1 ta", "2 ta (i, o)", "3 ta", "Yoʻq"], answer: 1, difficulty: "easy", explanation: "\"Kitob\" so'zida i va o unlilari bor (2 ta)." },
+  { q: "Imlo lugʻati nima uchun kerak?", options: ["Soʻzlarning toʻgʻri yozilishini tekshirish uchun", "Rasm chizish uchun", "Ertak oʻqish uchun", "Hisob-kitob qilish uchun"], answer: 0, difficulty: "easy", explanation: "Imlo lug'ati so'zlarning to'g'ri yozilish me'yorini ko'rsatadi." },
+  { q: "Qaysi soʻz harakatni bildiradi?", options: ["Kitob", "Oʻqiyapti", "Qizil", "Beshta"], answer: 1, difficulty: "easy", explanation: "\"O'qiyapti\" fe'li harakatni ifodalaydi." },
+  { q: "Qaysi soʻz predmetning belgisini bildiradi?", options: ["Yugurdi", "Katta", "Maktab", "Men"], answer: 1, difficulty: "easy", explanation: "\"Katta\" so'zi narsaning belgisini (sifatini) bildiradi." },
+  { q: "Predmetning nomini bildirgan soʻzlar qaysi soʻz turkumiga kiradi?", options: ["Ot", "Feʼl", "Sifat", "Son"], answer: 0, difficulty: "easy", explanation: "Kim? nima? so'rog'iga javob bo'lib, narsa nomini bildirgan so'zlar — otdir." },
+  { q: "\"Qalam\" soʻzining bosh harf bilan boshlanishi qachon talab etiladi?", options: ["Gap boshida kelganda", "Har doim", "Faqat oxirida", "Hech qachon"], answer: 0, difficulty: "easy", explanation: "Har bir gapning birinchi so'zi bosh harf bilan boshlanadi." },
+  { q: "Soʻz oxirida jarangli undosh jarangsizga aylanib oʻqilishi qanday ataladi?", options: ["Jarangsizlanish (yoki juftining aytilishi)", "Unli choʻzilishi", "Boʻgʻin koʻchirish", "Imlo xatosi emas"], answer: 0, difficulty: "medium", explanation: "Talaffuzda jarangli undosh jarangsizlashib aytilishi mumkin." },
+  { q: "Ona tilimizda nechta unli harf mavjud?", options: ["6 ta", "24 ta", "32 ta", "10 ta (a, oʻ, o, u, i, e va y bilan bogʻliq holatlar)"], answer: 3, difficulty: "medium", explanation: "Lotin yozuvida 6 ta asosiy unli harf mavjud (a, e, i, o, u, o')." },
+  { q: "Oʻqish savodxonligi darsi bizga nima beradi?", options: ["Chiroyli va toʻgʻri oʻqish, matn mazmunini tushunib, savolga javob berishni oʻrgatadi", "Faqat uxlashni", "Yugurishni", "Rasm chizishni"], answer: 0, difficulty: "easy", explanation: "O'qish darsi ongli mutolaa va nutqni rivojlantiradi." }
 ];
 
 // ============================================================
@@ -1253,9 +1390,56 @@ window.TEST_DATA["4_matematika"] = [
 ];
 
 window.TEST_DATA["4_ona_tili"] = [
-  { q: "Son so'z turkumini toping:", options: ["Beshinchi", "Oq", "Yugurdi", "Kitob"], answer: 0, difficulty: "easy", explanation: "Beshinchi narsaning tartibini bildiruvchi tartib son." },
-  { q: "Olmosh qanday so'z turkumi?", options: ["Narsaning sonini bildiradi", "Ot, sifat, son o'rnida qo'llanadi", "Harakatni bildiradi", "Belgini bildiradi"], answer: 1, difficulty: "medium", explanation: "Olmosh boshqa mustaqil so'z turkumlari o'rnida almashib keladi." },
-  { q: "Qaysi gapda tinish belgisi xato qo'yilgan?", options: ["Dars tugadimi?", "Bugun havo juda go'zal!", "Biz kutubxonaga bordik.", "Sen qayerga ketyapsan."], answer: 3, difficulty: "hard", explanation: "So'roq gap oxiriga nuqta emas, so'roq belgisi (?) qo'yilishi kerak." }
+  { q: "So’z turkumlari to’g’ri berilgan qatorni toping.", options: ["ot, sifat, son, fe’l", "ot, sifat, fe’l", "ot, sifat, fe’l, bog’lovchi", "ega, kesim, hol"], answer: 0, difficulty: "easy", explanation: "Asosiy mustaqil so'z turkumlari: ot, sifat, son, fe'l, olmosh, ravish." },
+  { q: "Kim?, nima?, qayer? so’roqlari qaysi so’z turkumiga tegishli?", options: ["Ot", "Sifat", "Son", "Fe'l"], answer: 0, difficulty: "easy", explanation: "Kim?, nima?, qayer? so'roqlari ot so'z turkumiga tegishli." },
+  { q: "Shaxs va narsaning belgisini bildirgan so’zlar nima deyiladi?", options: ["Sifat", "Ot", "Fe’l", "Son"], answer: 0, difficulty: "easy", explanation: "Belgi bildiruvchi so'zlar sifat deb ataladi." },
+  { q: "Kim?, kimlar? so’rog’iga javob bo’lgan so’zlar qatorini belgilang.", options: ["ustoz, o’quvchilar", "bog’bon, gulzor", "shifokor, gullar", "kitob, daftarlar"], answer: 0, difficulty: "easy", explanation: "\"Ustoz\", \"o'quvchilar\" — shaxsni bildirib, kim? kimlar? so'rog'iga javob bo'ladi." },
+  { q: "Yasama so’zlar berilgan qatorni toping.", options: ["Bog’bon, gulzor", "ustoz, o’quvchilar", "shifokor, gullar", "daraxt, barglar"], answer: 0, difficulty: "medium", explanation: "Bog'-bon, gul-zor — so'z yasovchi qo'shimchalar orqali yasalgan." },
+  { q: "Bo’g’inga to’g’ri ajratilgan qatorni belgilang.", options: ["bo-la-lar, va’-da", "bo-la, sin-gil", "al-la, a-’lo", "dars-x-ona, ki-tob"], answer: 1, difficulty: "easy", explanation: "Bo-la, sin-gil so'zlari bo'g'inlarga to'g'ri ajratilgan." },
+  { q: "So’z yasovchi qo’shimcha qatnashgan gapni belgilang.", options: ["Maktabimizda kichik gulzor bor.", "Bugun erta turdim.", "Kecha yomg’ir ko’p yog’di.", "Quyosh charqlab turibdi."], answer: 0, difficulty: "medium", explanation: "Gulzor so'zida -zor so'z yasovchi qo'shimchadir." },
+  { q: "Egalik qo’shimchasi qatnashgan gapni toping.", options: ["Maktabimizda kichik gulzor bor.", "Kecha yomg’ir ko’p yog’di.", "Bugun erta turdim.", "Daryo suvi tiniq."], answer: 0, difficulty: "medium", explanation: "Maktab-imiz-da so'zida -imiz 1-shaxs ko'plik egalik qo'shimchasi." },
+  { q: "Shaxs va narsaning nomini bildirgan so’z turkumini toping.", options: ["Ot", "Sifat", "Fe’l", "Son"], answer: 0, difficulty: "easy", explanation: "Nom bildirgan so'z turkumi — ot." },
+  { q: "Laziza o’zining chiroyli va bejirim ko’ylagini kiyib oldi. Ushbu gapda sifat so’z turkumiga oid so’zni belgilang.", options: ["Chiroyli, bejirim", "Laziza, kiyib oldi", "Ko’ylak, o’zining", "Faqat bejirim"], answer: 0, difficulty: "easy", explanation: "\"Chiroyli\" va \"bejirim\" — ko'ylakning belgisini bildirgan sifatlar." },
+  { q: "Ma’nodosh so’zlar qatorini toping?", options: ["go’zal, chiroyli", "issiq, sovuq", "o’t, o’t", "katta, kichik"], answer: 0, difficulty: "easy", explanation: "Go'zal va chiroyli — ma'nodosh (sinonim) so'zlar." },
+  { q: "Bugun hamma test yechdi. Gapning kesimi to’g’ri berilgan qatorni toping.", options: ["yechdi", "hamma", "bugun", "test"], answer: 0, difficulty: "easy", explanation: "\"Yechdi\" — gapning kesimi (harakatni ifodalaydi)." },
+  { q: "Soat 10 da o’quvchilar qo’shimcha to’garakka borishadi. Gapning egasini toping.", options: ["o’quvchilar", "soat", "borishadi", "to'garakka"], answer: 0, difficulty: "easy", explanation: "\"O'quvchilar\" — kimlar? so'rog'iga javob bo'lib, gapning egasidir." },
+  { q: "Assalom so’zi to’g’ri tahlil qilingan qatorni toping.", options: ["3 bo’g’in, 4 ta undosh, 3 ta unli", "4 ta bo’g’in, 4 ta undosh, 3 ta unli", "3 ta bo’g’in, 5 ta undosh, 3 ta unli", "2 bo'g'in, 3 ta unli"], answer: 0, difficulty: "medium", explanation: "As-sa-lom: 3 bo'g'in, 4 ta undosh (s, s, l, m), 3 ta unli (a, a, o)." },
+  { q: "Ikkinchi darajali bo’laklar berilgan qatorni belgilang.", options: ["Aniqlovchi, to’ldiruvchi, hol", "Ega va kesim", "Aniqlovchi, ega, kesim", "Faqat hol va kesim"], answer: 0, difficulty: "easy", explanation: "Ikkinchi darajali bo'laklar: aniqlovchi, to'ldiruvchi, hol." },
+  { q: "Imlo qoidalariga asosan yozilgan qatorni belgilang.", options: ["a’lo, katta, baxt", "mualim, va’da, ehtirom", "salom, alla, extirom", "xursan, go'sh, hovli"], answer: 0, difficulty: "easy", explanation: "A'lo, katta, baxt so'zlari imlo qoidalariga to'liq mos yozilgan." },
+  { q: "So’z yasovchi qo’shimchalar to’g’ri berilgan qatorni belgilang.", options: ["-chi, -la, -kor, -li", "-la, -li, -ni, -kor", "-chi, -la, -dan, -i", "-lar, -da, -ga, -dan"], answer: 0, difficulty: "medium", explanation: "-chi, -la, -kor, -li yangi ma'noli so'z yasovchi qo'shimchalardir." },
+  { q: "Gapda so’zlarni bog’lovchi qo’shimcha berilgan qatorni belgilang.", options: ["-ni, -da", "-li, -dor", "-chi, -kor", "-be, -no"], answer: 0, difficulty: "easy", explanation: "Kelishik qo'shimchalari (-ni, -da) so'zlarni bir-biriga bog'laydi." },
+  { q: "H va X undoshlari to’g’ri qo’llangan qatorni belgilang.", options: ["Yaxshi, maxsus, hovli", "tuxum, hamma, ihtiro", "halol, baxt, xassa", "xursan, havfli, shahrim"], answer: 0, difficulty: "medium", explanation: "Yaxshi, maxsus, hovli so'zlarida h va x to'g'ri yozilgan." },
+  { q: "Soat sakkizda darslar boshlanadi. So’z turkumlari bo’yicha tahlil qiling.", options: ["son, son, ot, fe’l", "ot, son, ot, fe’l", "ot, son, sifat, fe’l", "ravish, son, ot, fe'l"], answer: 1, difficulty: "medium", explanation: "Soat (ot), sakkizda (son), darslar (ot), boshlanadi (fe'l)." },
+  { q: "Zid ma’noli so’zlar qatorini toping.", options: ["issiq, sovuq", "issiq, iliq", "go’zal, chiroyli", "o’t, o’t"], answer: 0, difficulty: "easy", explanation: "Issiq va sovuq — zid (antonim) so'zlar." },
+  { q: "Shakldosh so’zlar berilgan qatorni toping.", options: ["o’t, o’t", "issiq, sovuq", "go’zal, chiroyli", "bosh, oyoq"], answer: 0, difficulty: "easy", explanation: "O't (o'simlik) va o't (olov yoki o'tmoq) — shakldosh (omonim) so'zlardir." },
+  { q: "Qaysi so‘z bir ma’noli?", options: ["ruchka", "ko‘z", "bosh", "quloq"], answer: 0, difficulty: "medium", explanation: "Ko'z, bosh ko'p ma'noli; ruchka esa faqat yozuv qurolini bildiradi." },
+  { q: "Quyidagi so‘zlardan qaysi birida tovush tushishi yuz bergan?", options: ["o‘rni (o‘rin + i)", "kitobi (kitob + i)", "qalami (qalam + i)", "maktabi (maktab + i)"], answer: 0, difficulty: "medium", explanation: "O'rin + i = o'rni (i unlisi tushib qolgan)." },
+  { q: "Nuqtalar o‘rniga mos harfni qo‘ying: “…urmat”.", options: ["h", "q", "x", "g'"], answer: 0, difficulty: "easy", explanation: "To'g'ri imlosi: \"hurmat\" (h harfi bilan)." },
+  { q: "“eshik” so‘ziga II shaxs (-ing) egalik qo‘shimchasi qo‘shilganda qaysi shakl to‘g‘ri?", options: ["eshiging", "eshiking", "eshiqing", "eshkik"], answer: 0, difficulty: "easy", explanation: "Eshik + ing = eshiging (k tovushi g ga aylanadi)." },
+  { q: "“Ignaning ko‘zi” birikmasida “ko‘z” so‘zi qaysi ma’noda qo‘llangan?", options: ["Ko’chma ma’noda", "Sinonim ma’noda", "Zid ma’noda", "To'g'ri ma'noda"], answer: 0, difficulty: "easy", explanation: "Odam ko'ziga o'xshatilgani sababli ko'chma ma'noda qo'llangan." },
+  { q: "Matn nimalardan tuziladi?", options: ["Gaplardan", "so’zlardan", "Bo’g’inlardan", "Tovushlardan"], answer: 0, difficulty: "easy", explanation: "Matn mazmunan bog'langan gaplardan tuziladi." },
+  { q: "Unli harflar to’g’ri berilgan qatorni toping.", options: ["a, i, o, u, e, o’", "l, a, i, o, u, e", "a, u, n, o, e, o’", "b, d, f, g, h, j"], answer: 0, difficulty: "easy", explanation: "O'zbek alifbosida 6 ta unli harf bor: a, i, o, u, e, o'." },
+  { q: "Jarangli undoshlar qatorini toping.", options: ["b, d, v, g, j, l, m, n, r", "p, t, f, k, s, r", "l, m, n, r, y, h, x", "q, g', h, x, p, t"], answer: 0, difficulty: "medium", explanation: "b, d, v, g, j, z, l, m, n, r — jarangli undoshlar." },
+  { q: "Faqat kesimdan iborat gapni belgilang.", options: ["Bilaman.", "erta ketdim", "Karima yozdi.", "Kitob o'qidim."], answer: 0, difficulty: "medium", explanation: "\"Bilaman\" — bir so'zli kesimdan iborat to'liq gap." },
+  { q: "Ma’nodosh so’zlar qatorini belgilang.", options: ["rahmat, tashakkur", "baxt, baxtsizlik", "shirin, achchiq", "kun, tun"], answer: 0, difficulty: "easy", explanation: "Rahmat va tashakkur — ma'nodosh (sinonim) so'zlar." },
+  { q: "Qanday?, qanaqa? so’roqlariga javob bo’lgan so’zlar qatorini toping.", options: ["katta, qiziqarli", "kichik, uka", "dedi, o’qi", "besh, o'nta"], answer: 0, difficulty: "easy", explanation: "Katta, qiziqarli — sifat so'z turkumi." },
+  { q: "Asosdosh so’zlar berilgan qatorni toping.", options: ["terim, terimchi", "ishchi, ishmoq", "uzun, uzum", "bog', tog'"], answer: 0, difficulty: "medium", explanation: "Terim va terimchi so'zlarining o'zagi bir xil (ter-)." },
+  { q: "Kitobxon, kitob, kit so’zlaridan ortiqchasini toping.", options: ["kit", "kitob", "kitobxon", "ortiqchasi yo'q"], answer: 0, difficulty: "easy", explanation: "\"Kit\" (dengiz hayvoni) kitob va kitobxonga aloqador emas." },
+  { q: "Bosh so’zi ko’chma ma’noda berilgan qatorni toping.", options: ["ko’chaning boshi", "odamning boshi", "mushukning boshi", "otning boshi"], answer: 0, difficulty: "easy", explanation: "\"Ko'chaning boshi\" — ko'chma ma'nodagi birikma." },
+  { q: "Qator undosh berilgan qatorni toping.", options: ["traktor, baxt", "achchiq, muammo", "do’st, mudofaa", "katta, qattiq"], answer: 0, difficulty: "medium", explanation: "Traktor (tr), baxt (xt) — qator undosh qatnashgan so'zlar." },
+  { q: "Qo’sh undosh berilgan qatorni toping.", options: ["muammo, muvaffaqiyat", "krem, barg", "metall, lola", "sinf, qasr"], answer: 0, difficulty: "medium", explanation: "Muammo (mm), muvaffaqiyat (ff) — qo'sh undoshli so'zlar." },
+  { q: "Talaffuzda tovush tushishi kuzatiladigan so’zlar qatorini belgilang.", options: ["go’sht, xursand", "Toshkent, men", "Samarqand, ona", "maktab, kitob"], answer: 0, difficulty: "medium", explanation: "Talaffuzda t va d tushib qoladi: go'sh, xursan." },
+  { q: "Talaffuzda tovush ortishi kuzatiladigan so’zlar qatorini belgilang.", options: ["shoir, doim", "tabiat, alla", "shior, go’sht", "dars, sinf"], answer: 0, difficulty: "medium", explanation: "Shoir (shoyir), doim (doyim) — talaffuzda y tovushi ortadi." },
+  { q: "Bosh kelishikdagi so’zni toping.", options: ["kitob", "uyga", "maktabda", "shahardan"], answer: 0, difficulty: "easy", explanation: "Bosh kelishik nol qo'shimchali bo'ladi: \"kitob\"." },
+  { q: "Jo’nalish kelishigidagi so’zni toping.", options: ["maktabga", "uyda", "meni", "kitobdan"], answer: 0, difficulty: "easy", explanation: "-ga qo'shimchasi jo'nalish kelishigini bildiradi: \"maktabga\"." },
+  { q: "Tushum kelishigidagi so’zni toping.", options: ["nonni", "olmaning", "bizdan", "ko'chada"], answer: 0, difficulty: "easy", explanation: "-ni qo'shimchasi tushum kelishigini bildiradi: \"nonni\"." },
+  { q: "Chiqish kelishigi bilan qo’llangan so’zni toping.", options: ["ko’chadan", "bog’da", "uy", "kitobni"], answer: 0, difficulty: "easy", explanation: "-dan qo'shimchasi chiqish kelishigidir: \"ko'chadan\"." },
+  { q: "Tovush ortishi ro’y bergan so’zni toping.", options: ["bunga", "shahrim", "singil", "ko'zim"], answer: 0, difficulty: "medium", explanation: "Bu + ga = bunga (n tovushi ortgan)." },
+  { q: "Onam menga gulli ko’ylak tikib berdi. So’z yasovchi qo’shimcha qo’llangan so’zni toping.", options: ["gulli", "onam", "ko’ylak", "tikib"], answer: 0, difficulty: "medium", explanation: "Gul-li so'zida -li sifat yasovchi qo'shimchadir." },
+  { q: "Onam menga gulli ko’ylak tikib berdi. Gapda kelishik qo’llangan so’zni toping.", options: ["menga", "gulli", "onam", "ko'ylak"], answer: 0, difficulty: "medium", explanation: "Men-ga so'zida -ga jo'nalish kelishigi qo'llangan." },
+  { q: "Onam menga gulli ko’ylak tikib berdi. Gapda egalik qo’shimchasi qo’llangan so’zni toping.", options: ["onam", "gulli", "menga", "tikib"], answer: 0, difficulty: "medium", explanation: "Ona-m so'zida -m 1-shaxs egalik qo'shimchasi." },
+  { q: "Alifbo deb nimaga aytiladi?", options: ["Tartib bilan berilgan harflar majmui", "Arifmetik ketma-ketlikda yig’ilgan harflar to’plami", "Oldin unli, so’ng undosh berilgan to'plam", "Faqat so'zlar ro'yxati"], answer: 0, difficulty: "easy", explanation: "Alifbo — harflarning qat'iy tartib bilan berilgan to'liq majmuidir." },
+  { q: "Imlo qoidalariga ko’ra to’g’ri yozilgan qatorni belgilang.", options: ["harf, xushxabar", "sinif, ustoz", "barig, kitob", "poezd, traktir"], answer: 0, difficulty: "easy", explanation: "Harf va xushxabar so'zlari imloga ko'ra to'g'ri yozilgan." }
 ];
 
 window.TEST_DATA["4_tabiatshunoslik"] = [
@@ -1510,18 +1694,64 @@ window.TEST_DATA["11_tarix"] = [
 
 
 
+window.TEST_DATA["6_musiqa"] = [
+  { q: "\"Shashmaqom\" so'zining ma'nosi nima?", options: ["Olti maqom", "To'rt maqom", "O'n ikki maqom", "Yetti maqom"], answer: 0, difficulty: "easy", explanation: "\"Shash\" forscha olti, \"Shashmaqom\" — olti maqom demakdir." },
+  { q: "O'zbek xalq cholg'u asboblari necha guruhga bo'linadi?", options: ["2 guruhga", "3 guruhga", "4 guruhga", "5 guruhga"], answer: 2, difficulty: "easy", explanation: "Cholg'ular 4 guruhga bo'linadi: torli-chertma, torli-kamonli, puflama (damli), zarbli." },
+  { q: "Quyidagilardan qaysi biri torli-kamonli cholg'u asbobiga kiradi?", options: ["Rubob", "Dutor", "G'ijjak", "Chang"], answer: 2, difficulty: "easy", explanation: "G'ijjak kamon (kamoncha) bilan chalinadi." },
+  { q: "\"Shashmaqom\" tarkibiga kiruvchi birinchi maqom qaysi?", options: ["Rost", "Buzruk", "Navo", "Segoh"], answer: 1, difficulty: "medium", explanation: "Shashmaqomning birinchi maqomi — Buzruk." },
+  { q: "Qaysi cholg'u asbobi maxsus tayoqchalar (cho'plar) yordamida chalinadi?", options: ["Qonun", "Chang", "Tanbur", "Ud"], answer: 1, difficulty: "easy", explanation: "Chang cholg'usi ikki dona bambuk tayoqcha bilan chalinadi." },
+  { q: "O'zbekistonda maqom san'atining qaysi mahalliy uslublari (yo'llari) mavjud?", options: ["Buxoro, Xorazm, Farg'ona-Toshkent", "Samarqand, Qashqadaryo, Surxondaryo", "Andijon, Namangan, Qo'qon", "Xiva, Urganch, Nukus"], answer: 0, difficulty: "medium", explanation: "Buxoro, Xorazm va Farg'ona-Toshkent maqom yo'llari mavjud." },
+  { q: "\"Dutor\" so'zi fors-tojik tilidan tarjima qilinganda qanday ma'noni anglatadi?", options: ["Uch tor", "Ikki tor", "To'rt tor", "Olti tor"], answer: 1, difficulty: "easy", explanation: "\"Du\" — ikki, \"tor\" — tor, ya'ni ikki torli cholg'u." },
+  { q: "Quyidagilardan qaysi biri puflab chalinadigan (damli) cholg'u asbobi?", options: ["Doira", "Nog'ora", "Karnay", "Sato"], answer: 2, difficulty: "easy", explanation: "Karnay — puflab chalinadigan qadimiy milliy cholg'u." },
+  { q: "O'zbekiston Respublikasi Davlat madhiyasi musiqasini kim bastalagan?", options: ["Sulaymon Yudakov", "Mutal Burhonov", "Ikrom Akbarov", "Manas Leviyev"], answer: 1, difficulty: "easy", explanation: "Madhiyamiz musiqasi muallifi — Mutal Burhonov." },
+  { q: "O'zbekiston Respublikasi Davlat madhiyasi matni muallifi kim?", options: ["Erkin Vohidov", "Abdulla Oripov", "Muhammad Yusuf", "Hamid Olimjon"], answer: 1, difficulty: "easy", explanation: "Madhiyamiz matni O'zbekiston Qahramoni Abdulla Oripov tomonidan yozilgan." },
+  { q: "\"Katta ashula\" (Patnusaki ashula) asosan qaysi vodiyda keng tarqalgan?", options: ["Zarafshon vodiysida", "Farg'ona vodiysida", "Xorazm vohasida", "Surxon vohasida"], answer: 1, difficulty: "medium", explanation: "Katta ashula Farg'ona vodiysida vujudga kelgan va YUNESKO merosidir." },
+  { q: "Xorazm maqomlari nechta asosiy maqomdan iborat?", options: ["4 ta", "5 ta", "6 ta (va yarim)", "12 ta"], answer: 2, difficulty: "medium", explanation: "Xorazm maqomlari olti yarim maqomdan iborat." },
+  { q: "Qaysi cholg'u asbobi noxun (mediator) yordamida chalinadi?", options: ["Tanbur", "Dutor", "Nay", "Doira"], answer: 0, difficulty: "medium", explanation: "Tanbur ko'rsatkich barmog'iga taqiladigan metall noxun bilan chalinadi." },
+  { q: "\"Lazgi\" raqsi va kuyi qaysi hudud musiqa madaniyatining durdonasi hisoblanadi?", options: ["Buxoro", "Xorazm", "Toshkent", "Farg'ona"], answer: 1, difficulty: "easy", explanation: "Lazgi — qadimiy Xorazm xalq raqsi va kuyi." },
+  { q: "Baxshichilik san'atida dostonlar qaysi cholg'u jo'rligida ijro etiladi?", options: ["Rubob", "Do'mbira", "Dutor", "G'ijjak"], answer: 1, difficulty: "easy", explanation: "O'zbek xalq baxshilari dostonlarni do'mbira jo'rligida kuylashadi." },
+  { q: "\"Alpomish\" dostonini eng mukammal kuylagan mashhur o'zbek baxshisi kim?", options: ["Ergash Jumanbulbul o'g'li", "Fozil Yo'ldosh o'g'li", "Islom shoir Nazar o'g'li", "Po'lkan shoir"], answer: 1, difficulty: "medium", explanation: "\"Alpomish\" dostonining eng to'liq varianti Fozil Yo'ldosh o'g'lidan yozib olingan." },
+  { q: "Simfonik orkestr tarkibida nechta asosiy cholg'u guruhi mavjud?", options: ["2 ta", "3 ta", "4 ta", "6 ta"], answer: 2, difficulty: "medium", explanation: "Simfonik orkestrda 4 guruh: torli-kamonli, yog'och puflama, mis puflama va zarbli cholg'ular." },
+  { q: "Quyidagilardan qaysi biri zarbli (urma) cholg'u asbobiga kiradi?", options: ["Surnay", "Qo'shnay", "Nog'ora", "Kashkarcha"], answer: 2, difficulty: "easy", explanation: "Nog'ora — urib chalinadigan zarbli cholg'u." },
+  { q: "\"Maysaraning ishi\" birinchi o'zbek hajviy operasining muallifi kim?", options: ["Muxtor Ashrafiy", "Sulaymon Yudakov", "Tolibjon Sodiqov", "Sobir Boboyev"], answer: 1, difficulty: "medium", explanation: "Sulaymon Yudakov ilk o'zbek hajviy operasi \"Maysaraning ishi\"ni yaratgan." },
+  { q: "\"Bo'ron\" birinchi o'zbek operasi kimlar tomonidan yaratilgan?", options: ["M. Ashrafiy va S. Vasilenko", "M. Burhonov va I. Akbarov", "T. Sodiqov va R. Glier", "S. Yudakov va M. Leviyev"], answer: 0, difficulty: "hard", explanation: "\"Bo'ron\" operasi Muxtor Ashrafiy va Sergey Vasilenko tomonidan yaratilgan." },
+  { q: "Musiqada tovushlarning baland-pastligini yozish uchun ishlatiladigan 5 ta parallel chiziq nima deb ataladi?", options: ["Kalit", "Nota yo'li (stan)", "Takt", "Dinamika"], answer: 1, difficulty: "easy", explanation: "Besh parallel chiziq — nota yo'li (notostan) deyiladi." },
+  { q: "Skripka kaliti yana qanday nom bilan ataladi?", options: ["Fa kaliti", "Sol kaliti", "Do kaliti", "Lya kaliti"], answer: 1, difficulty: "easy", explanation: "Skripka kaliti ikkinchi chiziqdan (Sol notasidan) boshlangani uchun Sol kaliti deyiladi." },
+  { q: "Musiqada ijro tezligi nima deb ataladi?", options: ["Temp (sur'at)", "Ritm (usul)", "Tembr", "Registr"], answer: 0, difficulty: "easy", explanation: "Ijro tezligi musiqa tilida Temp (sur'at) deb ataladi." },
+  { q: "\"Forte\" (f) dinamik belgisi nimani anglatadi?", options: ["Sekin, past ovozda", "Kuchli, baland ovozda", "O'rtacha ovozda", "Tezlashtirib"], answer: 1, difficulty: "easy", explanation: "Forte (f) — jarangdor, baland va kuchli jaranglashni bildiradi." },
+  { q: "\"Piano\" (p) dinamik belgisi nimani anglatadi?", options: ["Kuchli ovozda", "Past, mayin ovozda", "Sekinlashtirib", "Uzib-uzib"], answer: 1, difficulty: "easy", explanation: "Piano (p) — sekin, mayin va past ovozda ijro etishni bildiradi." },
+  { q: "Orkestrga rahbarlik qiluvchi mutaxassis kim?", options: ["Solist", "Dirijyor", "Konsertmeyster", "Kompozitor"], answer: 1, difficulty: "easy", explanation: "Dirijyor butun orkestr ijrosini boshqaradi." },
+  { q: "O'zbek xalq cholg'ulari orkestrining asoschisi kim?", options: ["Yunus Rajabiy", "To'xtasin Jalilov", "Ashot Petrosyans", "Ganijon Toshmatov"], answer: 2, difficulty: "hard", explanation: "Professor Ashot Petrosyans o'zbek xalq cholg'ulari orkestriga asos solgan." },
+  { q: "\"Shashmaqom\"ni notaga olib, 6 jildlik kitob holida nashr ettirgan buyuk san'atkor kim?", options: ["Komiljon Otaniyozov", "Yunus Rajabiy", "Hoji Abdulaziz Abdurasulov", "Domla Halim Ibodov"], answer: 1, difficulty: "medium", explanation: "Akademik Yunus Rajabiy Shashmaqomni to'liq notaga tushirgan va saqlab qolgan." },
+  { q: "Xonanda va sozandalarning birgalikda bir ovozda ijro etishi nima deb ataladi?", options: ["Polifoniya", "Unison", "Duet", "Kvintet"], answer: 1, difficulty: "medium", explanation: "Barcha ovozlarning bir ohangda qo'shilib yangrashi Unison deyiladi." },
+  { q: "Ikki nafar ijrochidan iborat musiqiy ansambl nima deb ataladi?", options: ["Trio", "Kvartet", "Duet", "Solo"], answer: 2, difficulty: "easy", explanation: "Ikki ijrochi birgalikda Duet deb ataladi." },
+  { q: "To'rt nafar ijrochidan iborat ansambl qanday nomlanadi?", options: ["Trio", "Kvartet", "Kvintet", "Sekstet"], answer: 1, difficulty: "easy", explanation: "To'rt kishilik musiqiy guruh — Kvartet." },
+  { q: "Ayollarning eng baland ovozi qanday ataladi?", options: ["Alt", "Soprano", "Tenor", "Bariton"], answer: 1, difficulty: "medium", explanation: "Ayollarning eng yuqori ovozi — Soprano." },
+  { q: "Erkaklarning eng past (yo'g'on) ovozi nima deb ataladi?", options: ["Tenor", "Bariton", "Bas", "Diskant"], answer: 2, difficulty: "easy", explanation: "Erkaklarning eng yo'g'on va past ovozi — Bas." },
+  { q: "Erkaklarning eng baland ovozi qaysi?", options: ["Bas", "Bariton", "Tenor", "Kontralto"], answer: 2, difficulty: "medium", explanation: "Erkaklarning eng yuqori ovozi — Tenor." },
+  { q: "Musiqiy asarning sahnada raqs va pantomima orqali ijro etiladigan turi nima?", options: ["Opera", "Balet", "Simfoniya", "Operetta"], answer: 1, difficulty: "easy", explanation: "Balet — musiqali xoreografik sahna asaridir." },
+  { q: "\"Oqqush ko'li\" va \"Shelkunchik\" baletlarining muallifi bo'lgan mashhur rus kompozitori kim?", options: ["M. Glinka", "P. Chaykovskiy", "S. Prokofyev", "N. Rimskiy-Korsakov"], answer: 1, difficulty: "easy", explanation: "Pyotr Ilyich Chaykovskiy ushbu afsonaviy baletlar muallifi." },
+  { q: "Vena klassik maktabining buyuk namoyandalarini toping.", options: ["Bax, Gendel, Vivaldi", "Gaydn, Motsart, Betxoven", "Shopen, List, Shuman", "Verdi, Bize, Rossini"], answer: 1, difficulty: "medium", explanation: "Yozef Gaydn, Volfgang Motsart va Lyudvig van Betxoven — Vena klassiklari." },
+  { q: "5 yoshidan boshlab musiqa bastalagan avstriyalik buyuk kompozitor kim?", options: ["Lyudvig van Betxoven", "Volfgang Amadey Motsart", "Iogann Sebastyan Bax", "Frans Shubert"], answer: 1, difficulty: "easy", explanation: "Motsart bolalikdanoq daho kompozitor sifatida tanilgan." },
+  { q: "Eshitish qobiliyatini yo'qotgan bo'lsa-da, buyuk simfoniyalar yaratgan nemis kompozitori kim?", options: ["V. A. Motsart", "L. van Betxoven", "I. S. Bax", "R. Vagner"], answer: 1, difficulty: "easy", explanation: "Lyudvig van Betxoven kar bo'lib qolganida o'zining mashhur 9-simfoniyasini yaratgan." },
+  { q: "O'zbek mumtoz musiqasida \"Doira usuli\" qanday vazifani bajaradi?", options: ["Kuyning ritmik asosini boshqaradi", "Faqat boshlanishida chalinadi", "Kuyning balandligini o'zgartiradi", "Hech qanday vazifa bajarmaydi"], answer: 0, difficulty: "easy", explanation: "Doira usuli butun asarning ritmik va sur'at o'lchovini ta'minlaydi." },
+  { q: "\"Bayot\", \"Chorgoh\", \"Dugoh\", \"Segoh\" asarlari qaysi musiqa turkumiga mansub?", options: ["Bolalar qo'shiqlari", "Maqom va mumtoz kuy-ashulalar", "Estrada", "Marshlar"], answer: 1, difficulty: "easy", explanation: "Ular o'zbek xalq mumtoz musiqasi va maqomlar turkumiga kiradi." },
+  { q: "\"Tanovar\" kuyi va ashulasi asosan qaysi hudud xalq ijodiyotiga xos?", options: ["Xorazm", "Farg'ona-Toshkent", "Qashqadaryo", "Qoraqalpog'iston"], answer: 1, difficulty: "medium", explanation: "\"Tanovar\" Farg'ona-Toshkent musiqiy yo'nalishining eng nozik durdonasidir." },
+  { q: "Qoraqalpoq xalqining milliy torli-kamonli cholg'u asbobi qaysi?", options: ["Dutor", "Qo'biz", "Do'mbira", "Chang"], answer: 1, difficulty: "medium", explanation: "Qo'biz — qoraqalpoq va qozoq xalqlarining qadimiy kamonli cholg'usi." },
+  { q: "Qoraqalpoq xalq og'zaki ijodini kuylovchi san'atkorlar kimlar deb ataladi?", options: ["Baxshi va jirovlar", "Hafizlar", "Ashulachilar", "Maqomchilar"], answer: 0, difficulty: "medium", explanation: "Qoraqalpoq dostonlarini baxshilar va jirovlar ijro etishadi." },
+  { q: "Musiqada tovushning o'ziga xos bo'yog'i, rangi (masalan, nay ovozini skripkadan ajratib turuvchi xususiyat) nima deb ataladi?", options: ["Ritm", "Tembr", "Temp", "Dinamika"], answer: 1, difficulty: "easy", explanation: "Tovushning o'ziga xos bo'yog'i va rangi Tembr deyiladi." },
+  { q: "\"O'zbekiston — Vatanim manim\" qo'shig'ining musiqasini kim yozgan?", options: ["Shermat Yormatov", "Bahodir Umidjonov", "Alisher Ikromov", "Nadim Norxo'jayev"], answer: 2, difficulty: "hard", explanation: "Musiqa muallifi — kompozitor Alisher Ikromov." },
+  { q: "Xor jamoasiga rahbarlik qiluvchi mutaxassis kim?", options: ["Xormeyster", "Baletmeyster", "Rejissyor", "Konsertmeyster"], answer: 0, difficulty: "easy", explanation: "Xor jamoasi rahbari — Xormeyster deb ataladi." },
+  { q: "O'zbekiston davlat konservatoriyasi qaysi shaharda joylashgan?", options: ["Samarqand", "Buxoro", "Toshkent", "Andijon"], answer: 2, difficulty: "easy", explanation: "O'zbekiston davlat konservatoriyasi Toshkent shahrida joylashgan." },
+  { q: "Quyidagi cholg'ulardan qaysi biri qadimiy ud cholg'usining takomillashgan ko'rinishi hisoblanadi?", options: ["G'ijjak", "Rubob", "Nay", "Doira"], answer: 1, difficulty: "medium", explanation: "Rubob va barbat qadimiy Ud cholg'usining qarindoshidir." },
+  { q: "YUNESKO tomonidan Insoniyatning nomoddiy madaniy merosi ro'yxatiga kiritilgan o'zbek musiqa janri qaysi?", options: ["Shashmaqom va Katta ashula", "Zamonaviy estrada", "Simfonik syuita", "Bolalar xori"], answer: 0, difficulty: "easy", explanation: "Shashmaqom va Katta ashula YUNESKO xalqaro ro'yxatiga kiritilgan." }
+];
+
 // ============================================================
 // BARCHA FANLAR VA SINFLAR UCHUN SAVOLLARNI AVTOMATIK BOYITISH
 // JAMI SAVOLLAR SONI: 1000+ DIPLOM VA MAKTAB STARTUP DARAJASI
 // ============================================================
 
-(function expandAllTestQuestions() {
-  // Barcha sinflar va fanlar ro'yxati
-  var allGrades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-  
-  // Mavzu bo'yicha boyitish banklari
-
-// Standart fan banklari va yordamchi savollar:
 (function() {
   var allGrades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     var mathBank = [
@@ -1615,3 +1845,8 @@ window.TEST_DATA["11_tarix"] = [
   console.log('30-maktabtest: Barcha haqiqiy darslik testlari yuklandi! Jami: ' + total + ' ta test!');
   window.TOTAL_QUESTIONS_COUNT = total;
 })();
+
+
+// ============================================================
+// 6-SINF MUSIQA (50 ta test)
+// ============================================================
