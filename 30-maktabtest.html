@@ -37969,6 +37969,35 @@ var CATALOG_100_DATA = [
 
 var ALL_BOOKS = [].concat(BOOKS_PART_1, BOOKS_PART_2, BOOKS_PART_3);
 
+// Har bir kitobning viktorina savollarida to'g'ri javoblarni A, B, C, D variantlari bo'yicha tabiiy va xilma-xil taqsimlash
+(function distributeQuizAnswers(books) {
+  var patterns = [
+    [1, 2, 0, 3, 2], // B, C, A, D, C
+    [2, 0, 3, 1, 3], // C, A, D, B, D
+    [3, 1, 2, 0, 1], // D, B, C, A, B
+    [0, 3, 1, 2, 0], // A, D, B, C, A
+    [1, 3, 0, 2, 3], // B, D, A, C, D
+    [2, 1, 3, 0, 2], // C, B, D, A, C
+    [3, 2, 0, 1, 0]  // D, C, A, B, A
+  ];
+  books.forEach(function (book, bIdx) {
+    if (!book.quiz || !book.quiz.length) return;
+    var pat = patterns[bIdx % patterns.length];
+    book.quiz.forEach(function (q, qIdx) {
+      if (q.options && q.options.length === 4) {
+        var targetIdx = pat[qIdx % pat.length];
+        var origIdx = (typeof q.answer === 'number') ? q.answer : 0;
+        if (targetIdx !== origIdx) {
+          var temp = q.options[targetIdx];
+          q.options[targetIdx] = q.options[origIdx];
+          q.options[origIdx] = temp;
+          q.answer = targetIdx;
+        }
+      }
+    });
+  });
+})(ALL_BOOKS);
+
 var LibraryManager = {
   books: ALL_BOOKS,
   catalog: CATALOG_100_DATA,
@@ -38385,8 +38414,36 @@ var LibraryManager = {
       return;
     }
 
+    // Har safar viktorina ochilganda variantlarni jonli aralashtirish (A, B, C, D doimo turli o'rinlarda bo'ladi)
+    var activeQuiz = book.quiz.map(function (origQ) {
+      var pairs = origQ.options.map(function (optText, idx) {
+        return { text: optText, isCorrect: (idx === origQ.answer) };
+      });
+      // Fisher-Yates tasodifiy aralashtirish
+      for (var i = pairs.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = pairs[i];
+        pairs[i] = pairs[j];
+        pairs[j] = tmp;
+      }
+      var newAns = 0;
+      for (var k = 0; k < pairs.length; k++) {
+        if (pairs[k].isCorrect) {
+          newAns = k;
+          break;
+        }
+      }
+      return {
+        q: origQ.q,
+        options: pairs.map(function (p) { return p.text; }),
+        answer: newAns,
+        explanation: origQ.explanation
+      };
+    });
+
     this.quizState = {
       book: book,
+      activeQuiz: activeQuiz,
       currentQ: 0,
       score: 0,
       answers: []
@@ -38407,8 +38464,9 @@ var LibraryManager = {
   },
 
   renderQuizQuestion: function () {
-    var q = this.quizState.book.quiz[this.quizState.currentQ];
-    var total = this.quizState.book.quiz.length;
+    var quizList = (this.quizState && this.quizState.activeQuiz) ? this.quizState.activeQuiz : this.quizState.book.quiz;
+    var q = quizList[this.quizState.currentQ];
+    var total = quizList.length;
 
     document.getElementById('bquiz-progress-text').textContent = 'Savol ' + (this.quizState.currentQ + 1) + ' / ' + total;
     document.getElementById('bquiz-progress-bar').style.width = (((this.quizState.currentQ + 1) / total) * 100) + '%';
@@ -38435,7 +38493,8 @@ var LibraryManager = {
   },
 
   selectQuizOption: function (selectedIdx, clickedBtn) {
-    var q = this.quizState.book.quiz[this.quizState.currentQ];
+    var quizList = (this.quizState && this.quizState.activeQuiz) ? this.quizState.activeQuiz : this.quizState.book.quiz;
+    var q = quizList[this.quizState.currentQ];
     var allBtns = document.querySelectorAll('.bquiz-option-btn');
     allBtns.forEach(function (b) { b.disabled = true; });
 
@@ -38458,14 +38517,15 @@ var LibraryManager = {
 
     var nextBtn = document.getElementById('bquiz-next-btn');
     if (nextBtn) {
-      var isLast = (this.quizState.currentQ === this.quizState.book.quiz.length - 1);
+      var isLast = (this.quizState.currentQ === quizList.length - 1);
       nextBtn.innerHTML = isLast ? 'Natijani ko\'rish <i class="fas fa-trophy"></i>' : 'Keyingi savol <i class="fas fa-arrow-right"></i>';
       nextBtn.style.display = 'inline-flex';
     }
   },
 
   nextQuizQuestion: function () {
-    if (this.quizState.currentQ < this.quizState.book.quiz.length - 1) {
+    var quizList = (this.quizState && this.quizState.activeQuiz) ? this.quizState.activeQuiz : this.quizState.book.quiz;
+    if (this.quizState.currentQ < quizList.length - 1) {
       this.quizState.currentQ += 1;
       this.renderQuizQuestion();
     } else {
@@ -38477,7 +38537,8 @@ var LibraryManager = {
     document.getElementById('bquiz-screen-question').style.display = 'none';
     document.getElementById('bquiz-screen-result').style.display = 'block';
 
-    var total = this.quizState.book.quiz.length;
+    var quizList = (this.quizState && this.quizState.activeQuiz) ? this.quizState.activeQuiz : this.quizState.book.quiz;
+    var total = quizList.length;
     var score = this.quizState.score;
     var percent = Math.round((score / total) * 100);
 
