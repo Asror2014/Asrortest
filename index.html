@@ -2005,6 +2005,10 @@
                     <input type="text" id="lib-search-input" class="lib-search-input" placeholder="Asar nomi yoki muallifni qidiring...">
                 </div>
 
+                <button type="button" class="lib-catalog-btn" onclick="window.LibraryManager.openFullCatalogModal()" title="100 ta eng sara jahon va o'zbek asarlari to'liq ro'yxati">
+                    <i class="fas fa-list-ol"></i> <span>100 ta Shoh Asar Katalogi</span>
+                </button>
+
                 <div class="lib-filter-chips">
                     <button type="button" class="lib-filter-chip active" data-cat="all" onclick="window.LibraryManager.setCategory('all')">
                         <i class="fas fa-layer-group"></i> Barchasi
@@ -2025,6 +2029,10 @@
                         <i class="fas fa-heart" style="color:#f43f5e;"></i> Sevimlilar
                     </button>
                 </div>
+            </div>
+
+            <div id="lib-books-count-badge" class="lib-books-count-badge">
+                <i class="fas fa-book-sparkles"></i> 35 ta to'liq interaktiv asar (Boblar, Viktorina, Audio)
             </div>
 
             <!-- Kitoblar kartalari paneli -->
@@ -3891,6 +3899,41 @@
                 <button type="button" class="btn btn-primary btn-lg" onclick="window.LibraryManager.closeQuiz()">
                     <i class="fas fa-check"></i> Kutubxonaga qaytish
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         100 TA SHOH ASAR KUTUBXONA KATALOGI MODALI
+         ============================================================ -->
+    <div id="lib-catalog-modal" class="lib-catalog-modal" style="display:none;">
+        <div class="lib-catalog-card">
+            <div class="lib-catalog-header">
+                <div class="lib-catalog-header-title">
+                    <h3><i class="fas fa-book-bookmark" style="color:#f59e0b;"></i> 100 ta Shoh Asar Kutubxona Katalogi</h3>
+                    <span id="lib-catalog-count-label">Jami 100 ta sara asar</span>
+                </div>
+                <button type="button" class="lib-catalog-close-btn" onclick="window.LibraryManager.closeFullCatalogModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="lib-catalog-toolbar">
+                <div class="lib-catalog-search-wrap">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="lib-catalog-search-input" placeholder="Katalogdan asar yoki muallifni qidirish...">
+                </div>
+                <div class="lib-catalog-filters">
+                    <button type="button" class="cat-filter-btn active" data-ccat="all" onclick="window.LibraryManager.setCatalogCategory('all')">Barchasi (100)</button>
+                    <button type="button" class="cat-filter-btn" data-ccat="O'zbek adabiyoti" onclick="window.LibraryManager.setCatalogCategory('O\'zbek adabiyoti')">O'zbek adabiyoti</button>
+                    <button type="button" class="cat-filter-btn" data-ccat="Jahon klassikasi" onclick="window.LibraryManager.setCatalogCategory('Jahon klassikasi')">Jahon klassikasi</button>
+                    <button type="button" class="cat-filter-btn" data-ccat="Shaxsiy rivojlanish" onclick="window.LibraryManager.setCatalogCategory('Shaxsiy rivojlanish')">Rivojlanish & Moliya</button>
+                    <button type="button" class="cat-filter-btn" data-ccat="Bolalar & Fantastika" onclick="window.LibraryManager.setCatalogCategory('Bolalar & Fantastika')">Bolalar & Fantastika</button>
+                </div>
+            </div>
+
+            <div class="lib-catalog-body" id="catalog-books-list">
+                <!-- JavaScript dinamik to'ldiradi -->
             </div>
         </div>
     </div>

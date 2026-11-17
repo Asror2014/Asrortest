@@ -9078,3 +9078,239 @@ body.light-theme .ol-nav-btn:hover {
   color: #fbbf24;
   margin-bottom: 24px;
 }
+
+/* ============================================================
+   100 TA SHOH ASAR KATALOGI VA QO'SHIMCHA ELEMENTLAR
+   ============================================================ */
+.lib-catalog-btn {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.lib-catalog-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+}
+
+.lib-books-count-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.lib-catalog-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(14px);
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.lib-catalog-card {
+  width: 100%;
+  max-width: 960px;
+  height: 90vh;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.lib-catalog-header {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.75);
+}
+.lib-catalog-header-title h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0 0 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lib-catalog-header-title span {
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+.lib-catalog-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px;
+}
+.lib-catalog-close-btn:hover {
+  color: #fff;
+}
+
+.lib-catalog-toolbar {
+  padding: 14px 24px;
+  background: rgba(15, 23, 42, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lib-catalog-search-wrap {
+  position: relative;
+  flex: 1 1 240px;
+  max-width: 360px;
+}
+.lib-catalog-search-wrap i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 0.9rem;
+}
+.lib-catalog-search-wrap input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 8px 12px 8px 36px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.lib-catalog-search-wrap input:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+.lib-catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cat-filter-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cat-filter-btn:hover {
+  color: #fff;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+.cat-filter-btn.active {
+  background: #f59e0b;
+  color: #0f172a;
+  border-color: #f59e0b;
+  font-weight: 700;
+}
+
+.lib-catalog-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.catalog-item-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+.catalog-item-card:hover {
+  transform: translateX(4px);
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(15, 23, 42, 0.85);
+}
+.catalog-item-card.interactive-avail {
+  border-left: 4px solid #38bdf8;
+}
+.c-num-badge {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #f59e0b;
+  min-width: 44px;
+}
+.c-info {
+  flex: 1;
+  min-width: 0;
+}
+.c-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+}
+.c-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0;
+}
+.c-category-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.c-author {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0 0 4px 0;
+}
+.c-desc {
+  font-size: 0.84rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.45;
+}
+.c-action-wrap {
+  white-space: nowrap;
+}
+.badge-catalog-only {
+  font-size: 0.75rem;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
